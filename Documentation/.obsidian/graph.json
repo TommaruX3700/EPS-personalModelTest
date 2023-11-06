@@ -1,0 +1,51 @@
+{
+  "collapse-filter": true,
+  "search": "",
+  "showTags": false,
+  "showAttachments": false,
+  "hideUnresolved": false,
+  "showOrphans": true,
+  "collapse-color-groups": true,
+  "colorGroups": [
+    {
+      "query": "path:Architecture/headers/entities  ",
+      "color": {
+        "a": 1,
+        "rgb": 11216616
+      }
+    },
+    {
+      "query": "path:Architecture/headers/logic  ",
+      "color": {
+        "a": 1,
+        "rgb": 968765
+      }
+    },
+    {
+      "query": "file:main.cpp",
+      "color": {
+        "a": 1,
+        "rgb": 14701138
+      }
+    },
+    {
+      "query": "path:Architecture/src  ",
+      "color": {
+        "a": 1,
+        "rgb": 16774927
+      }
+    }
+  ],
+  "collapse-display": false,
+  "showArrow": true,
+  "textFadeMultiplier": -3,
+  "nodeSizeMultiplier": 2.44791666666667,
+  "lineSizeMultiplier": 5,
+  "collapse-forces": true,
+  "centerStrength": 0.645833333333333,
+  "repelStrength": 20,
+  "linkStrength": 1,
+  "linkDistance": 118,
+  "scale": 0.3628873693012171,
+  "close": true
+}

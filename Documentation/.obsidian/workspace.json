@@ -1,0 +1,238 @@
+{
+  "main": {
+    "id": "20e57b3996db02c8",
+    "type": "split",
+    "children": [
+      {
+        "id": "6095c5becfb30472",
+        "type": "tabs",
+        "dimension": 48.750761730652044,
+        "children": [
+          {
+            "id": "5b0459c33e08c7e2",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Architecture/headers/entities/geometry/Cell.h.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "bb4a8fc5ab1aace7",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {}
+            }
+          }
+        ],
+        "currentTab": 1
+      },
+      {
+        "id": "cf8146f643a28854",
+        "type": "tabs",
+        "dimension": 51.24923826934796,
+        "children": [
+          {
+            "id": "02dc4c57e8a7ccd7",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Architecture/headers/entities/geometry/Geometry.h.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "57d8f616316e4f58",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Architecture/main.cpp.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "a49cee405d568119",
+    "type": "split",
+    "children": [
+      {
+        "id": "169c9ec54b86dc1b",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "e6dc3c227da3c404",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "a0c792d41b925c9c",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "17367dd35d7eb0ce",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 234.5
+  },
+  "right": {
+    "id": "c7eb92ad6b1d5635",
+    "type": "split",
+    "children": [
+      {
+        "id": "b6eea40290e259c2",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "01a2e70d05149ca3",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "fb444af4e7971b18",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "a3ce5b6cb187ed85",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "f56600d348321a20",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {}
+            }
+          },
+          {
+            "id": "918ae628c5c418a8",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "graph:Open graph view": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "bb4a8fc5ab1aace7",
+  "lastOpenFiles": [
+    "Architecture/headers/logic/ottimizzazione.hpp.md",
+    "Architecture/main.cpp.md",
+    "Architecture/headers/entities/geometry/Cell.h.md",
+    "Architecture/headers/entities/geometry/Geometry.h.md",
+    "Architecture/headers/entities/physical/3D_object.h.md",
+    "Architecture/headers/logic/ordinamentoPacchi.hpp.md",
+    "Logic-Algorithm.canvas",
+    "Untitled.canvas",
+    "README.md",
+    "Architecture/Relations.canvas",
+    "Architecture/src/entities/physical/Pallet.cpp.md",
+    "Architecture/src/entities/physical/PalletGroup.cpp.md",
+    "Architecture/src/entities/physical/Pack.cpp.md",
+    "Architecture/src/entities/physical/3D_object.cpp.md",
+    "Architecture/headers/entities/geometry/Plane.h.md",
+    "Architecture/headers/entities/geometry/Grid.h.md",
+    "Architecture/headers/entities/physical/PalletGroup.h.md",
+    "Architecture/headers/entities/physical/Pallet.h.md",
+    "Architecture/headers/entities/physical/Pack.h.md",
+    "Architecture/src/logic/ordinamentoPacchi/ordinamentoPacchi.cpp.md",
+    "Architecture/src/logic/ottimizzazione/ottimizzazione.cpp.md",
+    "Architecture/src/logic/sceltaPacchiNesting/sceltaPacchiNesting.cpp.md",
+    "Architecture/src/logic/spostaPacchi/spostaPacchi.cpp.md",
+    "Architecture/src/logic/trovaDominio/trovaDominio.cpp.md",
+    "Architecture/src/entities/geometry/Cell.cpp.md",
+    "Architecture/src/entities/geometry/Grid.cpp.md",
+    "Architecture/src/entities/geometry/Plane.cpp.md",
+    "Architecture/headers/logic/sceltaPacchiNesting.hpp.md",
+    "Architecture/src/logic/spostaPacchi",
+    "Architecture/src/logic/ottimizzazione",
+    "Architecture/src/logic/sceltaPacchiNesting",
+    "Architecture/src/logic/trovaDominio",
+    "Architecture/src/logic/ordinamentoPacchi",
+    "Architecture/headers/entities/logic",
+    "Architecture/src/entities/physical",
+    "Architecture/headers/entities/physical",
+    "Architecture/src/entities/geometry",
+    "Architecture/headers/entities/geometry"
+  ]
+}
