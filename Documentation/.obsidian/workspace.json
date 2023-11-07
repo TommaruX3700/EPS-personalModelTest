@@ -166,12 +166,12 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "e6dc3c227da3c404",
+  "active": "57d8f616316e4f58",
   "lastOpenFiles": [
+    "Architecture/main.cpp.md",
     "Architecture/headers/entities/geometry/Cell.h.md",
     "Architecture/headers/entities/geometry/Geometry.h.md",
     "Architecture/headers/logic/ottimizzazione.hpp.md",
-    "Architecture/main.cpp.md",
     "Architecture/headers/entities/physical/3D_object.h.md",
     "Architecture/headers/logic/ordinamentoPacchi.hpp.md",
     "Logic-Algorithm.canvas",
