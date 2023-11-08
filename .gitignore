@@ -14,7 +14,7 @@ _deps
 #Ignore folders
 build/
 old/
-
+.vscode/
 
 #todo
 #add ignore for .vscode and build folder
