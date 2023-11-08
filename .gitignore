@@ -11,10 +11,22 @@ compile_commands.json
 CTestTestfile.cmake
 _deps
 
-#Ignore folders
-**/build/*
-**/old/*
-**/.vscode/*
+# cmake build files
+**/cmake/build/
 
-#todo
-#add ignore for .vscode and build folder
+#Ignore other folders
+old/*
+
+# C/C++ build outputs
+.build/
+build/
+build/*
+bins
+gens
+libs
+objs
+
+# Visual Studio Code artifacts
+.cache/*
+.vscode/*
+.history/
