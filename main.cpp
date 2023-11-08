@@ -19,6 +19,8 @@ int main (int argc, char* argv[])
         << "Input argument: " << argv[0] 
         << std::endl;
 
+        //TODO: add input control
+
         return 0;
     }
     catch(const std::exception& e)
