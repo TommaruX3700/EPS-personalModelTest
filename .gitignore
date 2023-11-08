@@ -1,3 +1,4 @@
+#Ignore CMakeLists files
 CMakeLists.txt.user
 CMakeCache.txt
 CMakeFiles
@@ -9,6 +10,11 @@ install_manifest.txt
 compile_commands.json
 CTestTestfile.cmake
 _deps
+
+#Ignore folders
+build/
+old/
+
 
 #todo
 #add ignore for .vscode and build folder
