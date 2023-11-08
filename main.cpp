@@ -9,6 +9,6 @@
 #include "headers/logic/trovaDominio.hpp"
 
 int main () {
-    std::cout << "pacco" << std::endl;
+    std::cout << "Pacco" << std::endl;
     return 0;
 }

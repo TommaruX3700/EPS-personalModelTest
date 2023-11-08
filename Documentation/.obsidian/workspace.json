@@ -6,6 +6,7 @@
       {
         "id": "6095c5becfb30472",
         "type": "tabs",
+        "dimension": 44.776119402985074,
         "children": [
           {
             "id": "bb4a8fc5ab1aace7",
@@ -14,7 +15,14 @@
               "type": "graph",
               "state": {}
             }
-          },
+          }
+        ]
+      },
+      {
+        "id": "01dc471c92d4461e",
+        "type": "tabs",
+        "dimension": 55.223880597014926,
+        "children": [
           {
             "id": "57d8f616316e4f58",
             "type": "leaf",
@@ -27,8 +35,7 @@
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -95,7 +102,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Architecture/main.cpp.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -112,7 +118,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Architecture/main.cpp.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -134,9 +139,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "Architecture/main.cpp.md"
-              }
+              "state": {}
             }
           },
           {
@@ -166,7 +169,7 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "57d8f616316e4f58",
+  "active": "bb4a8fc5ab1aace7",
   "lastOpenFiles": [
     "Architecture/main.cpp.md",
     "Architecture/headers/entities/geometry/Cell.h.md",
