@@ -19,8 +19,11 @@ old/*
 
 # C/C++ build outputs
 .build/
+
 build/
-build/*
+
+**/EPS-personalModelTest/build/**
+
 bins
 gens
 libs
@@ -28,5 +31,7 @@ objs
 
 # Visual Studio Code artifacts
 .cache/*
+
 .vscode/*
+
 .history/
