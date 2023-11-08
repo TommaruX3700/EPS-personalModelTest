@@ -8,7 +8,23 @@
 #include "headers/logic/spostaPacchi.hpp"
 #include "headers/logic/trovaDominio.hpp"
 
-int main () {
-    std::cout << "Pacco" << std::endl;
-    return 0;
+int main (int argc, char* argv[]) 
+{
+    try
+    {
+        std::cout 
+        << "#######################" << "\n" 
+        << "EPS-MODEL: START" << "\n" 
+        << "#######################" << "\n" 
+        << "Input argument: " << argv[0] 
+        << std::endl;
+
+        return 0;
+    }
+    catch(const std::exception& e)
+    {
+        std::cout << "EPS-MODEL: STOPPED BY ERROR" << std::endl;
+        std::cerr << e.what() << '\n';
+        return -1;
+    }   
 }
