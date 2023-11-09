@@ -1,6 +1,7 @@
 #pragma region "Includes" 
     #include <iostream>
     #include <fstream>
+    #include <string>
 
     #include "extLibs/nlohmannJSON/json.hpp"
 
@@ -20,21 +21,32 @@ int main (int argc, char* argv[])
     {
         #pragma region "Startup Routine"
             //Gets arguments as INPUT
+            const std::string inputJsonPath = argv[0];
+            
             std::cout 
             << "#######################" << "\n" 
             << "EPS-MODEL: START" << "\n" 
             << "#######################" << "\n" 
-            << "Input argument: " << argv[0] 
+            << "Input argument: " << inputJsonPath 
             << std::endl;
 
             //Check if file exists 
+            std::ifstream inputJsonFile;
+
+            inputJsonFile.open(inputJsonPath);
+            if (inputJsonFile)
+            {
+                //file exists
+            } else {
+                //file doesnt exists
+            }
             
 
             //Extract packs from it
 
 
             //TODO: add input control
-            
+
 
         #pragma endregion
 
