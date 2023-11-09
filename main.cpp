@@ -17,7 +17,7 @@
 
 #pragma region "Function declarations"
     int consoleErrorMessage (std::string errorString);
-    //int vectorToJson (std::vector<Pack*> &outputVector);
+    //json vectorToJson (all the arguments needed);
 
 #pragma endregion
 
@@ -40,12 +40,17 @@ int main (int argc, char* argv[])
             }
 
             //Extract packs from it
+            
 
         #pragma endregion
 
         #pragma region "End Routine"
             //Output as json (Plan B: output string)
-            
+
+            //Execute function to prepare the output json
+            //nlohmann::json outputJson = vectorToJson(all the arguments needed)
+            //std::cout << outputJson << '\n';
+
         #pragma endregion
         
         return 0;
@@ -60,7 +65,14 @@ int main (int argc, char* argv[])
     }   
 }
 
-#pragma region "Console messages"
+#pragma region "Function implementations"
+    //TODO - Ticket #15
+    //json vectorToJson (all the arguments needed)
+    //{ 
+    //      Build the output json, structure defined in Documentation.
+    //      Examples&Wiki: https://json.nlohmann.me/api/json/
+    //}
+
     void consoleStartMessage (std::string inputString)
     {
         std::cout 
@@ -73,15 +85,16 @@ int main (int argc, char* argv[])
 
     int consoleErrorMessage (std::string errorString) 
     {
-            std::cout 
-            << "#######################" << "\n" 
-            << "EPS-MODEL: ERROR" 
-            << "#######################" << "\n" <<
-            std::endl;
-            
-            std::cerr
-            << errorString << '\n'
-            << "#######################" << "\n";
-            return -1;
+        std::cout 
+        << "#######################" << "\n" 
+        << "EPS-MODEL: ERROR" 
+        << "#######################" << "\n" <<
+        std::endl;
+        
+        std::cerr
+        << errorString << '\n'
+        << "#######################" << "\n";
+        return -1;
     }
+
 #pragma endregion
