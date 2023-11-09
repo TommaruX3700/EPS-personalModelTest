@@ -1,33 +1,43 @@
-#include <iostream>
-#include <string>
+#pragma region "Includes" 
+    #include <iostream>
+    #include <fstream>
 
-#include "extLibs/nlohmannJSON/json.hpp"
+    #include "extLibs/nlohmannJSON/json.hpp"
 
-#include "headers/entities/physical/Pack.hpp"
+    #include "headers/entities/physical/Pack.hpp"
 
-#include "headers/logic/ordinamentoPacchi.hpp"
-#include "headers/logic/ottimizzazione.hpp"
-#include "headers/logic/sceltaPacchiNesting.hpp"
-#include "headers/logic/spostaPacchi.hpp"
-#include "headers/logic/trovaDominio.hpp"
+    #include "headers/logic/ordinamentoPacchi.hpp"
+    #include "headers/logic/ottimizzazione.hpp"
+    #include "headers/logic/sceltaPacchiNesting.hpp"
+    #include "headers/logic/spostaPacchi.hpp"
+    #include "headers/logic/trovaDominio.hpp"
+
+#pragma endregion
+
 
 int main (int argc, char* argv[]) 
 {
     try
     {
-        std::string outputList = "";
+        #pragma region "Startup Routine"
+            std::cout 
+            << "#######################" << "\n" 
+            << "EPS-MODEL: START" << "\n" 
+            << "#######################" << "\n" 
+            << "Input argument: " << argv[0] 
+            << std::endl;
 
-        std::cout 
-        << "#######################" << "\n" 
-        << "EPS-MODEL: START" << "\n" 
-        << "#######################" << "\n" 
-        << "Input argument: " << argv[0] 
-        << std::endl;
+            //TODO: add input control
 
-        //TODO: add input control
-        //TODO: evaluate json as output or make a function to build correct output string
+        #pragma endregion
 
-        std::cout << outputList << std::endl;
+        
+        
+        #pragma region "End Routine"
+            //TODO: output as json (use string only as plan B)
+
+        #pragma endregion
+        
         return 0;
     }
     catch(const std::exception& e)
