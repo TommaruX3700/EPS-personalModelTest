@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string>
 
+#include "extLibs/nlohmannJSON/json.hpp"
+
 #include "headers/entities/physical/Pack.hpp"
 
 #include "headers/logic/ordinamentoPacchi.hpp"
