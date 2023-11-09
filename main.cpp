@@ -14,12 +14,12 @@
 
 #pragma endregion
 
-
 int main (int argc, char* argv[]) 
 {
     try
     {
         #pragma region "Startup Routine"
+            //Gets arguments as INPUT
             std::cout 
             << "#######################" << "\n" 
             << "EPS-MODEL: START" << "\n" 
@@ -27,12 +27,17 @@ int main (int argc, char* argv[])
             << "Input argument: " << argv[0] 
             << std::endl;
 
+            //Check if file exists 
+            
+
+            //Extract packs from it
+
+
             //TODO: add input control
+            
 
         #pragma endregion
 
-        
-        
         #pragma region "End Routine"
             //TODO: output as json (use string only as plan B)
 
@@ -42,8 +47,15 @@ int main (int argc, char* argv[])
     }
     catch(const std::exception& e)
     {
-        std::cout << "EPS-MODEL: STOPPED BY ERROR" << std::endl;
-        std::cerr << e.what() << '\n';
+        std::cout 
+        << "#######################" << "\n" 
+        << "EPS-MODEL: STOPPED BY ERROR" 
+        << "#######################" << "\n" <<
+        std::endl;
+        
+        std::cerr
+        << e.what() << '\n'
+        << "#######################" << "\n";
         return -1;
     }   
 }
