@@ -32,24 +32,23 @@ int main (int argc, char* argv[])
             inputJsonFile.open(inputJsonPath);
             if (!inputJsonFile)
             {
-                //File doesnt exists: throw error
+                //File doesn't exists: throw error
                 throw std::invalid_argument("Invalid JSON path provided or unable to access file.");
             }
 
             //Extract packs from it
 
-            //TODO: add input control
-
         #pragma endregion
 
         #pragma region "End Routine"
-            //TODO: output as json (use string only as plan B)
+            //TODO: output as json (Plan B: output string)
 
         #pragma endregion
         
         return 0;
     }
-    catch(const std::invalid_argument& e){
+    catch(const std::invalid_argument& e) 
+    {
         return consoleErrorMessage(e.what());
     }
     catch(const std::exception& e)
