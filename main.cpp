@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 
 #include "headers/entities/physical/Pack.hpp"
 
@@ -12,6 +13,8 @@ int main (int argc, char* argv[])
 {
     try
     {
+        std::string outputList = "";
+
         std::cout 
         << "#######################" << "\n" 
         << "EPS-MODEL: START" << "\n" 
@@ -20,7 +23,9 @@ int main (int argc, char* argv[])
         << std::endl;
 
         //TODO: add input control
+        //TODO: evaluate json as output or make a function to build correct output string
 
+        std::cout << outputList << std::endl;
         return 0;
     }
     catch(const std::exception& e)
