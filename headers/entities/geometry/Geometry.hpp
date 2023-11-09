@@ -1,3 +1,8 @@
+#ifndef GEOM_H
+#define GEOM_H
+
+//TODO: check if you need to include CELL
+
 template<typename type>
 struct ThreeD_coords { //type for 3D coordinates
 	type X, Y, Z;
@@ -11,3 +16,5 @@ struct TwoD_coords { //type for 2D coordinates
 	2D_coords() : X(type(0)), Y(type(0)) {};
 	2D_coords(type x_val, type y_val) : X(type(x_val)), Y(type(y_val)) {};
 };
+
+#endif
