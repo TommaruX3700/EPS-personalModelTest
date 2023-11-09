@@ -15,6 +15,8 @@
 
 #pragma endregion
 
+int consoleErrorMessage (std::string errorString);
+
 int main (int argc, char* argv[]) 
 {
     try
@@ -34,11 +36,10 @@ int main (int argc, char* argv[])
             std::ifstream inputJsonFile;
 
             inputJsonFile.open(inputJsonPath);
-            if (inputJsonFile)
+            if (!inputJsonFile)
             {
-                //file exists
-            } else {
-                //file doesnt exists
+                //file doesnt exists: throw error
+                throw std::invalid_argument("Invalid JSON path provided or unable to access file.");
             }
             
 
@@ -57,17 +58,27 @@ int main (int argc, char* argv[])
         
         return 0;
     }
+
+    catch(const std::invalid_argument& e){
+        return consoleErrorMessage(e.what());
+    }
+
     catch(const std::exception& e)
     {
+        return consoleErrorMessage(e.what());
+    }   
+}
+
+int consoleErrorMessage (std::string errorString) 
+{
         std::cout 
         << "#######################" << "\n" 
-        << "EPS-MODEL: STOPPED BY ERROR" 
+        << "EPS-MODEL: ERROR" 
         << "#######################" << "\n" <<
         std::endl;
         
         std::cerr
-        << e.what() << '\n'
+        << errorString << '\n'
         << "#######################" << "\n";
         return -1;
-    }   
 }
