@@ -2,6 +2,7 @@
     #include <iostream>
     #include <fstream>
     #include <string>
+    #include <vector>
 
     #include "extLibs/nlohmannJSON/json.hpp"
 
@@ -16,6 +17,8 @@
 
 #pragma region "Function declarations"
     int consoleErrorMessage (std::string errorString);
+    //int vectorToJson (std::vector<Pack*> &outputVector);
+
 #pragma endregion
 
 int main (int argc, char* argv[]) 
@@ -41,8 +44,8 @@ int main (int argc, char* argv[])
         #pragma endregion
 
         #pragma region "End Routine"
-            //TODO: output as json (Plan B: output string)
-
+            //Output as json (Plan B: output string)
+            
         #pragma endregion
         
         return 0;

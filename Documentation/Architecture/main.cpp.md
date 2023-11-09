@@ -1,6 +1,11 @@
 ## include
 - ##### std::vector
 - ##### std::set
+- std::string
+- std::fstream
+- std::iostream
+
+- nlohmannJSON/json.hpp
 
 - #### [[Pack.h]]
 
@@ -42,4 +47,27 @@ std::vector<Pallet*> palletGroup; //OUTPUT_MAIN a fini di debug e testing: da ca
 --- 
 
 INPUT: posizione del file json
-OUTPUT: stringa lista organizzata come ("#codicePacco1, posX, posY; ...")
+OUTPUT: json suddiviso a pallet e in pacchi con i singoli argomenti.
+
+Struttura json output:
+
+``` json
+{
+	{
+		"nPallet1", {(float)dimX, (float)dimY},
+		{
+			{"codicePacco1", (float)posX, (float)posY, flagRotazione},
+			{"codicePacco2", (float)posX, (float)posY, flagRotazione},
+			{"codicePacco3", (float)posX, (float)posY, flagRotazione}
+		}
+	},
+	{
+		"nPallet2", {(float)dimX, (float)dimY},
+		{
+			{"codicePacco4", (float)posX, (float)posY, flagRotazione},
+			{"codicePacco5", (float)posX, (float)posY, flagRotazione},
+			{"codicePacco6", (float)posX, (float)posY, flagRotazione}
+		}
+	}
+}
+```
