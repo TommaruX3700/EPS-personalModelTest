@@ -11,8 +11,12 @@
             "id": "bb4a8fc5ab1aace7",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "Architecture/src/entities/physical/PalletGroup.cpp.md",
+                "mode": "source",
+                "source": false
+              }
             }
           },
           {
@@ -77,8 +81,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 234.5,
-    "collapsed": true
+    "width": 234.5
   },
   "right": {
     "id": "c7eb92ad6b1d5635",
@@ -94,6 +97,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "Architecture/src/entities/physical/PalletGroup.cpp.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -110,6 +114,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "Architecture/src/entities/physical/PalletGroup.cpp.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -131,7 +136,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "Architecture/src/entities/physical/PalletGroup.cpp.md"
+              }
             }
           },
           {
@@ -163,6 +170,8 @@
   },
   "active": "bb4a8fc5ab1aace7",
   "lastOpenFiles": [
+    "Architecture/src/entities/physical/PalletGroup.cpp.md",
+    "Architecture/headers/entities/geometry/Plane.h.md",
     "Architecture/main.cpp.md",
     "Architecture/headers/entities/geometry/Cell.h.md",
     "Architecture/headers/entities/geometry/Geometry.h.md",
@@ -174,10 +183,8 @@
     "README.md",
     "Architecture/Relations.canvas",
     "Architecture/src/entities/physical/Pallet.cpp.md",
-    "Architecture/src/entities/physical/PalletGroup.cpp.md",
     "Architecture/src/entities/physical/Pack.cpp.md",
     "Architecture/src/entities/physical/3D_object.cpp.md",
-    "Architecture/headers/entities/geometry/Plane.h.md",
     "Architecture/headers/entities/geometry/Grid.h.md",
     "Architecture/headers/entities/physical/PalletGroup.h.md",
     "Architecture/headers/entities/physical/Pallet.h.md",
