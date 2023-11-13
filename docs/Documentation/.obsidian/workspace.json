@@ -22,31 +22,18 @@
         "type": "tabs",
         "children": [
           {
-            "id": "c2f4cc49724ff8c9",
+            "id": "dcb52f7683712020",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Architecture/headers/entities/physical/Pallet.h.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "53676e164e1c762c",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Architecture/headers/entities/physical/Pack.h.md",
+                "file": "Architecture/headers/entities/geometry/Cell.h.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -182,6 +169,7 @@
   },
   "active": "bb4a8fc5ab1aace7",
   "lastOpenFiles": [
+    "Architecture/headers/entities/geometry/Cell.h.md",
     "Architecture/headers/entities/physical/Pack.h.md",
     "Architecture/headers/entities/physical/Pallet.h.md",
     "Architecture/headers/entities/physical/PalletGroup.h.md",
@@ -192,7 +180,6 @@
     "Architecture/main.cpp.md",
     "Architecture/src/entities/physical/PalletGroup.cpp.md",
     "Architecture/headers/entities/geometry/Plane.h.md",
-    "Architecture/headers/entities/geometry/Cell.h.md",
     "Architecture/headers/logic/ottimizzazione.hpp.md",
     "Architecture/headers/logic/ordinamentoPacchi.hpp.md",
     "Logic-Algorithm.canvas",

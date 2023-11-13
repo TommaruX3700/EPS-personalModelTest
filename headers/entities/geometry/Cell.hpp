@@ -4,16 +4,21 @@
 #include "Geometry.hpp"
 #include "../physical/Pack.hpp"
 
-//TODO: include Geometry
+/*
+Author: 
+    Federico Casarotto
+Description:
+    Basic geometric grids entity, with few information about:
+        - X and Y float coordinates;
+        - boolean if the cell is occupied;
+        - pointer to Pack, if it's occupied.
+*/
 
-class Cell
+struct Cell
 {
-private:
-    //TODO: add object from Geometry
-
-public:
-    Cell();
-    ~Cell();
+    TwoD_coords<float> coords;
+    bool isFree;
+    Pack* pack = nullptr;
 };
 
 #endif
