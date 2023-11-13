@@ -22,7 +22,19 @@
         "type": "tabs",
         "children": [
           {
-            "id": "8444dc78ae63bf2d",
+            "id": "02a43fa088d95705",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Architecture/headers/entities/geometry/Grid.h.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "519d267760b72288",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -33,7 +45,8 @@
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -171,14 +184,14 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "8444dc78ae63bf2d",
+  "active": "519d267760b72288",
   "lastOpenFiles": [
-    "Architecture/headers/entities/geometry/Cell.h.md",
+    "Architecture/headers/entities/geometry/Grid.h.md",
     "Architecture/headers/entities/geometry/Plane.h.md",
+    "Architecture/headers/entities/geometry/Cell.h.md",
     "Architecture/headers/entities/physical/Pack.h.md",
     "Architecture/headers/entities/physical/Pallet.h.md",
     "Architecture/headers/entities/physical/PalletGroup.h.md",
-    "Architecture/headers/entities/geometry/Grid.h.md",
     "Architecture/headers/entities/geometry/Geometry.h.md",
     "Architecture/headers/entities/physical/3D_object.h.md",
     "Architecture/src/entities/physical/3D_object.cpp.md",

@@ -11,12 +11,12 @@ Description:
 class Plane
 {
 private:
-    TwoD_coords<int> maxX, maxY;
+    TwoD_coords<int> maxDimensions;
     Cell** plane;
 
 public:
     Plane();
-    Plane(TwoD_coords<int> maxX, TwoD_coords<int> maxY) {};
+    Plane(TwoD_coords<int> maxDimensions) {};
     ~Plane();
 
     TwoD_coords<int> getMaxPlaneDims();
