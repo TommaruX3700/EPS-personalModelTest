@@ -24,13 +24,3 @@ public:
     float getDensity();
     
 };
-
-ThreeD_object::ThreeD_object()
-{
-
-}
-
-ThreeD_object::~ThreeD_object()
-{
-
-}
