@@ -4,7 +4,7 @@
     "type": "split",
     "children": [
       {
-        "id": "6095c5becfb30472",
+        "id": "6d06b79a9278860f",
         "type": "tabs",
         "children": [
           {
@@ -16,31 +16,42 @@
             }
           },
           {
-            "id": "e608fdb91652f152",
+            "id": "fd0f86a659b6fc7c",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Architecture/headers/entities/geometry/Grid.h.md",
+                "file": "Architecture/headers/entities/physical/PalletGroup.h.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       },
       {
-        "id": "f5480696c72a2bbc",
+        "id": "781794a42851ed0d",
         "type": "tabs",
         "children": [
           {
-            "id": "664e3e465e3da069",
+            "id": "a7227be3a73c6f31",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Architecture/headers/entities/geometry/Geometry.h.md",
+                "file": "Architecture/headers/entities/physical/Pack.h.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "c2f4cc49724ff8c9",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Architecture/headers/entities/physical/Pallet.h.md",
                 "mode": "source",
                 "source": false
               }
@@ -113,7 +124,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Architecture/headers/entities/geometry/Grid.h.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -130,7 +140,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Architecture/headers/entities/geometry/Grid.h.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -152,9 +161,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "Architecture/headers/entities/geometry/Grid.h.md"
-              }
+              "state": {}
             }
           },
           {
@@ -184,12 +191,15 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "e608fdb91652f152",
+  "active": "bb4a8fc5ab1aace7",
   "lastOpenFiles": [
+    "Architecture/headers/entities/physical/Pack.h.md",
+    "Architecture/headers/entities/physical/Pallet.h.md",
+    "Architecture/headers/entities/physical/PalletGroup.h.md",
+    "Architecture/headers/entities/geometry/Grid.h.md",
     "Architecture/headers/entities/geometry/Geometry.h.md",
     "Architecture/headers/entities/physical/3D_object.h.md",
     "Architecture/src/entities/physical/3D_object.cpp.md",
-    "Architecture/headers/entities/physical/Pack.h.md",
     "Architecture/main.cpp.md",
     "Architecture/src/entities/physical/PalletGroup.cpp.md",
     "Architecture/headers/entities/geometry/Plane.h.md",
@@ -202,9 +212,6 @@
     "Architecture/Relations.canvas",
     "Architecture/src/entities/physical/Pallet.cpp.md",
     "Architecture/src/entities/physical/Pack.cpp.md",
-    "Architecture/headers/entities/geometry/Grid.h.md",
-    "Architecture/headers/entities/physical/PalletGroup.h.md",
-    "Architecture/headers/entities/physical/Pallet.h.md",
     "Architecture/src/logic/ordinamentoPacchi/ordinamentoPacchi.cpp.md",
     "Architecture/src/logic/ottimizzazione/ottimizzazione.cpp.md",
     "Architecture/src/logic/sceltaPacchiNesting/sceltaPacchiNesting.cpp.md",

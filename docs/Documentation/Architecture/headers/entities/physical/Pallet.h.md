@@ -1,7 +1,7 @@
 !! class Pallet : 3D_object
 ## include:
-- [[Geometry.h]]
 - [[Pack.h]]
+- [[3D_object.h]]
 ### Variabili:
 ```cpp
 //out of class

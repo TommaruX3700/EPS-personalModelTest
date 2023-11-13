@@ -1,6 +1,7 @@
 !! class Pack : 3D_object
 ## include:
-- [[Geometry.h]]
+- [[3D_object.h]]
+- 
 ### Variabili:
 
 ```cpp
