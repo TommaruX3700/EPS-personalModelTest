@@ -169,11 +169,11 @@
   },
   "active": "bb4a8fc5ab1aace7",
   "lastOpenFiles": [
+    "Architecture/headers/logic/sceltaPacchiNesting.hpp.md",
     "Architecture/headers/logic/ordinamentoPacchi.hpp.md",
     "Architecture/headers/logic/spostaPacchi.hpp.md",
     "Architecture/headers/logic/ottimizzazione.hpp.md",
     "Architecture/headers/logic/trovaDominio.hpp.md",
-    "Architecture/headers/logic/sceltaPacchiNesting.hpp.md",
     "Architecture/src/logic/ordinamentoPacchi/ordinamentoPacchi.cpp.md",
     "Architecture/src/logic/spostaPacchi/spostaPacchi.cpp.md",
     "Architecture/src/logic/ottimizzazione/ottimizzazione.cpp.md",
