@@ -1,7 +1,14 @@
 #ifndef GEOM_H
 #define GEOM_H
 
-//TODO: check if you need to include CELL
+/*
+Author: 
+	Tommaso Maruzzo
+Description:
+	Generic templates for common type of elements, such as:
+		- ThreeD_coords: 3D coordinates XYZ, general defined by float type;
+		- TwoD_coords: 2D coordinates XY, general defined by an int type.
+*/
 
 template<typename type>
 struct ThreeD_coords { //type for 3D coordinates

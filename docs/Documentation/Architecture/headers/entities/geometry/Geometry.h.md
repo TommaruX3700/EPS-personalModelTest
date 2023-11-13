@@ -19,4 +19,4 @@ struct 2D_coords { //type for 2D coordinates
 ---
 ### Uso:
 Raggruppare sotto uno stesso template tutte le definizioni dei tipi usate nel progetto.
-Inizialmente, genera un tipo generico (per permettere la creazione delle istanze virtuali), poi   permette la creazione di struct sia di tipo float che di tipo int (o qualsiasi altro tipo, occhio) e la conseguente assegnazione alle variabili definite dalle classi figlie.
+Inizialmente, genera un tipo generico (per permettere la creazione delle istanze virtuali), poi permette la creazione di struct sia di tipo float che di tipo int (o qualsiasi altro tipo, occhio) e la conseguente assegnazione alle variabili definite dalle classi figlie.

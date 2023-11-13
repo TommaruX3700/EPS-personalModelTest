@@ -1,4 +1,14 @@
+#ifndef THREED_OBJECT
+#define THREED_OBJECT
+
 #include "../geometry/Geometry.hpp"
+
+/*
+Author:
+    Tommaso Maruzzo
+Description:
+    Basic virtual object for 3D physical entities.
+*/
 
 class ThreeD_object
 {
@@ -27,3 +37,5 @@ public:
 #pragma endregion
 
 };
+
+#endif
