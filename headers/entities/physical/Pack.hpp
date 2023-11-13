@@ -15,16 +15,15 @@ private:
     bool palletizable;
     
 public:
-    Pack(/* args */);
+    Pack();
+    Pack(float X, float Y, float Z, float WEIGHT, int CODE, bool ROT) {};
     ~Pack();
+
+    Pack &operator=(const Pack &n);
+    Pack &operator==(const Pack &n);
+
+    void setRotatable(bool ROT);
+    void setPackID(int CODE);
+    
+    int getPackID();
 };
-
-Pack::Pack(/* args */)
-{
-}
-
-Pack::~Pack()
-{
-}
-
-
