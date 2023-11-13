@@ -19,5 +19,14 @@ private:
     
 public:
     PalletGroup();
+    PalletGroup(int max) {};
     ~PalletGroup();
+
+    void setMax(int max);
+
+    int addPallet(ptrPallet palletPtr);
+    int addPallet(ptrPallet palletPtr, int vectorPosition = -1);
+    int rmvPallet();
+    int rmvPallet(int vectorPosition = -1);
+    int palletCount();
 };
