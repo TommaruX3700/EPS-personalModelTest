@@ -6,7 +6,6 @@
       {
         "id": "6d06b79a9278860f",
         "type": "tabs",
-        "dimension": 48.98720682302772,
         "children": [
           {
             "id": "bb4a8fc5ab1aace7",
@@ -19,17 +18,16 @@
         ]
       },
       {
-        "id": "7d6a1e79f8b0601b",
+        "id": "5234163d364422ca",
         "type": "tabs",
-        "dimension": 51.01279317697228,
         "children": [
           {
-            "id": "490d125712eee6e3",
+            "id": "6725f83d5cb2825e",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Architecture/headers/entities/physical/PalletGroup.h.md",
+                "file": "Architecture/headers/logic/sceltaPacchiNesting.hpp.md",
                 "mode": "source",
                 "source": false
               }
@@ -171,6 +169,19 @@
   },
   "active": "bb4a8fc5ab1aace7",
   "lastOpenFiles": [
+    "Architecture/headers/logic/ordinamentoPacchi.hpp.md",
+    "Architecture/headers/logic/spostaPacchi.hpp.md",
+    "Architecture/headers/logic/ottimizzazione.hpp.md",
+    "Architecture/headers/logic/trovaDominio.hpp.md",
+    "Architecture/headers/logic/sceltaPacchiNesting.hpp.md",
+    "Architecture/src/logic/ordinamentoPacchi/ordinamentoPacchi.cpp.md",
+    "Architecture/src/logic/spostaPacchi/spostaPacchi.cpp.md",
+    "Architecture/src/logic/ottimizzazione/ottimizzazione.cpp.md",
+    "Architecture/src/logic/trovaDominio/trovaDominio.cpp.md",
+    "Architecture/src/entities/physical/Pack.cpp.md",
+    "Architecture/src/entities/physical/3D_object.cpp.md",
+    "Architecture/src/entities/physical/Pallet.cpp.md",
+    "Architecture/src/entities/physical/PalletGroup.cpp.md",
     "Architecture/headers/entities/physical/PalletGroup.h.md",
     "Architecture/headers/entities/physical/Pallet.h.md",
     "Architecture/main.cpp.md",
@@ -180,25 +191,13 @@
     "Architecture/headers/entities/physical/Pack.h.md",
     "Architecture/headers/entities/geometry/Geometry.h.md",
     "Architecture/headers/entities/physical/3D_object.h.md",
-    "Architecture/src/entities/physical/3D_object.cpp.md",
-    "Architecture/src/entities/physical/PalletGroup.cpp.md",
-    "Architecture/headers/logic/ottimizzazione.hpp.md",
-    "Architecture/headers/logic/ordinamentoPacchi.hpp.md",
     "Logic-Algorithm.canvas",
     "Untitled.canvas",
     "README.md",
     "Architecture/Relations.canvas",
-    "Architecture/src/entities/physical/Pallet.cpp.md",
-    "Architecture/src/entities/physical/Pack.cpp.md",
-    "Architecture/src/logic/ordinamentoPacchi/ordinamentoPacchi.cpp.md",
-    "Architecture/src/logic/ottimizzazione/ottimizzazione.cpp.md",
     "Architecture/src/logic/sceltaPacchiNesting/sceltaPacchiNesting.cpp.md",
-    "Architecture/src/logic/spostaPacchi/spostaPacchi.cpp.md",
-    "Architecture/src/logic/trovaDominio/trovaDominio.cpp.md",
     "Architecture/src/entities/geometry/Cell.cpp.md",
     "Architecture/src/entities/geometry/Grid.cpp.md",
-    "Architecture/src/entities/geometry/Plane.cpp.md",
-    "Architecture/headers/logic/sceltaPacchiNesting.hpp.md",
     "Architecture/src/logic/spostaPacchi",
     "Architecture/src/logic/ottimizzazione",
     "Architecture/src/logic/sceltaPacchiNesting",
