@@ -14,18 +14,6 @@
               "type": "graph",
               "state": {}
             }
-          },
-          {
-            "id": "fd0f86a659b6fc7c",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Architecture/headers/entities/physical/PalletGroup.h.md",
-                "mode": "source",
-                "source": false
-              }
-            }
           }
         ]
       },
@@ -33,18 +21,6 @@
         "id": "781794a42851ed0d",
         "type": "tabs",
         "children": [
-          {
-            "id": "a7227be3a73c6f31",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Architecture/headers/entities/physical/Pack.h.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
           {
             "id": "c2f4cc49724ff8c9",
             "type": "leaf",
@@ -56,8 +32,21 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "53676e164e1c762c",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Architecture/headers/entities/physical/Pack.h.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
