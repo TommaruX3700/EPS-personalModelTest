@@ -6,6 +6,7 @@
       {
         "id": "6d06b79a9278860f",
         "type": "tabs",
+        "dimension": 48.98720682302772,
         "children": [
           {
             "id": "bb4a8fc5ab1aace7",
@@ -20,6 +21,7 @@
       {
         "id": "7d6a1e79f8b0601b",
         "type": "tabs",
+        "dimension": 51.01279317697228,
         "children": [
           {
             "id": "490d125712eee6e3",
@@ -83,7 +85,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 234.5
+    "width": 234.5,
+    "collapsed": true
   },
   "right": {
     "id": "c7eb92ad6b1d5635",
@@ -172,13 +175,13 @@
   },
   "active": "490d125712eee6e3",
   "lastOpenFiles": [
+    "Architecture/headers/entities/physical/PalletGroup.h.md",
     "Architecture/headers/entities/physical/Pallet.h.md",
     "Architecture/main.cpp.md",
     "Architecture/headers/entities/geometry/Grid.h.md",
     "Architecture/headers/entities/geometry/Plane.h.md",
     "Architecture/headers/entities/geometry/Cell.h.md",
     "Architecture/headers/entities/physical/Pack.h.md",
-    "Architecture/headers/entities/physical/PalletGroup.h.md",
     "Architecture/headers/entities/geometry/Geometry.h.md",
     "Architecture/headers/entities/physical/3D_object.h.md",
     "Architecture/src/entities/physical/3D_object.cpp.md",
