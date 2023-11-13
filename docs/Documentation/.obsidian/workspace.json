@@ -14,6 +14,18 @@
               "type": "graph",
               "state": {}
             }
+          },
+          {
+            "id": "fe0702cef19c7e38",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Architecture/main.cpp.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
         ]
       },
@@ -22,31 +34,18 @@
         "type": "tabs",
         "children": [
           {
-            "id": "02a43fa088d95705",
+            "id": "cc70560838fa0791",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Architecture/headers/entities/geometry/Grid.h.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "519d267760b72288",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Architecture/headers/entities/geometry/Plane.h.md",
+                "file": "Architecture/headers/entities/physical/Pallet.h.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -96,8 +95,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 234.5,
-    "collapsed": true
+    "width": 234.5
   },
   "right": {
     "id": "c7eb92ad6b1d5635",
@@ -113,7 +111,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Architecture/headers/entities/geometry/Plane.h.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -130,7 +127,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Architecture/headers/entities/geometry/Plane.h.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -152,9 +148,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "Architecture/headers/entities/geometry/Plane.h.md"
-              }
+              "state": {}
             }
           },
           {
@@ -184,18 +178,18 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "519d267760b72288",
+  "active": "bb4a8fc5ab1aace7",
   "lastOpenFiles": [
+    "Architecture/headers/entities/physical/Pallet.h.md",
+    "Architecture/main.cpp.md",
     "Architecture/headers/entities/geometry/Grid.h.md",
     "Architecture/headers/entities/geometry/Plane.h.md",
     "Architecture/headers/entities/geometry/Cell.h.md",
     "Architecture/headers/entities/physical/Pack.h.md",
-    "Architecture/headers/entities/physical/Pallet.h.md",
     "Architecture/headers/entities/physical/PalletGroup.h.md",
     "Architecture/headers/entities/geometry/Geometry.h.md",
     "Architecture/headers/entities/physical/3D_object.h.md",
     "Architecture/src/entities/physical/3D_object.cpp.md",
-    "Architecture/main.cpp.md",
     "Architecture/src/entities/physical/PalletGroup.cpp.md",
     "Architecture/headers/logic/ottimizzazione.hpp.md",
     "Architecture/headers/logic/ordinamentoPacchi.hpp.md",
