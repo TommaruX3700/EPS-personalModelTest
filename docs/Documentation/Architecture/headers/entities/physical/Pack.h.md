@@ -13,7 +13,7 @@ bool palletizable
 ### Metodi:
 ```cpp
 Pack()
-Pack(float X, float Y, float Z, float WEIGHT, int CODE, bool ROT) {}
+Pack(ThreeD_coords<float> coords, float WEIGHT, int CODE, bool ROT) {}
 ~Pack()
 Pack &operator=(const Pack &n) //override "=" to make a custom copy constructor
 Pack &operator==(const Pack &n) //override "==" to confront two "Pack" objects
