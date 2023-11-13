@@ -13,9 +13,9 @@ Description:
 class ThreeD_object
 {
 private:
-    ThreeD_coords<float> objectDims;
-    ThreeD_coords<float> oldObject_Dims;
-    ThreeD_coords<float> center;
+    ThreeNum_set<float> objectDims;
+    ThreeNum_set<float> oldObject_Dims;
+    ThreeNum_set<float> center;
     float weight;
     float density;
     
@@ -25,13 +25,13 @@ public:
 
 #pragma region "Set_methods"
     void setDims(float x, float y, float z);
-    void setCenterCoords(ThreeD_coords<float> objectDims); //TODO: verify argument type
+    void setCenterCoords(ThreeNum_set<float> objectDims); //TODO: verify argument type
     void setWeight(float kg);
     void setOrientation(int orientation);
 #pragma endregion
 
 #pragma region "Get_methods"
-    ThreeD_coords<float> getDims();
+    ThreeNum_set<float> getDims();
     float getVolume();
     float getDensity();
 #pragma endregion

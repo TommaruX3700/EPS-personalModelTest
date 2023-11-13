@@ -17,7 +17,7 @@ private:
 public:
 #pragma region "Constructors"
     Pack();
-    Pack(ThreeD_coords<float> coords, float WEIGHT, int CODE, bool ROT) {};
+    Pack(ThreeNum_set<float> coords, float WEIGHT, int CODE, bool ROT) {};
     ~Pack();
 #pragma endregion
 

@@ -11,13 +11,13 @@ Description:
 class Plane
 {
 private:
-    TwoD_coords<int> maxDimensions;
+    TwoNum_set<int> maxDimensions;
     Cell** plane;
 
 public:
     Plane();
-    Plane(TwoD_coords<int> maxDimensions) {};
+    Plane(TwoNum_set<int> maxDimensions) {};
     ~Plane();
 
-    TwoD_coords<int> getMaxPlaneDims();
+    TwoNum_set<int> getMaxPlaneDims();
 };

@@ -15,6 +15,6 @@ private:
     Plane XY, XZ, YZ;
 
 public:
-    Grid(ThreeD_coords<int> maxDimensions); //IMPLEMENTATION TODO: assign to Plane objects Planes based upon 0~dimensions
+    Grid(ThreeNum_set<int> maxDimensions); //IMPLEMENTATION TODO: assign to Plane objects Planes based upon 0~dimensions
     ~Grid();
 };

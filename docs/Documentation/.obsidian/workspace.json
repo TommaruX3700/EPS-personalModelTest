@@ -16,24 +16,6 @@
             }
           }
         ]
-      },
-      {
-        "id": "5234163d364422ca",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "6725f83d5cb2825e",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Architecture/headers/logic/sceltaPacchiNesting.hpp.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          }
-        ]
       }
     ],
     "direction": "vertical"

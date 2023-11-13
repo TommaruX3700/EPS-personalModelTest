@@ -16,7 +16,7 @@ Description:
 
 struct Cell
 {
-    TwoD_coords<float> coords;
+    TwoNum_set<float> coords;
     bool isFree;
     Pack* pack = nullptr;
 };

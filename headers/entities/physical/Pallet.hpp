@@ -19,7 +19,7 @@ private:
 
 public:
     Pallet();
-    Pallet(ThreeD_coords<float> maxDimensions) {};
+    Pallet(ThreeNum_set<float> maxDimensions) {};
     ~Pallet();
     
     void addPack(ptrPack packToAddPtr); //IMPLEMENTATION: add Pack pointer to the 
