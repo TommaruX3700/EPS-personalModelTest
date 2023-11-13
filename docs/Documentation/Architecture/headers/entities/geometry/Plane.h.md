@@ -16,6 +16,8 @@ public:
 	Plane(int maxX, int maxY);
 	
 	~Plane();
+	
+    TwoD_coords<int> getMaxPlaneDims();
 ```
 ---
 ### TODO:
