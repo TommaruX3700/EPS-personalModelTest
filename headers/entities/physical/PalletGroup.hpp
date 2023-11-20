@@ -21,7 +21,10 @@ public:
     PalletGroup();
     PalletGroup(int max) {};
     ~PalletGroup();
-
+    
+    #pragma region "Operators override"
+    #pragma endregion
+    
     #pragma region "Set methods"
     void setMax(int max);
     #pragma endregion
