@@ -15,8 +15,8 @@ private:
     bool palletizable;
     
 public:
-    Pack();
-    Pack(ThreeNum_set<float> coords, float WEIGHT, int CODE, bool ROT) {};
+    //Pack(); //probably not used, MUST BE SPECIFIC
+    Pack(ThreeNum_set<float> dims, ThreeNum_set<float> coords, float WEIGHT, int CODE, bool ROT) {};
     ~Pack();
 
     #pragma region "Operators override"
