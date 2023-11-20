@@ -4,13 +4,18 @@
     ThreeD_object :: ThreeD_object() 
     {
         //General constructor
+        this->objectDims.X = 0.0;
+        this->objectDims.Y = 0.0;
+        this->objectDims.Z = 0.0;
+        this->weight = 0.0;
+        this->density = 0.0;
     }
 
     ThreeD_object :: ~ThreeD_object() 
     {
         //General distructor
     }
-    
+
 #pragma endregion
 
 #pragma region "Operators override"
