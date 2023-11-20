@@ -22,11 +22,18 @@ public:
     PalletGroup(int max) {};
     ~PalletGroup();
 
+    #pragma region "Set methods"
     void setMax(int max);
+    #pragma endregion
 
+    #pragma region "Get methods"
+    #pragma endregion
+
+    #pragma region "Methods"
     int addPallet(ptrPallet palletPtr);
     int addPallet(ptrPallet palletPtr, int vectorPosition = -1);
     int rmvPallet();
     int rmvPallet(int vectorPosition = -1);
     int palletCount();
+    #pragma endregion
 };
