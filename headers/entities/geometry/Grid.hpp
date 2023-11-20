@@ -5,7 +5,7 @@ Author:
     Tommaso Maruzzo
 Description:
     Grid based upon 3 plane objects. 
-    Grid is built upon a ThreeD_coords<int> object ("dimensions"),
+    Grid is built upon a ThreeNum_set<int> object ("dimensions"),
     which rappresents the max dimensions of the grids.
 */
 
