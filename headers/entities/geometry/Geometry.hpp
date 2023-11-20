@@ -10,6 +10,7 @@ Description:
 		- TwoNum_set: 2 values data set, general defined by an int type: generally used for 2D coordinates or dimensions.
 */
 
+#pragma region "Project templates"
 template<typename type>
 struct ThreeNum_set { //type for 3D coordinates
 	type X, Y, Z;
@@ -23,5 +24,7 @@ struct TwoNum_set { //type for 2D coordinates
 	TwoNum_set() : X(type(0.0)), Y(type(0.0)) {};
 	TwoNum_set(type x_val, type y_val) : X(type(x_val)), Y(type(y_val)) {};
 };
+
+#pragma endregion
 
 #endif
