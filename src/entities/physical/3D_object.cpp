@@ -10,6 +10,7 @@
     {
         //General distructor
     }
+    
 #pragma endregion
 
 #pragma region "Operators override"
@@ -34,11 +35,28 @@
 
     void ThreeD_object :: setOrientation(int orientation)
     {
-        
+        //changes orientation by switching this.objectDims values
     }
+
 #pragma endregion
 
 #pragma region "Get methods"
+    ThreeNum_set<float> ThreeD_object :: getDims()
+    {
+        //Return a ThreeNum_set object with this.objectDims
+        ThreeNum_set<float> dims;
+        return dims;
+    }
+
+    float ThreeD_object :: getVolume()
+    {
+        //Return object volume;
+    }
+
+    float ThreeD_object :: getDensity()
+    {
+        //Return object density;
+    }
 
 #pragma endregion
 
