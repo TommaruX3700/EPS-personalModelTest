@@ -6,8 +6,8 @@ Author:
 	Tommaso Maruzzo
 Description:
 	Generic templates for common type of elements, such as:
-		- ThreeD_coords: 3D coordinates XYZ, general defined by float type;
-		- TwoD_coords: 2D coordinates XY, general defined by an int type.
+		- ThreeNum_set: 3 values data set, general defined by float type: generally used for 3D coordinates;
+		- TwoNum_set: 2 values data set, general defined by an int type: generally used for 2D coordinates or dimensions.
 */
 
 template<typename type>
