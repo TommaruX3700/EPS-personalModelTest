@@ -1,4 +1,5 @@
 #include "../entities/physical/Pack.hpp"
+#include <vector>
 
 /*
 Author:
@@ -6,3 +7,5 @@ Author:
 Description: 
     Find new placing domain in current configuration
 */
+
+std::vector<Pack*> packsToNest;
