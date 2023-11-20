@@ -15,7 +15,7 @@ class ThreeD_object
 private:
     ThreeNum_set<float> objectDims;
     ThreeNum_set<float> oldObject_Dims;
-    ThreeNum_set<float> center;
+    ThreeNum_set<float> centerCoords;
     float weight;
     float density;
     
@@ -27,16 +27,16 @@ public:
     #pragma endregion
 
     #pragma region "Set methods"
-    void setDims(float x, float y, float z);
-    void setCenterCoords(ThreeNum_set<float> objectDims); 
-    void setWeight(float kg);
-    void setOrientation(int orientation);
+        void setDims(ThreeNum_set<float> dims);
+        void setCenterCoords(ThreeNum_set<float> coords); 
+        void setWeight(float kg);
+        void setOrientation(int orientation);
     #pragma endregion
 
     #pragma region "Get methods"
-    ThreeNum_set<float> getDims();
-    float getVolume();
-    float getDensity();
+        ThreeNum_set<float> getDims();
+        float getVolume();
+        float getDensity();
     #pragma endregion
 
     #pragma region "Methods"
