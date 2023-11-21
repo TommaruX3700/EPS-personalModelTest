@@ -14,7 +14,7 @@ class ThreeD_object
 {
 private:
     ThreeNum_set<float> objectDims;
-    ThreeNum_set<float> oldObject_Dims;
+    //ThreeNum_set<float> oldObject_Dims; //probably not used
     ThreeNum_set<float> centerCoords;
     float weight;
     float density;

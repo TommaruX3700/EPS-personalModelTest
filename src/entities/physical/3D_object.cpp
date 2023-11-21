@@ -7,6 +7,11 @@
         this->objectDims.X = 0.0;
         this->objectDims.Y = 0.0;
         this->objectDims.Z = 0.0;
+
+        this->centerCoords.X = 0.0;
+        this->centerCoords.Y = 0.0;
+        this->centerCoords.Z = 0.0;
+
         this->weight = 0.0;
         this->density = 0.0;
     }
@@ -14,6 +19,7 @@
     ThreeD_object :: ~ThreeD_object() 
     {
         //General distructor
+        //use this only for dynamical allocated memory and deallocate it here.
     }
 
 #pragma endregion
@@ -26,11 +32,17 @@
     void ThreeD_object :: setDims(ThreeNum_set<float> dims)
     {
         //set object X, Y, Z dimensions (this.objectDims)
+        this->objectDims.X = dims.X;
+        this->objectDims.Y = dims.Y;
+        this->objectDims.Z = dims.Z;
     }
 
     void ThreeD_object :: setCenterCoords(ThreeNum_set<float> coords)
     {
         //set object certer coordinates (this.centerCoords)
+        this->centerCoords.X = coords.X;
+        this->centerCoords.Y = coords.Y;
+        this->centerCoords.Z = coords.Z;
     }
 
     void ThreeD_object :: setWeight(float kg)
