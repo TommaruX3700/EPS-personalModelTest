@@ -60,7 +60,7 @@
         switch (orientation)
         {
         case 1:
-            
+            //this->objectDims.X = 
             break;
         case 2:
             
