@@ -20,8 +20,8 @@ public:
     ~Pack();
 
     #pragma region "Operators override"
-    Pack &operator=(const Pack &n);
-    Pack &operator==(const Pack &n);
+    Pack& operator=(const Pack& n);
+    Pack& operator==(const Pack& n);
     #pragma endregion
 
     #pragma region "Set methods"

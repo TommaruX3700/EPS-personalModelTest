@@ -8,6 +8,14 @@ Pack :: ~Pack() {
 
 }
 
-Pack Pack :: &operator=(const Pack &n) {
+#pragma region "Operator overrides"
+//Check if this works correctly as intended (eg: not only exchanging pointers)
+Pack& Pack :: operator=(const Pack& n) {
+    
+}
+
+Pack& Pack :: operator==(const Pack& n) {
 
 }
+
+#pragma endregion
