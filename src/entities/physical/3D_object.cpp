@@ -31,10 +31,12 @@
 #pragma region "Set methods"
     void ThreeD_object :: setDims(ThreeNum_set<float> dims)
     {
-        //set object X, Y, Z dimensions (this.objectDims)
+        //set object X, Y, Z dimensions (this.objectDims) and calculates volume (this.volume)
         this->objectDims.X = dims.X;
         this->objectDims.Y = dims.Y;
         this->objectDims.Z = dims.Z;
+
+        this->volume = dims.X * dims.Y * dims.Z;
     }
 
     void ThreeD_object :: setCenterCoords(ThreeNum_set<float> coords)
@@ -47,12 +49,38 @@
 
     void ThreeD_object :: setWeight(float kg)
     {
-        //set object weight (this.weight)
+        //set object weight (this.weight) and calculate density (this.density)
+        this->weight = kg;
+        this->density = kg / this->volume;
     }
 
     void ThreeD_object :: setOrientation(int orientation)
     {
         //changes orientation by switching this.objectDims values
+        switch (orientation)
+        {
+        case 1:
+            
+            break;
+        case 2:
+            
+            break;
+        case 3:
+            
+            break;
+        case 4:
+            
+            break;
+        case 5:
+            
+            break;
+        case 6:
+            
+            break;
+        default:
+            
+            break;
+        }
     }
 
 #pragma endregion
@@ -61,18 +89,19 @@
     ThreeNum_set<float> ThreeD_object :: getDims()
     {
         //Return a ThreeNum_set object with this.objectDims
-        ThreeNum_set<float> dims;
-        return dims;
+        return this->objectDims;
     }
 
     float ThreeD_object :: getVolume()
     {
         //Return object volume;
+        return this->volume;
     }
 
     float ThreeD_object :: getDensity()
     {
         //Return object density;
+        return this->density;
     }
 
 #pragma endregion

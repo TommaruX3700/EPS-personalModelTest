@@ -13,11 +13,12 @@ Description:
 class ThreeD_object
 {
 private:
-    ThreeNum_set<float> objectDims;
+    ThreeNum_set<float> objectDims; //[m]
     //ThreeNum_set<float> oldObject_Dims; //probably not used
-    ThreeNum_set<float> centerCoords;
-    float weight;
-    float density;
+    ThreeNum_set<float> centerCoords;   //[m]
+    float weight;   //[Kg]
+    float density;  //[Kg/m3]
+    float volume;   //[m3]
     
 public:
     ThreeD_object();
