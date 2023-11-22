@@ -117,7 +117,7 @@
         //Return object density;
         return this->density;
     }
-
+    
 #pragma endregion
 
 #pragma region "Methods"
