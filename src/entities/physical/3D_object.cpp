@@ -56,30 +56,44 @@
 
     void ThreeD_object :: setOrientation(int orientation)
     {
-        //changes orientation by switching this.objectDims values
+        //Dummy variable
+        ThreeNum_set<float> originalDims = this->objectDims;
+
+        //Changes orientation by switching this.objectDims values
         switch (orientation)
         {
-        case 1:
-            //this->objectDims.X = 
-            break;
-        case 2:
-            
-            break;
-        case 3:
-            
-            break;
-        case 4:
-            
-            break;
-        case 5:
-            
-            break;
-        case 6:
-            
-            break;
-        default:
-            
-            break;
+            case 1:
+                    this->objectDims.X = originalDims.X;
+                    this->objectDims.Y = originalDims.Y;
+                    this->objectDims.Z = originalDims.Z;
+                break;
+            case 2:
+                    this->objectDims.X = originalDims.Y;
+                    this->objectDims.Y = originalDims.X;
+                    this->objectDims.Z = originalDims.Z;
+                break;
+            case 3:
+                    this->objectDims.X = originalDims.X;
+                    this->objectDims.Y = originalDims.Z;
+                    this->objectDims.Z = originalDims.Y;
+                break;
+            case 4:
+                    this->objectDims.X = originalDims.Y;
+                    this->objectDims.Y = originalDims.Z;
+                    this->objectDims.Z = originalDims.X;
+                break;
+            case 5:
+                    this->objectDims.X = originalDims.Z;
+                    this->objectDims.Y = originalDims.Y;
+                    this->objectDims.Z = originalDims.X;
+                break;
+            case 6:
+                    this->objectDims.X = originalDims.Z;
+                    this->objectDims.Y = originalDims.X;
+                    this->objectDims.Z = originalDims.Y;
+                break;
+            default:
+                break;
         }
     }
 
