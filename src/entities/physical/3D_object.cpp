@@ -1,5 +1,12 @@
 #include "../../headers/entities/physical/3D_object.hpp"
 
+/*
+Author:
+    Tommaso Maruzzo
+Description:
+    3D physical entities base class implementation.
+*/
+
 #pragma region "Constructors"
     ThreeD_object :: ThreeD_object() 
     {
