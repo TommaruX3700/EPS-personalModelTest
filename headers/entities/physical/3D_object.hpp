@@ -25,6 +25,10 @@ private:
     float volume;   //[m3]
     
     int orientation;    //1: standard values
+
+    #pragma region "Private Methods"
+        void backToOriginalPosition();
+    #pragma endregion
     
 public:
     ThreeD_object();

@@ -65,16 +65,16 @@
 
     void ThreeD_object :: setOrientation(int orientation)
     {
-        //Dummy variable
-        ThreeNum_set<float> originalDims = this->objectDims;
+        ThreeNum_set<float> originalDims = this->objectDims; //Dummy variable
+        
+        //Need to reset position before any rotation
+        backToOriginalPosition();
 
         //Changes orientation by switching this.objectDims values
         switch (orientation)
         {
             case 1:
-                    this->objectDims.X = originalDims.X;
-                    this->objectDims.Y = originalDims.Y;
-                    this->objectDims.Z = originalDims.Z;
+                    //case 1 must refer always to original dims
                 break;
             case 2:
                     this->objectDims.X = originalDims.Y;
@@ -130,5 +130,11 @@
 #pragma endregion
 
 #pragma region "Methods"
-
+    void ThreeD_object :: backToOriginalPosition() 
+    {
+        //brings back to the original Pack dims and position
+        this->objectDims.X = this->originalOrientationDims.X;
+        this->objectDims.Y = this->originalOrientationDims.Y;
+        this->objectDims.Z = this->originalOrientationDims.Z;
+    }
 #pragma endregion
