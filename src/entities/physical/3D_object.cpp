@@ -31,12 +31,21 @@
 #pragma region "Set methods"
     void ThreeD_object :: setDims(ThreeNum_set<float> dims)
     {
-        //set object X, Y, Z dimensions (this.objectDims) and calculates volume (this.volume)
+        //set object X, Y, Z dimensions (this.objectDims) 
         this->objectDims.X = dims.X;
         this->objectDims.Y = dims.Y;
         this->objectDims.Z = dims.Z;
 
+        //set originalOrientationDims X, Y, Z dimensions (this.originOrientationDims)
+        this->originalOrientationDims.X = dims.X;
+        this->originalOrientationDims.Y = dims.Y;
+        this->originalOrientationDims.Z = dims.Z;
+
+        //calculate volume (this.volume)
         this->volume = dims.X * dims.Y * dims.Z;
+
+        //sets standard orientation
+        this->orientation = 1;
     }
 
     void ThreeD_object :: setCenterCoords(ThreeNum_set<float> coords)
