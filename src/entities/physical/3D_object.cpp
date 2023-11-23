@@ -100,19 +100,19 @@
 #pragma endregion
 
 #pragma region "Get methods"
-    ThreeNum_set<float> ThreeD_object :: getDims()
+    ThreeNum_set<float> ThreeD_object :: getDims() const
     {
         //Return a ThreeNum_set object with this.objectDims
         return this->objectDims;
     }
 
-    float ThreeD_object :: getVolume()
+    float ThreeD_object :: getVolume() const
     {
         //Return object volume;
         return this->volume;
     }
 
-    float ThreeD_object :: getDensity()
+    float ThreeD_object :: getDensity() const
     {
         //Return object density;
         return this->density;

@@ -20,6 +20,7 @@ Pack& Pack :: operator=(const Pack& n)
         //copy info in new object
         n.getDims();
         this->setDims(n.getDims());
+        //perform SET for all Pack and 3D_object values
     }
     
 }

@@ -8,6 +8,8 @@ Author:
     Tommaso Maruzzo
 Description:
     Basic virtual object for 3D physical entities.
+NB: 
+    remember to use Member functions!
 */
 
 class ThreeD_object
@@ -35,9 +37,9 @@ public:
     #pragma endregion
 
     #pragma region "Get methods"
-        ThreeNum_set<float> getDims();
-        float getVolume();
-        float getDensity();
+        ThreeNum_set<float> getDims() const;
+        float getVolume() const;
+        float getDensity() const;
     #pragma endregion
 
     #pragma region "Methods"
