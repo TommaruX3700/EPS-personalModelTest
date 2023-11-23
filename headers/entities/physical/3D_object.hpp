@@ -44,6 +44,7 @@ public:
 
     #pragma region "Get methods"
         ThreeNum_set<float> getDims() const;
+        ThreeNum_set<float> getCenterCoords() const;
         float getVolume() const;
         float getDensity() const;
     #pragma endregion

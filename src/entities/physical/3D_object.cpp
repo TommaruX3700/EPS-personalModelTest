@@ -66,43 +66,52 @@
     void ThreeD_object :: setOrientation(int orientation)
     {
         ThreeNum_set<float> originalDims = this->objectDims; //Dummy variable
-        
-        //Need to reset position before any rotation
-        backToOriginalPosition();
 
-        //Changes orientation by switching this.objectDims values
-        switch (orientation)
+        if (orientation != this->orientation) 
         {
-            case 1:
-                    //case 1 must refer always to original dims
-                break;
-            case 2:
-                    this->objectDims.X = originalDims.Y;
-                    this->objectDims.Y = originalDims.X;
-                    this->objectDims.Z = originalDims.Z;
-                break;
-            case 3:
-                    this->objectDims.X = originalDims.X;
-                    this->objectDims.Y = originalDims.Z;
-                    this->objectDims.Z = originalDims.Y;
-                break;
-            case 4:
-                    this->objectDims.X = originalDims.Y;
-                    this->objectDims.Y = originalDims.Z;
-                    this->objectDims.Z = originalDims.X;
-                break;
-            case 5:
-                    this->objectDims.X = originalDims.Z;
-                    this->objectDims.Y = originalDims.Y;
-                    this->objectDims.Z = originalDims.X;
-                break;
-            case 6:
-                    this->objectDims.X = originalDims.Z;
-                    this->objectDims.Y = originalDims.X;
-                    this->objectDims.Z = originalDims.Y;
-                break;
-            default:
-                break;
+            //Need to reset position before any rotation
+            backToOriginalPosition();
+
+            //Changes orientation by switching this.objectDims values
+            switch (orientation)
+            {
+                case 1:
+                        //case 1 must refer always to original dims
+                        this->orientation = 1;
+                    break;
+                case 2:
+                        this->orientation = 2;
+                        this->objectDims.X = originalDims.Y;
+                        this->objectDims.Y = originalDims.X;
+                        this->objectDims.Z = originalDims.Z;
+                    break;
+                case 3:
+                        this->orientation = 3;
+                        this->objectDims.X = originalDims.X;
+                        this->objectDims.Y = originalDims.Z;
+                        this->objectDims.Z = originalDims.Y;
+                    break;
+                case 4:
+                        this->orientation = 4;
+                        this->objectDims.X = originalDims.Y;
+                        this->objectDims.Y = originalDims.Z;
+                        this->objectDims.Z = originalDims.X;
+                    break;
+                case 5:
+                        this->orientation = 5;
+                        this->objectDims.X = originalDims.Z;
+                        this->objectDims.Y = originalDims.Y;
+                        this->objectDims.Z = originalDims.X;
+                    break;
+                case 6:
+                        this->orientation = 6;
+                        this->objectDims.X = originalDims.Z;
+                        this->objectDims.Y = originalDims.X;
+                        this->objectDims.Z = originalDims.Y;
+                    break;
+                default:
+                    break;
+            }
         }
     }
 
@@ -113,6 +122,12 @@
     {
         //Return a ThreeNum_set object with this.objectDims
         return this->objectDims;
+    }
+    
+    ThreeNum_set<float> ThreeD_object :: getCenterCoords() const 
+    {
+        //Return a ThreeNum_set object with this.centerCoords
+        return this->centerCoords;
     }
 
     float ThreeD_object :: getVolume() const
