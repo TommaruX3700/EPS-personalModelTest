@@ -18,9 +18,9 @@ Pack& Pack :: operator=(const Pack& n)
     if (this != &n)
     {
         //copy info in new object
-        n.getDims();
         this->setDims(n.getDims());
-        //perform SET for all Pack and 3D_object values
+
+        //TODO: perform SET for all Pack and 3D_object values
     }
     
 }

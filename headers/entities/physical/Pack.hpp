@@ -15,25 +15,21 @@ private:
     bool palletizable;
     
 public:
-    //Pack(); //probably not used, MUST BE SPECIFIC
     Pack(ThreeNum_set<float> dims, ThreeNum_set<float> coords, float WEIGHT, int CODE, bool ROT) {};
     ~Pack();
 
     #pragma region "Operators override"
-    Pack& operator=(const Pack& n);
-    Pack& operator==(const Pack& n);
+        Pack& operator=(const Pack& n);
+        Pack& operator==(const Pack& n);
     #pragma endregion
 
     #pragma region "Set methods"
-    void setRotatable(bool ROT);
-    void setPackID(int CODE);
+        void setRotatable(bool ROT);
+        void setPackID(int CODE);
     #pragma endregion    
 
     #pragma region "Get methods"
-    int getPackID();
-    #pragma endregion
-
-    #pragma region "Methods"
+        int getPackID();
     #pragma endregion
 
 };
