@@ -65,10 +65,11 @@
 
     void ThreeD_object :: setOrientation(int orientation)
     {
-        ThreeNum_set<float> originalDims = this->objectDims; //Dummy variable
-
         if (orientation != this->orientation) 
         {
+            //Pass-Value Variable
+            const ThreeNum_set<float> originalDims = this->objectDims; 
+
             //Need to reset position before any rotation
             backToOriginalPosition();
 
