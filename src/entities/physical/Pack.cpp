@@ -17,18 +17,25 @@ Pack& Pack :: operator=(const Pack& n)
 {
     if (this != &n)
     {
-        //copy info in new object
+        //copy all info in new object
         this->setDims(n.getDims());
-
+        this->setCenterCoords(n.getCenterCoords());
+        this->setWeight(n.getVolume() * n.getDensity());
         //TODO: perform SET for all Pack and 3D_object values
     }
-    
 }
 
 Pack& Pack :: operator==(const Pack& n) 
 {
     
-    
 }
+
+#pragma endregion
+
+#pragma region "Set methods"
+
+#pragma endregion
+
+#pragma region "Get methods"
 
 #pragma endregion

@@ -65,55 +65,8 @@
 
     void ThreeD_object :: setOrientation(int orientation)
     {
-        if (orientation != this->orientation) 
-        {
-            //Pass-Value Variable
-            const ThreeNum_set<float> originalDims = this->objectDims; 
-
-            //Need to reset position before any rotation
-            backToOriginalPosition();
-
-            //Changes orientation by switching this.objectDims values
-            switch (orientation)
-            {
-                case 1:
-                        //case 1 must refer always to original dims
-                        this->orientation = 1;
-                    break;
-                case 2:
-                        this->orientation = 2;
-                        this->objectDims.X = originalDims.Y;
-                        this->objectDims.Y = originalDims.X;
-                        this->objectDims.Z = originalDims.Z;
-                    break;
-                case 3:
-                        this->orientation = 3;
-                        this->objectDims.X = originalDims.X;
-                        this->objectDims.Y = originalDims.Z;
-                        this->objectDims.Z = originalDims.Y;
-                    break;
-                case 4:
-                        this->orientation = 4;
-                        this->objectDims.X = originalDims.Y;
-                        this->objectDims.Y = originalDims.Z;
-                        this->objectDims.Z = originalDims.X;
-                    break;
-                case 5:
-                        this->orientation = 5;
-                        this->objectDims.X = originalDims.Z;
-                        this->objectDims.Y = originalDims.Y;
-                        this->objectDims.Z = originalDims.X;
-                    break;
-                case 6:
-                        this->orientation = 6;
-                        this->objectDims.X = originalDims.Z;
-                        this->objectDims.Y = originalDims.X;
-                        this->objectDims.Z = originalDims.Y;
-                    break;
-                default:
-                    break;
-            }
-        }
+        //PRIVATE: !!! do not use for common orientation-changes, could lead to unwanted pack behaviours
+        this->orientation = orientation;
     }
 
 #pragma endregion
@@ -143,6 +96,11 @@
         return this->density;
     }
     
+    int ThreeD_object :: getOrientation() const 
+    {
+        return this->orientation;
+    }
+
 #pragma endregion
 
 #pragma region "Methods"
@@ -152,5 +110,59 @@
         this->objectDims.X = this->originalOrientationDims.X;
         this->objectDims.Y = this->originalOrientationDims.Y;
         this->objectDims.Z = this->originalOrientationDims.Z;
+    }
+
+    void ThreeD_object :: changeObjectOrientation(int orientation)
+    {
+        //for object orientation changes
+        if (orientation != this->orientation) 
+        {
+            //Pass-Value Variable
+            const ThreeNum_set<float> originalDims = this->objectDims; 
+
+            //Need to reset position before any rotation
+            backToOriginalPosition();
+
+            //Changes orientation by switching this.objectDims values
+            switch (orientation)
+            {
+                case 1:
+                        //case 1 must refer always to original dims
+                        setOrientation(1);
+                    break;
+                case 2:
+                        setOrientation(2);
+                        this->objectDims.X = originalDims.Y;
+                        this->objectDims.Y = originalDims.X;
+                        this->objectDims.Z = originalDims.Z;
+                    break;
+                case 3:
+                        setOrientation(3);
+                        this->objectDims.X = originalDims.X;
+                        this->objectDims.Y = originalDims.Z;
+                        this->objectDims.Z = originalDims.Y;
+                    break;
+                case 4:
+                        setOrientation(4);
+                        this->objectDims.X = originalDims.Y;
+                        this->objectDims.Y = originalDims.Z;
+                        this->objectDims.Z = originalDims.X;
+                    break;
+                case 5:
+                        setOrientation(5);
+                        this->objectDims.X = originalDims.Z;
+                        this->objectDims.Y = originalDims.Y;
+                        this->objectDims.Z = originalDims.X;
+                    break;
+                case 6:
+                        setOrientation(6);
+                        this->objectDims.X = originalDims.Z;
+                        this->objectDims.Y = originalDims.X;
+                        this->objectDims.Z = originalDims.Y;
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 #pragma endregion

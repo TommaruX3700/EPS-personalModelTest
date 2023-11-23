@@ -8,25 +8,24 @@ Author:
     Tommaso Maruzzo
 Description:
     Basic virtual object for 3D physical entities.
-NB: 
-    remember to use Member functions!
 */
 
 class ThreeD_object
 {
-private:
-    ThreeNum_set<float> objectDims; //[m]
-    ThreeNum_set<float> originalOrientationDims; //store objectDims values at orientation = 1
-    
+protected:
+    //NB: protected values are usable by derived classes
+    ThreeNum_set<float> objectDims;     //[m]
     ThreeNum_set<float> centerCoords;   //[m]
-    
     float weight;   //[Kg]
     float density;  //[Kg/m3]
     float volume;   //[m3]
-    
-    int orientation;    //1: standard values
+
+private:
+    ThreeNum_set<float> originalOrientationDims; //store objectDims values at orientation = 1
+    int orientation;    //NB: 1 = originalOrientationDims
 
     #pragma region "Private Methods"
+        void setOrientation(int orientation);
         void backToOriginalPosition();
     #pragma endregion
     
@@ -38,8 +37,6 @@ public:
         void setDims(ThreeNum_set<float> dims);
         void setCenterCoords(ThreeNum_set<float> coords); 
         void setWeight(float kg);
-        void setOrientation(int orientation);
-        
     #pragma endregion
 
     #pragma region "Get methods"
@@ -47,6 +44,11 @@ public:
         ThreeNum_set<float> getCenterCoords() const;
         float getVolume() const;
         float getDensity() const;
+        int getOrientation() const;
+    #pragma endregion
+
+    #pragma region "Methods"
+        void changeObjectOrientation(int orientation);
     #pragma endregion
 
 };
