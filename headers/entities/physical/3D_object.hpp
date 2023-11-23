@@ -16,7 +16,7 @@ class ThreeD_object
 {
 private:
     ThreeNum_set<float> objectDims; //[m]
-    ThreeNum_set<float> originalOrientationDims; //saves values at orientation = 1
+    ThreeNum_set<float> originalOrientationDims; //store objectDims values at orientation = 1
     
     ThreeNum_set<float> centerCoords;   //[m]
     
