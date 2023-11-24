@@ -10,7 +10,7 @@
           {
             "id": "6d06b79a9278860f",
             "type": "tabs",
-            "dimension": 56.68103448275862,
+            "dimension": 56.681034482758626,
             "children": [
               {
                 "id": "bb4a8fc5ab1aace7",
@@ -37,7 +37,7 @@
           {
             "id": "2c0d1cbec085dcb0",
             "type": "tabs",
-            "dimension": 43.31896551724138,
+            "dimension": 43.318965517241374,
             "children": [
               {
                 "id": "78be76cb9f097e60",
@@ -121,7 +121,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Architecture/headers/entities/physical/Pack.h.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -138,7 +137,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Architecture/headers/entities/physical/Pack.h.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -160,9 +158,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "Architecture/headers/entities/physical/Pack.h.md"
-              }
+              "state": {}
             }
           },
           {
@@ -192,8 +188,9 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "78be76cb9f097e60",
+  "active": "bb4a8fc5ab1aace7",
   "lastOpenFiles": [
+    "Architecture/headers/entities/physical/Pack.h.md",
     "Architecture/src/logic/trovaDominio/trovaDominio.cpp.md",
     "Architecture/src/logic/spostaPacchi/spostaPacchi.cpp.md",
     "Architecture/src/logic/ottimizzazione/ottimizzazione.cpp.md",
@@ -216,7 +213,6 @@
     "Architecture/src/entities/physical/PalletGroup.cpp.md",
     "Architecture/headers/entities/physical/PalletGroup.h.md",
     "Architecture/main.cpp.md",
-    "Architecture/headers/entities/physical/Pack.h.md",
     "Logic-Algorithm.canvas",
     "Untitled.canvas",
     "README.md",

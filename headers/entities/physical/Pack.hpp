@@ -13,6 +13,9 @@ private:
     int packID;
     bool rotatable;
     bool palletizable;
+
+    //TODO: make this method x == operator override 
+    bool packCompare(ThreeNum_set<float> dimsToCmp, float weightToCmp);
     
 public:
     Pack(ThreeNum_set<float> dims, ThreeNum_set<float> coords, float WEIGHT, int CODE, bool ROT) {};

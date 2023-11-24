@@ -27,6 +27,7 @@ Pack& Pack :: operator=(const Pack& n)
 
 Pack& Pack :: operator==(const Pack& n) 
 {
+    //TODO: make function to compare object packs
     
 }
 
