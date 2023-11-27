@@ -11,7 +11,7 @@ class Pack : ThreeD_object
 {
 private:
     int packID;
-    bool rotatable;
+    bool rotatableFlag;
     bool palletizable;
 
     //TODO: make this method x == operator override 

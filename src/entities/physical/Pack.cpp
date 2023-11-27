@@ -21,6 +21,9 @@ Pack& Pack :: operator=(const Pack& n)
         this->setDims(n.getDims());
         this->setCenterCoords(n.getCenterCoords());
         this->setWeight(n.getVolume() * n.getDensity());
+
+        this->packID = n.packID;
+        this->rotatableFlag = n.rotatableFlag;
         //TODO: perform SET for all Pack and 3D_object values
     }
 }

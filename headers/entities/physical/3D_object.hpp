@@ -23,11 +23,9 @@ protected:
 private:
     ThreeNum_set<float> originalOrientationDims; //store objectDims values at orientation = 1
     int orientation;    //NB: 1 = originalOrientationDims
-
-    #pragma region "Private Methods"
-        void setOrientation(int orientation);
-        void backToOriginalPosition();
-    #pragma endregion
+    
+    void setOrientation(int orientation);
+    void backToOriginalPosition();
     
 public:
     ThreeD_object();
@@ -47,10 +45,8 @@ public:
         int getOrientation() const;
     #pragma endregion
 
-    #pragma region "Methods"
-        void changeObjectOrientation(int orientation);
-    #pragma endregion
-
+    void changeObjectOrientation(int orientation);
+    
 };
 
 #endif
