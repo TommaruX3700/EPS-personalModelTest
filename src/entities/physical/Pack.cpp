@@ -2,12 +2,20 @@
 
 Pack :: Pack (ThreeNum_set<float> dims, ThreeNum_set<float> coords, float WEIGHT, int CODE, bool ROT) 
 {
+    this->packID = CODE;
+    this->rotatableFlag = ROT;
+    this->weight = weight;
 
+    this->centerCoords.X = coords.X;
+    this->centerCoords.Y = coords.Y;
+    this->centerCoords.Z = coords.Z;
+
+    this->objectDims.X = dims.X;
+    
 }
 
 Pack :: ~Pack() 
 {
-
 }
 
 #pragma region "Operator overrides"
@@ -46,3 +54,4 @@ bool Pack :: operator==(const Pack& n)
 }
 
 #pragma endregion
+

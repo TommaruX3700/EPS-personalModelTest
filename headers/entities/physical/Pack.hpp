@@ -10,9 +10,9 @@ Description:
 class Pack : ThreeD_object
 {
 private:
-    int packID;
-    bool rotatableFlag;
-    bool palletizableFlag;
+    int packID; //pack ID
+    bool rotatableFlag; //if its rotatable or not
+    bool palletizableFlag; //if its palletizable or not
 
     //TODO: delete if operator== completed
     //bool packCompare();
