@@ -17,29 +17,32 @@ Pack& Pack :: operator=(const Pack& n)
 {
     if (this != &n)
     {
-        //copy all info in new object
+        //Copy all info to new "Pack" object
         this->setDims(n.getDims());
         this->setCenterCoords(n.getCenterCoords());
         this->setWeight(n.getVolume() * n.getDensity());
 
         this->packID = n.packID;
         this->rotatableFlag = n.rotatableFlag;
-        //TODO: perform SET for all Pack and 3D_object values
+        this->palletizableFlag = n.palletizableFlag;
     }
 }
 
-Pack& Pack :: operator==(const Pack& n) 
+bool Pack :: operator==(const Pack& n) 
 {
-    //TODO: make function to compare object packs
-    
+    //TODO: evaluate if any usefull or to delete
+    //Compare object packs in the current orientation (?)
+   if (
+        compareThreeNum_set(this->objectDims, n.objectDims) &&
+        this->weight == n.weight
+        )
+   {
+        return true;
+   }
+   else
+   {
+        return false;
+   }
 }
-
-#pragma endregion
-
-#pragma region "Set methods"
-
-#pragma endregion
-
-#pragma region "Get methods"
 
 #pragma endregion

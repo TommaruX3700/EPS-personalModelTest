@@ -23,7 +23,7 @@ protected:
 private:
     ThreeNum_set<float> originalOrientationDims; //store objectDims values at orientation = 1
     int orientation;    //NB: 1 = originalOrientationDims
-    
+
     void setOrientation(int orientation);
     void backToOriginalPosition();
     

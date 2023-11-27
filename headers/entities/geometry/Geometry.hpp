@@ -27,4 +27,6 @@ struct TwoNum_set { //type for 2D coordinates
 
 #pragma endregion
 
+bool compareThreeNum_set (ThreeNum_set <float> firstSet, ThreeNum_set<float> secondSet);
+
 #endif
