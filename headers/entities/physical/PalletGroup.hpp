@@ -18,8 +18,7 @@ private:
     int max = 0; 
     
 public:
-    PalletGroup();
-    PalletGroup(int max) {};
+    PalletGroup(int max = 0) {};
     ~PalletGroup();
     
     #pragma region "Operators override"
@@ -32,11 +31,9 @@ public:
     #pragma region "Get methods"
     #pragma endregion
 
-    #pragma region "Methods"
+    #pragma region "Public methods"
     int addPallet(ptrPallet palletPtr);
-    int addPallet(ptrPallet palletPtr, int vectorPosition = -1);
-    int rmvPallet();
-    int rmvPallet(int vectorPosition = -1);
+    int rmvPallet(int index = -1);
     int palletCount();
     #pragma endregion
 };
