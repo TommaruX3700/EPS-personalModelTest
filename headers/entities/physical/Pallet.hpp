@@ -7,6 +7,9 @@ Author:
     Tommaso Maruzzo
 Description:
     Pallet object.
+Notes:
+    unordered_set for pallet should be a better use case for performance (insertion and deletion operations), 
+    but have to consider all the methods and this problem wont involve a lot of iteration throught pallet items.
 */
 
 typedef Pack* ptrPack; //pointer to Pack object
@@ -33,9 +36,9 @@ public:
     #pragma endregion
 
     #pragma region "Public methods"
-        void addPack(ptrPack packToAddPtr); //IMPLEMENTATION: add Pack pointer to the end of the "pallet" vector
-        void rmvPack(int index = -1); //IMPLEMENTATION: delete the pack in the given position from the "pallet" vector
-        void rmvPackByID(int packID); //IMPLEMENTATION: delete pack by ID    
+        void addPack(ptrPack packToAddPtr); 
+        void rmvPack(int index = -1); //Delete the pack in the given position from the "pallet" vector
+        void rmvPackByID(int packID); //Delete pack by ID    
     #pragma endregion
 
 };

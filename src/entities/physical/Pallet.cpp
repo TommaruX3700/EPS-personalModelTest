@@ -8,6 +8,10 @@ Pallet :: Pallet(ThreeNum_set<float> maxDimensions)
     this->pallet.clear();
 }
 
+Pallet :: ~Pallet()
+{
+}
+
 #pragma region "Set methods"
 #pragma endregion
 
@@ -26,25 +30,44 @@ Pallet :: Pallet(ThreeNum_set<float> maxDimensions)
 #pragma region "Public methods"
     void Pallet :: addPack(ptrPack packToAddPtr)
     {
-
+        //Add Pack pointer to the end of the "pallet" vector
+        this->pallet.push_back(packToAddPtr);
     }
 
     void Pallet :: rmvPack(int index = -1)
     {
         if (index == -1)
         {
-            //TODO: delete the last one
+            //Index not specified: delete the last one
+            this->pallet.pop_back();
         }
         else
         {
-            //TODO: delete in the defined position and move all other packs positions
+            //Index specified: delete in the ptrPack in the specified position
+            this->pallet.erase(this->pallet.begin() + index);
         }
     }
 
     void Pallet :: rmvPackByID(int packID)
     {
-        //TODO: remove pack by his ID and move all other packs position
+        //Remove pack by his ID
+        int position = 0;
+        while (this->pallet.at(position)->getPackID() != packID && position <= this->pallet.size()) 
+        { 
+            position++;
+        }
+        this->pallet.erase(this->pallet.begin() + position);
+
+        //TEST: useless recursive approach (same complexity)
+        // static int position = 0;
+        // if (this->pallet.at(position)->getPackID() != packID && position <= this->pallet.size())
+        // {
+        //     position++;
+        //     rmvPackByID(packID);
+        // }
+        // else if (position <= this->pallet.size())
+        // {
+        //     this->pallet.erase(this->pallet.begin() + position);
+        // }
     }
-
-
 #pragma endregion
