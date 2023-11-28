@@ -34,6 +34,6 @@ public:
     #pragma region "Public methods"
     int addPallet(ptrPallet palletPtr);
     int rmvPallet(int index = -1);
-    int palletCount();
+    int palletCount() const;
     #pragma endregion
 };

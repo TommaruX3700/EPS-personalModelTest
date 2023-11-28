@@ -39,8 +39,8 @@ PalletGroup :: ~PalletGroup()
         }
     }
 
-    int PalletGroup :: palletCount()
+    int PalletGroup :: palletCount() const
     {
-
+        return this->palletGroup.size();
     }
 #pragma endregion
