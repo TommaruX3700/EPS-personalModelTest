@@ -1,5 +1,28 @@
 #include "../../headers/entities/physical/Pallet.hpp"
 
+Pallet :: Pallet(ThreeNum_set<float> maxDimensions)
+{
+    this->maxDims.X = maxDimensions.X;
+    this->maxDims.Y = maxDimensions.Y;
+    this->maxDims.Z = maxDimensions.Z;
+    this->pallet.clear();
+}
+
+#pragma region "Set methods"
+#pragma endregion
+
+#pragma region "Get methods"
+    int Pallet :: getPackCount() const
+    {
+        return this->pallet.size();
+    }
+
+    ThreeNum_set<float> Pallet :: getPalletDims() const
+    {
+        return this->maxDims;
+    }
+#pragma endregion
+
 #pragma region "Public methods"
     void Pallet :: addPack(ptrPack packToAddPtr)
     {
@@ -23,8 +46,5 @@
         //TODO: remove pack by his ID and move all other packs position
     }
 
-    int Pallet :: packCount()
-    {
-        return this->pallet.size();
-    }
+
 #pragma endregion
