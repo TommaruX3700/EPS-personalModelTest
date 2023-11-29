@@ -31,10 +31,6 @@ Description:
 
 #pragma endregion
 
-#pragma region "Operators override"
-
-#pragma endregion
-
 #pragma region "Set methods"
     void ThreeD_object :: setDims(ThreeNum_set<float> dims)
     {
