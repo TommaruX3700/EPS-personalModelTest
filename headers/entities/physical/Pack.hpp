@@ -18,7 +18,7 @@ private:
     //bool packCompare();
     
 public:
-    Pack(ThreeNum_set<float> dims, ThreeNum_set<float> coords, float WEIGHT, int CODE, bool ROT) {};
+    Pack(ThreeNum_set<float> dims, ThreeNum_set<float> coords, float packWeight, int packID, bool rotFlag) {};
     ~Pack();
 
     #pragma region "Operators override"
@@ -27,12 +27,12 @@ public:
     #pragma endregion
 
     #pragma region "Set methods"
-        void setRotatable(bool ROT);
-        void setPackID(int CODE);
+        void setRotatableFlag(bool rotFlag);
+        void setPackID(int packID);
     #pragma endregion    
 
     #pragma region "Get methods"
-        int getPackID();
+        int getPackID() const;
     #pragma endregion
 
 };
