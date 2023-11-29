@@ -17,6 +17,9 @@
 
 #pragma region "Function declarations"
     int consoleErrorMessage (std::string errorString);
+    void consoleStartMessage (std::string inputString);
+    int consoleErrorMessage (std::string errorString);
+    
     //json vectorToJson (all the arguments needed);
 
 #pragma endregion
