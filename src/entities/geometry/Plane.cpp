@@ -4,6 +4,8 @@ Plane :: Plane (TwoNum_set<float> maxDimensions)
 {
     this->maxDimensions.X = maxDimensions.X;
     this->maxDimensions.Y = maxDimensions.Y;
+
+    //TODO: FEDERICO ADD PLANE CONSTRUCTOR HERE
 }
 
 Plane :: ~Plane ()

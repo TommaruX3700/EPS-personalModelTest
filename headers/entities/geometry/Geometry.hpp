@@ -25,6 +25,9 @@ struct TwoNum_set { //type for 2D coordinates
 	TwoNum_set(type x_val, type y_val) : X(type(x_val)), Y(type(y_val)) {};
 };
 
+//TODO: make a geometry object "AREA"
+//	define this object between 2 points and resume all the points inside
+
 #pragma endregion
 
 bool compareThreeNum_set (ThreeNum_set <float> firstSet, ThreeNum_set<float> secondSet);

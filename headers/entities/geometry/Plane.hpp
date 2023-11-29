@@ -2,7 +2,7 @@
 
 /*
 Author:
-    Tommaso Maruzzo
+    Federico Casarotto
 Description:
     Plane object based upon a double dimension Cell object pointer.
     maxX and maxY needs to be compiled in order to always access plane max dimensions, if needed.

@@ -20,3 +20,8 @@ Grid :: Grid (ThreeNum_set<float> maxDimensions)
     this->YZ = new Plane(cpySet);
 
 }
+
+void Grid :: setOccupiedCells()
+{
+    //TODO: MAKE A GEOMETRY OBJECT "AREA" 
+}
