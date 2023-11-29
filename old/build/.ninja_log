@@ -1,5 +1,0 @@
-# ninja log v5
-5	60	7093337499699877	CMakeFiles/ModelTest_003.dir/src/Geometry/Cell.cpp.obj	e04bf6a85c1ceb9a
-8	67	7093337499770080	CMakeFiles/ModelTest_003.dir/src/Geometry/GridSpace.cpp.obj	4f55c1cf5e316301
-2	278	7093337501882981	CMakeFiles/ModelTest_003.dir/main.cpp.obj	36a6e44543af662c
-279	494	7093337503994171	ModelTest_003.exe	b4db5cede61fd30a

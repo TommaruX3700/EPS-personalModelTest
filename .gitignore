@@ -1,3 +1,4 @@
+#Ignore CMakeLists files
 CMakeLists.txt.user
 CMakeCache.txt
 CMakeFiles
@@ -10,5 +11,27 @@ compile_commands.json
 CTestTestfile.cmake
 _deps
 
-#todo
-#add ignore for .vscode and build folder
+# cmake build files
+**/cmake/build/
+
+#Ignore other folders
+old/*
+
+# C/C++ build outputs
+.build/
+
+build/
+
+**/EPS-personalModelTest/build/**
+
+bins
+gens
+libs
+objs
+
+# Visual Studio Code artifacts
+.cache/*
+
+.vscode/*
+
+.history/

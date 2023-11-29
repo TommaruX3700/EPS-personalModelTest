@@ -15,7 +15,86 @@
     #include "headers/logic/trovaDominio.hpp"
 #pragma endregion
 
-int main () {
-    std::cout << "pacco" << std::endl;
-    return 0;
+#pragma region "Function declarations"
+    int consoleErrorMessage (std::string errorString);
+    //json vectorToJson (all the arguments needed);
+
+#pragma endregion
+
+int main (int argc, char* argv[]) 
+{
+    try
+    {
+        #pragma region "Startup Routine"
+            //Gets arguments as INPUT
+            const std::string inputJsonPath = argv[0];
+            consoleStartMessage(inputJsonPath);
+
+            //Check if file exists 
+            std::ifstream inputJsonFile;
+            inputJsonFile.open(inputJsonPath);
+            if (!inputJsonFile)
+            {
+                //File doesn't exists: throw error
+                throw std::invalid_argument("Invalid JSON path provided or unable to access file.");
+            }
+
+            //Extract packs from it
+            
+
+        #pragma endregion
+
+        #pragma region "End Routine"
+            //Output as json (Plan B: output string)
+
+            //Execute function to prepare the output json
+            //nlohmann::json outputJson = vectorToJson(all the arguments needed)
+            //std::cout << outputJson << '\n';
+
+        #pragma endregion
+        
+        return 0;
+    }
+    catch(const std::invalid_argument& e) 
+    {
+        return consoleErrorMessage(e.what());
+    }
+    catch(const std::exception& e)
+    {
+        return consoleErrorMessage(e.what());
+    }   
 }
+
+#pragma region "Function implementations"
+    //TODO - Ticket #15
+    //json vectorToJson (all the arguments needed)
+    //{ 
+    //      Build the output json, structure defined in Documentation.
+    //      Examples&Wiki: https://json.nlohmann.me/api/json/
+    //}
+
+    void consoleStartMessage (std::string inputString)
+    {
+        std::cout 
+        << "#######################" << "\n" 
+        << "EPS-MODEL: START" << "\n" 
+        << "#######################" << "\n" 
+        << "Input argument: " << inputString 
+        << std::endl;
+    }
+
+    int consoleErrorMessage (std::string errorString) 
+    {
+        std::cout 
+        << "#######################" << "\n" 
+        << "EPS-MODEL: ERROR" 
+        << "#######################" << "\n" <<
+        std::endl;
+        
+        std::cerr
+        << errorString << '\n'
+        << "#######################" << "\n";
+        return -1;
+    }
+
+#pragma endregion
