@@ -19,7 +19,6 @@ private:
     
 public:
     Pack(ThreeNum_set<float> dims, ThreeNum_set<float> coords, float packWeight, int packID, bool rotFlag) {};
-    ~Pack();
 
     #pragma region "Operators override"
         Pack& operator=(const Pack& n);

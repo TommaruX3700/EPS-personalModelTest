@@ -15,10 +15,6 @@
         this->objectDims.Z = dims.Z;
     }
 
-    Pack :: ~Pack() 
-    {
-    }
-
 #pragma region "Operator overrides"
 //Check if this works correctly as intended (eg: not only exchanging pointers)
 
