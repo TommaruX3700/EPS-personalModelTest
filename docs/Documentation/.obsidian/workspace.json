@@ -4,57 +4,43 @@
     "type": "split",
     "children": [
       {
-        "id": "e720ee23fd157221",
-        "type": "split",
+        "id": "6d06b79a9278860f",
+        "type": "tabs",
         "children": [
           {
-            "id": "6d06b79a9278860f",
-            "type": "tabs",
-            "dimension": 56.681034482758626,
-            "children": [
-              {
-                "id": "bb4a8fc5ab1aace7",
-                "type": "leaf",
-                "state": {
-                  "type": "graph",
-                  "state": {}
-                }
-              },
-              {
-                "id": "10e9177559444805",
-                "type": "leaf",
-                "state": {
-                  "type": "markdown",
-                  "state": {
-                    "file": "Architecture/src/logic/spostaPacchi/spostaPacchi.cpp.md",
-                    "mode": "source",
-                    "source": false
-                  }
-                }
+            "id": "bb4a8fc5ab1aace7",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "README.md",
+                "mode": "source",
+                "source": false
               }
-            ]
+            }
           },
           {
-            "id": "2c0d1cbec085dcb0",
-            "type": "tabs",
-            "dimension": 43.318965517241374,
-            "children": [
-              {
-                "id": "78be76cb9f097e60",
-                "type": "leaf",
-                "state": {
-                  "type": "markdown",
-                  "state": {
-                    "file": "Architecture/headers/entities/physical/Pack.h.md",
-                    "mode": "source",
-                    "source": false
-                  }
-                }
+            "id": "10e9177559444805",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Architecture/src/logic/spostaPacchi/spostaPacchi.cpp.md",
+                "mode": "source",
+                "source": false
               }
-            ]
+            }
+          },
+          {
+            "id": "78be76cb9f097e60",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {}
+            }
           }
         ],
-        "direction": "horizontal"
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -104,8 +90,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 234.5,
-    "collapsed": true
+    "width": 234.5
   },
   "right": {
     "id": "c7eb92ad6b1d5635",
@@ -188,9 +173,11 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "bb4a8fc5ab1aace7",
+  "active": "78be76cb9f097e60",
   "lastOpenFiles": [
+    "Architecture/main.cpp.md",
     "Architecture/headers/entities/physical/Pack.h.md",
+    "README.md",
     "Architecture/src/logic/trovaDominio/trovaDominio.cpp.md",
     "Architecture/src/logic/spostaPacchi/spostaPacchi.cpp.md",
     "Architecture/src/logic/ottimizzazione/ottimizzazione.cpp.md",
@@ -212,10 +199,8 @@
     "Architecture/src/entities/physical/Pallet.cpp.md",
     "Architecture/src/entities/physical/PalletGroup.cpp.md",
     "Architecture/headers/entities/physical/PalletGroup.h.md",
-    "Architecture/main.cpp.md",
     "Logic-Algorithm.canvas",
     "Untitled.canvas",
-    "README.md",
     "Architecture/Relations.canvas",
     "Architecture/src/entities/geometry/Cell.cpp.md",
     "Architecture/src/entities/geometry/Grid.cpp.md",

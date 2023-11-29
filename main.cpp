@@ -30,16 +30,16 @@ int main (int argc, char* argv[])
     {
         #pragma region "Startup Routine"
             //Gets arguments as INPUT
-            const std::string inputJsonPath = argv[0];
+            const std :: string inputJsonPath = argv[1];
             consoleStartMessage(inputJsonPath);
 
             //Check if file exists 
-            std::ifstream inputJsonFile;
+            std :: ifstream inputJsonFile;
             inputJsonFile.open(inputJsonPath);
             if (!inputJsonFile)
             {
                 //File doesn't exists: throw error
-                throw std::invalid_argument("Invalid JSON path provided or unable to access file.");
+                throw std :: invalid_argument("Invalid JSON path provided or unable to access file.");
             }
 
             //Extract packs from it
@@ -90,7 +90,7 @@ int main (int argc, char* argv[])
     {
         std::cout 
         << "#######################" << "\n" 
-        << "EPS-MODEL: ERROR" 
+        << "EPS-MODEL: ERROR" << "\n"
         << "#######################" << "\n" <<
         std::endl;
         

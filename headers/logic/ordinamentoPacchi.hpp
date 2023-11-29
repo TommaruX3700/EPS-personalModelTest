@@ -1,3 +1,6 @@
+#ifndef ORDINAMENTOPACCHI_HPP
+#define ORDINAMENTOPACCHI_HPP
+
 #include "../entities/physical/Pack.hpp"
 #include <vector>
 
@@ -12,3 +15,4 @@ std::vector<Pack*> packsToSort; //INPUT
 std::vector<Pack*> sortedPacks; //OUTPUT_1 -> sorted pointers-to-objects vector
 std::vector<Pack*> notSortablePacks; //OUPUT_2 -> packs flagged with "not packable"
 
+#endif

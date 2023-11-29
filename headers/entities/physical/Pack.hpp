@@ -1,3 +1,6 @@
+#ifndef PACK_HPP
+#define PACK_HPP
+
 #include "../physical/3D_object.hpp"
 
 /*
@@ -35,3 +38,5 @@ public:
     #pragma endregion
 
 };
+
+#endif

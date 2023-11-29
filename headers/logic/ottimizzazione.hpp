@@ -1,3 +1,6 @@
+#ifndef OTTIMIZZAZIONE_HPP
+#define OTTIMIZZAZIONE_HPP
+
 #include "../entities/physical/Pack.hpp"
 #include <vector>
 
@@ -9,3 +12,5 @@ Description:
 */
 
 //TODO: define variables to optimize due to system and operations requirements
+
+#endif

@@ -1,3 +1,6 @@
+#ifndef SPOSTAPACCHI_HPP
+#define SPOSTAPACCHI_HPP
+
 #include "../entities/physical/Pack.hpp"
 #include <vector>
 
@@ -10,3 +13,5 @@ Description:
 
 std::vector<Pack*> packsToMove;
 std::vector<Pack*> movedPacks;
+
+#endif

@@ -1,3 +1,6 @@
+#ifndef TROVADOMINIO_HPP
+#define TROVADOMINIO_HPP
+
 #include "../entities/physical/Pack.hpp"
 #include <vector>
 
@@ -9,3 +12,5 @@ Description:
 */
 
 std::vector<Pack*> packsToNest;
+
+#endif
