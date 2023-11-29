@@ -31,5 +31,8 @@ struct TwoNum_set { //type for 2D coordinates
 #pragma endregion
 
 bool compareThreeNum_set (ThreeNum_set <float> firstSet, ThreeNum_set<float> secondSet);
+	TwoD_coords() : X(type(0)), Y(type(0)) {};
+	TwoD_coords(type x_val, type y_val) : X(type(x_val)), Y(type(y_val)) {};
+};
 
 #endif
