@@ -19,21 +19,14 @@ private:
     
 public:
     PalletGroup(int max = 0) {};
-    ~PalletGroup();
-    
-    #pragma region "Operators override"
-    #pragma endregion
     
     #pragma region "Set methods"
-    void setMax(int max);
-    #pragma endregion
-
-    #pragma region "Get methods"
+        void setMax(int max);
     #pragma endregion
 
     #pragma region "Public methods"
-    int addPallet(ptrPallet palletPtr);
-    int rmvPallet(int index = -1);
-    int palletCount() const;
+        int addPallet(ptrPallet palletPtr);
+        int rmvPallet(int index = -1);
+        int palletCount() const;
     #pragma endregion
 };
