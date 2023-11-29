@@ -12,8 +12,8 @@ Description:
 class Grid
 {
 private:
-    Plane XY, XZ, YZ;
+    Plane *XY, *XZ, *YZ;
 
 public:
-    Grid(ThreeNum_set<int> maxDimensions); //IMPLEMENTATION TODO: assign to Plane objects Planes based upon 0~dimensions
+    Grid(ThreeNum_set<float> maxDimensions); //IMPLEMENTATION TODO: assign to Plane objects Planes based upon 0~dimensions
 };
