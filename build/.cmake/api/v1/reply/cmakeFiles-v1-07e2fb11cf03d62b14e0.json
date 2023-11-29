@@ -6,7 +6,7 @@
 		},
 		{
 			"isGenerated" : true,
-			"path" : "build/CMakeFiles/3.26.4/CMakeSystem.cmake"
+			"path" : "build/CMakeFiles/3.26.0-rc6/CMakeSystem.cmake"
 		},
 		{
 			"isCMake" : true,
@@ -15,11 +15,11 @@
 		},
 		{
 			"isGenerated" : true,
-			"path" : "build/CMakeFiles/3.26.4/CMakeCCompiler.cmake"
+			"path" : "build/CMakeFiles/3.26.0-rc6/CMakeCCompiler.cmake"
 		},
 		{
 			"isGenerated" : true,
-			"path" : "build/CMakeFiles/3.26.4/CMakeCXXCompiler.cmake"
+			"path" : "build/CMakeFiles/3.26.0-rc6/CMakeCXXCompiler.cmake"
 		},
 		{
 			"isCMake" : true,
@@ -83,7 +83,7 @@
 		},
 		{
 			"isGenerated" : true,
-			"path" : "build/CMakeFiles/3.26.4/CMakeRCCompiler.cmake"
+			"path" : "build/CMakeFiles/3.26.0-rc6/CMakeRCCompiler.cmake"
 		},
 		{
 			"isCMake" : true,
@@ -149,8 +149,8 @@
 	"kind" : "cmakeFiles",
 	"paths" : 
 	{
-		"build" : "C:/Users/TomX37/Documents/0-repos_VisualStudioCode/EPS-Easy_Pallet_Solution/Testing/Model/003/build",
-		"source" : "C:/Users/TomX37/Documents/0-repos_VisualStudioCode/EPS-Easy_Pallet_Solution/Testing/Model/003"
+		"build" : "C:/Users/casar/OneDrive/Desktop/EPS-personalModelTest/build",
+		"source" : "C:/Users/casar/OneDrive/Desktop/EPS-personalModelTest"
 	},
 	"version" : 
 	{
