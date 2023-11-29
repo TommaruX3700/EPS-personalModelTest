@@ -5,7 +5,7 @@
 ### Variabili:
 ```cpp
 private:
-	int maxX, maxY;
+	TwoD_coords<int> maxDimensions;
 	Cell plane**;
 ```
 ---
@@ -13,9 +13,11 @@ private:
 ```cpp
 public:
 	Plane();
-	Plane(int maxX, int maxY);
+	Plane(TwoD_coords<int> maxDimensions);
 	
 	~Plane();
+	
+    TwoD_coords<int> getMaxPlaneDims();
 ```
 ---
 ### TODO:

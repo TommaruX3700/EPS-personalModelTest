@@ -2,7 +2,7 @@
 
 ### Variabili:
 ```cpp
-std::vector<Pack*> pacchiDaOrdinare; //INPUT
+std::vector<Pack*> packsToSort; //INPUT
 std::vector<Pack*> pacchiOrdinati; //OUTPUT1
 std::vector<Pack*> pacchiNonPallettizzabili; //OUTPUT2-> pacchi flaggati come non pallettizzabili
 ```
