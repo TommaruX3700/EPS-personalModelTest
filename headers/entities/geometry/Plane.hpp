@@ -18,5 +18,7 @@ public:
     Plane(TwoNum_set<float> maxDimensions) {};
     ~Plane();
 
-    TwoNum_set<float> getMaxPlaneDims();
+    #pragma region "Get methods"
+        TwoNum_set<float> getMaxPlaneDims() const;
+    #pragma endregion
 };
