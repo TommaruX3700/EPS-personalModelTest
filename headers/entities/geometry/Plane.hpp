@@ -15,7 +15,6 @@ private:
     Cell** plane;
 
 public:
-    Plane();
     Plane(TwoNum_set<int> maxDimensions) {};
     ~Plane();
 
