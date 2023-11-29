@@ -23,12 +23,8 @@ private:
 
 public:
     Pallet(ThreeNum_set<float> maxDimensions);
-    ~Pallet();
 
     //IDEA: add > and < operators 
-
-    #pragma region "Set methods"
-    #pragma endregion
 
     #pragma region "Get methods"
         int getPackCount() const;

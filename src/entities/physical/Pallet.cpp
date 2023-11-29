@@ -8,13 +8,6 @@ Pallet :: Pallet(ThreeNum_set<float> maxDimensions)
     this->pallet.clear();
 }
 
-Pallet :: ~Pallet()
-{
-}
-
-#pragma region "Set methods"
-#pragma endregion
-
 #pragma region "Get methods"
     int Pallet :: getPackCount() const
     {
