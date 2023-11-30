@@ -81,7 +81,7 @@ int main (int argc, char* argv[])
         std::cout 
         << "EPS-M: Start" << "\n" 
         << "> Input: " << inputString << "\n"
-        << "------------------------------------------------" << "\n";
+        << "-------------------------------------------------" << "\n";
     }
 
     int consoleErrorMessage (std::string errorString) 
@@ -91,7 +91,7 @@ int main (int argc, char* argv[])
         std::cerr
         << errorString << '\n';
         std::cout
-        << "------------------------------------------------" << "\n" <<
+        << "-------------------------------------------------" << "\n" <<
         std::endl;
         ;
         return -1;
