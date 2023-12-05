@@ -28,7 +28,7 @@ int main (int argc, char* argv[])
 {
     try
     {
-        #pragma region "Startup Routine"
+        #pragma region "CodeBlock 1 - Startup Routine"
             //Gets arguments as INPUT
             const std :: string inputJsonPath = argv[1];
             consoleStartMessage(inputJsonPath);
@@ -47,9 +47,32 @@ int main (int argc, char* argv[])
 
         #pragma endregion
 
-        #pragma region "End Routine"
+        #pragma region "CodeBlock 2 - Pallet Loop"
+
+            #pragma region "CodeBlock 2.1 - Ordinamento Input"
+            
+            #pragma endregion
+        
+            #pragma region "CodeBlock 2.2 - Scelta pacchi Nesting"
+            
+            #pragma endregion
+
+            #pragma region "CodeBlock 2.3 - Nesting loop"
+                // Qui dentro vengono usati i CodeBlocks:
+                // - 2.3.1;
+                // - 2.3.2; 
+                // - 2.3.3.
+
+            #pragma endregion
+
+        #pragma endregion
+
+        #pragma region "Code Block 3 - End Routine"
             //Output as json (Plan B: output string)
 
+            //TODO: 
+            //  - [ ] Ticket: "main: End Routine - vectorToJson() implementation"
+            //  - [ ] Ticket: "End Routine - BlockCode 2.4 - Output pallet"
             //Execute function to prepare the output json
             //nlohmann::json outputJson = vectorToJson(all the arguments needed)
             //std::cout << outputJson << '\n';
@@ -69,7 +92,10 @@ int main (int argc, char* argv[])
 }
 
 #pragma region "Function implementations"
-    //TODO - Ticket #15
+
+    //TODO:
+    //  - [ ] Ticket: "main: End Routine - vectorToJson() implementation"
+    //
     //json vectorToJson (all the arguments needed)
     //{ 
     //      Build the output json, structure defined in Documentation.
