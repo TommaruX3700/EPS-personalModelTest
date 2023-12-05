@@ -43,14 +43,13 @@ int main (int argc, char* argv[])
             }
 
             //Extract packs from it
-            
 
         #pragma endregion
 
         #pragma region "CodeBlock 2 - Pallet Loop"
 
             #pragma region "CodeBlock 2.1 - Ordinamento Input"
-            
+                
             #pragma endregion
         
             #pragma region "CodeBlock 2.2 - Scelta pacchi Nesting"
