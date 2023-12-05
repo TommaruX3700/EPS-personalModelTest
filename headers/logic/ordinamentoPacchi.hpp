@@ -15,10 +15,6 @@ Description:
 typedef std::vector<Pack*> packVector;
 typedef std::set<packVector> output;
 
-packVector packsToSort; //INPUT
-packVector sortedPacks; //OUTPUT_1 -> sorted pointers-to-objects vector
-packVector notSortablePacks; //OUPUT_2 -> packs flagged with "not packable"
-
 output sortInput(packVector inputVector);
 
 #endif
