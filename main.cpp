@@ -49,7 +49,8 @@ int main (int argc, char* argv[])
         #pragma region "CodeBlock 2 - Pallet Loop"
 
             #pragma region "CodeBlock 2.1 - Ordinamento Input"
-                
+                //TODO:
+                //  - filters packs by their gets as output a set of 2 vectors: pacchiPalletizzabili & pacchiNonPalletizzabili
             #pragma endregion
         
             #pragma region "CodeBlock 2.2 - Scelta pacchi Nesting"
