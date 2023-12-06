@@ -79,24 +79,21 @@ int main (int argc, char* argv[])
     void consoleStartMessage (std::string inputString)
     {
         std::cout 
-        << "#######################" << "\n" 
-        << "EPS-MODEL: START" << "\n" 
-        << "#######################" << "\n" 
-        << "Input argument: " << inputString 
-        << std::endl;
+        << "EPS-M: Start" << "\n" 
+        << "> Input: " << inputString << "\n"
+        << "-------------------------------------------------" << "\n";
     }
 
     int consoleErrorMessage (std::string errorString) 
     {
         std::cout 
-        << "#######################" << "\n" 
-        << "EPS-MODEL: ERROR" << "\n"
-        << "#######################" << "\n" <<
-        std::endl;
-        
+        << "EPS-M: Error" << "\n" << "> ";
         std::cerr
-        << errorString << '\n'
-        << "#######################" << "\n";
+        << errorString << '\n';
+        std::cout
+        << "-------------------------------------------------" << "\n" <<
+        std::endl;
+        ;
         return -1;
     }
 
