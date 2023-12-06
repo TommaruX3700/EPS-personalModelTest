@@ -47,32 +47,61 @@ int main (int argc, char* argv[])
         #pragma endregion
 
         #pragma region "CodeBlock 2 - Pallet Loop"
+            /*
+                Author: 
+                    Tommaso Maruzzo
+                Description:
+                    Main pallet creation loop.
+                    Must be iterated untill the end of available packs (palletizablePacksVector).
+            */
+            
+            std::vector<Pack*> palletizablePacksVector;
+            std::vector<Pack*> nonPalletizablePacksVector;            
 
             #pragma region "CodeBlock 2.1 - Ordinamento Input"
-                //TODO:
-                //  - filters packs by their gets as output a set of 2 vectors: pacchiPalletizzabili & pacchiNonPalletizzabili
+                /*
+                    Author: 
+                        Tommaso Maruzzo
+                    Description: 
+                        Filters out all the packs by their flags.
+                            - not palletizable ones appended on "nonPalletizablePacksVector";
+                            - palletizable ones appended on "palletizablePacksVector".
+                */
+
             #pragma endregion
         
-            #pragma region "CodeBlock 2.2 - Scelta pacchi Nesting"
-            
-            #pragma endregion
+            while (palletizablePacksVector.size())
+            {
+                //Loop gets back here once ended all the other operations
 
-            #pragma region "CodeBlock 2.3 - Nesting loop"
-                // Qui dentro vengono usati i CodeBlocks:
-                // - 2.3.1;
-                // - 2.3.2; 
-                // - 2.3.3.
+                #pragma region "CodeBlock 2.2 - Scelta pacchi Nesting"
+                    //Execute only once packToNest  routine 
 
-            #pragma endregion
+                #pragma endregion
+
+                #pragma region "CodeBlock 2.3 - Nesting loop"
+                    // Qui dentro vengono usati i CodeBlocks:
+                    // - 2.3.1;
+                    // - 2.3.2; 
+                    // - 2.3.3.
+
+                #pragma endregion
+
+                //Add non used packs to "packsToNest" vector
+            }
+
+    	    //Ticket "BlockCode 2 - End routine":
+            //  put all the rouge packs (from nonPalletizablePacksVector) on single pallets and append them to palletGroup.
 
         #pragma endregion
 
         #pragma region "Code Block 3 - End Routine"
+            
             //Output as json (Plan B: output string)
 
             //TODO: 
             //  - [ ] Ticket: "main: End Routine - vectorToJson() implementation"
-            //  - [ ] Ticket: "End Routine - BlockCode 2.4 - Output pallet"
+          
             //Execute function to prepare the output json
             //nlohmann::json outputJson = vectorToJson(all the arguments needed)
             //std::cout << outputJson << '\n';
