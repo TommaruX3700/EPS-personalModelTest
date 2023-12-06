@@ -19,7 +19,7 @@ old/*
 
 # C/C++ build outputs
 .build/
-
+.build/*.exe
 build/
 
 **/EPS-personalModelTest/build/**
