@@ -1,0 +1,36 @@
+{
+    "PalletGroups": [
+        { 
+            "PalletNum": 1, 
+            "Packs":[
+                {"PackCode": "001202", "Xpos": 1, "Ypos": 1, "rotation": 1},
+                {"PackCode": "002420", "Xpos": 3, "Ypos": 4, "rotation": 4},
+                {"PackCode": "002430", "Xpos": 5, "Ypos": 3, "rotation": 3},
+                {"PackCode": "002510", "Xpos": 6, "Ypos": 5, "rotation": 2},
+                {"PackCode": "002660", "Xpos": 8, "Ypos": 6, "rotation": 1}
+            ]
+        },
+        { 
+            "PalletNum": 2,
+            "Packs":[
+                {"PackCode": "001202", "Xpos": 1, "Ypos": 1, "rotation": 1},
+                {"PackCode": "003420", "Xpos": 3, "Ypos": 4, "rotation": 3},
+                {"PackCode": "004430", "Xpos": 5, "Ypos": 3, "rotation": 2},
+                {"PackCode": "006510", "Xpos": 6, "Ypos": 5, "rotation": 3},
+                {"PackCode": "007660", "Xpos": 8, "Ypos": 6, "rotation": 1}
+            ]
+        },
+        { 
+            "PalletNum": 3, 
+            "Packs":[
+                {"PackCode": "001342", "Xpos": 1, "Ypos": 1, "rotation": 1},
+                {"PackCode": "002626", "Xpos": 3, "Ypos": 4, "rotation": 4},
+                {"PackCode": "002482", "Xpos": 5, "Ypos": 3, "rotation": 2}
+            ]
+        }
+    ],
+    "UnNestedPacks":[
+        {"PackCode": "002780"},
+        {"PackCode": "002770"}
+    ]
+}

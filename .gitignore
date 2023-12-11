@@ -19,7 +19,7 @@ old/*
 
 # C/C++ build outputs
 .build/
-
+.build/*.exe
 build/
 
 **/EPS-personalModelTest/build/**
@@ -32,6 +32,6 @@ objs
 # Visual Studio Code artifacts
 .cache/*
 
-.vscode/*
+.vscode/settings.json
 
 .history/
