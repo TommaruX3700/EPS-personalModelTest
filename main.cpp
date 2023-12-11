@@ -73,10 +73,10 @@ int main (int argc, char* argv[])
             #pragma endregion
         
             auto start = std::chrono::steady_clock::now();
-            std::chrono::duration<double> duration;
+            std::chrono::duration<double> palletLoopDuration;
             
             //Loop gets back here once ended all the other operations and gets aborted if 15 seconds passed
-            while (palletizablePacksVector.size() && (duration.count() < 15))
+            while (palletizablePacksVector.size() && (palletLoopDuration.count() < 15))
             {
                 #pragma region "CodeBlock 2.2 - Scelta pacchi Nesting"
                     //Execute only once packToNest  routine 
@@ -95,11 +95,16 @@ int main (int argc, char* argv[])
                 
                 //gets partial Loop time
                 auto partialTime = std::chrono::steady_clock::now();
-                duration = partialTime - start;
-
+                palletLoopDuration = partialTime - start;
             }
 
     	    //Ticket "BlockCode 2 - End routine":
+            if (palletLoopDuration.count() >= 15)
+            {
+                //15 seconds has passed inside the loop
+                throw std::invalid_argument("Pallet loop took up to 15 seconds of execution: check code");
+            }
+            
             //  put all the rouge packs (from nonPalletizablePacksVector) on single pallets and append them to palletGroup.
 
         #pragma endregion
