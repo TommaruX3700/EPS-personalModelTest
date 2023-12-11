@@ -1,0 +1,39 @@
+{
+    "Packs": [
+        {
+            "PackCode": "0061",
+            "Flag1": 1,
+            "Flag2": 0
+        },
+        {
+            "PackCode": "0032",
+            "Flag1": 1,
+            "Flag2": 0
+        },
+        {
+            "PackCode": "0051",
+            "Flag1": 1,
+            "Flag2": 0
+        },
+        {
+            "PackCode": "0017",
+            "Flag1": 1,
+            "Flag2": 0
+        },
+        {
+            "PackCode": "0301",
+            "Flag1": 1,
+            "Flag2": 0
+        },
+        {
+            "PackCode": "0705",
+            "Flag1": 1,
+            "Flag2": 0
+        },
+        {
+            "PackCode": "0853",
+            "Flag1": 1,
+            "Flag2": 0
+        }
+    ]
+}

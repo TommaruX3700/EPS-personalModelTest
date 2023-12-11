@@ -42,7 +42,8 @@ int main (int argc, char* argv[])
                 throw std :: invalid_argument("Invalid JSON path provided or unable to access file.");
             }
 
-            //Extract packs from it
+            //Ticket: "BlockCode 1 - Lettura file json"
+            //  output: std::vector<Pack*> extractedPacksArray;
 
         #pragma endregion
 
