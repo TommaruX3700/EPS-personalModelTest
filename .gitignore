@@ -32,6 +32,6 @@ objs
 # Visual Studio Code artifacts
 .cache/*
 
-.vscode/*
+.vscode/settings.json
 
 .history/
