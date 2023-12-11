@@ -150,7 +150,7 @@ int main (int argc, char* argv[])
         std::cout 
         << "EPS-M: Start" << "\n" 
         << "> Input: " << inputString << "\n"
-        << "-------------------------------------------------" << "\n";
+        << "-------------------------------------------------" << std::endl;
     }
 
     int consoleErrorMessage (std::string errorString) 
