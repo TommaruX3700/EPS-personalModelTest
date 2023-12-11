@@ -3,6 +3,7 @@
     #include <fstream>
     #include <string>
     #include <vector>
+    #include <chrono>
 
     #include "extLibs/nlohmannJSON/json.hpp"
 
@@ -71,10 +72,12 @@ int main (int argc, char* argv[])
 
             #pragma endregion
         
-            while (palletizablePacksVector.size())
+            auto start = std::chrono::steady_clock::now();
+            std::chrono::duration<double> duration;
+            
+            //Loop gets back here once ended all the other operations and gets aborted if 15 seconds passed
+            while (palletizablePacksVector.size() && (duration.count() < 15))
             {
-                //Loop gets back here once ended all the other operations
-
                 #pragma region "CodeBlock 2.2 - Scelta pacchi Nesting"
                     //Execute only once packToNest  routine 
 
@@ -89,6 +92,11 @@ int main (int argc, char* argv[])
                 #pragma endregion
 
                 //Add non used packs to "packsToNest" vector
+                
+                //gets partial Loop time
+                auto partialTime = std::chrono::steady_clock::now();
+                duration = partialTime - start;
+
             }
 
     	    //Ticket "BlockCode 2 - End routine":
