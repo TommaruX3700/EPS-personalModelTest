@@ -50,13 +50,24 @@ Plane :: ~Plane ()
 #pragma region "Set methods"
     void Plane :: setOccupiedCells(Pack* inputPack) 
     {
-        
+        //This method sets cells as occupied only based on center value position and object dimensions
+        /*
+            I have: 
+                > object center: (X,Y,Z)
+                > object dimensions: dimX, dimY, dimZ
+            Notes:
+                > it is not important to consider Pack rotation: it is 
+                    already considered in the trasformations
+        */  
     }
 #pragma endregion
 
     void Plane :: freeOccupiedCells(Pack* inputPack)
     {
-
+        /*
+        IMPLEMENTATION TODO
+            Set all the selected cells to "nullptr"
+        */
     }
 
 #pragma region "Get methods"
