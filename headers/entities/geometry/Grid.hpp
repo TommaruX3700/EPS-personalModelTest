@@ -15,7 +15,8 @@ private:
     Plane *XY, *XZ, *YZ;
 
 public:
-    Grid(ThreeNum_set<float> maxDimensions); //IMPLEMENTATION TODO
+    Grid(ThreeNum_set<float> maxDimensions); 
 
-    void setOccupiedCells(); //IMPLEMENTATION TODO
+    void setOccupiedCells(Pack* inputPack); //IMPLEMENTATION TODO
+    void freeOccupiedCells(Pack* inputPack); //IMPLEMENTATION TODO
 };
