@@ -17,6 +17,6 @@ private:
 public:
     Grid(ThreeNum_set<float> maxDimensions); 
 
-    void setOccupiedCells(Pack* inputPack); //IMPLEMENTATION TODO
-    void freeOccupiedCells(Pack* inputPack); //IMPLEMENTATION TODO
+    void setOccupiedCells(Pack* inputPack); 
+    void freeOccupiedCells(Pack* inputPack);
 };

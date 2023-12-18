@@ -22,13 +22,13 @@ public:
         Plane& operator=(const Plane& n);
     #pragma endregion
 
-    #pragma region "Set methods"
-        void setOccupiedCells(Pack* inputPack); //TODO: evaluate if to return some datatype that tells where there are collisions or not.
-    #pragma endregion
-
-        void freeOccupiedCells(Pack* inputPack);
-
     #pragma region "Get methods"
         TwoNum_set<float> getMaxPlaneDims() const;
+    #pragma endregion
+
+    #pragma region "Cells occupation methods"
+        //TODO: evaluate if to return some datatype that tells where there are collisions or not.
+        void setOccupiedCells(Pack* inputPack); 
+        void freeOccupiedCells(Pack* inputPack);
     #pragma endregion
 };

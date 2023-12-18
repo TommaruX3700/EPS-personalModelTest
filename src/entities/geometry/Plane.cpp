@@ -47,7 +47,14 @@ Plane :: ~Plane ()
     }
 #pragma endregion
 
-#pragma region "Set methods"
+#pragma region "Get methods"
+    TwoNum_set<float> Plane :: getMaxPlaneDims() const
+    {
+        return this->maxDimensions;
+    }
+#pragma endregion
+
+#pragma region "Cells occupation methods"
     void Plane :: setOccupiedCells(Pack* inputPack) 
     {
         //This method sets cells as occupied only based on center value position and object dimensions
@@ -59,8 +66,8 @@ Plane :: ~Plane ()
                 > it is not important to consider Pack rotation: it is 
                     already considered in the trasformations
         */  
+
     }
-#pragma endregion
 
     void Plane :: freeOccupiedCells(Pack* inputPack)
     {
@@ -70,9 +77,4 @@ Plane :: ~Plane ()
         */
     }
 
-#pragma region "Get methods"
-    TwoNum_set<float> Plane :: getMaxPlaneDims() const
-    {
-        return this->maxDimensions;
-    }
 #pragma endregion
