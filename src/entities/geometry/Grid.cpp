@@ -23,11 +23,7 @@ Grid :: Grid (ThreeNum_set<float> maxDimensions)
 
 void Grid :: setOccupiedCells(Pack* inputPack)
 {
-    //TODO: MAKE A GEOMETRY OBJECT "AREA" 
-    //  - use that object to set those cells to "occupied"
-
-
-
+    //This method sets cells as occupied only based on center value position and object dimensions
     /*
         I have: 
             > object center: (X,Y,Z)
@@ -36,9 +32,16 @@ void Grid :: setOccupiedCells(Pack* inputPack)
             > it is not important to consider Pack rotation: it is 
                 already considered in the trasformations
     */
+
+    // passo ai metodi di occupazione delle celle ai PIANI e si arrangiano loro singolarmente.
+    // es: XY.occupyCells(input pacco); YZ.occupyCells(input pacco); ...
+    // idem x metodi di cancellazione.
 }
 
 void Grid :: freeOccupiedCells(Pack* inputPack)
 {
-    
+    /*
+    IMPLEMENTATION TODO
+        Set all the selected cells to "nullptr"
+    */
 }

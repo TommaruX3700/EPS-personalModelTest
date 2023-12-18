@@ -18,6 +18,14 @@ public:
     Plane(TwoNum_set<float> maxDimensions) {};
     ~Plane();
 
+    #pragma region "Override Operators"
+        Plane& operator=(const Plane& n);
+    #pragma endregion
+
+    #pragma region "Set methods"
+        
+    #pragma endregion
+
     #pragma region "Get methods"
         TwoNum_set<float> getMaxPlaneDims() const;
     #pragma endregion

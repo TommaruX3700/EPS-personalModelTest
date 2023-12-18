@@ -1,5 +1,14 @@
 #include "../../../headers/entities/geometry/Plane.hpp"
 
+Plane& Plane :: operator=(const Plane& n) 
+{
+    if (this != &n)
+    {
+        this->maxDimensions = n.maxDimensions;
+        this->plane = n.plane;
+    }
+}
+
 Plane :: Plane (TwoNum_set<float> maxDimensions)
 {
     this->maxDimensions.X = maxDimensions.X;
