@@ -8,12 +8,13 @@ Description:
 	Generic templates for common type of elements, such as:
 		- ThreeNum_set: 3 values data set, general defined by float type: generally used for 3D coordinates;
 		- TwoNum_set: 2 values data set, general defined by an int type: generally used for 2D coordinates or dimensions.
+		- Area: identifies an area between 2 diagonal points.
 */
 
 #pragma region "Project templates"
 template<typename type>
 struct ThreeNum_set { 
-	//type for 3D coordinates
+	//type for 3 num sets
 	type X, Y, Z;
 	ThreeNum_set() : X(type(0.0)), Y(type(0.0)), Z(type(0.0)) {}; //general constructor
 	ThreeNum_set(type x_val, type y_val, type z_val) : X(type(x_val)), Y(type(y_val)), Z(type(z_val)) {}; //specific constructor
@@ -21,18 +22,19 @@ struct ThreeNum_set {
 
 template<typename type>
 struct TwoNum_set { 
-	//type for 2D coordinates
+	//type for 2 num sets
 	type X, Y;
 	TwoNum_set() : X(type(0.0)), Y(type(0.0)) {};
 	TwoNum_set(type x_val, type y_val) : X(type(x_val)), Y(type(y_val)) {};
 };
 
-template<typename type>
-struct Area
-{
-	//define this object between 2 points and resume all the points inside
-	
-};
+// struct Volume
+// {
+// 	//define this object between 2 points and resume all the points inside
+// 	// IS THIS NECESSARY?? WE JUST HAVE TO OCCUPY CELLS BY NMODIFY POINTERS
+// 	//	LEAVE OBJECTS LIKE THESE FOR FURTHER IMPLEMENTATION ONLY IF NEEDED.
+// 	Volume(ThreeNum_set<int> volumeDims,  ) : 
+// };
 
 
 //TODO: make a geometry object "AREA"

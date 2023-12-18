@@ -18,7 +18,8 @@ protected:
     ThreeNum_set<float> centerCoords;   //[m]
     float weight;   //[Kg]
     float density;  //[Kg/m3]
-    float volume;   //[m3]
+    float m3Volume;   //[m3]
+    // VOLUME OBJECT (DATASET WITH ALL OCCUPIED CELLS) MISSING??
 
 private:
     ThreeNum_set<float> originalOrientationDims; //store objectDims values at orientation = 1

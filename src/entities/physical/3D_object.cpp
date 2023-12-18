@@ -45,7 +45,7 @@ Description:
         this->originalOrientationDims.Z = dims.Z;
 
         //calculate volume (this.volume)
-        this->volume = dims.X * dims.Y * dims.Z;
+        this->m3Volume = dims.X * dims.Y * dims.Z;
 
         //sets standard orientation
         this->orientation = 1;
@@ -63,7 +63,7 @@ Description:
     {
         //set object weight (this.weight) and calculate density (this.density)
         this->weight = kg;
-        this->density = kg / this->volume;
+        this->density = kg / this->m3Volume;
     }
 
     void ThreeD_object :: setOrientation(int orientation)
@@ -90,7 +90,7 @@ Description:
     float ThreeD_object :: getVolume() const
     {
         //Return object volume;
-        return this->volume;
+        return this->m3Volume;
     }
 
     float ThreeD_object :: getDensity() const
