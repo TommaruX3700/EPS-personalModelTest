@@ -55,12 +55,12 @@ Plane :: ~Plane ()
 #pragma endregion
 
 #pragma region "Cells occupation methods"
-    void Plane :: setOccupiedCells(Pack* inputPack) 
+    void Plane :: setOccupiedCells(Pack* inputPack, int planeType) 
     {
         //This method sets cells as occupied only based on center value position and object dimensions
         /*
             I have: 
-                > object center: (X,Y,Z)
+                > object center: (X,Y)
                 > object dimensions: dimX, dimY, dimZ
             Notes:
                 > it is not important to consider Pack rotation: it is 
@@ -69,7 +69,7 @@ Plane :: ~Plane ()
 
     }
 
-    void Plane :: freeOccupiedCells(Pack* inputPack)
+    void Plane :: freeOccupiedCells(Pack* inputPack, int planeType)
     {
         /*
         IMPLEMENTATION TODO
