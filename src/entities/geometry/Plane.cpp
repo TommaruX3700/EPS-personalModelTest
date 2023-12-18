@@ -5,7 +5,6 @@ Plane :: Plane (TwoNum_set<float> maxDimensions)
     this->maxDimensions.X = maxDimensions.X;
     this->maxDimensions.Y = maxDimensions.Y;
 
-    
     // Inizializzazione del piano con le celle
     int x = static_cast<int>(maxDimensions.X);
     int y = static_cast<int>(maxDimensions.Y);

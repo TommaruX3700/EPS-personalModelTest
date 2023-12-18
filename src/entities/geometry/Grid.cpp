@@ -24,4 +24,6 @@ Grid :: Grid (ThreeNum_set<float> maxDimensions)
 void Grid :: setOccupiedCells()
 {
     //TODO: MAKE A GEOMETRY OBJECT "AREA" 
+    //  - make a common object "area" which indentifies an area
+    //  - use that object to set those cells to "occupied"
 }

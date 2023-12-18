@@ -12,21 +12,30 @@ Description:
 
 #pragma region "Project templates"
 template<typename type>
-struct ThreeNum_set { //type for 3D coordinates
+struct ThreeNum_set { 
+	//type for 3D coordinates
 	type X, Y, Z;
 	ThreeNum_set() : X(type(0.0)), Y(type(0.0)), Z(type(0.0)) {}; //general constructor
 	ThreeNum_set(type x_val, type y_val, type z_val) : X(type(x_val)), Y(type(y_val)), Z(type(z_val)) {}; //specific constructor
 };
 
 template<typename type>
-struct TwoNum_set { //type for 2D coordinates
+struct TwoNum_set { 
+	//type for 2D coordinates
 	type X, Y;
 	TwoNum_set() : X(type(0.0)), Y(type(0.0)) {};
 	TwoNum_set(type x_val, type y_val) : X(type(x_val)), Y(type(y_val)) {};
 };
 
+template<typename type>
+struct Area
+{
+	//define this object between 2 points and resume all the points inside
+	
+};
+
+
 //TODO: make a geometry object "AREA"
-//	define this object between 2 points and resume all the points inside
 
 #pragma endregion
 
