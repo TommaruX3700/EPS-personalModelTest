@@ -26,6 +26,8 @@ public:
         void setOccupiedCells(Pack* inputPack); //TODO: evaluate if to return some datatype that tells where there are collisions or not.
     #pragma endregion
 
+        void freeOccupiedCells(Pack* inputPack);
+
     #pragma region "Get methods"
         TwoNum_set<float> getMaxPlaneDims() const;
     #pragma endregion

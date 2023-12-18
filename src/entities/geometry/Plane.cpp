@@ -54,6 +54,11 @@ Plane :: ~Plane ()
     }
 #pragma endregion
 
+    void Plane :: freeOccupiedCells(Pack* inputPack)
+    {
+
+    }
+
 #pragma region "Get methods"
     TwoNum_set<float> Plane :: getMaxPlaneDims() const
     {
