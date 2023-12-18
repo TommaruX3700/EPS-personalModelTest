@@ -36,6 +36,10 @@ void Grid :: setOccupiedCells(Pack* inputPack)
     // passo ai metodi di occupazione delle celle ai PIANI e si arrangiano loro singolarmente.
     // es: XY.occupyCells(input pacco); YZ.occupyCells(input pacco); ...
     // idem x metodi di cancellazione.
+
+    this->XY->setOccupiedCells(inputPack);
+    this->XZ->setOccupiedCells(inputPack);
+    this->YZ->setOccupiedCells(inputPack);
 }
 
 void Grid :: freeOccupiedCells(Pack* inputPack)

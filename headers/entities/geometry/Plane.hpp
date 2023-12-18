@@ -23,7 +23,7 @@ public:
     #pragma endregion
 
     #pragma region "Set methods"
-        
+        void setOccupiedCells(Pack* inputPack); //TODO: evaluate if to return some datatype that tells where there are collisions or not.
     #pragma endregion
 
     #pragma region "Get methods"

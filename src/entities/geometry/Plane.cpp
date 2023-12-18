@@ -1,14 +1,5 @@
 #include "../../../headers/entities/geometry/Plane.hpp"
 
-Plane& Plane :: operator=(const Plane& n) 
-{
-    if (this != &n)
-    {
-        this->maxDimensions = n.maxDimensions;
-        this->plane = n.plane;
-    }
-}
-
 Plane :: Plane (TwoNum_set<float> maxDimensions)
 {
     this->maxDimensions.X = maxDimensions.X;
@@ -44,6 +35,24 @@ Plane :: ~Plane ()
     }
     delete[] plane;
 }
+
+#pragma region "Override operator"
+    Plane& Plane :: operator=(const Plane& n) 
+    {
+        if (this != &n)
+        {
+            this->maxDimensions = n.maxDimensions;
+            this->plane = n.plane;
+        }
+    }
+#pragma endregion
+
+#pragma region "Set methods"
+    void Plane :: setOccupiedCells(Pack* inputPack) 
+    {
+        
+    }
+#pragma endregion
 
 #pragma region "Get methods"
     TwoNum_set<float> Plane :: getMaxPlaneDims() const
