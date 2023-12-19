@@ -18,6 +18,7 @@ Plane :: Plane (TwoNum_set<float> maxDimensions)
     // Inizializzazione delle celle
     for (int i = 0; i < x; ++i) {
         for (int j = 0; j < y; ++j) {
+            // by removing "+0.5" we will start considering by the down-left corner of the cells
             plane[i][j].coords.X = i+0.5;
             plane[i][j].coords.Y = j+0.5;
         }
@@ -65,15 +66,15 @@ Plane :: ~Plane ()
                 > it is not important to consider Pack rotation: it is 
                     already considered in the trasformations
         */  
+        
+        /*
+        DEV_Notes:
+          > valutare dimensione i se positiva o negativa
+          > put planes on a vector to decide what to use in the procedures without rewriting code 3 times   
+        */
        
-
-       // valutare dimensione i se positiva o negativa
-       // 
-
-        for (float i = posizioneX (vertice); i < dimX; i++)
-        {
-            /* code */
-        }
+       std :: vector<Cell**> planeList;
+       
         
     }
 
