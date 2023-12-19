@@ -70,10 +70,10 @@ Plane :: ~Plane ()
         /*
         DEV_Notes:
           > valutare dimensione i se positiva o negativa
-          > put planes on a vector to decide what to use in the procedures without rewriting code 3 times   
+          > put planes on a set to decide what to use in the procedures without rewriting code 3 times   
         */
        
-       std :: vector<Cell**> planeList;
+       std :: vector<Cell**> planeList = { };
        
         
     }

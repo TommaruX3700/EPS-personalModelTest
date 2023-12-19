@@ -1,6 +1,5 @@
 #include "Cell.hpp"
 
-#include <vector>
 /*
 Author:
     Federico Casarotto
