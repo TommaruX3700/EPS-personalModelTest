@@ -18,7 +18,6 @@ Plane :: Plane (TwoNum_set<float> maxDimensions)
     // Inizializzazione delle celle
     for (int i = 0; i < x; ++i) {
         for (int j = 0; j < y; ++j) {
-            plane[i][j].isFree = true;
             plane[i][j].coords.X = i+0.5;
             plane[i][j].coords.Y = j+0.5;
         }
@@ -66,7 +65,16 @@ Plane :: ~Plane ()
                 > it is not important to consider Pack rotation: it is 
                     already considered in the trasformations
         */  
+       
 
+       // valutare dimensione i se positiva o negativa
+       // 
+
+        for (float i = posizioneX (vertice); i < dimX; i++)
+        {
+            /* code */
+        }
+        
     }
 
     void Plane :: freeOccupiedCells(Pack* inputPack, int planeType)

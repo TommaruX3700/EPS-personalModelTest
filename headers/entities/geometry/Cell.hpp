@@ -17,7 +17,6 @@ Description:
 struct Cell
 {
     TwoNum_set<float> coords; //this rappresents only position on the plane
-    bool isFree;
     Pack* pack = nullptr;
 };
 
