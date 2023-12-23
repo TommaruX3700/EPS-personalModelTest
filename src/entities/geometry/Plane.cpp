@@ -90,14 +90,15 @@ Plane :: ~Plane ()
                 case 1:
                     //XY
                     ThreeNum_set<int> center = inputPack->getCenterCoords();
+                    ThreeNum_set<int> dimensions = inputPack->getDims();
 
                     TwoNum_set<int> set1, set2;
-                    set1 = findDimsRoutine(, dimensione1);
-                    set2 = findDimsRoutine(posCentro2, dimensione2);
+                    set1 = findDimsRoutine(center.X, dimensions.X);
+                    set2 = findDimsRoutine(center.Y, dimensions.Y);
 
-                    for (int i = dimGenerazione1; i < dimEndGenerazione1; i++)
+                    for (int i = set1.X; i < set1.Y; i++)
                     {
-                        for (int j = dimGenerazione2; j < dimEndGenerazione2; j++)
+                        for (int j = set2.X; j < set2.Y; j++)
                         {
                             plane[i][j].pack = inputPack;
                         }
