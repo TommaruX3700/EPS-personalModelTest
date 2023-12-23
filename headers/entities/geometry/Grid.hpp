@@ -16,7 +16,7 @@ private:
 
 public:
     Grid(ThreeNum_set<float> maxDimensions); 
-
+    //Necessario passare solamente il parametro pacco, in quanto la posizione dipende dal valore del centro del pacco
     void setOccupiedCells(Pack* inputPack); 
     void freeOccupiedCells(Pack* inputPack);
 };

@@ -65,24 +65,36 @@ Plane :: ~Plane ()
             Notes:
                 > it is not important to consider Pack rotation: it is 
                     already considered in the trasformations
-        */  
-        
-        /*
         DEV_Notes:
           > valutare dimensione i se positiva o negativa
-          > put available planes on a set and decide what to use in the procedures without rewriting code 3 times   
+          > put available planes on a set and decide what to use in the procedures without rewriting code 3 times
+            > necessario??: la classe Plane si riferisce ad un plane GENERICO e le variabili dimensionali che ci butto in input dipendono interamente dal tipo di piano
+            > ok, quindi il "planeType" serve solo a farmi capire quale valore di dims andare a recuperare.
+            > 1: dims.X + dims.Y
+            > 2: dims.Y + dims.Z
+            > 3: dims.Z + dims.X   
         */
+
+       try
+       {
+            planeType = planeType - 1; 
+            std :: vector<ThreeNum_set<float>> planeList = {};
+       }
+       catch(const std::exception& e)
+       {
+            std::cerr << "ERROR on Plane.cpp :: setOccupiedCellsOnPLaneType()" << e.what() << '\n';
+       }
        
-       std :: vector<Cell**> planeList = { };
-       
-        
+
     }
 
     void Plane :: freeOccupiedCellsOnPlaneType(Pack* inputPack, int planeType)
     {
         /*
         IMPLEMENTATION TODO
-            Set all the selected cells to "nullptr"
+            > Set all the selected cells to "nullptr"
+            > SETTARE TUTTI I PUNTI CHE OCCUPAVA QUEL PACCO A "nullptr" -> 
+                > valutare se racchiudere in un set (interno al pacco) di punti/riferimenti che danno come riferimento area di occupazione, per migliorare e re
         */
     }
 

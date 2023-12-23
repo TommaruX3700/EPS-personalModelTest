@@ -1,4 +1,6 @@
 #include "Cell.hpp"
+
+#include <iostream>
 #include <vector>
 
 /*
