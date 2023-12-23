@@ -55,7 +55,7 @@ Plane :: ~Plane ()
 #pragma endregion
 
 #pragma region "Cells occupation methods"
-    void Plane :: setOccupiedCellsOnPlaneType(Pack* inputPack, int planeType) 
+    int Plane :: setOccupiedCellsOnPlaneType(Pack* inputPack, int planeType) 
     {
         //This method sets cells as occupied only based on center value position and object dimensions
         /*
@@ -77,18 +77,33 @@ Plane :: ~Plane ()
 
        try
        {
-            planeType = planeType - 1; 
-            std :: vector<ThreeNum_set<float>> planeList = {};
+            switch (planeType)
+            {
+            case 1:
+                /* code */
+                break;
+            case 2:
+                break;
+
+            case 3:
+                break;
+            
+            default:
+                throw std::runtime_error("Use a defined plane type -> 1: XY, 2: YZ, 3: XZ" + '\n');
+                break;
+            }
+            return 1;
        }
        catch(const std::exception& e)
        {
             std::cerr << "ERROR on Plane.cpp :: setOccupiedCellsOnPLaneType()" << e.what() << '\n';
+            return -1;
        }
        
 
     }
 
-    void Plane :: freeOccupiedCellsOnPlaneType(Pack* inputPack, int planeType)
+    int Plane :: freeOccupiedCellsOnPlaneType(Pack* inputPack, int planeType)
     {
         /*
         IMPLEMENTATION TODO
@@ -96,6 +111,18 @@ Plane :: ~Plane ()
             > SETTARE TUTTI I PUNTI CHE OCCUPAVA QUEL PACCO A "nullptr" -> 
                 > valutare se racchiudere in un set (interno al pacco) di punti/riferimenti che danno come riferimento area di occupazione, per migliorare e re
         */
+
+       try
+       {
+        /* code */
+        return 1;
+       }
+       catch(const std::exception& e)
+       {
+        std::cerr << e.what() << '\n';
+        return -1;
+       }
+       
     }
 
 #pragma endregion
