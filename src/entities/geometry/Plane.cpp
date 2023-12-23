@@ -55,7 +55,7 @@ Plane :: ~Plane ()
 #pragma endregion
 
 #pragma region "Cells occupation methods"
-    void Plane :: setOccupiedCells(Pack* inputPack, int planeType) 
+    void Plane :: setOccupiedCellsOnPlaneType(Pack* inputPack, int planeType) 
     {
         //This method sets cells as occupied only based on center value position and object dimensions
         /*
@@ -70,7 +70,7 @@ Plane :: ~Plane ()
         /*
         DEV_Notes:
           > valutare dimensione i se positiva o negativa
-          > put planes on a set to decide what to use in the procedures without rewriting code 3 times   
+          > put available planes on a set and decide what to use in the procedures without rewriting code 3 times   
         */
        
        std :: vector<Cell**> planeList = { };
