@@ -1,6 +1,6 @@
 #include "../../../headers/entities/geometry/Plane.hpp"
 
-Plane :: Plane (TwoNum_set<float> maxDimensions)
+Plane :: Plane (TwoNum_set<int> maxDimensions)
 {
     this->maxDimensions.X = maxDimensions.X;
     this->maxDimensions.Y = maxDimensions.Y;
@@ -18,9 +18,9 @@ Plane :: Plane (TwoNum_set<float> maxDimensions)
     // Inizializzazione delle celle
     for (int i = 0; i < x; ++i) {
         for (int j = 0; j < y; ++j) {
-            // by removing "+0.5" we will start considering by the down-left corner of the cells
-            plane[i][j].coords.X = i+0.5;
-            plane[i][j].coords.Y = j+0.5;
+            // by using "+0" we will start considering by the down-left corner of the cells
+            plane[i][j].coords.X = i+0;
+            plane[i][j].coords.Y = j+0;
         }
     }
 
@@ -48,13 +48,21 @@ Plane :: ~Plane ()
 #pragma endregion
 
 #pragma region "Get methods"
-    TwoNum_set<float> Plane :: getMaxPlaneDims() const
+    TwoNum_set<int> Plane :: getMaxPlaneDims() const
     {
         return this->maxDimensions;
     }
 #pragma endregion
 
 #pragma region "Cells occupation methods"
+    TwoNum_set<int> findDimsRoutine (int center, int dimension)
+    {
+        TwoNum_set<int> output;
+        output.X = abs(center - (dimension/2));
+        output.Y = abs(center + (dimension/2));
+        return output;
+    }
+
     int Plane :: setOccupiedCellsOnPlaneType(Pack* inputPack, int planeType) 
     {
         //This method sets cells as occupied only based on center value position and object dimensions
@@ -79,18 +87,37 @@ Plane :: ~Plane ()
        {
             switch (planeType)
             {
-            case 1:
-                /* code */
-                break;
-            case 2:
-                break;
+                case 1:
+                    //XY
+                    ThreeNum_set<int> center = inputPack->getCenterCoords();
 
-            case 3:
-                break;
-            
-            default:
-                throw std::runtime_error("Use a defined plane type -> 1: XY, 2: YZ, 3: XZ" + '\n');
-                break;
+                    TwoNum_set<int> set1, set2;
+                    set1 = findDimsRoutine(, dimensione1);
+                    set2 = findDimsRoutine(posCentro2, dimensione2);
+
+                    for (int i = dimGenerazione1; i < dimEndGenerazione1; i++)
+                    {
+                        for (int j = dimGenerazione2; j < dimEndGenerazione2; j++)
+                        {
+                            plane[i][j].pack = inputPack;
+                        }
+                    }
+                    
+                    break;
+                
+                case 2:
+                    //YZ
+
+                    break;
+
+                case 3:
+                    //XZ
+
+                    break;
+                
+                default:
+                    throw std::runtime_error("Use a defined plane type -> 1: XY, 2: YZ, 3: XZ" + '\n');
+                    break;
             }
             return 1;
        }

@@ -14,11 +14,11 @@ Description:
 class Plane
 {
 private:
-    TwoNum_set<float> maxDimensions;
+    TwoNum_set<int> maxDimensions;
     Cell** plane;
 
 public:
-    Plane(TwoNum_set<float> maxDimensions) {};
+    Plane(TwoNum_set<int> maxDimensions) {};
     ~Plane();
 
     #pragma region "Override Operators"
@@ -26,7 +26,7 @@ public:
     #pragma endregion
 
     #pragma region "Get methods"
-        TwoNum_set<float> getMaxPlaneDims() const;
+        TwoNum_set<int> getMaxPlaneDims() const;
     #pragma endregion
 
     #pragma region "Cells occupation methods"

@@ -1,6 +1,6 @@
 #include "../../../headers/entities/physical/Pack.hpp"
 
-Pack :: Pack (ThreeNum_set<float> dims, ThreeNum_set<float> coords, float packWeight, int packID, bool rotFlag) 
+Pack :: Pack (ThreeNum_set<int> dims, ThreeNum_set<int> coords, float packWeight, int packID, bool rotFlag) 
     {
         this->packID = packID;
         this->rotatableFlag = rotFlag;

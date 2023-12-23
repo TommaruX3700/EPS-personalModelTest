@@ -1,8 +1,8 @@
 #include "../../../headers/entities/geometry/Grid.hpp"
 
-Grid :: Grid (ThreeNum_set<float> maxDimensions)
+Grid :: Grid (ThreeNum_set<int> maxDimensions)
 {
-    TwoNum_set<float> cpySet;
+    TwoNum_set<int> cpySet;
 
     //XY plane
     cpySet.X = maxDimensions.X;

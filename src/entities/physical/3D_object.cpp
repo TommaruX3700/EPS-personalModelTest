@@ -32,7 +32,7 @@ Description:
 #pragma endregion
 
 #pragma region "Set methods"
-    void ThreeD_object :: setDims(ThreeNum_set<float> dims)
+    void ThreeD_object :: setDims(ThreeNum_set<int> dims)
     {
         //set object X, Y, Z dimensions (this.objectDims) 
         this->objectDims.X = dims.X;
@@ -51,7 +51,7 @@ Description:
         this->orientation = 1;
     }
 
-    void ThreeD_object :: setCenterCoords(ThreeNum_set<float> coords)
+    void ThreeD_object :: setCenterCoords(ThreeNum_set<int> coords)
     {
         //set object certer coordinates (this.centerCoords)
         this->centerCoords.X = coords.X;
@@ -75,13 +75,13 @@ Description:
 #pragma endregion
 
 #pragma region "Get methods"
-    ThreeNum_set<float> ThreeD_object :: getDims() const
+    ThreeNum_set<int> ThreeD_object :: getDims() const
     {
         //Return a ThreeNum_set object with this.objectDims
         return this->objectDims;
     }
     
-    ThreeNum_set<float> ThreeD_object :: getCenterCoords() const 
+    ThreeNum_set<int> ThreeD_object :: getCenterCoords() const 
     {
         //Return a ThreeNum_set object with this.centerCoords
         return this->centerCoords;
@@ -121,7 +121,7 @@ Description:
         if (orientation != this->orientation) 
         {
             //Pass-Value Variable
-            const ThreeNum_set<float> originalDims = this->objectDims; 
+            const ThreeNum_set<int> originalDims = this->objectDims; 
 
             //Need to reset position before any rotation
             backToOriginalPosition();
