@@ -30,6 +30,6 @@ public:
     #pragma region "Cells occupation methods"
         //TODO: evaluate if to return some datatype that tells where there are collisions or not.
         void setOccupiedCellsOnPlaneType(Pack* inputPack, int planeType); 
-        void freeOccupiedCells(Pack* inputPack, int planeType);
+        void freeOccupiedCellsOnPlaneType(Pack* inputPack, int planeType);
     #pragma endregion
 };

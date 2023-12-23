@@ -78,7 +78,7 @@ Plane :: ~Plane ()
         
     }
 
-    void Plane :: freeOccupiedCells(Pack* inputPack, int planeType)
+    void Plane :: freeOccupiedCellsOnPlaneType(Pack* inputPack, int planeType)
     {
         /*
         IMPLEMENTATION TODO

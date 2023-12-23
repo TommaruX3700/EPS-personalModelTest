@@ -23,14 +23,14 @@ Grid :: Grid (ThreeNum_set<float> maxDimensions)
 
 void Grid :: setOccupiedCells(Pack* inputPack)
 {
-    this->XY->setOccupiedCells(inputPack, 1);
-    this->XZ->setOccupiedCells(inputPack, 2);
-    this->YZ->setOccupiedCells(inputPack, 3);
+    this->XY->setOccupiedCellsOnPlaneType(inputPack, 1);
+    this->XZ->setOccupiedCellsOnPlaneType(inputPack, 2);
+    this->YZ->setOccupiedCellsOnPlaneType(inputPack, 3);
 }
 
 void Grid :: freeOccupiedCells(Pack* inputPack)
 {
-   this->XY->freeOccupiedCells(inputPack, 1);
-   this->XZ->freeOccupiedCells(inputPack, 2);
-   this->YZ->freeOccupiedCells(inputPack, 3);
+   this->XY->freeOccupiedCellsOnPlaneType(inputPack, 1);
+   this->XZ->freeOccupiedCellsOnPlaneType(inputPack, 2);
+   this->YZ->freeOccupiedCellsOnPlaneType(inputPack, 3);
 }
