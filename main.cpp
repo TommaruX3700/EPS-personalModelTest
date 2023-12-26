@@ -1,3 +1,5 @@
+#define TEST_MODE 0 //Enable to 1 to execute only "TEST_REGION"
+
 #pragma region "Includes" 
     #include <iostream>
     #include <fstream>
@@ -27,6 +29,7 @@
 
 int main (int argc, char* argv[]) 
 {
+    #if TEST_MODE == 0
     try
     {
         #pragma region "CodeBlock 1 - Startup Routine"
@@ -122,17 +125,18 @@ int main (int argc, char* argv[])
 
         #pragma endregion
         
-        #pragma region "tests"
-            // ThreeNum_set<int> testDims, testCoords;
-            // float testWeight;
-            // int testID;
-            // bool testFlag;
-            // Pack testPack(testDims, testCoords, testWeight, testID, testFlag);
-            // testPack.getDims(); //inaccessible methods: this means no accessible methods from father class
+    #else
+        #pragma region "TEST_REGION"
+            ThreeNum_set<int> testDims, testCoords;
+            float testWeight;
+            int testID;
+            bool testFlag;
+            Pack testPack(testDims, testCoords, testWeight, testID, testFlag);
+            testPack.getDims(); //inaccessible methods: this means no accessible methods from father class
 
 
         #pragma endregion 
-
+    #endif
         return 0;
     }
     catch(const std::invalid_argument& e) 
@@ -160,22 +164,38 @@ int main (int argc, char* argv[])
 
     void consoleStartMessage (std::string inputString)
     {
-        std::cout 
-        << "EPS-M: Start" << "\n" 
-        << "> Input: " << inputString << "\n"
-        << "-------------------------------------------------" << std::endl;
+        #if TEST_MODE == 1
+            std::cout 
+            << "EPS-M_TEST_MODE: START" << "\n" 
+            << "> Input: " << inputString << "\n"
+            << "-------------------------------------------------" << std::endl;
+        #else
+            std::cout 
+            << "EPS-M: Start" << "\n" 
+            << "> Input: " << inputString << "\n"
+            << "-------------------------------------------------" << std::endl;
+        #endif
     }
 
     int consoleErrorMessage (std::string errorString) 
     {
-        std::cout 
-        << "EPS-M: Error" << "\n" << "> ";
-        std::cerr
-        << errorString << '\n';
-        std::cout
-        << "-------------------------------------------------" << "\n" <<
-        std::endl;
-        ;
+        #if TEST_MODE == 1
+            std::cout 
+            << "EPS-M_TEST_MODE: ERROR" << "\n" << "> ";
+            std::cerr
+            << errorString << '\n';
+            std::cout
+            << "-------------------------------------------------" << "\n" <<
+            std::endl;
+        #else
+            std::cout 
+            << "EPS-M: ERROR" << "\n" << "> ";
+            std::cerr
+            << errorString << '\n';
+            std::cout
+            << "-------------------------------------------------" << "\n" <<
+            std::endl;
+        #endif
         return -1;
     }
 
