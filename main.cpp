@@ -39,9 +39,15 @@ int main (int argc, char* argv[])
 
             //TODO: test creazione Pack
             ThreeNum_set<int> testDims, testCoords;
-            float testWeight;
-            int testID;
-            bool testFlag;
+            testDims.X = 1;
+            testDims.Y = 1;
+            testDims.Z = 1;
+            testCoords.X = 1; 
+            testCoords.Y = 1;
+            testCoords.Z = 1; 
+            float testWeight = 2.4;
+            int testID = 10;
+            bool testFlag = true;
             Pack testPack(testDims, testCoords, testWeight, testID, testFlag);
 
             //TODO: test creazione Grid
