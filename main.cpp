@@ -122,6 +122,17 @@ int main (int argc, char* argv[])
 
         #pragma endregion
         
+        #pragma region "tests"
+            // ThreeNum_set<int> testDims, testCoords;
+            // float testWeight;
+            // int testID;
+            // bool testFlag;
+            // Pack testPack(testDims, testCoords, testWeight, testID, testFlag);
+            // testPack.getDims(); //inaccessible methods: this means no accessible methods from father class
+
+
+        #pragma endregion 
+
         return 0;
     }
     catch(const std::invalid_argument& e) 
@@ -131,7 +142,9 @@ int main (int argc, char* argv[])
     catch(const std::exception& e)
     {
         return consoleErrorMessage(e.what());
-    }   
+    }  
+
+
 }
 
 #pragma region "Function implementations"

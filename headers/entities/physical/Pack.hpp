@@ -10,7 +10,7 @@ Description:
     Pack object.
 */
 
-class Pack : ThreeD_object
+class Pack : public ThreeD_object
 {
 private:
     int packID; //pack ID
