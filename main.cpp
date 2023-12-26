@@ -37,7 +37,7 @@ int main (int argc, char* argv[])
             float testWeight;
             int testID;
             bool testFlag;
-            Pack testPack(testDims, testCoords, testWeight, testID, testFlag);
+            //Pack testPack(testDims, testCoords, testWeight, testID, testFlag);
             consoleLog("testBuilds");
 
     #else
