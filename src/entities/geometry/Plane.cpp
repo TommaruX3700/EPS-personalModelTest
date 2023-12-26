@@ -67,25 +67,34 @@ Plane :: ~Plane ()
     {
         //Private method: used to fill an area with Pack pointers
         for (int i = set1.X; i < set1.Y; i++)
+        {
+            for (int j = set2.X; j < set2.Y; j++)
             {
-                for (int j = set2.X; j < set2.Y; j++)
-                {
-                    plane[i][j].pack = inputPack;
-                }
+                plane[i][j].pack = inputPack;
             }
+        }
     }
 
-    void Plane :: deleteArea (TwoNum_set<int> set1, TwoNum_set<int> set2, Pack* inputPack) 
+    void Plane :: freeArea (TwoNum_set<int> set1, TwoNum_set<int> set2, Pack* inputPack) 
     {
         //Private method: used to delete a Pack pointers area
-        
+        for (int i = set1.X; i < set1.Y; i++)
+        {
+            for (int j = set2.X; j < set2.Y; j++)
+            {
+                if (plane[i][j].pack == inputPack)
+                {
+                    plane[i][j].pack = nullptr;
+                }
+            }
+        }
     }
 
     int Plane :: setOccupiedCellsOnPlaneType (Pack* inputPack, int planeType) 
     {
-        //This method sets cells as occupied only based on center value position and object dimensions
-       try
-       {
+        //This method sets cells as occupied using center value position and object dimensions
+        try
+        {
             switch (planeType)
             {
                 case 1:
@@ -94,51 +103,64 @@ Plane :: ~Plane ()
                         ThreeNum_set<int> dimensions = inputPack->getDims();
                         fillArea(findDimsRoutine(center.X, dimensions.X), findDimsRoutine(center.Y, dimensions.Y), inputPack);
                     break;
-                
+
                 case 2:
                     //YZ
                         ThreeNum_set<int> center = inputPack->getCenterCoords();
                         ThreeNum_set<int> dimensions = inputPack->getDims();
                         fillArea(findDimsRoutine(center.Y, dimensions.Y), findDimsRoutine(center.Z, dimensions.Z), inputPack);
-                    break;
-
+                    break; 
                 case 3:
                     //XZ
                         ThreeNum_set<int> center = inputPack->getCenterCoords();
                         ThreeNum_set<int> dimensions = inputPack->getDims();
                         fillArea(findDimsRoutine(center.X, dimensions.X), findDimsRoutine(center.Z, dimensions.Z), inputPack);
                     break;
-                
+
                 default:
                     throw std::runtime_error("Use a defined plane type -> 1: XY, 2: YZ, 3: XZ" + '\n');
                     break;
             }
             return 1;
-       }
-       catch(const std::exception& e)
-       {
+        }
+        catch(const std::exception& e)
+        {
             std::cerr << "ERROR on Plane.cpp :: setOccupiedCellsOnPLaneType()" << e.what() << '\n';
             return -1;
-       }
-       
+        }
     }
 
     int Plane :: freeOccupiedCellsOnPlaneType(Pack* inputPack, int planeType)
     {
-        /*
-        IMPLEMENTATION TODO
-            > Set all the selected cells to "nullptr"
-            > SETTARE TUTTI I PUNTI CHE OCCUPAVA QUEL PACCO A "nullptr" -> 
-                > valutare se racchiudere in un set (interno al pacco) di punti/riferimenti che danno come riferimento area di occupazione, per migliorare e re
-        
-            Dev_notes:
-            > oggettivamente, se ho la coordinata centrale del pacco, mi "basterà" andare sfruttare la procedura simile all'occupazione celle e aggiungere un controllo 
-                se le suddette celle siano o meno occupare dal puntatore al pacco di nostro interesse.
-        
-        */
+        //This method frees cells using center position and object dimensions
         try
         {
+            switch (planeType)
+            {
+                case 1:
+                    //XY
+                        ThreeNum_set<int> center = inputPack->getCenterCoords();
+                        ThreeNum_set<int> dimensions = inputPack->getDims();
+                        freeArea(findDimsRoutine(center.X, dimensions.X), findDimsRoutine(center.Y, dimensions.Y), inputPack);
+                    break;
 
+                case 2:
+                    //YZ
+                        ThreeNum_set<int> center = inputPack->getCenterCoords();
+                        ThreeNum_set<int> dimensions = inputPack->getDims();
+                        freeArea(findDimsRoutine(center.Y, dimensions.Y), findDimsRoutine(center.Z, dimensions.Z), inputPack);
+                    break; 
+                case 3:
+                    //XZ
+                        ThreeNum_set<int> center = inputPack->getCenterCoords();
+                        ThreeNum_set<int> dimensions = inputPack->getDims();
+                        freeArea(findDimsRoutine(center.X, dimensions.X), findDimsRoutine(center.Z, dimensions.Z), inputPack);
+                    break;
+
+                default:
+                    throw std::runtime_error("Use a defined plane type -> 1: XY, 2: YZ, 3: XZ" + '\n');
+                    break;
+            }
             return 1;
         }
         catch(const std::exception& e)
