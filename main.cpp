@@ -33,20 +33,22 @@ int main (int argc, char* argv[])
     try
     {
     #if TEST_MODE == 1
-            //test creazione Pack
+        /*
+            TODO: Ticket #25
+        */
 
-            //test creazione Grid
-
-            //test assegnazione Pack su Grid
-
-            //test eliminazione Pack da Grid
-            
+            //TODO: test creazione Pack
             ThreeNum_set<int> testDims, testCoords;
-
             float testWeight;
             int testID;
             bool testFlag;
             Pack testPack(testDims, testCoords, testWeight, testID, testFlag);
+
+            //TODO: test creazione Grid
+
+            //TODO: test assegnazione Pack su Grid
+
+            //TODO: test eliminazione Pack da Grid
 
     #else
         #pragma region "CodeBlock 1 - Startup Routine"
