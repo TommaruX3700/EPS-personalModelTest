@@ -33,12 +33,20 @@ int main (int argc, char* argv[])
     try
     {
     #if TEST_MODE == 1
+            //test creazione Pack
+
+            //test creazione Grid
+
+            //test assegnazione Pack su Grid
+
+            //test eliminazione Pack da Grid
+            
             ThreeNum_set<int> testDims, testCoords;
+
             float testWeight;
             int testID;
             bool testFlag;
-            //Pack testPack(testDims, testCoords, testWeight, testID, testFlag);
-            consoleLog("testBuilds");
+            Pack testPack(testDims, testCoords, testWeight, testID, testFlag);
 
     #else
         #pragma region "CodeBlock 1 - Startup Routine"
