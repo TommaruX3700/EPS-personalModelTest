@@ -1,5 +1,11 @@
 #include "Cell.hpp"
 
+//#include "../physical/3D_object.hpp" //TODO: test if this gives back errors 
+
+
+#include <iostream>
+#include <vector>
+
 /*
 Author:
     Federico Casarotto
@@ -11,14 +17,26 @@ Description:
 class Plane
 {
 private:
-    TwoNum_set<float> maxDimensions;
+    TwoNum_set<int> maxDimensions;
     Cell** plane;
+    void fillArea(TwoNum_set<int> set1, TwoNum_set<int> set2, Pack* inputPack);
+    void freeArea(TwoNum_set<int> set1, TwoNum_set<int> set2, Pack* inputPack);
 
 public:
-    Plane(TwoNum_set<float> maxDimensions) {};
+    Plane(TwoNum_set<int> maxDimensions) {};
     ~Plane();
 
+    #pragma region "Override Operators"
+        Plane& operator=(const Plane& n);
+    #pragma endregion
+
     #pragma region "Get methods"
-        TwoNum_set<float> getMaxPlaneDims() const;
+        TwoNum_set<int> getMaxPlaneDims() const;
+    #pragma endregion
+
+    #pragma region "Cells occupation methods"
+        //TODO: evaluate if to return some datatype that tells where there are collisions or not.
+        int setOccupiedCellsOnPlaneType(Pack* inputPack, int planeType); 
+        int freeOccupiedCellsOnPlaneType(Pack* inputPack, int planeType);
     #pragma endregion
 };

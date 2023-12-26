@@ -1,6 +1,6 @@
 #include "../../../headers/entities/physical/Pallet.hpp"
 
-Pallet :: Pallet(ThreeNum_set<float> maxDimensions)
+Pallet :: Pallet(ThreeNum_set<int> maxDimensions)
 {
     this->maxDims.X = maxDimensions.X;
     this->maxDims.Y = maxDimensions.Y;
@@ -14,7 +14,7 @@ Pallet :: Pallet(ThreeNum_set<float> maxDimensions)
         return this->pallet.size();
     }
 
-    ThreeNum_set<float> Pallet :: getPalletDims() const
+    ThreeNum_set<int> Pallet :: getPalletDims() const
     {
         return this->maxDims;
     }
