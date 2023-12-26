@@ -65,6 +65,7 @@ Plane :: ~Plane ()
 
     void Plane :: fillArea (TwoNum_set<int> set1, TwoNum_set<int> set2, Pack* inputPack)
     {
+        //Private method: used to fill an area with Pack pointers
         for (int i = set1.X; i < set1.Y; i++)
             {
                 for (int j = set2.X; j < set2.Y; j++)
@@ -74,7 +75,13 @@ Plane :: ~Plane ()
             }
     }
 
-    int Plane :: setOccupiedCellsOnPlaneType(Pack* inputPack, int planeType) 
+    void Plane :: deleteArea (TwoNum_set<int> set1, TwoNum_set<int> set2, Pack* inputPack) 
+    {
+        //Private method: used to delete a Pack pointers area
+        
+    }
+
+    int Plane :: setOccupiedCellsOnPlaneType (Pack* inputPack, int planeType) 
     {
         //This method sets cells as occupied only based on center value position and object dimensions
        try
@@ -123,19 +130,22 @@ Plane :: ~Plane ()
             > Set all the selected cells to "nullptr"
             > SETTARE TUTTI I PUNTI CHE OCCUPAVA QUEL PACCO A "nullptr" -> 
                 > valutare se racchiudere in un set (interno al pacco) di punti/riferimenti che danno come riferimento area di occupazione, per migliorare e re
+        
+            Dev_notes:
+            > oggettivamente, se ho la coordinata centrale del pacco, mi "basterà" andare sfruttare la procedura simile all'occupazione celle e aggiungere un controllo 
+                se le suddette celle siano o meno occupare dal puntatore al pacco di nostro interesse.
+        
         */
+        try
+        {
 
-       try
-       {
-        /* code */
-        return 1;
-       }
-       catch(const std::exception& e)
-       {
-        std::cerr << e.what() << '\n';
-        return -1;
-       }
-       
+            return 1;
+        }
+        catch(const std::exception& e)
+        {
+            std::cerr << e.what() << '\n';
+            return -1;
+        }
     }
 
 #pragma endregion
