@@ -29,9 +29,19 @@
 
 int main (int argc, char* argv[]) 
 {
-    #if TEST_MODE == 0
+    
     try
     {
+    #if TEST_MODE == 1
+        #pragma region "TEST_REGION"
+            ThreeNum_set<int> testDims, testCoords;
+            float testWeight;
+            int testID;
+            bool testFlag;
+            Pack testPack(testDims, testCoords, testWeight, testID, testFlag);
+            testPack.getDims(); //inaccessible methods: this means no accessible methods from father class
+        #pragma endregion 
+    #else
         #pragma region "CodeBlock 1 - Startup Routine"
             //Gets arguments as INPUT
             const std :: string inputJsonPath = argv[1];
@@ -125,17 +135,6 @@ int main (int argc, char* argv[])
 
         #pragma endregion
         
-    #else
-        #pragma region "TEST_REGION"
-            ThreeNum_set<int> testDims, testCoords;
-            float testWeight;
-            int testID;
-            bool testFlag;
-            Pack testPack(testDims, testCoords, testWeight, testID, testFlag);
-            testPack.getDims(); //inaccessible methods: this means no accessible methods from father class
-
-
-        #pragma endregion 
     #endif
         return 0;
     }
@@ -162,40 +161,35 @@ int main (int argc, char* argv[])
     //      Examples&Wiki: https://json.nlohmann.me/api/json/
     //}
 
+    void consoleLog (std::string message)
+    {
+        #if TEST_MODE == 1
+            std::cout << "EPS-M_TEST_MODE: " << "\n";
+        #else
+            std::cout << "EPS-M: " << "\n"; 
+        #endif
+            std ::cout << "> " << message << "\n" << "-------------------------------------------------" << std::endl;
+    }
+
     void consoleStartMessage (std::string inputString)
     {
         #if TEST_MODE == 1
-            std::cout 
-            << "EPS-M_TEST_MODE: START" << "\n" 
-            << "> Input: " << inputString << "\n"
-            << "-------------------------------------------------" << std::endl;
+            std::cout << "EPS-M_TEST_MODE: START" << "\n";
         #else
-            std::cout 
-            << "EPS-M: Start" << "\n" 
-            << "> Input: " << inputString << "\n"
-            << "-------------------------------------------------" << std::endl;
+            std::cout << "EPS-M: Start" << "\n";
         #endif
+            std::cout << "> Input: " << inputString << "\n" << "-------------------------------------------------" << std::endl;
     }
 
     int consoleErrorMessage (std::string errorString) 
     {
         #if TEST_MODE == 1
-            std::cout 
-            << "EPS-M_TEST_MODE: ERROR" << "\n" << "> ";
-            std::cerr
-            << errorString << '\n';
-            std::cout
-            << "-------------------------------------------------" << "\n" <<
-            std::endl;
+            std::cout << "EPS-M_TEST_MODE: ERROR" << "\n" << "> ";
         #else
-            std::cout 
-            << "EPS-M: ERROR" << "\n" << "> ";
-            std::cerr
-            << errorString << '\n';
-            std::cout
-            << "-------------------------------------------------" << "\n" <<
-            std::endl;
+            std::cout << "EPS-M: ERROR" << "\n" << "> ";
         #endif
+            std::cerr << errorString << '\n';
+            std::cout << "-------------------------------------------------" << "\n" << std::endl;
         return -1;
     }
 
