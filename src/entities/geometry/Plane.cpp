@@ -89,6 +89,9 @@ Plane :: ~Plane ()
             {
                 case 1:
                     //XY
+
+                    #pragma region "put thin in a general method"
+                    
                     ThreeNum_set<int> center = inputPack->getCenterCoords();
                     ThreeNum_set<int> dimensions = inputPack->getDims();
 
@@ -104,6 +107,8 @@ Plane :: ~Plane ()
                         }
                     }
                     
+                    #pragma endregion
+
                     break;
                 
                 case 2:
