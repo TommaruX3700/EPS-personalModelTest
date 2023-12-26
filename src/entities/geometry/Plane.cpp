@@ -63,62 +63,43 @@ Plane :: ~Plane ()
         return output;
     }
 
+    void Plane :: fillArea (TwoNum_set<int> set1, TwoNum_set<int> set2, Pack* inputPack)
+    {
+        for (int i = set1.X; i < set1.Y; i++)
+            {
+                for (int j = set2.X; j < set2.Y; j++)
+                {
+                    plane[i][j].pack = inputPack;
+                }
+            }
+    }
+
     int Plane :: setOccupiedCellsOnPlaneType(Pack* inputPack, int planeType) 
     {
         //This method sets cells as occupied only based on center value position and object dimensions
-        /*
-            I have: 
-                > object center: (X,Y)
-                > object dimensions: dimX, dimY, dimZ
-            Notes:
-                > it is not important to consider Pack rotation: it is 
-                    already considered in the trasformations
-        DEV_Notes:
-          > valutare dimensione i se positiva o negativa
-          > put available planes on a set and decide what to use in the procedures without rewriting code 3 times
-            > necessario??: la classe Plane si riferisce ad un plane GENERICO e le variabili dimensionali che ci butto in input dipendono interamente dal tipo di piano
-            > ok, quindi il "planeType" serve solo a farmi capire quale valore di dims andare a recuperare.
-            > 1: dims.X + dims.Y
-            > 2: dims.Y + dims.Z
-            > 3: dims.Z + dims.X   
-        */
-
        try
        {
             switch (planeType)
             {
                 case 1:
                     //XY
-
-                    #pragma region "put thin in a general method"
-                    
-                    ThreeNum_set<int> center = inputPack->getCenterCoords();
-                    ThreeNum_set<int> dimensions = inputPack->getDims();
-
-                    TwoNum_set<int> set1, set2;
-                    set1 = findDimsRoutine(center.X, dimensions.X);
-                    set2 = findDimsRoutine(center.Y, dimensions.Y);
-
-                    for (int i = set1.X; i < set1.Y; i++)
-                    {
-                        for (int j = set2.X; j < set2.Y; j++)
-                        {
-                            plane[i][j].pack = inputPack;
-                        }
-                    }
-                    
-                    #pragma endregion
-
+                        ThreeNum_set<int> center = inputPack->getCenterCoords();
+                        ThreeNum_set<int> dimensions = inputPack->getDims();
+                        fillArea(findDimsRoutine(center.X, dimensions.X), findDimsRoutine(center.Y, dimensions.Y), inputPack);
                     break;
                 
                 case 2:
                     //YZ
-
+                        ThreeNum_set<int> center = inputPack->getCenterCoords();
+                        ThreeNum_set<int> dimensions = inputPack->getDims();
+                        fillArea(findDimsRoutine(center.Y, dimensions.Y), findDimsRoutine(center.Z, dimensions.Z), inputPack);
                     break;
 
                 case 3:
                     //XZ
-
+                        ThreeNum_set<int> center = inputPack->getCenterCoords();
+                        ThreeNum_set<int> dimensions = inputPack->getDims();
+                        fillArea(findDimsRoutine(center.X, dimensions.X), findDimsRoutine(center.Z, dimensions.Z), inputPack);
                     break;
                 
                 default:
@@ -133,7 +114,6 @@ Plane :: ~Plane ()
             return -1;
        }
        
-
     }
 
     int Plane :: freeOccupiedCellsOnPlaneType(Pack* inputPack, int planeType)

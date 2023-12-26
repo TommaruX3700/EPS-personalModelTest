@@ -19,6 +19,7 @@ class Plane
 private:
     TwoNum_set<int> maxDimensions;
     Cell** plane;
+    void fillArea(TwoNum_set<int> set1, TwoNum_set<int> set2, Pack* inputPack);
 
 public:
     Plane(TwoNum_set<int> maxDimensions) {};
