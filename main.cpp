@@ -1,4 +1,4 @@
-#define TEST_MODE 0 //Enable to 1 to execute only "TEST_REGION"
+#define TEST_MODE 1 //Enable to 1 to execute only "TEST_REGION"
 
 #pragma region "Includes" 
     #include <iostream>
@@ -21,7 +21,7 @@
 #pragma region "Function declarations"
     int consoleErrorMessage (std::string errorString);
     void consoleStartMessage (std::string inputString);
-    int consoleErrorMessage (std::string errorString);
+    void consoleLog(std::string message);
     
     //json vectorToJson (all the arguments needed);
 
@@ -33,14 +33,13 @@ int main (int argc, char* argv[])
     try
     {
     #if TEST_MODE == 1
-        #pragma region "TEST_REGION"
             ThreeNum_set<int> testDims, testCoords;
             float testWeight;
             int testID;
             bool testFlag;
             Pack testPack(testDims, testCoords, testWeight, testID, testFlag);
-            testPack.getDims(); //inaccessible methods: this means no accessible methods from father class
-        #pragma endregion 
+            consoleLog("testBuilds");
+
     #else
         #pragma region "CodeBlock 1 - Startup Routine"
             //Gets arguments as INPUT
@@ -134,7 +133,6 @@ int main (int argc, char* argv[])
             //std::cout << outputJson << '\n';
 
         #pragma endregion
-        
     #endif
         return 0;
     }
@@ -146,8 +144,6 @@ int main (int argc, char* argv[])
     {
         return consoleErrorMessage(e.what());
     }  
-
-
 }
 
 #pragma region "Function implementations"
