@@ -42,13 +42,24 @@ int main (int argc, char* argv[])
             testDims.X = 1;
             testDims.Y = 1;
             testDims.Z = 1;
-            testCoords.X = 1; 
-            testCoords.Y = 1;
-            testCoords.Z = 1; 
+            testCoords.X = 2; 
+            testCoords.Y = 2;
+            testCoords.Z = 2; 
             float testWeight = 2.4;
             int testID = 10;
             bool testFlag = true;
             Pack testPack(testDims, testCoords, testWeight, testID, testFlag);
+            
+            std::string outputStringPack = "";
+            ThreeNum_set<int> extractedCoords;
+            extractedCoords = testPack.getCenterCoords();
+            
+            outputStringPack = "Pack coords are: \n X -> " + std::to_string(extractedCoords.X) + " Y -> " + std::to_string(extractedCoords.Y) + " Z -> " + std::to_string(extractedCoords.Z);
+            outputStringPack += "\n Pack Volume: " + std::to_string(testPack.getVolume());
+            outputStringPack += "\n Pack ID: " + std::to_string(testPack.getPackID());
+            outputStringPack += "\n Pack Density: " + std::to_string(testPack.getDensity());
+            
+            consoleLog(outputStringPack);
 
             //TODO: test creazione Grid
 
