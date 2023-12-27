@@ -29,8 +29,8 @@ private:
     void backToOriginalPosition();
     
 public:
-    ThreeD_object();
-    ~ThreeD_object();
+    // ThreeD_object();
+    // ~ThreeD_object();
 
     #pragma region "Set methods"
         void setDims(ThreeNum_set<int> dims);
