@@ -16,14 +16,17 @@ add_executable(${PROJECT_NAME} main.cpp)
 # Include headers
 target_include_directories(${PROJECT_NAME} PRIVATE
     ${PROJECT_SOURCE_DIR}/headers  # Aggiunto il percorso generale
-    src/entities/geometry
-    src/entities/physical
-    src/logic/ordinamentoPacchi
-    src/logic/ottimizzazione
-    src/logic/sceltaPacchiNesting
-    src/logic/spostaPacchi
-    src/logic/trovaDominio
-    extLibs/nlohmannJSON
+    ${PROJECT_SOURCE_DIR}/headers/entities/geometry
+    ${PROJECT_SOURCE_DIR}/headers/entities/physical
+    
+    ${PROJECT_SOURCE_DIR}/src/entities/geometry
+    ${PROJECT_SOURCE_DIR}/src/entities/physical
+    ${PROJECT_SOURCE_DIR}/src/logic/ordinamentoPacchi
+    ${PROJECT_SOURCE_DIR}/src/logic/ottimizzazione
+    ${PROJECT_SOURCE_DIR}/src/logic/sceltaPacchiNesting
+    ${PROJECT_SOURCE_DIR}/src/logic/spostaPacchi
+    ${PROJECT_SOURCE_DIR}/src/logic/trovaDominio
+    ${PROJECT_SOURCE_DIR}/extLibs/nlohmannJSON
 )
 
 # Add source files to the executable target
