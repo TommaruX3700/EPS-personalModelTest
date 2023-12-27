@@ -28,8 +28,7 @@
 #pragma endregion
 
 int main (int argc, char* argv[]) 
-{
-    
+{  
     try
     {
     #if TEST_MODE == 1
@@ -49,15 +48,15 @@ int main (int argc, char* argv[])
             int testID = 10;
             bool testFlag = true;
             Pack testPack(testDims, testCoords, testWeight, testID, testFlag);
-            
+
             std::string outputStringPack = "";
             ThreeNum_set<int> extractedCoords;
             extractedCoords = testPack.getCenterCoords();
             
             outputStringPack = "Pack coords are: \n X -> " + std::to_string(extractedCoords.X) + " Y -> " + std::to_string(extractedCoords.Y) + " Z -> " + std::to_string(extractedCoords.Z);
-            outputStringPack += "\n Pack Volume: " + std::to_string(testPack.getVolume());
-            outputStringPack += "\n Pack ID: " + std::to_string(testPack.getPackID());
-            outputStringPack += "\n Pack Density: " + std::to_string(testPack.getDensity());
+            // outputStringPack += "\n Pack Volume: " + std::to_string(testPack.getVolume());
+            // outputStringPack += "\n Pack ID: " + std::to_string(testPack.getPackID());
+            // outputStringPack += "\n Pack Density: " + std::to_string(testPack.getDensity());
             
             consoleLog(outputStringPack);
 
