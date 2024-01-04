@@ -1,3 +1,6 @@
+#ifndef PALLET_H
+#define PALLET_H
+
 #include "../geometry/Geometry.hpp"
 #include "Pack.hpp"
 #include <vector>
@@ -38,3 +41,5 @@ public:
     #pragma endregion
 
 };
+
+#endif

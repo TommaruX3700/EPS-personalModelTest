@@ -1,3 +1,6 @@
+#ifndef PLANE_H
+#define PLANE_H
+
 #include "Cell.hpp"
 
 //#include "../physical/3D_object.hpp" //TODO: test if this gives back errors 
@@ -40,3 +43,5 @@ public:
         int freeOccupiedCellsOnPlaneType(Pack* inputPack, int planeType);
     #pragma endregion
 };
+
+#endif

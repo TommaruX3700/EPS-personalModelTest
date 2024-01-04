@@ -1,3 +1,6 @@
+#ifndef PALLETGROUP_H
+#define PALLETGROUP_H
+
 #include "Pallet.hpp"
 #include <vector>
 
@@ -30,3 +33,5 @@ public:
         int palletCount() const;
     #pragma endregion
 };
+
+#endif

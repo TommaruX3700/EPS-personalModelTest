@@ -47,7 +47,7 @@ int main (int argc, char* argv[])
             float testWeight = 2.4;
             int testID = 10;
             bool testFlag = true;
-            Pack testPack(testDims, testCoords, testWeight, testID, testFlag);
+            Pack testPack(testDims, testCoords, testWeight, testID, testFlag); //constructor dowsnt work at all, it just feels like any implementation works.
 
             std::string outputStringPack = "";
             ThreeNum_set<int> extractedCoords;

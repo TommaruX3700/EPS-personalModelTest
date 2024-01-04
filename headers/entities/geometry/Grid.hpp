@@ -1,3 +1,6 @@
+#ifndef GRID_H
+#define GRID_H
+
 #include "Plane.hpp"
 
 /*
@@ -20,3 +23,5 @@ public:
     void setOccupiedCells(Pack* inputPack); 
     void freeOccupiedCells(Pack* inputPack);
 };
+
+#endif
