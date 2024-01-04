@@ -95,25 +95,27 @@ Plane :: ~Plane ()
         //This method sets cells as occupied using center value position and object dimensions
         try
         {
+            ThreeNum_set<int> center;
+            ThreeNum_set<int> dimensions;
             switch (planeType)
             {
                 case 1:
                     //XY
-                        ThreeNum_set<int> center = inputPack->getCenterCoords();
-                        ThreeNum_set<int> dimensions = inputPack->getDims();
+                        center = inputPack->getCenterCoords();
+                        dimensions = inputPack->getDims();
                         fillArea(findDimsRoutine(center.X, dimensions.X), findDimsRoutine(center.Y, dimensions.Y), inputPack);
                     break;
 
                 case 2:
                     //YZ
-                        ThreeNum_set<int> center = inputPack->getCenterCoords();
-                        ThreeNum_set<int> dimensions = inputPack->getDims();
+                        center = inputPack->getCenterCoords();
+                        dimensions = inputPack->getDims();
                         fillArea(findDimsRoutine(center.Y, dimensions.Y), findDimsRoutine(center.Z, dimensions.Z), inputPack);
                     break; 
                 case 3:
                     //XZ
-                        ThreeNum_set<int> center = inputPack->getCenterCoords();
-                        ThreeNum_set<int> dimensions = inputPack->getDims();
+                        center = inputPack->getCenterCoords();
+                        dimensions = inputPack->getDims();
                         fillArea(findDimsRoutine(center.X, dimensions.X), findDimsRoutine(center.Z, dimensions.Z), inputPack);
                     break;
 
@@ -135,25 +137,27 @@ Plane :: ~Plane ()
         //This method frees cells using center position and object dimensions
         try
         {
+            ThreeNum_set<int> center;
+            ThreeNum_set<int> dimensions;            
             switch (planeType)
             {
                 case 1:
                     //XY
-                        ThreeNum_set<int> center = inputPack->getCenterCoords();
-                        ThreeNum_set<int> dimensions = inputPack->getDims();
+                        center = inputPack->getCenterCoords();
+                        dimensions = inputPack->getDims();
                         freeArea(findDimsRoutine(center.X, dimensions.X), findDimsRoutine(center.Y, dimensions.Y), inputPack);
                     break;
 
                 case 2:
                     //YZ
-                        ThreeNum_set<int> center = inputPack->getCenterCoords();
-                        ThreeNum_set<int> dimensions = inputPack->getDims();
+                        center = inputPack->getCenterCoords();
+                        dimensions = inputPack->getDims();
                         freeArea(findDimsRoutine(center.Y, dimensions.Y), findDimsRoutine(center.Z, dimensions.Z), inputPack);
                     break; 
                 case 3:
                     //XZ
-                        ThreeNum_set<int> center = inputPack->getCenterCoords();
-                        ThreeNum_set<int> dimensions = inputPack->getDims();
+                        center = inputPack->getCenterCoords();
+                        dimensions = inputPack->getDims();
                         freeArea(findDimsRoutine(center.X, dimensions.X), findDimsRoutine(center.Z, dimensions.Z), inputPack);
                     break;
 

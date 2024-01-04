@@ -21,7 +21,7 @@ private:
     int max = 0; 
     
 public:
-    PalletGroup(int max = 0) {};
+    PalletGroup(int max);
     
     #pragma region "Set methods"
         void setMax(int max);
@@ -29,7 +29,7 @@ public:
 
     #pragma region "Public methods"
         int addPallet(ptrPallet palletPtr);
-        int rmvPallet(int index = -1);
+        int rmvPallet(int index);
         int palletCount() const;
     #pragma endregion
 };

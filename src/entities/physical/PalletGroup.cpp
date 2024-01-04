@@ -15,11 +15,14 @@ PalletGroup :: PalletGroup (int max = 0)
 #pragma region "Public methods" 
     int PalletGroup :: addPallet(ptrPallet palletPtr)
     {
+        //TODO: add error handling
         this->palletGroup.push_back(palletPtr);
+        return 1;
     }
 
     int PalletGroup :: rmvPallet(int index = -1)
     {
+        //TODO: add error handling
         if (index == -1)
         {
             //Index not specified: delete the last one
@@ -30,6 +33,7 @@ PalletGroup :: PalletGroup (int max = 0)
             //Index specified: delete in the ptrPallet in the specified position
             this->palletGroup.erase(this->palletGroup.begin() + index);
         }
+        return 1;
     }
 
     int PalletGroup :: palletCount() const

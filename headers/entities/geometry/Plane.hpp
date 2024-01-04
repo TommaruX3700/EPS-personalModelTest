@@ -26,7 +26,7 @@ private:
     void freeArea(TwoNum_set<int> set1, TwoNum_set<int> set2, Pack* inputPack);
 
 public:
-    Plane(TwoNum_set<int> maxDimensions) {};
+    Plane(TwoNum_set<int> maxDimensions);
     ~Plane();
 
     #pragma region "Override Operators"

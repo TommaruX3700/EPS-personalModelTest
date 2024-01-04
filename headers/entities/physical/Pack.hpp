@@ -21,7 +21,7 @@ private:
     //bool packCompare();
     
 public:
-    Pack(ThreeNum_set<int> dims, ThreeNum_set<int> coords, float packWeight, int packID, bool rotFlag) {};
+    Pack(ThreeNum_set<int> dims, ThreeNum_set<int> coords, float packWeight, int packID, bool rotFlag);
 
     #pragma region "Operators override"
         Pack& operator=(const Pack& n);
