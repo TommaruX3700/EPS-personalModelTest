@@ -53,7 +53,7 @@ int main (int argc, char* argv[])
             ThreeNum_set<int> extractedCoords;
             extractedCoords = testPack.getCenterCoords();
             
-            outputStringPack = "Pack coords are: \n X -> " + std::to_string(extractedCoords.X) + " Y -> " + std::to_string(extractedCoords.Y) + " Z -> " + std::to_string(extractedCoords.Z);
+            outputStringPack = "Pack coords are: \n X -> " + std::to_string(extractedCoords.X) + "\n Y -> " + std::to_string(extractedCoords.Y) + "\n Z -> " + std::to_string(extractedCoords.Z);
             // outputStringPack += "\n Pack Volume: " + std::to_string(testPack.getVolume());
             // outputStringPack += "\n Pack ID: " + std::to_string(testPack.getPackID());
             // outputStringPack += "\n Pack Density: " + std::to_string(testPack.getDensity());

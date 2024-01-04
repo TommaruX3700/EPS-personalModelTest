@@ -40,7 +40,11 @@ class ThreeD_object
 
         #pragma region "Get methods"
             ThreeNum_set<int> getDims() const;
-            ThreeNum_set<int> getCenterCoords() const;
+            ThreeNum_set<int> getCenterCoords() const
+    {
+        //Return a ThreeNum_set object with this.centerCoords
+        return this->centerCoords;
+    };
             float getVolume() const;
             float getDensity() const;
             int getOrientation() const;
