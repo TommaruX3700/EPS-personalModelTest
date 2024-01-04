@@ -37,17 +37,15 @@ Pack :: Pack (ThreeNum_set<int> dims, ThreeNum_set<int> coords, float packWeight
     {
         //TODO: evaluate if any usefull or to delete
         //Compare object packs in the current orientation (?)
-    if (
-            compareThreeNum_set(this->objectDims, n.objectDims) &&
-            this->weight == n.weight
-            )
-    {
+        bool comparison = compareThreeNum_set(this->objectDims, n.objectDims);
+        if ( comparison == true && this->weight == n.weight )
+        {
             return true;
-    }
-    else
-    {
+        }
+        else
+        {
             return false;
-    }
+        }
     }
 
 #pragma endregion

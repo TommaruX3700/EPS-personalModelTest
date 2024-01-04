@@ -11,7 +11,5 @@ Description:
     Move around packs operations.
 */
 
-std::vector<Pack*> packsToMove;
-std::vector<Pack*> movedPacks;
 
 #endif
