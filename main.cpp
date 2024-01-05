@@ -104,8 +104,10 @@ int main (int argc, char* argv[])
             testMaxDims.X = 20;
             testMaxDims.Y = 20;
             testMaxDims.Z = 20;
-            
+
             Grid testGrid(testMaxDims);
+
+            testGrid.printGrid(1);
 
         #pragma endregion
 
@@ -117,7 +119,7 @@ int main (int argc, char* argv[])
         //TODO
     #pragma endregion
 
-            consoleLog(outputTestString);
+            //consoleLog(outputTestString);
 
     #pragma endregion
 

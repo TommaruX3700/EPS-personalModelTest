@@ -1,4 +1,5 @@
 #include "../../../headers/entities/geometry/Plane.hpp"
+#include <iostream>
 
 Plane :: Plane (TwoNum_set<int> maxDimensions)
 {
@@ -178,5 +179,21 @@ Plane :: ~Plane ()
 
 void Plane :: printPlane()
 {
-    std :: cout << "culo";
+    int x = static_cast<int>(this->maxDimensions.X);
+    int y = static_cast<int>(this->maxDimensions.Y);
+
+    for (int i = 0; i < x; ++i) {
+        for (int j = 0; j < y; ++j) {
+            if (plane[i][j].pack == nullptr)
+            {
+                std :: cout << "X";
+            } else
+            {
+                std :: cout << "O";
+            }
+            
+        }
+        std :: cout << "\n";
+
+    }
 }
