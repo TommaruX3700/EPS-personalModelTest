@@ -36,7 +36,6 @@ struct TwoNum_set {
 // 	Volume(ThreeNum_set<int> volumeDims,  ) : 
 // };
 
-
 //TODO: make a geometry object "AREA"
 
 #pragma endregion

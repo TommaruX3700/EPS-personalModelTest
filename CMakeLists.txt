@@ -18,10 +18,10 @@ add_executable(${PROJECT_NAME} main.cpp)
 
 # Include headers
 target_include_directories(${PROJECT_NAME} PRIVATE
-    ${PROJECT_SOURCE_DIR}/headers  # Aggiunto il percorso generale
+    ${PROJECT_SOURCE_DIR}/headers  
     ${PROJECT_SOURCE_DIR}/headers/entities/geometry
     ${PROJECT_SOURCE_DIR}/headers/entities/physical
-    
+    ${PROJECT_SOURCE_DIR}/headers/logic
     # ${PROJECT_SOURCE_DIR}/src/entities/geometry
     # ${PROJECT_SOURCE_DIR}/src/entities/physical
     # ${PROJECT_SOURCE_DIR}/src/logic/ordinamentoPacchi
