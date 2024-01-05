@@ -101,9 +101,9 @@ int main (int argc, char* argv[])
         #pragma region "test creazione Grid"
             
             ThreeNum_set<int> testMaxDims;
-            testMaxDims.X = 10;
-            testMaxDims.Y = 10;
-            testMaxDims.Z = 10;
+            testMaxDims.X = 20;
+            testMaxDims.Y = 20;
+            testMaxDims.Z = 20;
 
             Grid testGrid(testMaxDims);
 
