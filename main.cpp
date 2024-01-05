@@ -19,8 +19,8 @@
 #pragma endregion
 
 #pragma region "Function declarations"
-    int consoleErrorMessage (std::string errorString);
-    void consoleStartMessage (std::string inputString);
+    int consoleErrorMessage(std::string errorString);
+    void consoleStartMessage();
     void consoleLog(std::string message);
     
     //json vectorToJson (all the arguments needed);
@@ -31,12 +31,15 @@ int main (int argc, char* argv[])
 {  
     try
     {
+        consoleStartMessage();
+
     #if TEST_MODE == 1
+
         /*
             TODO: Ticket #25
         */
-
-            //TODO: test creazione Pack
+#pragma region "test Pack & 3D_object"
+            //PACK: DONE
             ThreeNum_set<int> testDims, testCoords;
             testDims.X = 2;
             testDims.Y = 3;
@@ -44,34 +47,73 @@ int main (int argc, char* argv[])
             testCoords.X = 2; 
             testCoords.Y = 2;
             testCoords.Z = 2; 
+
             float testWeight = 2.4;
             int testID = 10;
             bool testFlag = true;
-            Pack testPack(testDims, testCoords, testWeight, testID, testFlag); //constructor dowsnt work at all, it just feels like any implementation works.
+
+            Pack testPack1(testDims, testCoords, testWeight, testID, testFlag); //constructor dowsnt work at all, it just feels like any implementation works.
+            
+            testDims.X = 1;
+            testDims.Y = 1;
+            testDims.Z = 1;
+            testCoords.X = 1; 
+            testCoords.Y = 1;
+            testCoords.Z = 1; 
+
+            Pack testPack2(testDims, testCoords, 1, 20, true);
+            
+            ThreeNum_set<int> extractedDims;
+            extractedDims = testPack1.getDims();
+            ThreeNum_set<int> extractedCoords;
+            extractedCoords = testPack1.getCenterCoords();
 
             std::string outputStringPack = "";
-            ThreeNum_set<int> extractedCoords;
-            extractedCoords = testPack.getCenterCoords();
+            outputStringPack = " Pack1 dims are: \n X -> " + std::to_string(extractedDims.X) + "\n Y -> " + std::to_string(extractedDims.Y) + "\n Z -> " + std::to_string(extractedDims.Z) + "\n";
+            outputStringPack += "\n Pack1 coords are: \n X -> " + std::to_string(extractedCoords.X) + "\n Y -> " + std::to_string(extractedCoords.Y) + "\n Z -> " + std::to_string(extractedCoords.Z) + "\n";
+            outputStringPack += "\n Pack1 Volume: " + std::to_string(testPack1.getVolume());
+            outputStringPack += "\n Pack1 ID: " + std::to_string(testPack1.getPackID());
+            outputStringPack += "\n Pack1 Density: " + std::to_string(testPack1.getDensity());
+
+            //testPack2 = testPack1;
+
+            extractedDims = testPack2.getDims();
+            extractedCoords = testPack2.getCenterCoords();
+
+            outputStringPack += "\n\n Pack2 dims are: \n X -> " + std::to_string(extractedDims.X) + "\n Y -> " + std::to_string(extractedDims.Y) + "\n Z -> " + std::to_string(extractedDims.Z) + "\n";
+            outputStringPack += "\n Pack2 coords are: \n X -> " + std::to_string(extractedCoords.X) + "\n Y -> " + std::to_string(extractedCoords.Y) + "\n Z -> " + std::to_string(extractedCoords.Z) + "\n";
+            outputStringPack += "\n Pack2 Volume: " + std::to_string(testPack2.getVolume());
+            outputStringPack += "\n Pack2 ID: " + std::to_string(testPack2.getPackID());
+            outputStringPack += "\n Pack2 Density: " + std::to_string(testPack2.getDensity());
             
-            outputStringPack = "Pack coords are: \n X -> " + std::to_string(extractedCoords.X) + "\n Y -> " + std::to_string(extractedCoords.Y) + "\n Z -> " + std::to_string(extractedCoords.Z);
-            outputStringPack += "\n Pack Volume: " + std::to_string(testPack.getVolume());
-            outputStringPack += "\n Pack ID: " + std::to_string(testPack.getPackID());
-            outputStringPack += "\n Pack Density: " + std::to_string(testPack.getDensity());
-            
+            if (testPack1 == testPack2)
+            {
+                outputStringPack += "\n\n I PACCHI SONO UGUALI :)";
+            } else
+            {
+                outputStringPack += "\n I PACCHI SONO DIVERSI :(";
+            }
+#pragma endregion
+
             consoleLog(outputStringPack);
 
-            //TODO: test creazione Grid
+#pragma region "test creazione Grid"
+    //TODO
+#pragma endregion
 
-            //TODO: test assegnazione Pack su Grid
+#pragma region "test assegnazione Pack su Grid"
+    //TODO
+#pragma endregion
 
-            //TODO: test eliminazione Pack da Grid
+#pragma region "test eliminazione Pack da Grid"
+    //TODO
+#pragma endregion
 
     #else
-        #pragma region "CodeBlock 1 - Startup Routine"
-            //Gets arguments as INPUT
-            const std :: string inputJsonPath = argv[1];
-            consoleStartMessage(inputJsonPath);
+        //Gets arguments as INPUT
+        const std :: string inputJsonPath = argv[1];
 
+        #pragma region "CodeBlock 1 - Startup Routine"
             //Check if file exists 
             std :: ifstream inputJsonFile;
             inputJsonFile.open(inputJsonPath);
@@ -190,17 +232,20 @@ int main (int argc, char* argv[])
         #else
             std::cout << "EPS-M: " << "\n"; 
         #endif
-            std ::cout << "> " << message << "\n" << "-------------------------------------------------" << std::endl;
+            std ::cout << message << "\n" << "-------------------------------------------------" << std::endl;
     }
 
-    void consoleStartMessage (std::string inputString)
+    void consoleStartMessage ()
     {
         #if TEST_MODE == 1
             std::cout << "\nEPS-M_TEST_MODE: START" << "\n";
+            std ::cout << "-------------------------------------------------" << std::endl;
+
         #else
+            inputJsonPath
             std::cout << "\nEPS-M: START" << "\n";
+            std::cout << "> Input: " << inputJsonPath << "\n" << "-------------------------------------------------" << std::endl;
         #endif
-            std::cout << "> Input: " << inputString << "\n" << "-------------------------------------------------" << std::endl;
     }
 
     int consoleErrorMessage (std::string errorString) 

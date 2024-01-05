@@ -30,7 +30,7 @@ public:
     ~Plane();
 
     #pragma region "Override Operators"
-        Plane& operator=(const Plane& n);
+        void operator=(const Plane& n);
     #pragma endregion
 
     #pragma region "Get methods"

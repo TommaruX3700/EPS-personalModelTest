@@ -37,7 +37,7 @@ Plane :: ~Plane ()
 }
 
 #pragma region "Override operator"
-    Plane& Plane :: operator=(const Plane& n) 
+    void Plane :: operator=(const Plane& n) 
     {
         if (this != &n)
         {

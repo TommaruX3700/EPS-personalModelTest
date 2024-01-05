@@ -35,6 +35,7 @@ public:
 
     #pragma region "Get methods"
         int getPackID() const;
+        //getRotatableFlag() missing?
     #pragma endregion
 
 };
