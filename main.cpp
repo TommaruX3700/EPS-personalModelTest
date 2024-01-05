@@ -99,7 +99,7 @@ int main (int argc, char* argv[])
         #pragma endregion
 
         #pragma region "test creazione Grid"
-            
+            //DONE
             ThreeNum_set<int> testMaxDims;
             testMaxDims.X = 20;
             testMaxDims.Y = 20;
