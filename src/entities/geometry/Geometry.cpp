@@ -1,5 +1,12 @@
 #include "../../../headers/entities/geometry/Geometry.hpp"
 
+/*
+    Author:
+        Tommaso Maruzzo
+    Description:
+        Geometry namespace implementations
+*/
+
 bool Geometry::compareThreeNum_set(Geometry::ThreeNum_set<int> firstSet, Geometry::ThreeNum_set<int> secondSet)
 {
     if (
