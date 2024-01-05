@@ -10,6 +10,8 @@ Description:
     Basic virtual object for 3D physical entities.
 */
 
+using namespace Geometry;
+
 class ThreeD_object
 {
     protected:

@@ -24,7 +24,7 @@ public:
     Pack(ThreeNum_set<int> dims, ThreeNum_set<int> coords, float packWeight, int packID, bool rotFlag);
 
     #pragma region "Operators override"
-        Pack& operator=(const Pack& n);
+        void operator=(const Pack& n);
         bool operator==(const Pack& n);
     #pragma endregion
 

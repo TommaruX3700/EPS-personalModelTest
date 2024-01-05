@@ -1,5 +1,7 @@
 #include "../../../headers/entities/physical/Pack.hpp"
 
+using namespace Geometry;
+
 Pack :: Pack (ThreeNum_set<int> dims, ThreeNum_set<int> coords, float packWeight, int packID, bool rotFlag) 
     {
         this->packID = packID;
@@ -18,7 +20,7 @@ Pack :: Pack (ThreeNum_set<int> dims, ThreeNum_set<int> coords, float packWeight
 #pragma region "Operator overrides"
 //Check if this works correctly as intended (eg: not only exchanging pointers)
 
-    Pack& Pack :: operator=(const Pack& n) 
+    void Pack :: operator=(const Pack& n) 
     {
         if (this != &n)
         {
