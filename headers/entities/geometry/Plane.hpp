@@ -42,6 +42,8 @@ public:
         int setOccupiedCellsOnPlaneType(Pack* inputPack, int planeType); 
         int freeOccupiedCellsOnPlaneType(Pack* inputPack, int planeType);
     #pragma endregion
+
+        void printPlane();
 };
 
 #endif

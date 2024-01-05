@@ -23,7 +23,7 @@ public:
     void setOccupiedCells(Pack* inputPack); 
     void freeOccupiedCells(Pack* inputPack);
 
-    void printGridPlanes();
+    void printGrid(int plane);
     //TODO: metodo x stampare visivamente in console i 3 piani e relative posizioni/aree di occupazione dei pacchi
 };
 

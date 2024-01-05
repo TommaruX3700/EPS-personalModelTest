@@ -175,3 +175,8 @@ Plane :: ~Plane ()
     }
 
 #pragma endregion
+
+void Plane :: printPlane()
+{
+    std :: cout << "culo";
+}
