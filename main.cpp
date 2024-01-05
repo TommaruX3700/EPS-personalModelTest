@@ -33,82 +33,85 @@ int main (int argc, char* argv[])
     {
         consoleStartMessage();
 
-    #if TEST_MODE == 1
+    #pragma region "TEST_CODE"
+        #if TEST_MODE == 1
+            /*
+                DOING: Ticket #25
+            */
+        #pragma region "test Pack & 3D_object"
+                    //PACK: DONE
+                    ThreeNum_set<int> testDims, testCoords;
+                    testDims.X = 2;
+                    testDims.Y = 3;
+                    testDims.Z = 6;
+                    testCoords.X = 2; 
+                    testCoords.Y = 2;
+                    testCoords.Z = 2; 
 
-        /*
-            TODO: Ticket #25
-        */
-#pragma region "test Pack & 3D_object"
-            //PACK: DONE
-            ThreeNum_set<int> testDims, testCoords;
-            testDims.X = 2;
-            testDims.Y = 3;
-            testDims.Z = 6;
-            testCoords.X = 2; 
-            testCoords.Y = 2;
-            testCoords.Z = 2; 
+                    float testWeight = 2.4;
+                    int testID = 10;
+                    bool testFlag = true;
 
-            float testWeight = 2.4;
-            int testID = 10;
-            bool testFlag = true;
+                    Pack testPack1(testDims, testCoords, testWeight, testID, testFlag); //constructor dowsnt work at all, it just feels like any implementation works.
+                    
+                    testDims.X = 1;
+                    testDims.Y = 1;
+                    testDims.Z = 1;
+                    testCoords.X = 1; 
+                    testCoords.Y = 1;
+                    testCoords.Z = 1; 
 
-            Pack testPack1(testDims, testCoords, testWeight, testID, testFlag); //constructor dowsnt work at all, it just feels like any implementation works.
-            
-            testDims.X = 1;
-            testDims.Y = 1;
-            testDims.Z = 1;
-            testCoords.X = 1; 
-            testCoords.Y = 1;
-            testCoords.Z = 1; 
+                    Pack testPack2(testDims, testCoords, 1, 20, true);
+                    
+                    ThreeNum_set<int> extractedDims;
+                    extractedDims = testPack1.getDims();
+                    ThreeNum_set<int> extractedCoords;
+                    extractedCoords = testPack1.getCenterCoords();
 
-            Pack testPack2(testDims, testCoords, 1, 20, true);
-            
-            ThreeNum_set<int> extractedDims;
-            extractedDims = testPack1.getDims();
-            ThreeNum_set<int> extractedCoords;
-            extractedCoords = testPack1.getCenterCoords();
+                    std::string outputStringPack = "";
+                    outputStringPack = " Pack1 dims are: \n X -> " + std::to_string(extractedDims.X) + "\n Y -> " + std::to_string(extractedDims.Y) + "\n Z -> " + std::to_string(extractedDims.Z) + "\n";
+                    outputStringPack += "\n Pack1 coords are: \n X -> " + std::to_string(extractedCoords.X) + "\n Y -> " + std::to_string(extractedCoords.Y) + "\n Z -> " + std::to_string(extractedCoords.Z) + "\n";
+                    outputStringPack += "\n Pack1 Volume: " + std::to_string(testPack1.getVolume());
+                    outputStringPack += "\n Pack1 ID: " + std::to_string(testPack1.getPackID());
+                    outputStringPack += "\n Pack1 Density: " + std::to_string(testPack1.getDensity());
 
-            std::string outputStringPack = "";
-            outputStringPack = " Pack1 dims are: \n X -> " + std::to_string(extractedDims.X) + "\n Y -> " + std::to_string(extractedDims.Y) + "\n Z -> " + std::to_string(extractedDims.Z) + "\n";
-            outputStringPack += "\n Pack1 coords are: \n X -> " + std::to_string(extractedCoords.X) + "\n Y -> " + std::to_string(extractedCoords.Y) + "\n Z -> " + std::to_string(extractedCoords.Z) + "\n";
-            outputStringPack += "\n Pack1 Volume: " + std::to_string(testPack1.getVolume());
-            outputStringPack += "\n Pack1 ID: " + std::to_string(testPack1.getPackID());
-            outputStringPack += "\n Pack1 Density: " + std::to_string(testPack1.getDensity());
+                    //testPack2 = testPack1;
 
-            //testPack2 = testPack1;
+                    extractedDims = testPack2.getDims();
+                    extractedCoords = testPack2.getCenterCoords();
 
-            extractedDims = testPack2.getDims();
-            extractedCoords = testPack2.getCenterCoords();
+                    outputStringPack += "\n\n Pack2 dims are: \n X -> " + std::to_string(extractedDims.X) + "\n Y -> " + std::to_string(extractedDims.Y) + "\n Z -> " + std::to_string(extractedDims.Z) + "\n";
+                    outputStringPack += "\n Pack2 coords are: \n X -> " + std::to_string(extractedCoords.X) + "\n Y -> " + std::to_string(extractedCoords.Y) + "\n Z -> " + std::to_string(extractedCoords.Z) + "\n";
+                    outputStringPack += "\n Pack2 Volume: " + std::to_string(testPack2.getVolume());
+                    outputStringPack += "\n Pack2 ID: " + std::to_string(testPack2.getPackID());
+                    outputStringPack += "\n Pack2 Density: " + std::to_string(testPack2.getDensity());
+                    
+                    if (testPack1 == testPack2)
+                    {
+                        outputStringPack += "\n\n I PACCHI SONO UGUALI :)";
+                    } else
+                    {
+                        outputStringPack += "\n I PACCHI SONO DIVERSI :(";
+                    }
+        #pragma endregion
 
-            outputStringPack += "\n\n Pack2 dims are: \n X -> " + std::to_string(extractedDims.X) + "\n Y -> " + std::to_string(extractedDims.Y) + "\n Z -> " + std::to_string(extractedDims.Z) + "\n";
-            outputStringPack += "\n Pack2 coords are: \n X -> " + std::to_string(extractedCoords.X) + "\n Y -> " + std::to_string(extractedCoords.Y) + "\n Z -> " + std::to_string(extractedCoords.Z) + "\n";
-            outputStringPack += "\n Pack2 Volume: " + std::to_string(testPack2.getVolume());
-            outputStringPack += "\n Pack2 ID: " + std::to_string(testPack2.getPackID());
-            outputStringPack += "\n Pack2 Density: " + std::to_string(testPack2.getDensity());
-            
-            if (testPack1 == testPack2)
-            {
-                outputStringPack += "\n\n I PACCHI SONO UGUALI :)";
-            } else
-            {
-                outputStringPack += "\n I PACCHI SONO DIVERSI :(";
-            }
-#pragma endregion
+        #pragma region "test creazione Grid"
+            //TODO
+        #pragma endregion
+
+        #pragma region "test assegnazione Pack su Grid"
+            //TODO
+        #pragma endregion
+
+        #pragma region "test eliminazione Pack da Grid"
+        //TODO
+    #pragma endregion
 
             consoleLog(outputStringPack);
 
-#pragma region "test creazione Grid"
-    //TODO
-#pragma endregion
+    #pragma endregion
 
-#pragma region "test assegnazione Pack su Grid"
-    //TODO
-#pragma endregion
-
-#pragma region "test eliminazione Pack da Grid"
-    //TODO
-#pragma endregion
-
+    #pragma region "EPS_CODE"
     #else
         //Gets arguments as INPUT
         const std :: string inputJsonPath = argv[1];
@@ -202,8 +205,11 @@ int main (int argc, char* argv[])
 
         #pragma endregion
     #endif
+#pragma endregion
+
         return 0;
     }
+
     catch(const std::invalid_argument& e) 
     {
         return consoleErrorMessage(e.what());
