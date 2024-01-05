@@ -11,35 +11,47 @@ Description:
 		- Area: identifies an area between 2 diagonal points.
 */
 
-#pragma region "Project templates"
-template<typename type>
-struct ThreeNum_set { 
-	//type for 3 num sets
-	type X, Y, Z;
-	ThreeNum_set() : X(type(0)), Y(type(0)), Z(type(0)) {}; //general constructor
-	ThreeNum_set(type x_val, type y_val, type z_val) : X(type(x_val)), Y(type(y_val)), Z(type(z_val)) {}; //specific constructor
-};
+/*
+	Remember to use INLINE or STATIC functions
+	
+    inline: 
+		Use inline for small, frequently called functions or function templates that you want to avoid duplicating across multiple source files.
+		It's a suggestion to the compiler to inline the function's code wherever it's called.
 
-template<typename type>
-struct TwoNum_set { 
-	//type for 2 num sets
-	type X, Y;
-	TwoNum_set() : X(type(0)), Y(type(0)) {};
-	TwoNum_set(type x_val, type y_val) : X(type(x_val)), Y(type(y_val)) {};
-};
+	static: 
+		Use static for functions that should be limited to a single translation unit to avoid linkage errors caused by multiple definitions.
+		These functions won't be visible outside the file where they're defined.
+*/
 
-// struct Volume
-// {
-// 	//define this object between 2 points and resume all the points inside
-// 	// IS THIS NECESSARY?? WE JUST HAVE TO OCCUPY CELLS BY NMODIFY POINTERS
-// 	//	LEAVE OBJECTS LIKE THESE FOR FURTHER IMPLEMENTATION ONLY IF NEEDED.
-// 	Volume(ThreeNum_set<int> volumeDims,  ) : 
-// };
+namespace Geometry {
+	template<typename type>
+	struct ThreeNum_set { 
+		//type for 3 num sets
+		type X, Y, Z;
+		ThreeNum_set() : X(type(0)), Y(type(0)), Z(type(0)) {}; //general constructor
+		ThreeNum_set(type x_val, type y_val, type z_val) : X(type(x_val)), Y(type(y_val)), Z(type(z_val)) {}; //specific constructor
+	};
 
-//TODO: make a geometry object "AREA"
+	template<typename type>
+	struct TwoNum_set { 
+		//type for 2 num sets
+		type X, Y;
+		TwoNum_set() : X(type(0)), Y(type(0)) {};
+		TwoNum_set(type x_val, type y_val) : X(type(x_val)), Y(type(y_val)) {};
+	};
 
-#pragma endregion
+	// struct Volume
+	// {
+	// 	//define this object between 2 points and resume all the points inside
+	// 	// IS THIS NECESSARY?? WE JUST HAVE TO OCCUPY CELLS BY NMODIFY POINTERS
+	// 	//	LEAVE OBJECTS LIKE THESE FOR FURTHER IMPLEMENTATION ONLY IF NEEDED.
+	// 	Volume(ThreeNum_set<int> volumeDims,  ) : 
+	// };
 
-bool compareThreeNum_set (ThreeNum_set <int> firstSet, ThreeNum_set<int> secondSet);
+	//TODO: make a geometry object "AREA"
+
+	bool compareThreeNum_set (ThreeNum_set <int> firstSet, ThreeNum_set<int> secondSet);
+
+}
 
 #endif
