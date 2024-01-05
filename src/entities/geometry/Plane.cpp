@@ -186,10 +186,10 @@ void Plane :: printPlane()
         for (int j = 0; j < y; ++j) {
             if (plane[i][j].pack == nullptr)
             {
-                std :: cout << "X";
+                std :: cout << " X";
             } else
             {
-                std :: cout << "O";
+                std :: cout << " O";
             }
             
         }
