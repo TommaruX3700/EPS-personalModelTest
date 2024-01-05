@@ -13,15 +13,11 @@ Pack :: Pack (ThreeNum_set<int> dims, ThreeNum_set<int> coords, float packWeight
     {
         this->packID = packID;
         this->rotatableFlag = rotFlag;
-        this->weight = packWeight;
 
-        this->centerCoords.X = coords.X;
-        this->centerCoords.Y = coords.Y;
-        this->centerCoords.Z = coords.Z;
+        this->setDims(dims);
+        this->setCenterCoords(coords);
+        this->setWeight(packWeight);
 
-        this->objectDims.X = dims.X;
-        this->objectDims.Y = dims.Y;
-        this->objectDims.Z = dims.Z;
     }
 
 #pragma region "Operator overrides"
@@ -44,7 +40,6 @@ Pack :: Pack (ThreeNum_set<int> dims, ThreeNum_set<int> coords, float packWeight
 
     bool Pack :: operator==(const Pack& n) 
     {
-        //TODO: evaluate if any usefull or to delete
         //Compare object packs in the current orientation (?)
         bool comparison = compareThreeNum_set(this->objectDims, n.objectDims);
         if ( comparison == true && this->weight == n.weight )

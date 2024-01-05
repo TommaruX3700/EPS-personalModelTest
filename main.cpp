@@ -38,9 +38,9 @@ int main (int argc, char* argv[])
 
             //TODO: test creazione Pack
             ThreeNum_set<int> testDims, testCoords;
-            testDims.X = 1;
-            testDims.Y = 1;
-            testDims.Z = 1;
+            testDims.X = 2;
+            testDims.Y = 3;
+            testDims.Z = 6;
             testCoords.X = 2; 
             testCoords.Y = 2;
             testCoords.Z = 2; 
@@ -54,9 +54,9 @@ int main (int argc, char* argv[])
             extractedCoords = testPack.getCenterCoords();
             
             outputStringPack = "Pack coords are: \n X -> " + std::to_string(extractedCoords.X) + "\n Y -> " + std::to_string(extractedCoords.Y) + "\n Z -> " + std::to_string(extractedCoords.Z);
-            // outputStringPack += "\n Pack Volume: " + std::to_string(testPack.getVolume());
-            // outputStringPack += "\n Pack ID: " + std::to_string(testPack.getPackID());
-            // outputStringPack += "\n Pack Density: " + std::to_string(testPack.getDensity());
+            outputStringPack += "\n Pack Volume: " + std::to_string(testPack.getVolume());
+            outputStringPack += "\n Pack ID: " + std::to_string(testPack.getPackID());
+            outputStringPack += "\n Pack Density: " + std::to_string(testPack.getDensity());
             
             consoleLog(outputStringPack);
 
@@ -196,9 +196,9 @@ int main (int argc, char* argv[])
     void consoleStartMessage (std::string inputString)
     {
         #if TEST_MODE == 1
-            std::cout << "EPS-M_TEST_MODE: START" << "\n";
+            std::cout << "\nEPS-M_TEST_MODE: START" << "\n";
         #else
-            std::cout << "EPS-M: Start" << "\n";
+            std::cout << "\nEPS-M: START" << "\n";
         #endif
             std::cout << "> Input: " << inputString << "\n" << "-------------------------------------------------" << std::endl;
     }
