@@ -35,6 +35,9 @@ int main (int argc, char* argv[])
 
     #pragma region "TEST_CODE"
         #if TEST_MODE == 1
+
+            std::string outputTestString = "";
+
             /*
                 DOING: Ticket #25
             */
@@ -68,30 +71,29 @@ int main (int argc, char* argv[])
                     ThreeNum_set<int> extractedCoords;
                     extractedCoords = testPack1.getCenterCoords();
 
-                    std::string outputStringPack = "";
-                    outputStringPack = " Pack1 dims are: \n X -> " + std::to_string(extractedDims.X) + "\n Y -> " + std::to_string(extractedDims.Y) + "\n Z -> " + std::to_string(extractedDims.Z) + "\n";
-                    outputStringPack += "\n Pack1 coords are: \n X -> " + std::to_string(extractedCoords.X) + "\n Y -> " + std::to_string(extractedCoords.Y) + "\n Z -> " + std::to_string(extractedCoords.Z) + "\n";
-                    outputStringPack += "\n Pack1 Volume: " + std::to_string(testPack1.getVolume());
-                    outputStringPack += "\n Pack1 ID: " + std::to_string(testPack1.getPackID());
-                    outputStringPack += "\n Pack1 Density: " + std::to_string(testPack1.getDensity());
+                    outputTestString = " Pack1 dims are: \n X -> " + std::to_string(extractedDims.X) + "\n Y -> " + std::to_string(extractedDims.Y) + "\n Z -> " + std::to_string(extractedDims.Z) + "\n";
+                    outputTestString += "\n Pack1 coords are: \n X -> " + std::to_string(extractedCoords.X) + "\n Y -> " + std::to_string(extractedCoords.Y) + "\n Z -> " + std::to_string(extractedCoords.Z) + "\n";
+                    outputTestString += "\n Pack1 Volume: " + std::to_string(testPack1.getVolume());
+                    outputTestString += "\n Pack1 ID: " + std::to_string(testPack1.getPackID());
+                    outputTestString += "\n Pack1 Density: " + std::to_string(testPack1.getDensity());
 
                     //testPack2 = testPack1;
 
                     extractedDims = testPack2.getDims();
                     extractedCoords = testPack2.getCenterCoords();
 
-                    outputStringPack += "\n\n Pack2 dims are: \n X -> " + std::to_string(extractedDims.X) + "\n Y -> " + std::to_string(extractedDims.Y) + "\n Z -> " + std::to_string(extractedDims.Z) + "\n";
-                    outputStringPack += "\n Pack2 coords are: \n X -> " + std::to_string(extractedCoords.X) + "\n Y -> " + std::to_string(extractedCoords.Y) + "\n Z -> " + std::to_string(extractedCoords.Z) + "\n";
-                    outputStringPack += "\n Pack2 Volume: " + std::to_string(testPack2.getVolume());
-                    outputStringPack += "\n Pack2 ID: " + std::to_string(testPack2.getPackID());
-                    outputStringPack += "\n Pack2 Density: " + std::to_string(testPack2.getDensity());
+                    outputTestString += "\n\n Pack2 dims are: \n X -> " + std::to_string(extractedDims.X) + "\n Y -> " + std::to_string(extractedDims.Y) + "\n Z -> " + std::to_string(extractedDims.Z) + "\n";
+                    outputTestString += "\n Pack2 coords are: \n X -> " + std::to_string(extractedCoords.X) + "\n Y -> " + std::to_string(extractedCoords.Y) + "\n Z -> " + std::to_string(extractedCoords.Z) + "\n";
+                    outputTestString += "\n Pack2 Volume: " + std::to_string(testPack2.getVolume());
+                    outputTestString += "\n Pack2 ID: " + std::to_string(testPack2.getPackID());
+                    outputTestString += "\n Pack2 Density: " + std::to_string(testPack2.getDensity());
                     
                     if (testPack1 == testPack2)
                     {
-                        outputStringPack += "\n\n I PACCHI SONO UGUALI :)";
+                        outputTestString += "\n\n I PACCHI SONO UGUALI :)";
                     } else
                     {
-                        outputStringPack += "\n I PACCHI SONO DIVERSI :(";
+                        outputTestString += "\n I PACCHI SONO DIVERSI :(";
                     }
         #pragma endregion
 
@@ -107,7 +109,7 @@ int main (int argc, char* argv[])
         //TODO
     #pragma endregion
 
-            consoleLog(outputStringPack);
+            consoleLog(outputTestString);
 
     #pragma endregion
 
