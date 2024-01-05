@@ -10,6 +10,7 @@
     #include "extLibs/nlohmannJSON/json.hpp"
 
     #include "headers/entities/physical/Pack.hpp"
+    #include "headers/entities/geometry/Grid.hpp"
 
     #include "headers/logic/ordinamentoPacchi.hpp"
     #include "headers/logic/ottimizzazione.hpp"
@@ -98,7 +99,8 @@ int main (int argc, char* argv[])
         #pragma endregion
 
         #pragma region "test creazione Grid"
-            //TODO
+            
+
         #pragma endregion
 
         #pragma region "test assegnazione Pack su Grid"
