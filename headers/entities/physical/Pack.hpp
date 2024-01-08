@@ -38,6 +38,8 @@ public:
         //getRotatableFlag() missing?
     #pragma endregion
 
+    //TODO: fare metodo per stampare/ritornare tutte le info relative ad un pacco in particolare, tramite ID del pacco o puntatore a pacco
+
 };
 
 #endif

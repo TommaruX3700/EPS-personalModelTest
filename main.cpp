@@ -48,9 +48,9 @@ int main (int argc, char* argv[])
                     testDims.X = 2;
                     testDims.Y = 3;
                     testDims.Z = 6;
-                    testCoords.X = 2; 
-                    testCoords.Y = 2;
-                    testCoords.Z = 2; 
+                    testCoords.X = 10; 
+                    testCoords.Y = 10;
+                    testCoords.Z = 10; 
 
                     float testWeight = 2.4;
                     int testID = 10;
@@ -107,18 +107,20 @@ int main (int argc, char* argv[])
 
             Grid testGrid(testMaxDims);
 
-            testGrid.printGrid(1);
-
         #pragma endregion
 
         #pragma region "test assegnazione Pack su Grid"
             //TODO
+            //funziona ma non fa il suo lavoro correttamente.
+            testGrid.setOccupiedCells(&testPack1);
+            testGrid.setOccupiedCells(&testPack2);
         #pragma endregion
 
         #pragma region "test eliminazione Pack da Grid"
-        //TODO
-    #pragma endregion
+            //TODO
+        #pragma endregion
 
+            testGrid.printGrid(1);
             //consoleLog(outputTestString);
 
     #pragma endregion
