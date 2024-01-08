@@ -47,9 +47,9 @@ int main (int argc, char* argv[])
                     testDims.X = 4;
                     testDims.Y = 6;
                     testDims.Z = 2;
-                    testCoords.X = 10; 
-                    testCoords.Y = 10;
-                    testCoords.Z = 10; 
+                    testCoords.X = 5; 
+                    testCoords.Y = 5;
+                    testCoords.Z = 5; 
 
                     float testWeight = 2.4;
                     int testID = 10;
@@ -57,9 +57,9 @@ int main (int argc, char* argv[])
 
                     Pack testPack1(testDims, testCoords, testWeight, testID, testFlag);
                     
-                    testDims.X = 1;
-                    testDims.Y = 1;
-                    testDims.Z = 1;
+                    testDims.X = 2;
+                    testDims.Y = 2;
+                    testDims.Z = 2;
                     testCoords.X = 1; 
                     testCoords.Y = 1;
                     testCoords.Z = 1; 
@@ -112,17 +112,17 @@ int main (int argc, char* argv[])
             //TODO
             //funziona ma non fa il suo lavoro correttamente.
             testGrid.setOccupiedCells(&testPack1);
-            //testGrid.setOccupiedCells(&testPack2);
+            testGrid.setOccupiedCells(&testPack2);
         #pragma endregion
 
         #pragma region "test eliminazione Pack da Grid"
             //TODO
         #pragma endregion
-            std :: cout << "piano XY" << std :: endl;
+            std :: cout << "piano1: XY" << std :: endl;
             testGrid.printGrid(1);
-            std :: cout << "piano YZ" << std :: endl;
+            std :: cout << "piano2: YZ" << std :: endl;
             testGrid.printGrid(2);
-            std :: cout << "piano ZX" << std :: endl;
+            std :: cout << "piano3: XZ" << std :: endl;
             testGrid.printGrid(3);
             //consoleLog(outputTestString);
 

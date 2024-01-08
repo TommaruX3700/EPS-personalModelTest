@@ -185,8 +185,17 @@ void Plane :: printPlane()
     int x = static_cast<int>(this->maxDimensions.X);
     int y = static_cast<int>(this->maxDimensions.Y);
 
-    for (int i = 0; i < x; ++i) {
-        for (int j = 0; j < y; ++j) {
+    std :: cout << "+";
+    for (int i = 0; i < x; i++)
+    {
+        std :: cout << "--";
+    }
+
+    std :: cout << ">\n";
+    
+    for (int i = 0; i < y; ++i) {
+        std :: cout << "|";
+        for (int j = 0; j < x; ++j) {
             if (plane[i][j].pack == nullptr)
             {
                 std :: cout << " X";
@@ -199,4 +208,5 @@ void Plane :: printPlane()
         std :: cout << "\n";
 
     }
+    std :: cout << "v\n";
 }
