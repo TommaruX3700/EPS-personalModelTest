@@ -44,8 +44,8 @@ int main (int argc, char* argv[])
         #pragma region "test Pack & 3D_object"
                     //PACK: DONE
                     ThreeNum_set<int> testDims, testCoords;
-                    testDims.X = 2;
-                    testDims.Y = 3;
+                    testDims.X = 4;
+                    testDims.Y = 4;
                     testDims.Z = 6;
                     testCoords.X = 10; 
                     testCoords.Y = 10;
@@ -55,7 +55,7 @@ int main (int argc, char* argv[])
                     int testID = 10;
                     bool testFlag = true;
 
-                    Pack testPack1(testDims, testCoords, testWeight, testID, testFlag); //constructor dowsnt work at all, it just feels like any implementation works.
+                    Pack testPack1(testDims, testCoords, testWeight, testID, testFlag);
                     
                     testDims.X = 1;
                     testDims.Y = 1;
@@ -112,14 +112,18 @@ int main (int argc, char* argv[])
             //TODO
             //funziona ma non fa il suo lavoro correttamente.
             testGrid.setOccupiedCells(&testPack1);
-            testGrid.setOccupiedCells(&testPack2);
+            //testGrid.setOccupiedCells(&testPack2);
         #pragma endregion
 
         #pragma region "test eliminazione Pack da Grid"
             //TODO
         #pragma endregion
-
+            std :: cout << "piano XY" << std :: endl;
             testGrid.printGrid(1);
+            std :: cout << "piano YZ" << std :: endl;
+            testGrid.printGrid(2);
+            std :: cout << "piano ZX" << std :: endl;
+            testGrid.printGrid(3);
             //consoleLog(outputTestString);
 
     #pragma endregion
