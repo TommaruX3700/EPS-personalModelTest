@@ -208,5 +208,5 @@ void Plane :: printPlane()
         std :: cout << "\n";
 
     }
-    std :: cout << "v\n";
+    std :: cout << "v\n\n";
 }
