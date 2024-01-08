@@ -42,7 +42,7 @@ int main (int argc, char* argv[])
                 DOING: Ticket #25
             */
         #pragma region "test Pack & 3D_object"
-                    //PACK: DONE
+                    //PACK: funziona
                     ThreeNum_set<int> testDims, testCoords;
                     testDims.X = 4;
                     testDims.Y = 6;
@@ -98,7 +98,7 @@ int main (int argc, char* argv[])
         #pragma endregion
 
         #pragma region "test creazione Grid"
-            //DONE
+            //funziona
             ThreeNum_set<int> testMaxDims;
             testMaxDims.X = 20;
             testMaxDims.Y = 20;
@@ -109,14 +109,16 @@ int main (int argc, char* argv[])
         #pragma endregion
 
         #pragma region "test assegnazione Pack su Grid"
-            //TODO
+            //funziona
             //funziona ma non fa il suo lavoro correttamente.
             testGrid.setOccupiedCells(&testPack1);
             testGrid.setOccupiedCells(&testPack2);
         #pragma endregion
 
         #pragma region "test eliminazione Pack da Grid"
-            //TODO
+            //funziona
+            testGrid.freeOccupiedCells(&testPack1);
+            testGrid.freeOccupiedCells(&testPack1);
         #pragma endregion
             std :: cout << "piano1: XY" << std :: endl;
             testGrid.printGrid(1);
