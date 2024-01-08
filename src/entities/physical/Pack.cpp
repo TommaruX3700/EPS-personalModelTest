@@ -15,9 +15,15 @@ Pack :: Pack (ThreeNum_set<int> dims, ThreeNum_set<int> coords, float packWeight
         this->rotatableFlag = rotFlag;
 
         this->setDims(dims);
+        
+        //TODO: 
+        //  - controllare tramite le dimensioni che vengono fornite se la posizione del centro ha senso o meno.
+        //  - rilasciare errore di creazione se la creazione è OUT_OF_BOUND o se il pacco entra in CONFLITTO con altri elementi nel piano.
+
         this->setCenterCoords(coords);
         this->setWeight(packWeight);
 
+        
     }
 
 #pragma region "Operator overrides"

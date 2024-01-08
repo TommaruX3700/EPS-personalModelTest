@@ -45,8 +45,8 @@ int main (int argc, char* argv[])
                     //PACK: DONE
                     ThreeNum_set<int> testDims, testCoords;
                     testDims.X = 4;
-                    testDims.Y = 4;
-                    testDims.Z = 6;
+                    testDims.Y = 6;
+                    testDims.Z = 2;
                     testCoords.X = 10; 
                     testCoords.Y = 10;
                     testCoords.Z = 10; 
