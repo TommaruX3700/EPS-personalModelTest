@@ -38,7 +38,6 @@ int main (int argc, char* argv[])
         #if TEST_MODE == 1
 
             std::string outputTestString = "";
-
             /*
                 DOING: Ticket #25
             */
