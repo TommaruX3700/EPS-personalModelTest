@@ -19,12 +19,12 @@ private:
 
 public:
     Grid(ThreeNum_set<int> maxDimensions); 
+    
     //Necessario passare solamente il parametro pacco, in quanto la posizione dipende dal valore del centro del pacco
     void setOccupiedCells(Pack* inputPack); 
     void freeOccupiedCells(Pack* inputPack);
 
     void printGrid(int plane);
-    //TODO: metodo x stampare visivamente in console i 3 piani e relative posizioni/aree di occupazione dei pacchi
 };
 
 #endif

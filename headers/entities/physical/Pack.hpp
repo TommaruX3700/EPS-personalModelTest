@@ -13,12 +13,9 @@ Description:
 class Pack : public ThreeD_object
 {
 private:
-    int packID; //pack ID
+    int packID; //N_COLLO
     bool rotatableFlag; //if its rotatable or not
     bool palletizableFlag; //if its palletizable or not
-
-    //TODO: delete if operator== completed
-    //bool packCompare();
     
 public:
     Pack(ThreeNum_set<int> dims, ThreeNum_set<int> coords, float packWeight, int packID, bool rotFlag);
@@ -38,7 +35,10 @@ public:
         //getRotatableFlag() missing?
     #pragma endregion
 
-    //TODO: fare metodo per stampare/ritornare tutte le info relative ad un pacco in particolare, tramite ID del pacco o puntatore a pacco
+    /*
+        TODO: metodo per stampare/ritornare tutte le info relative ad un pacco in particolare, da richiamare da un metodo più generico vicino al main 
+            per poter specificare l'oggetto pacco tramite ID del pacco o puntatore a pacco
+    */
 
 };
 

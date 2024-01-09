@@ -14,14 +14,14 @@ using namespace Geometry;
 
 class ThreeD_object
 {
-    protected:
-        //NB: protected values are usable by derived classes
+    protected: 
         ThreeNum_set<int> objectDims;     //[m]
         ThreeNum_set<int> centerCoords;   //[m]
         float weight;   //[Kg]
         float density;  //[Kg/m3]
         float m3Volume;   //[m3]
-        // VOLUME OBJECT (DATASET WITH ALL OCCUPIED CELLS) NEEDED??
+
+        //TODO:Valutare se creare un oggetto "volume" con riferimenti alle celle occupare in griglia
 
     private:
         ThreeNum_set<int> originalOrientationDims; //store objectDims values at orientation = 1
@@ -31,9 +31,6 @@ class ThreeD_object
         void backToOriginalPosition();
         
     public:
-        // ThreeD_object();
-        // ~ThreeD_object();
-
         #pragma region "Set methods"
             void setDims(ThreeNum_set<int> dims);
             void setCenterCoords(ThreeNum_set<int> coords); 

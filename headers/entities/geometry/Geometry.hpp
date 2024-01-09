@@ -9,16 +9,14 @@ Description:
 		- ThreeNum_set: 3 values data set, general defined by float type: generally used for 3D coordinates;
 		- TwoNum_set: 2 values data set, general defined by an int type: generally used for 2D coordinates or dimensions.
 		- Area: identifies an area between 2 diagonal points.
-*/
 
-/*
 	Remember to use INLINE or STATIC functions
 	
-    inline: 
+    INLINE: 
 		Use inline for small, frequently called functions or function templates that you want to avoid duplicating across multiple source files.
 		It's a suggestion to the compiler to inline the function's code wherever it's called.
 
-	static: 
+	STATIC: 
 		Use static for functions that should be limited to a single translation unit to avoid linkage errors caused by multiple definitions.
 		These functions won't be visible outside the file where they're defined.
 */
@@ -39,14 +37,6 @@ namespace Geometry {
 		TwoNum_set() : X(type(0)), Y(type(0)) {};
 		TwoNum_set(type x_val, type y_val) : X(type(x_val)), Y(type(y_val)) {};
 	};
-
-	// struct Volume
-	// {
-	// 	//define this object between 2 points and resume all the points inside
-	// 	// IS THIS NECESSARY?? WE JUST HAVE TO OCCUPY CELLS BY NMODIFY POINTERS
-	// 	//	LEAVE OBJECTS LIKE THESE FOR FURTHER IMPLEMENTATION ONLY IF NEEDED.
-	// 	Volume(ThreeNum_set<int> volumeDims,  ) : 
-	// };
 
 	//TODO: make a geometry object "AREA"
 

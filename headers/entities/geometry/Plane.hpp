@@ -2,19 +2,15 @@
 #define PLANE_H
 
 #include "Cell.hpp"
-
-//#include "../physical/3D_object.hpp" //TODO: test if this gives back errors 
-
-
 #include <iostream>
 #include <vector>
 
 /*
 Author:
-    Federico Casarotto
+    Tommaso Maruzzo
 Description:
-    Plane object based upon a double dimension Cell object pointer.
-    maxX and maxY needs to be compiled in order to always access plane max dimensions, if needed.
+    - Plane object based upon a double dimension Cell object pointer.
+    - maxX and maxY needs to be compiled in order to always access plane max dimensions, if needed.
 */
 
 class Plane
@@ -22,6 +18,7 @@ class Plane
 private:
     TwoNum_set<int> maxDimensions;
     Cell** plane;
+    
     void fillArea(TwoNum_set<int> set1, TwoNum_set<int> set2, Pack* inputPack);
     void freeArea(TwoNum_set<int> set1, TwoNum_set<int> set2, Pack* inputPack);
 
