@@ -23,7 +23,6 @@ Pack :: Pack (ThreeNum_set<int> dims, ThreeNum_set<int> coords, float packWeight
         this->setCenterCoords(coords);
         this->setWeight(packWeight);
 
-        
     }
 
 #pragma region "Operator overrides"

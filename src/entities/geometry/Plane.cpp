@@ -67,8 +67,8 @@ Plane :: ~Plane ()
     void Plane :: fillArea (TwoNum_set<int> set1, TwoNum_set<int> set2, Pack* inputPack)
     {
         //Private method: used to fill an area with Pack pointers
-        //TODO:
-        //  CHECK IF OVERLAPS OTHER PACKS POSITIOIN: THROW AN ERROR IF OVELAPS
+        
+        //TODO: CHECK IF OVERLAPS OTHER PACKS POSITIOIN: THROW AN ERROR IF OVELAPS
 
         for (int i = set1.X; i < set1.Y; i++)
         {

@@ -32,9 +32,9 @@ void Grid :: setOccupiedCells(Pack* inputPack)
 void Grid :: freeOccupiedCells(Pack* inputPack)
 {
     //TODO: handle method returns
-   this->XY->freeOccupiedCellsOnPlaneType(inputPack, 1);
-   this->XZ->freeOccupiedCellsOnPlaneType(inputPack, 2);
-   this->YZ->freeOccupiedCellsOnPlaneType(inputPack, 3);
+    this->XY->freeOccupiedCellsOnPlaneType(inputPack, 1);
+    this->XZ->freeOccupiedCellsOnPlaneType(inputPack, 2);
+    this->YZ->freeOccupiedCellsOnPlaneType(inputPack, 3);
 }
 
 void Grid :: printGrid(int plane)
