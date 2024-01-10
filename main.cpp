@@ -1,4 +1,4 @@
-#define TEST_MODE 1 //Enable to 1 to execute only "TEST_REGION"
+#define TEST_MODE 0 //Enable to 1 to execute only "TEST_REGION"
 
 #pragma region "Includes" 
     #include <iostream>
@@ -27,6 +27,8 @@
     //json vectorToJson (all the arguments needed);
 
 #pragma endregion
+
+std :: string inputJsonPath;
 
 int main (int argc, char* argv[]) 
 {  
@@ -135,7 +137,7 @@ int main (int argc, char* argv[])
     #pragma region "EPS_CODE"
     #else
         //Gets arguments as INPUT
-        const std :: string inputJsonPath = argv[1];
+        inputJsonPath = argv[1];
 
         #pragma region "CodeBlock 1 - Startup Routine"
             //Check if file exists 
@@ -269,7 +271,7 @@ int main (int argc, char* argv[])
             std ::cout << "-------------------------------------------------" << std::endl;
 
         #else
-            inputJsonPath
+            
             std::cout << "\nEPS-M: START" << "\n";
             std::cout << "> Input: " << inputJsonPath << "\n" << "-------------------------------------------------" << std::endl;
         #endif
