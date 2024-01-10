@@ -118,8 +118,8 @@ int main (int argc, char* argv[])
 
         #pragma region "test eliminazione Pack da Grid"
             //funziona
-            testGrid.freeOccupiedCells(&testPack1);
-            testGrid.freeOccupiedCells(&testPack1);
+            //testGrid.freeOccupiedCells(&testPack1);
+            //testGrid.freeOccupiedCells(&testPack2);
         #pragma endregion
 
         std :: cout << "piano1: XY" << std :: endl;
