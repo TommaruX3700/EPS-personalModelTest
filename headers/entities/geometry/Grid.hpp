@@ -1,3 +1,6 @@
+#ifndef GRID_H
+#define GRID_H
+
 #include "Plane.hpp"
 
 /*
@@ -16,7 +19,12 @@ private:
 
 public:
     Grid(ThreeNum_set<int> maxDimensions); 
+    
     //Necessario passare solamente il parametro pacco, in quanto la posizione dipende dal valore del centro del pacco
     void setOccupiedCells(Pack* inputPack); 
     void freeOccupiedCells(Pack* inputPack);
+
+    void printGrid(int plane);
 };
+
+#endif

@@ -1,3 +1,6 @@
+#ifndef PALLET_H
+#define PALLET_H
+
 #include "../geometry/Geometry.hpp"
 #include "Pack.hpp"
 #include <vector>
@@ -18,23 +21,25 @@ class Pallet : ThreeD_object
 {
 private:
     float param_Efficency;
-    ThreeNum_set<int> maxDims; //[m]
+    Geometry :: ThreeNum_set<int> maxDims; //[m]
     std::vector<ptrPack> pallet; 
 
 public:
-    Pallet(ThreeNum_set<int> maxDimensions);
+    Pallet(Geometry :: ThreeNum_set<int> maxDimensions);
 
     //IDEA: add > and < operators 
 
     #pragma region "Get methods"
         int getPackCount() const;
-        ThreeNum_set<int> getPalletDims() const;
+        Geometry :: ThreeNum_set<int> getPalletDims() const;
     #pragma endregion
 
     #pragma region "Public methods"
         void addPack(ptrPack packToAddPtr); 
-        void rmvPack(int index = -1); //Delete the pack in the given position from the "pallet" vector
+        void rmvPack(int index); //Delete the pack in the given position from the "pallet" vector
         void rmvPackByID(int packID); //Delete pack by ID    
     #pragma endregion
 
 };
+
+#endif

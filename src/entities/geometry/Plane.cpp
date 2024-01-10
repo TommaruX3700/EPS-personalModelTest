@@ -1,4 +1,5 @@
 #include "../../../headers/entities/geometry/Plane.hpp"
+#include <iostream>
 
 Plane :: Plane (TwoNum_set<int> maxDimensions)
 {
@@ -37,7 +38,7 @@ Plane :: ~Plane ()
 }
 
 #pragma region "Override operator"
-    Plane& Plane :: operator=(const Plane& n) 
+    void Plane :: operator=(const Plane& n) 
     {
         if (this != &n)
         {
@@ -66,6 +67,9 @@ Plane :: ~Plane ()
     void Plane :: fillArea (TwoNum_set<int> set1, TwoNum_set<int> set2, Pack* inputPack)
     {
         //Private method: used to fill an area with Pack pointers
+        
+        //TODO: CHECK IF OVERLAPS OTHER PACKS POSITIOIN: THROW AN ERROR IF OVELAPS
+
         for (int i = set1.X; i < set1.Y; i++)
         {
             for (int j = set2.X; j < set2.Y; j++)
@@ -95,25 +99,27 @@ Plane :: ~Plane ()
         //This method sets cells as occupied using center value position and object dimensions
         try
         {
+            ThreeNum_set<int> center;
+            ThreeNum_set<int> dimensions;
             switch (planeType)
             {
                 case 1:
                     //XY
-                        ThreeNum_set<int> center = inputPack->getCenterCoords();
-                        ThreeNum_set<int> dimensions = inputPack->getDims();
+                        center = inputPack->getCenterCoords();
+                        dimensions = inputPack->getDims();
                         fillArea(findDimsRoutine(center.X, dimensions.X), findDimsRoutine(center.Y, dimensions.Y), inputPack);
                     break;
 
                 case 2:
                     //YZ
-                        ThreeNum_set<int> center = inputPack->getCenterCoords();
-                        ThreeNum_set<int> dimensions = inputPack->getDims();
+                        center = inputPack->getCenterCoords();
+                        dimensions = inputPack->getDims();
                         fillArea(findDimsRoutine(center.Y, dimensions.Y), findDimsRoutine(center.Z, dimensions.Z), inputPack);
                     break; 
                 case 3:
                     //XZ
-                        ThreeNum_set<int> center = inputPack->getCenterCoords();
-                        ThreeNum_set<int> dimensions = inputPack->getDims();
+                        center = inputPack->getCenterCoords();
+                        dimensions = inputPack->getDims();
                         fillArea(findDimsRoutine(center.X, dimensions.X), findDimsRoutine(center.Z, dimensions.Z), inputPack);
                     break;
 
@@ -135,25 +141,27 @@ Plane :: ~Plane ()
         //This method frees cells using center position and object dimensions
         try
         {
+            ThreeNum_set<int> center;
+            ThreeNum_set<int> dimensions;            
             switch (planeType)
             {
                 case 1:
                     //XY
-                        ThreeNum_set<int> center = inputPack->getCenterCoords();
-                        ThreeNum_set<int> dimensions = inputPack->getDims();
+                        center = inputPack->getCenterCoords();
+                        dimensions = inputPack->getDims();
                         freeArea(findDimsRoutine(center.X, dimensions.X), findDimsRoutine(center.Y, dimensions.Y), inputPack);
                     break;
 
                 case 2:
                     //YZ
-                        ThreeNum_set<int> center = inputPack->getCenterCoords();
-                        ThreeNum_set<int> dimensions = inputPack->getDims();
+                        center = inputPack->getCenterCoords();
+                        dimensions = inputPack->getDims();
                         freeArea(findDimsRoutine(center.Y, dimensions.Y), findDimsRoutine(center.Z, dimensions.Z), inputPack);
                     break; 
                 case 3:
                     //XZ
-                        ThreeNum_set<int> center = inputPack->getCenterCoords();
-                        ThreeNum_set<int> dimensions = inputPack->getDims();
+                        center = inputPack->getCenterCoords();
+                        dimensions = inputPack->getDims();
                         freeArea(findDimsRoutine(center.X, dimensions.X), findDimsRoutine(center.Z, dimensions.Z), inputPack);
                     break;
 
@@ -171,3 +179,34 @@ Plane :: ~Plane ()
     }
 
 #pragma endregion
+
+void Plane :: printPlane()
+{
+    int x = static_cast<int>(this->maxDimensions.X);
+    int y = static_cast<int>(this->maxDimensions.Y);
+
+    std :: cout << "+";
+    for (int i = 0; i < x; i++)
+    {
+        std :: cout << "--";
+    }
+
+    std :: cout << ">\n";
+    
+    for (int i = 0; i < y; ++i) {
+        std :: cout << "|";
+        for (int j = 0; j < x; ++j) {
+            if (plane[i][j].pack == nullptr)
+            {
+                std :: cout << " X";
+            } else
+            {
+                std :: cout << " O";
+            }
+            
+        }
+        std :: cout << "\n";
+
+    }
+    std :: cout << "v\n\n";
+}

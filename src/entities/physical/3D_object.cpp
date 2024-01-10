@@ -8,26 +8,26 @@ Description:
 */
 
 #pragma region "Constructors"
-    ThreeD_object :: ThreeD_object() 
-    {
-        //General constructor
-        this->objectDims.X = 0.0;
-        this->objectDims.Y = 0.0;
-        this->objectDims.Z = 0.0;
+    // ThreeD_object :: ThreeD_object() 
+    // {
+    //     //General constructor
+    //     this->objectDims.X = 0;
+    //     this->objectDims.Y = 0;
+    //     this->objectDims.Z = 0;
 
-        this->centerCoords.X = 0.0;
-        this->centerCoords.Y = 0.0;
-        this->centerCoords.Z = 0.0;
+    //     this->centerCoords.X = 0;
+    //     this->centerCoords.Y = 0;
+    //     this->centerCoords.Z = 0;
 
-        this->weight = 0.0;
-        this->density = 0.0;
-    }
+    //     this->weight = 0.0;
+    //     this->density = 0.0;
+    // }
 
-    ThreeD_object :: ~ThreeD_object() 
-    {
-        //General distructor
-        //use this only for dynamical allocated memory and deallocate it here.
-    }
+    // ThreeD_object :: ~ThreeD_object() 
+    // {
+    //     //General distructor
+    //     //use this only for dynamical allocated memory and deallocate it here.
+    // }
 
 #pragma endregion
 

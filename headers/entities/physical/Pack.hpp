@@ -13,18 +13,15 @@ Description:
 class Pack : public ThreeD_object
 {
 private:
-    int packID; //pack ID
+    int packID; //N_COLLO
     bool rotatableFlag; //if its rotatable or not
     bool palletizableFlag; //if its palletizable or not
-
-    //TODO: delete if operator== completed
-    //bool packCompare();
     
 public:
-    Pack(ThreeNum_set<int> dims, ThreeNum_set<int> coords, float packWeight, int packID, bool rotFlag) {};
+    Pack(ThreeNum_set<int> dims, ThreeNum_set<int> coords, float packWeight, int packID, bool rotFlag);
 
     #pragma region "Operators override"
-        Pack& operator=(const Pack& n);
+        void operator=(const Pack& n);
         bool operator==(const Pack& n);
     #pragma endregion
 
@@ -35,7 +32,13 @@ public:
 
     #pragma region "Get methods"
         int getPackID() const;
+        //getRotatableFlag() missing?
     #pragma endregion
+
+    /*
+        TODO: metodo per stampare/ritornare tutte le info relative ad un pacco in particolare, da richiamare da un metodo più generico vicino al main 
+            per poter specificare l'oggetto pacco tramite ID del pacco o puntatore a pacco
+    */
 
 };
 

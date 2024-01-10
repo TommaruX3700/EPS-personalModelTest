@@ -1,24 +1,34 @@
 #include "../../../headers/entities/physical/Pack.hpp"
 
+/*
+    Author:
+        Tommaso Maruzzo
+    Description:
+        Pack implementations
+*/
+
+using namespace Geometry;
+
 Pack :: Pack (ThreeNum_set<int> dims, ThreeNum_set<int> coords, float packWeight, int packID, bool rotFlag) 
     {
         this->packID = packID;
         this->rotatableFlag = rotFlag;
-        this->weight = packWeight;
 
-        this->centerCoords.X = coords.X;
-        this->centerCoords.Y = coords.Y;
-        this->centerCoords.Z = coords.Z;
+        this->setDims(dims);
+        
+        //TODO: 
+        //  - controllare tramite le dimensioni che vengono fornite se la posizione del centro ha senso o meno.
+        //  - rilasciare errore di creazione se la creazione è OUT_OF_BOUND o se il pacco entra in CONFLITTO con altri elementi nel piano.
 
-        this->objectDims.X = dims.X;
-        this->objectDims.Y = dims.Y;
-        this->objectDims.Z = dims.Z;
+        this->setCenterCoords(coords);
+        this->setWeight(packWeight);
+
     }
 
 #pragma region "Operator overrides"
 //Check if this works correctly as intended (eg: not only exchanging pointers)
 
-    Pack& Pack :: operator=(const Pack& n) 
+    void Pack :: operator=(const Pack& n) 
     {
         if (this != &n)
         {
@@ -35,19 +45,16 @@ Pack :: Pack (ThreeNum_set<int> dims, ThreeNum_set<int> coords, float packWeight
 
     bool Pack :: operator==(const Pack& n) 
     {
-        //TODO: evaluate if any usefull or to delete
         //Compare object packs in the current orientation (?)
-    if (
-            compareThreeNum_set(this->objectDims, n.objectDims) &&
-            this->weight == n.weight
-            )
-    {
+        bool comparison = compareThreeNum_set(this->objectDims, n.objectDims);
+        if ( comparison == true && this->weight == n.weight )
+        {
             return true;
-    }
-    else
-    {
+        }
+        else
+        {
             return false;
-    }
+        }
     }
 
 #pragma endregion

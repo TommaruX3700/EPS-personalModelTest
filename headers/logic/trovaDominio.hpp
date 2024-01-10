@@ -11,6 +11,4 @@ Description:
     Find new placing domain in current configuration
 */
 
-std::vector<Pack*> packsToNest;
-
 #endif

@@ -14,6 +14,8 @@ Description:
         - pointer to Pack, if it's occupied.
 */
 
+using namespace Geometry;
+
 struct Cell
 {
     TwoNum_set<int> coords; //this rappresents only position on the plane

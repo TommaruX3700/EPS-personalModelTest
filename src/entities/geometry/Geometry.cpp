@@ -1,6 +1,13 @@
 #include "../../../headers/entities/geometry/Geometry.hpp"
 
-bool compareThreeNum_set(ThreeNum_set <float> firstSet, ThreeNum_set<float> secondSet)
+/*
+    Author:
+        Tommaso Maruzzo
+    Description:
+        Geometry namespace implementations
+*/
+
+bool Geometry::compareThreeNum_set(Geometry::ThreeNum_set<int> firstSet, Geometry::ThreeNum_set<int> secondSet)
 {
     if (
         firstSet.X == secondSet.X && 
