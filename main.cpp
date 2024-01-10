@@ -36,8 +36,7 @@ int main (int argc, char* argv[])
     {
     consoleStartMessage();
 
-    #pragma region "TEST_CODE"
-        #if TEST_MODE == 1
+    #if TEST_MODE == 1
 
         std::string outputTestString = "";
         /*
@@ -132,9 +131,6 @@ int main (int argc, char* argv[])
         testGrid.printGrid(3);
         //consoleLog(outputTestString);
 
-    #pragma endregion
-
-    #pragma region "EPS_CODE"
     #else
         //Gets arguments as INPUT
         inputJsonPath = argv[1];
@@ -228,7 +224,6 @@ int main (int argc, char* argv[])
 
         #pragma endregion
     #endif
-#pragma endregion
 
         return 0;
     }
