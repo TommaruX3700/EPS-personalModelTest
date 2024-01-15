@@ -58,9 +58,11 @@ int main (int argc, char* argv[])
                     } else
                     {
                         std::string jsonContent;
+                        std::string currentLine;
                         while (inputFile)
                         {
-                            jsonContent = inputFile.get();
+                            std::getline(inputFile, currentLine);
+                            jsonContent.append(currentLine);
                         }
                         consoleLog("Contenuto file json: \n" + jsonContent);
                         convertToJson(jsonContent);
