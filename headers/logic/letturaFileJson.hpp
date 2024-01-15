@@ -10,5 +10,3 @@
 nlohmann::json convertToJson(std::string inputPath);
 std::vector<Pack*> getInputPacks(nlohmann::json inputJson);
 
-
-
