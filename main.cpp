@@ -64,7 +64,7 @@ int main (int argc, char* argv[])
                             std::getline(inputFile, currentLine);
                             jsonContent.append(currentLine);
                         }
-                        consoleLog("Contenuto file json: \n" + jsonContent);
+                        //consoleLog("Contenuto file json: \n" + jsonContent);
                         convertToJson(jsonContent);
                     }
                     
