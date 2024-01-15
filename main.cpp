@@ -12,6 +12,7 @@
     #include "headers/entities/physical/Pack.hpp"
     #include "headers/entities/geometry/Grid.hpp"
 
+    #include "headers/logic/letturaFileJson.hpp" 
     #include "headers/logic/ordinamentoPacchi.hpp"
     #include "headers/logic/ottimizzazione.hpp"
     #include "headers/logic/sceltaPacchiNesting.hpp"
@@ -38,7 +39,7 @@ int main (int argc, char* argv[])
     #if TEST_MODE == 1
         testFunction();
     #else
-        #pragma region "CodeBlock 1 - Startup Routine"
+        #pragma region "BlockCode 1 - Startup Routine"
             try
             {
                 if (argc > 1)
@@ -55,6 +56,10 @@ int main (int argc, char* argv[])
                         //File doesn't exists: throw error
                         throw std :: invalid_argument("Invalid JSON path provided or unable to access file.");
                     }
+
+                    //#10: "BlockCode 1 - Lettura file json"
+                    //  input: inputJsonPath;
+                    //  output: std::vector<Pack*> extractedPacksArray;
                 }
                 else
                 {
@@ -66,12 +71,9 @@ int main (int argc, char* argv[])
                 return consoleErrorMessage(e.what());
             }
 
-            //#10: "BlockCode 1 - Lettura file json"
-            //  output: std::vector<Pack*> extractedPacksArray;
-
         #pragma endregion
 
-        #pragma region "CodeBlock 2 - Pallet Loop"
+        #pragma region "BlockCode 2 - Pallet Loop"
             /*
                 Author: 
                     Tommaso Maruzzo
@@ -83,7 +85,7 @@ int main (int argc, char* argv[])
             std::vector<Pack*> palletizablePacksVector;
             std::vector<Pack*> nonPalletizablePacksVector;            
 
-            #pragma region "CodeBlock 2.1 - Ordinamento Input"
+            #pragma region "BlockCode 2.1 - Ordinamento Input"
                 /*
                     Author: 
                         Tommaso Maruzzo
@@ -101,13 +103,13 @@ int main (int argc, char* argv[])
             //Loop gets back here once ended all the other operations and gets aborted if 15 seconds passed
             while (palletizablePacksVector.size() && (palletLoopDuration.count() < 15))
             {
-                #pragma region "CodeBlock 2.2 - Scelta pacchi Nesting"
+                #pragma region "BlockCode 2.2 - Scelta pacchi Nesting"
                     //Execute only once packToNest  routine 
 
                 #pragma endregion
 
-                #pragma region "CodeBlock 2.3 - Nesting loop"
-                    // Qui dentro vengono usati i CodeBlocks:
+                #pragma region "BlockCode 2.3 - Nesting loop"
+                    // Qui dentro vengono usati i BlockCodes:
                     // - 2.3.1;
                     // - 2.3.2; 
                     // - 2.3.3.
@@ -132,7 +134,7 @@ int main (int argc, char* argv[])
 
         #pragma endregion
 
-        #pragma region "Code Block 3 - End Routine"
+        #pragma region "BlockCode 3 - End Routine"
             
             //Output as json (Plan B: output string)
 
