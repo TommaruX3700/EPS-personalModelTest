@@ -5,11 +5,11 @@
 nlohmann::json convertToJson(std::string inputString)
 {
     nlohmann::json outputJson;
-    //convert string to Json
+    outputJson = nlohmann::json::parse(inputString);
     return outputJson;
 }
 
-std::vector<Pack*> getInputPacks (std::string inputString)
+std::vector<Pack*> getInputPacks(std::string inputString)
 {
     nlohmann::json inputJson;
     std::vector<Pack*> outputVector;

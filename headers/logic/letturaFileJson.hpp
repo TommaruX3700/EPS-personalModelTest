@@ -6,7 +6,9 @@
 
 #include "../../extLibs/nlohmannJSON/json.hpp"
 
-//output as json object
+
+//Converts string to Json
 nlohmann::json convertToJson(std::string inputPath);
-std::vector<Pack*> getInputPacks(nlohmann::json inputJson);
+//Gives pack vector as output
+std::vector<Pack*> getInputPacks(std::string inputString);
 

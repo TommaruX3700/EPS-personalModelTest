@@ -6,6 +6,7 @@
     #include <string>
     #include <vector>
     #include <chrono>
+    #include <algorithm>
 
     #include "extLibs/nlohmannJSON/json.hpp"
 
@@ -62,10 +63,15 @@ int main (int argc, char* argv[])
                         std::string currentLine;
                         while (inputFile)
                         {
+                            //TODO: 
+                            //1. find a way to get rid of all the "\" characters
+                            //2. why there is an excessive "}" at the EOF?
                             std::getline(inputFile, currentLine);
                             jsonStringContent.append(currentLine);
                         }
-                        //consoleLog("Contenuto file json: \n" + jsonContent);
+                        inputFile.close();
+
+                        jsonStringContent.erase(std::remove(jsonStringContent.begin(), jsonStringContent.end(), "'\'", jsonStringContent.end()));
 
                         packVector packs = getInputPacks(jsonStringContent);
                     }
