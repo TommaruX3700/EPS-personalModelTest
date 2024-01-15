@@ -2,3 +2,8 @@
 
 //implementation here
 
+nlohmann::json convertToJson(std::string inputPath)
+{
+    nlohmann::json output;
+    return output;
+}

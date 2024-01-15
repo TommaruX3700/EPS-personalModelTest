@@ -49,14 +49,23 @@ int main (int argc, char* argv[])
                     consoleStartMessage();
 
                     //Check if file exists 
-                    std :: ifstream inputJsonFile;
-                    inputJsonFile.open(inputJsonPath);
-                    if (!inputJsonFile)
+                    std :: ifstream inputFile;
+                    inputFile.open(inputJsonPath);
+                    if (!inputFile)
                     {
                         //File doesn't exists: throw error
                         throw std :: invalid_argument("Invalid JSON path provided or unable to access file.");
+                    } else
+                    {
+                        std::string jsonContent;
+                        while (inputFile)
+                        {
+                            jsonContent = inputFile.get();
+                        }
+                        consoleLog("Contenuto file json: \n" + jsonContent);
+                        convertToJson(jsonContent);
                     }
-
+                    
                     //#10: "BlockCode 1 - Lettura file json"
                     //  input: inputJsonPath;
                     //  output: std::vector<Pack*> extractedPacksArray;
