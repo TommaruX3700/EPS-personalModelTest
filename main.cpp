@@ -10,6 +10,7 @@
     #include <regex>
 
     #include "extLibs/nlohmannJSON/json.hpp"
+    #include "extLibs/rapidjson/document.h"
 
     #include "headers/entities/physical/Pack.hpp"
     #include "headers/entities/geometry/Grid.hpp"
@@ -51,7 +52,7 @@ int main (int argc, char* argv[])
                     consoleStartMessage();
 
                     //Check if file exists 
-                    
+
                     std :: ifstream inputFile(inputJsonPath);
                     //inputFile.open(inputJsonPath);
                     if (!inputFile)
@@ -61,17 +62,31 @@ int main (int argc, char* argv[])
                     } else
                     {
                         //I get JSON file content and get a vector with all the PACK back as 
-                        std::string jsonStringContent;
-                        std::string currentLine;
-                        while (inputFile)
-                        {
-                            std::getline(inputFile, currentLine);
-                            rmvBackspace(currentLine);
-                            jsonStringContent.append(currentLine);
-                        }
+
+                        // std::string jsonStringContent;
+                        // std::string currentLine;
+                        // while (inputFile)
+                        // {
+                        //     std::getline(inputFile, currentLine);
+                        //     rmvBackspace(currentLine);
+                        //     jsonStringContent.append(currentLine);
+                        // }
+
+                        // Open the file 
+                        std::ifstream file(inputJsonPath); 
+                    
+                        // Read the entire file into a string 
+                        std::string jsonStringContent((std::istreambuf_iterator<char>(file)), 
+                                    std::istreambuf_iterator<char>()); 
+
                         //inputFile.close();
+
+                        //TRY THIS: https://www.geeksforgeeks.org/rapidjson-file-read-write-in-cpp/
+
                         packVector packs = getInputPacks(jsonStringContent);
+
                     }
+
                 }
                 else
                 {
