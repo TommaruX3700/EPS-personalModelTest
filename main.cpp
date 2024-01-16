@@ -7,6 +7,7 @@
     #include <vector>
     #include <chrono>
     #include <algorithm>
+    #include <regex>
 
     #include "extLibs/nlohmannJSON/json.hpp"
 
@@ -61,18 +62,26 @@ int main (int argc, char* argv[])
                         //I get JSON file content and get a vector with all the PACK back as 
                         std::string jsonStringContent;
                         std::string currentLine;
+                        char toRemove = '\\';
+
                         while (inputFile)
                         {
                             //TODO: 
                             //1. find a way to get rid of all the "\" characters
                             //2. why there is an excessive "}" at the EOF?
                             std::getline(inputFile, currentLine);
+                            
+                            //find a way to remove backslash char in currentLine
+                            
+                                //find '\' iterator
+                                //currentLine.find("'\'");
+                                currentLine = std::regex_replace(currentLine, std::regex("\\"), "");
+
+                                // currentLine.erase(std::remove(currentLine.begin(), currentLine.end(), toRemove), currentLine.end());
+                            
                             jsonStringContent.append(currentLine);
                         }
                         inputFile.close();
-
-                        jsonStringContent.erase(std::remove(jsonStringContent.begin(), jsonStringContent.end(), "'\'", jsonStringContent.end()));
-
                         packVector packs = getInputPacks(jsonStringContent);
                     }
                 }
