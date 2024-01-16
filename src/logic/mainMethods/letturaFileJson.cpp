@@ -18,11 +18,25 @@ std::vector<Pack*> getInputPacks(std::string inputString)
     return outputVector;
 }
 
-void rmvBackspace(std::string* inputString)
+void rmvBackspace(std::string &inputString)
 {
-    char toRemove = '\\';
+    std::string toRemove = "\\";
+    std::string tempOutput = "";
+
+    for (char character : inputString)
+    {
+        if (character != '\\' && character != '\r' && character != '\n' && character != '\r\n')
+        {
+            tempOutput += character;
+        }
+    }
+    
+    inputString = tempOutput;
 
     //modify the main inputString by working with pointers instead of return strings
+    
+    //std::string::find() --> return the position of the first occurrency of the substring provided as argument
+
 
     //TODO: 
     //1. find a way to get rid of all the "\" characters

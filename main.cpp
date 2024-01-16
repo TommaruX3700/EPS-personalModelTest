@@ -65,7 +65,7 @@ int main (int argc, char* argv[])
                         while (inputFile)
                         {
                             std::getline(inputFile, currentLine);
-                            rmvBackspace(&currentLine);
+                            rmvBackspace(currentLine);
                             jsonStringContent.append(currentLine);
                         }
                         inputFile.close();
