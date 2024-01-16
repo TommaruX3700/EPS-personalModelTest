@@ -51,8 +51,9 @@ int main (int argc, char* argv[])
                     consoleStartMessage();
 
                     //Check if file exists 
-                    std :: ifstream inputFile;
-                    inputFile.open(inputJsonPath);
+                    
+                    std :: ifstream inputFile(inputJsonPath);
+                    //inputFile.open(inputJsonPath);
                     if (!inputFile)
                     {
                         //File doesn't exists: throw error
@@ -68,7 +69,7 @@ int main (int argc, char* argv[])
                             rmvBackspace(currentLine);
                             jsonStringContent.append(currentLine);
                         }
-                        inputFile.close();
+                        //inputFile.close();
                         packVector packs = getInputPacks(jsonStringContent);
                     }
                 }
