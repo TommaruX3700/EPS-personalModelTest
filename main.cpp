@@ -57,10 +57,9 @@ int main (int argc, char* argv[])
                     {
                         //File doesn't exists: throw error
                         throw std :: invalid_argument("Invalid JSON path provided or unable to access file.");
-                    } else
+                    } 
+                    else
                     {
-                        //I get JSON file content and get a vector with all the PACK back as 
-
                         // Open the file 
                         std::ifstream file(inputJsonPath); 
                     
@@ -73,9 +72,8 @@ int main (int argc, char* argv[])
                         nlohmann::json inputJson = convertStringToJson(jsonStringContent.c_str());
 
                         packVector packs = getInputPacksInfos(inputJson);
-                        Pallet palletInfo = getInputPalletInfo(inputJson);
+                        Pallet palletInfo = getInputPalletInfos(inputJson);
                     }
-
                 }
                 else
                 {

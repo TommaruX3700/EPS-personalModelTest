@@ -7,6 +7,15 @@
 
 #include "../../extLibs/nlohmannJSON/json.hpp"
 
+
+/*
+TODO: Convert all of this into a class with this infos
+
+- json object as public json object: retrived on constructor
+- 
+*/
+
+
 //Converts string to Json
 nlohmann::json convertStringToJson(std::string inputPath);
 
@@ -14,7 +23,7 @@ nlohmann::json convertStringToJson(std::string inputPath);
 std::vector<Pack*> getInputPacksInfos(nlohmann::json inputJson);
 
 //Gives pallet as Pallet object for infos
-Pallet getInputPalletInfo(nlohmann::json inputJson);
+Pallet getInputPalletInfos(nlohmann::json inputJson);
 
 //Convert jsonObject to Pack
 Pack getPackByJson(nlohmann::json inputJson);

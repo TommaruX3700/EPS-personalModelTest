@@ -7,7 +7,7 @@ nlohmann::json convertStringToJson(std::string inputString)
     return outputJson;
 }
 
-std::vector<Pack*> getInputPacksAndPalletInfos(nlohmann::json inputJson)
+std::vector<Pack*> getInputPacksInfos(nlohmann::json inputJson)
 {
     nlohmann::json inputJson;
     std::vector<Pack*> outputVector;
@@ -16,11 +16,13 @@ std::vector<Pack*> getInputPacksAndPalletInfos(nlohmann::json inputJson)
     return outputVector;
 }
 
-Pallet getInputPalletInfo(nlohmann::json inputJson)
+Pallet getInputPalletInfos(nlohmann::json inputJson)
 {
     //get pallet infos and general settings by json "user settings"
-
+    return getPalletByJson(inputJson);
 }
+
+//"PRIVATE" methods
 
 Pack getPackByJson(nlohmann::json inputJson)
 {
@@ -30,7 +32,7 @@ Pack getPackByJson(nlohmann::json inputJson)
 
 Pallet getPalletByJson(nlohmann::json inputJson)
 {
+    //make a file to read general pallet informations
 
 }
 
-//make a file to read general pallet informations
