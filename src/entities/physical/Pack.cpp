@@ -11,10 +11,12 @@ using namespace Geometry;
 
 Pack :: Pack()
     {
+        Geometry::ThreeNum_set<int> empty;
+        empty.X = 0; empty.Y = 0; empty.Z = 0;
         this->packID = 0;
         this->rotatableFlag = 0;
-        this->setDims(Geometry::emptySet);
-        this->setCenterCoords(Geometry::emptySet);
+        this->setDims(empty);
+        this->setCenterCoords(empty);
         this->setWeight(0);
     }
 

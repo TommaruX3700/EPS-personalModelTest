@@ -18,12 +18,14 @@ nlohmann::json convertStringToJson(std::string inputPath);
 //Gives pack vector as output
 std::vector<Pack*> getInputPacksInfos(nlohmann::json inputJson);
 
-//Gives pallet as Pallet object for infos
-Pallet getInputPalletInfos(nlohmann::json inputJson);
+bool checkPackInfos(nlohmann::json input);
 
-//Convert jsonObject to Pack
-Pack getPackByJson(nlohmann::json inputJson);
+// //Gives pallet as Pallet object for infos
+// Pallet getInputPalletInfos(nlohmann::json inputJson);
 
-//get Pallet infos by jsonObject
-Pallet getPalletByJson(nlohmann::json inputJson);
+// //Convert jsonObject to Pack
+// Pack getPackByJson(nlohmann::json inputJson);
+
+// //get Pallet infos by jsonObject
+// Pallet getPalletByJson(nlohmann::json inputJson);
 

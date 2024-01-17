@@ -39,10 +39,8 @@ namespace Geometry {
 	};
 
 	//TODO: make a geometry object "AREA"
-
 	bool compareThreeNum_set (ThreeNum_set <int> firstSet, ThreeNum_set<int> secondSet);
 
-	ThreeNum_set<int> emptySet;
 }
 
 #endif
