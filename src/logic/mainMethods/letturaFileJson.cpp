@@ -38,4 +38,3 @@ Pallet getPalletByJson(nlohmann::json inputJson)
     //make a file to read general pallet informations
 
 }
-
