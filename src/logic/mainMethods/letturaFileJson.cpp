@@ -9,8 +9,11 @@ nlohmann::json convertStringToJson(std::string inputString)
 
 std::vector<Pack*> getInputPacksInfos(nlohmann::json inputJson)
 {
-    nlohmann::json inputJson;
     std::vector<Pack*> outputVector;
+
+    std::unordered_map<std::string, nlohmann::json> mapPack;
+    mapPack = inputJson;
+
     //convert json to pack vector for each object
     
     return outputVector;
