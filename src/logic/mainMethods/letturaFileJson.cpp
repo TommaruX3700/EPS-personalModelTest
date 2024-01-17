@@ -17,16 +17,44 @@ std::vector<Pack*> getInputPacksInfos(nlohmann::json inputJson)
 
     //TODO: fare un sistema di conteggio pacchi più solido
     int packCount = mapPack.size() - 2;
+
     std::string userSettings = mapPack["user_settings"].dump(); //instead of this, get values directly from json object 
 
-    Pack tempPack();
+    Geometry::ThreeNum_set<int> tempSet;
+    nlohmann::json tempJsonPack;
 
-    for (auto pack : mapPack)
+    for (auto line : mapPack)
     {
-        if (pack != "user_settings")
+        if (line != "user_settings")
         {
-            std::cout << mapPack[pack.first] << "\n";    
+            Pack tempPack;
+            //Remake all this method because it ignores all the other operations made in construction (eg:calcolo volume)
+            tempJsonPack = nlohmann::json::parse(mapPack[line.first]);
+            tempSet.X = tempJsonPack["BASE_MAGGIORE"];
+            tempSet.Y = tempJsonPack["BASE_MINORE"];
+            tempSet.Z = tempJsonPack["ALTEZZA"];
+            tempPack.setDims(tempSet);
+            tempSet.X = 0;
+            tempSet.Y = 0;
+            tempSet.Z = 0;
+            tempPack.setCenterCoords(tempSet);
+            tempPack.setPackID(tempJsonPack["NUMERO_COLLO"]);
+            if (tempJsonPack["FLAG_RUOTABILE"] == "N")
+            {
+                tempPack.setRotatableFlag(false);
+            }
+            else
+            {
+                tempPack.setRotatableFlag(true);
+            }
+            tempPack.setWeight(tempJsonPack["PESO_NETTO"]);
+            outputVector.push_back(tempPack);
         }   
+        else
+        {
+            //get pallet info here instead
+        }
+        
     }
     //convert json to pack vector for each object
     

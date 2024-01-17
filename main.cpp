@@ -64,11 +64,9 @@ int main (int argc, char* argv[])
                         std::ifstream file(inputJsonPath); 
                     
                         // Read the entire file into a string 
-                        std::string jsonStringContent((std::istreambuf_iterator<char>(file)), 
-                                    std::istreambuf_iterator<char>()); 
-
-                        //TRY THIS: https://www.geeksforgeeks.org/rapidjson-file-read-write-in-cpp/
-
+                        // https://www.geeksforgeeks.org/rapidjson-file-read-write-in-cpp/
+                        std::string jsonStringContent((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>()); 
+                        
                         nlohmann::json inputJson = convertStringToJson(jsonStringContent.c_str());
 
                         packVector packs = getInputPacksInfos(inputJson);
