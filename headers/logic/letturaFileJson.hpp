@@ -7,14 +7,10 @@
 
 #include "../../extLibs/nlohmannJSON/json.hpp"
 
-
 /*
 TODO: Convert all of this into a class with this infos
-
 - json object as public json object: retrived on constructor
-- 
 */
-
 
 //Converts string to Json
 nlohmann::json convertStringToJson(std::string inputPath);

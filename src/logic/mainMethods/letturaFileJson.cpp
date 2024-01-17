@@ -11,9 +11,23 @@ std::vector<Pack*> getInputPacksInfos(nlohmann::json inputJson)
 {
     std::vector<Pack*> outputVector;
 
+    //Dichiaro unordered_map in cui copiare il json object
     std::unordered_map<std::string, nlohmann::json> mapPack;
     mapPack = inputJson;
 
+    //TODO: fare un sistema di conteggio pacchi più solido
+    int packCount = mapPack.size() - 2;
+    std::string userSettings = mapPack["user_settings"].dump(); //instead of this, get values directly from json object 
+
+    Pack tempPack();
+
+    for (auto pack : mapPack)
+    {
+        if (pack != "user_settings")
+        {
+            std::cout << mapPack[pack.first] << "\n";    
+        }   
+    }
     //convert json to pack vector for each object
     
     return outputVector;

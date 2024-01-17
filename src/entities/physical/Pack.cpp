@@ -9,6 +9,15 @@
 
 using namespace Geometry;
 
+Pack :: Pack()
+    {
+        this->packID = 0;
+        this->rotatableFlag = 0;
+        this->setDims(Geometry::emptySet);
+        this->setCenterCoords(Geometry::emptySet);
+        this->setWeight(0);
+    }
+
 Pack :: Pack (ThreeNum_set<int> dims, ThreeNum_set<int> coords, float packWeight, int packID, bool rotFlag) 
     {
         this->packID = packID;
