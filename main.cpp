@@ -52,9 +52,7 @@ int main (int argc, char* argv[])
                     consoleStartMessage();
 
                     //Check if file exists 
-
                     std :: ifstream inputFile(inputJsonPath);
-                    //inputFile.open(inputJsonPath);
                     if (!inputFile)
                     {
                         //File doesn't exists: throw error
@@ -63,15 +61,6 @@ int main (int argc, char* argv[])
                     {
                         //I get JSON file content and get a vector with all the PACK back as 
 
-                        // std::string jsonStringContent;
-                        // std::string currentLine;
-                        // while (inputFile)
-                        // {
-                        //     std::getline(inputFile, currentLine);
-                        //     rmvBackspace(currentLine);
-                        //     jsonStringContent.append(currentLine);
-                        // }
-
                         // Open the file 
                         std::ifstream file(inputJsonPath); 
                     
@@ -79,12 +68,12 @@ int main (int argc, char* argv[])
                         std::string jsonStringContent((std::istreambuf_iterator<char>(file)), 
                                     std::istreambuf_iterator<char>()); 
 
-                        //inputFile.close();
-
                         //TRY THIS: https://www.geeksforgeeks.org/rapidjson-file-read-write-in-cpp/
 
-                        packVector packs = getInputPacks(jsonStringContent);
+                        nlohmann::json inputJson = convertStringToJson(jsonStringContent.c_str());
 
+                        packVector packs = getInputPacksInfos(inputJson);
+                        Pallet palletInfo = getInputPalletInfo(inputJson);
                     }
 
                 }
