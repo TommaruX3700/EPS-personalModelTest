@@ -1,8 +1,9 @@
 #include "../../../headers/logic/letturaFileJson.hpp"
 
-ReadJson::ReadJson(/* args */)
+ReadJson::ReadJson(std::string stringFileContent)
 {
-
+    nlohmann::json inputJson = convertStringToJson(stringFileContent.c_str());
+    retrivePacksInfos(inputJson);
 }
 
 nlohmann::json ReadJson::convertStringToJson(std::string inputString)
@@ -56,7 +57,7 @@ void ReadJson::retrivePacksInfos(nlohmann::json inputJson)
                     }
                     std::string weight = tempJsonPack["PESO_NETTO"];
                     newPack.setWeight(std::stof(weight));
-                    this->outputVector.push_back(&newPack);
+                    this->outputPackVector.push_back(&newPack);
                 }
                 catch(std::exception& e)
                 {
@@ -67,10 +68,10 @@ void ReadJson::retrivePacksInfos(nlohmann::json inputJson)
         else
         {
             //get pallet info here instead
-            tempJsonPack = nlohmann::json::parse(mapPack[line.first].dump());   
-            this->outputPalletInfos.insert({"Lenght:", tempJsonPack["Lenght"]});
-            this->outputPalletInfos.insert({"Width:", tempJsonPack["Width"]});
-            this->outputPalletInfos.insert({"Height:", tempJsonPack["Height"]});
+            tempJsonPack = nlohmann::json::parse(mapPack[line.first].dump());
+            this->outputPalletMaxs.X = tempJsonPack["Lenght"];
+            this->outputPalletMaxs.Y = tempJsonPack["Width"];
+            this->outputPalletMaxs.Z = tempJsonPack["Height"];
         }
     }
 }
@@ -96,32 +97,12 @@ bool ReadJson::checkPackInfos(nlohmann::json input)
     return true;
 }
 
-std::vector<Pack*> getPackVector()
+const std::vector<Pack*> ReadJson::getPackVector()
 {
-    
+    return this->outputPackVector;
 }
 
-std::map<std::string, int> getPalletInfos()
+const Geometry::ThreeNum_set<int> ReadJson::getPalletInfos()
 {
-
+    return this->outputPalletMaxs;
 }
-
-// Pallet getInputPalletInfos(nlohmann::json inputJson)
-// {
-//     //get pallet infos and general settings by json "user settings"
-//     return getPalletByJson(inputJson);
-// }
-
-// //"PRIVATE" methods
-
-// Pack getPackByJson(nlohmann::json inputJson)
-// {
-//     //get info on pack by parsed json
-//     //create Pack object and return it
-// }
-
-// Pallet getPalletByJson(nlohmann::json inputJson)
-// {
-//     //make a file to read general pallet informations
-
-// }

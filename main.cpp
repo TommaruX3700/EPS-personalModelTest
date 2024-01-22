@@ -62,15 +62,13 @@ int main (int argc, char* argv[])
                     {
                         // Open the file 
                         std::ifstream file(inputJsonPath); 
-                    
-                        // Read the entire file into a string 
-                        // https://www.geeksforgeeks.org/rapidjson-file-read-write-in-cpp/
+
+                        // Read the entire file into a string --> https://www.geeksforgeeks.org/rapidjson-file-read-write-in-cpp/
                         std::string jsonStringContent((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>()); 
 
-                        nlohmann::json inputJson = convertStringToJson(jsonStringContent.c_str());
-
-                        packVector packs = getInputPacksInfos(inputJson);
-                        //Pallet palletInfo = getInputPalletInfos(inputJson);
+                        ReadJson jsonConverter(jsonStringContent);
+                        packVector packs = jsonConverter.getPackVector();
+                        Pallet palletInfo(jsonConverter.getPalletInfos());
                     }
                 }
                 else

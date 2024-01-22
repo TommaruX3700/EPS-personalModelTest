@@ -24,8 +24,8 @@ TODO: Convert all of this into a class with this infos
 class ReadJson
 {
     private:
-        std::vector<Pack*> outputVector;
-        std::map<std::string, int> outputPalletInfos;
+        std::vector<Pack*> outputPackVector;
+        Geometry::ThreeNum_set<int> outputPalletMaxs;
 
         //Converts string to Json
         nlohmann::json convertStringToJson(std::string inputPath);
@@ -36,9 +36,9 @@ class ReadJson
         bool checkPackInfos(nlohmann::json input);
 
     public:
-        ReadJson();
-        std::vector<Pack*> getPackVector();
-        std::map<std::string, int> getPalletInfos();
+        ReadJson(std::string stringFileContent);
+        const std::vector<Pack*> getPackVector();
+        const Geometry::ThreeNum_set<int> getPalletInfos();
 };
 
 
