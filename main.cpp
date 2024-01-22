@@ -69,6 +69,7 @@ int main (int argc, char* argv[])
                         ReadJson jsonConverter(jsonStringContent);
                         packVector packs = jsonConverter.getPackVector();
                         Pallet palletInfo(jsonConverter.getPalletInfos());
+
                     }
                 }
                 else
