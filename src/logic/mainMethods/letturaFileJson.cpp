@@ -1,16 +1,19 @@
 #include "../../../headers/logic/letturaFileJson.hpp"
 
-nlohmann::json convertStringToJson(std::string inputString)
+ReadJson::ReadJson(/* args */)
+{
+
+}
+
+nlohmann::json ReadJson::convertStringToJson(std::string inputString)
 {
     nlohmann::json outputJson;
     outputJson = nlohmann::json::parse(inputString);
     return outputJson;
 }
 
-std::vector<Pack*> getInputPacksInfos(nlohmann::json inputJson)
+void ReadJson::retrivePacksInfos(nlohmann::json inputJson)
 {
-    std::vector<Pack*> outputVector;
-
     //Dichiaro unordered_map in cui copiare il json object
     std::unordered_map<std::string, nlohmann::json> mapPack;
     mapPack = inputJson;
@@ -53,42 +56,54 @@ std::vector<Pack*> getInputPacksInfos(nlohmann::json inputJson)
                     }
                     std::string weight = tempJsonPack["PESO_NETTO"];
                     newPack.setWeight(std::stof(weight));
-                    outputVector.push_back(&newPack);
+                    this->outputVector.push_back(&newPack);
                 }
-                catch(const std::exception& e)
+                catch(std::exception& e)
                 {
-                    std::cout << "Faulted Pack: " << tempJsonPack["NUMERO_COLLO"] << std::endl;
+                    std::cout << "Faulted Pack (N_Collo): " << tempJsonPack["NUMERO_COLLO"] << std::endl;
                 }                
             }            
         }   
         else
         {
             //get pallet info here instead
+            tempJsonPack = nlohmann::json::parse(mapPack[line.first].dump());   
+            this->outputPalletInfos.insert({"Lenght:", tempJsonPack["Lenght"]});
+            this->outputPalletInfos.insert({"Width:", tempJsonPack["Width"]});
+            this->outputPalletInfos.insert({"Height:", tempJsonPack["Height"]});
         }
     }
-    //convert json to pack vector for each object
-    return outputVector;
 }
 
-bool checkPackInfos(nlohmann::json input)
+bool ReadJson::checkPackInfos(nlohmann::json input)
 {
     // Check data and dimensions before operations
         if (input["BASE_MAGGIORE"] == 0 || input["BASE_MINORE"] == 0 || input["ALTEZZA"] == 0)
         {
-            std::cout << "Missing Dims, ignore Pack";
+            std::cout << "Missing Dims, ignore Pack\n";
             return false;  
         }
         if (input["NUMERO_COLLO"] == 0 || input["NUMERO_COLLO"] == NULL)
         {
-            std::cout << "Missing Numero di Collo, ignore Pack";
+            std::cout << "Missing Numero di Collo, ignore Pack\n";
             return false;  
         }
         if (input["PESO_NETTO"] == "" || input["PESO_NETTO"] == NULL || input["PESO_NETTO"] == "0")
         {
-            std::cout << "Missing Peso Netto, ignore Pack";
+            std::cout << "Missing Peso Netto, ignore Pack\n";
             return false;
         }
     return true;
+}
+
+std::vector<Pack*> getPackVector()
+{
+    
+}
+
+std::map<std::string, int> getPalletInfos()
+{
+
 }
 
 // Pallet getInputPalletInfos(nlohmann::json inputJson)
