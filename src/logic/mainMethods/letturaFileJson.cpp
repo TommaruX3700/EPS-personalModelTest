@@ -82,7 +82,7 @@ bool ReadJson::checkPackInfos(nlohmann::json input)
         if (input["BASE_MAGGIORE"] == 0 || input["BASE_MINORE"] == 0 || input["ALTEZZA"] == 0)
         {
             std::cout << "Missing Dims, ignore Pack\n";
-            return false;  
+            return false;   
         }
         if (input["NUMERO_COLLO"] == 0 || input["NUMERO_COLLO"] == NULL)
         {
