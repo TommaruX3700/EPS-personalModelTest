@@ -16,13 +16,8 @@ nlohmann::json ReadJson::convertStringToJson(std::string inputString)
 void ReadJson::retrivePacksInfos(nlohmann::json inputJson)
 {
     //Dichiaro unordered_map in cui copiare il json object
-    std::unordered_map<std::string, nlohmann::json> mapPack;
+    std::map<std::string, nlohmann::json> mapPack;
     mapPack = inputJson;
-
-    //TODO: fare un sistema di conteggio pacchi più solido
-    int packCount = mapPack.size() - 2;
-
-    std::string userSettings = mapPack["user_settings"].dump(); //instead of this, get values directly from json object 
 
     Geometry::ThreeNum_set<int> tempDims;
     Geometry::ThreeNum_set<int> tempCoords;
@@ -32,7 +27,7 @@ void ReadJson::retrivePacksInfos(nlohmann::json inputJson)
 
     for (auto line : mapPack)
     {
-        if (line != "user_settings")
+        if (line.first != "user_settings")
         {
             // Remake all this method because it ignores all the other operations made in construction (eg:calcolo volume)
             tempJsonPack = nlohmann::json::parse(mapPack[line.first].dump());
@@ -84,17 +79,17 @@ bool ReadJson::checkPackInfos(nlohmann::json input)
     // Check data and dimensions before operations
         if (input["BASE_MAGGIORE"] == 0 || input["BASE_MINORE"] == 0 || input["ALTEZZA"] == 0)
         {
-            std::cout << "Missing Dims, ignore Pack\n";
+            std::cout << "Missing Dims, ignore Pack (N_Collo: " << input["NUMERO_COLLO"] << ")\n";
             return false;   
         }
         if (input["NUMERO_COLLO"] == 0 || input["NUMERO_COLLO"] == NULL)
         {
-            std::cout << "Missing Numero di Collo, ignore Pack\n";
+            std::cout << "Missing Numero di Collo, ignore Pack: (N_Collo: " << input["NUMERO_COLLO"] << ")\n";
             return false;  
         }
         if (input["PESO_NETTO"] == "" || input["PESO_NETTO"] == NULL || input["PESO_NETTO"] == "0")
         {
-            std::cout << "Missing Peso Netto, ignore Pack\n";
+            std::cout << "Missing Peso Netto, ignore Pack: (N_Collo: " << input["NUMERO_COLLO"] << ")\n";
             return false;
         }
     return true;

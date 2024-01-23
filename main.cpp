@@ -66,9 +66,9 @@ int main (int argc, char* argv[])
                         std::string jsonStringContent((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>()); 
 
                         ReadJson jsonConverter(jsonStringContent);
-                        packVector packs = jsonConverter.getPackVector();
-                        Pallet palletInfo(jsonConverter.getPalletInfos());
 
+                        packVector packs = jsonConverter.getPackVector();
+                        Pallet examplePallet(jsonConverter.getPalletInfos());
                     }
                 }
                 else
