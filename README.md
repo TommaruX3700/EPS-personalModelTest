@@ -14,4 +14,5 @@ Repo for EPS model development only.
 ### Imported Libraries (with documentation):
 - nlohmann/json.hpp : https://github.com/nlohmann/json/releases or https://json.nlohmann.me/ or https://github.com/nlohmann/json#examples
 
+- rapidjson : https://github.com/miloyip/rapidjson/
 
