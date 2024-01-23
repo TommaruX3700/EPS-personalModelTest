@@ -7,20 +7,6 @@
 
 #include "../../extLibs/nlohmannJSON/json.hpp"
 
-/*
-TODO: Convert all of this into a class with this infos
-- json object as public json object: retrived on constructor
-*/
-
-// //Gives pallet as Pallet object for infos
-// Pallet getInputPalletInfos(nlohmann::json inputJson);
-
-// //Convert jsonObject to Pack
-// Pack getPackByJson(nlohmann::json inputJson);
-
-// //get Pallet infos by jsonObject
-// Pallet getPalletByJson(nlohmann::json inputJson);
-
 class ReadJson
 {
     private:
