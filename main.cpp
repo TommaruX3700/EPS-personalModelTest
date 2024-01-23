@@ -78,8 +78,6 @@ int main (int argc, char* argv[])
                 {
                     consoleLog("WARNING: NO JSON FILE PROVIDED");
                 }
-                consoleLog(packs[1]->getInfo());
-                consoleLog(packs[2]->getInfo());
             }
             catch(const std::exception& e)
             {
