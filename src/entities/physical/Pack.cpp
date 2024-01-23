@@ -9,7 +9,7 @@
 
 using namespace Geometry;
 
-Pack :: Pack()
+Pack::Pack()
     {
         Geometry::ThreeNum_set<int> empty;
         empty.X = 0; empty.Y = 0; empty.Z = 0;
@@ -20,7 +20,7 @@ Pack :: Pack()
         this->setWeight(0);
     }
 
-Pack :: Pack (ThreeNum_set<int> dims, ThreeNum_set<int> coords, float packWeight, int packID, bool rotFlag) 
+Pack::Pack(ThreeNum_set<int> dims, ThreeNum_set<int> coords, float packWeight, int packID, bool rotFlag) 
     {
         //TODO: 
         //  - controllare tramite le dimensioni che vengono fornite se la posizione del centro ha senso o meno.
@@ -35,7 +35,7 @@ Pack :: Pack (ThreeNum_set<int> dims, ThreeNum_set<int> coords, float packWeight
 #pragma region "Operator overrides"
 //Check if this works correctly as intended (eg: not only exchanging pointers)
 
-    void Pack :: operator=(const Pack& n) 
+    void Pack::operator=(const Pack& n) 
     {
         if (this != &n)
         {
@@ -50,7 +50,7 @@ Pack :: Pack (ThreeNum_set<int> dims, ThreeNum_set<int> coords, float packWeight
         }
     }
 
-    bool Pack :: operator==(const Pack& n) 
+    bool Pack::operator==(const Pack& n) 
     {
         //Compare object packs in the current orientation (?)
         bool comparison = compareThreeNum_set(this->objectDims, n.objectDims);
@@ -67,20 +67,40 @@ Pack :: Pack (ThreeNum_set<int> dims, ThreeNum_set<int> coords, float packWeight
 #pragma endregion
 
 #pragma region "Set methods"
-    void Pack :: setRotatableFlag(bool rotFlag)
+    void Pack::setRotatableFlag(bool rotFlag)
     {
         this->rotatableFlag = rotFlag;
     }
 
-    void Pack :: setPackID(int packID)
+    void Pack::setPackID(int packID)
     {
         this->packID = packID;
     }
 #pragma endregion
 
 #pragma region "Get methods"
-    int Pack :: getPackID() const
+    int Pack::getPackID() const
     {
         return this->packID;
     }
+
+    std::string Pack::getInfo()
+    {
+        std::string outputInfos;
+        outputInfos.append("Pack_ID: #" + std::to_string(this->getPackID()) + "\n");
+        outputInfos.append("Coordinates:\n");
+        outputInfos.append("> X: " + std::to_string(this->getCenterCoords().X) + "[cm]\n");
+        outputInfos.append("> Y: " + std::to_string(this->getCenterCoords().Y) + "[cm]\n");
+        outputInfos.append("> Z: " + std::to_string(this->getCenterCoords().Z) + "[cm]\n");
+        outputInfos.append("Dimensions:\n");
+        outputInfos.append("> X: " + std::to_string(this->getDims().X) + "[cm]\n");
+        outputInfos.append("> Y: " + std::to_string(this->getDims().Y) + "[cm]\n");
+        outputInfos.append("> Z: " + std::to_string(this->getDims().Z) + "[cm]\n");
+        outputInfos.append("Weight: " + std::to_string(this->weight) + "[kg]\n");
+        outputInfos.append("Density: " + std::to_string(this->getDensity()) + "[kg/cm3]\n");
+        outputInfos.append("Volume: " + std::to_string(this->getVolume()) + "[cm3]\n");
+        outputInfos.append("Orientation: " + std::to_string(this->getOrientation()) + "\n");
+        return outputInfos;
+    }
+    
 #pragma endregion

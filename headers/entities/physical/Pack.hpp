@@ -2,12 +2,13 @@
 #define PACK_HPP
 
 #include "../physical/3D_object.hpp"
+#include <string>
 
 /*
-Author:
-    Tommaso Maruzzo
-Description:
-    Pack object.
+    Author:
+        Tommaso Maruzzo
+    Description:
+        Pack object.
 */
 
 class Pack : public ThreeD_object
@@ -34,6 +35,8 @@ public:
     #pragma region "Get methods"
         int getPackID() const;
         //getRotatableFlag() missing?
+        std::string getInfo();
+
     #pragma endregion
 
     /*
