@@ -39,11 +39,6 @@ public:
 
     #pragma endregion
 
-    /*
-        TODO: metodo per stampare/ritornare tutte le info relative ad un pacco in particolare, da richiamare da un metodo più generico vicino al main 
-            per poter specificare l'oggetto pacco tramite ID del pacco o puntatore a pacco
-    */
-
 };
 
 #endif
