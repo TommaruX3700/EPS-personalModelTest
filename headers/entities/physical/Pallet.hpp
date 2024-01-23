@@ -25,6 +25,7 @@ private:
     std::vector<ptrPack> pallet; 
 
 public:
+    Pallet();
     Pallet(Geometry :: ThreeNum_set<int> maxDimensions);
 
     //IDEA: add > and < operators 

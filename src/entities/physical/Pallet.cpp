@@ -1,5 +1,13 @@
 #include "../../../headers/entities/physical/Pallet.hpp"
 
+Pallet :: Pallet()
+{
+    this->maxDims.X = 0;
+    this->maxDims.Y = 0;
+    this->maxDims.Z = 0;
+    this->pallet.clear();
+}
+
 Pallet :: Pallet(ThreeNum_set<int> maxDimensions)
 {
     this->maxDims.X = maxDimensions.X;

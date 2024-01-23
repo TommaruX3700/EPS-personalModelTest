@@ -79,17 +79,17 @@ bool ReadJson::checkPackInfos(nlohmann::json input)
     // Check data and dimensions before operations
         if (input["BASE_MAGGIORE"] == 0 || input["BASE_MINORE"] == 0 || input["ALTEZZA"] == 0)
         {
-            std::cout << "Missing Dims, ignore Pack (N_Collo: " << input["NUMERO_COLLO"] << ")\n";
+            std::cout << "Missing Dims, Pack ignored (N_Collo: " << input["NUMERO_COLLO"] << ")\n-------------------------------------------------\n";
             return false;   
         }
         if (input["NUMERO_COLLO"] == 0 || input["NUMERO_COLLO"] == NULL)
         {
-            std::cout << "Missing Numero di Collo, ignore Pack: (N_Collo: " << input["NUMERO_COLLO"] << ")\n";
+            std::cout << "Missing Numero di Collo, Pack ignored (N_Collo: " << input["NUMERO_COLLO"] << ")\n-------------------------------------------------\n";
             return false;  
         }
         if (input["PESO_NETTO"] == "" || input["PESO_NETTO"] == NULL || input["PESO_NETTO"] == "0")
         {
-            std::cout << "Missing Peso Netto, ignore Pack: (N_Collo: " << input["NUMERO_COLLO"] << ")\n";
+            std::cout << "Missing Peso Netto, Pack ignored (N_Collo: " << input["NUMERO_COLLO"] << ")\n-------------------------------------------------\n";
             return false;
         }
     return true;

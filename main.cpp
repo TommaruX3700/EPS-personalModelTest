@@ -38,6 +38,9 @@ int main (int argc, char* argv[])
 {  
     try
     {
+        packVector packs;
+        Pallet examplePallet;
+
     #if TEST_MODE == 1
         testFunction();
     #else
@@ -67,14 +70,16 @@ int main (int argc, char* argv[])
 
                         ReadJson jsonConverter(jsonStringContent);
 
-                        packVector packs = jsonConverter.getPackVector();
-                        Pallet examplePallet(jsonConverter.getPalletInfos());
+                        packs = jsonConverter.getPackVector();
+                        examplePallet = Pallet(jsonConverter.getPalletInfos());
                     }
                 }
                 else
                 {
                     consoleLog("WARNING: NO JSON FILE PROVIDED");
                 }
+                consoleLog(packs[1]->getInfo());
+                consoleLog(packs[2]->getInfo());
             }
             catch(const std::exception& e)
             {
@@ -187,7 +192,7 @@ int main (int argc, char* argv[])
         #if TEST_MODE == 1
             std::cout << "EPS-M_TEST_MODE: " << "\n";
         #else
-            std::cout << "EPS-M: " << "\n"; 
+            std::cout << "EPS-LogMessage: " << "\n\n"; 
         #endif
             std ::cout << message << "\n" << "-------------------------------------------------" << std::endl;
     }
