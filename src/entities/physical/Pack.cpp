@@ -84,6 +84,11 @@ Pack::Pack(ThreeNum_set<int> dims, ThreeNum_set<int> coords, float packWeight, i
         return this->packID;
     }
 
+    bool Pack::getRotatableFlag() const
+    {
+        return this->rotatableFlag;
+    }
+
     std::string Pack::getInfo()
     {
         std::string outputInfos;
@@ -103,4 +108,6 @@ Pack::Pack(ThreeNum_set<int> dims, ThreeNum_set<int> coords, float packWeight, i
         return outputInfos;
     }
     
+
+
 #pragma endregion
