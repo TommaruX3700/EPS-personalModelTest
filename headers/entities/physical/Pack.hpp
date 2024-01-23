@@ -18,6 +18,7 @@ private:
     bool palletizableFlag; //if its palletizable or not
     
 public:
+    Pack();
     Pack(ThreeNum_set<int> dims, ThreeNum_set<int> coords, float packWeight, int packID, bool rotFlag);
 
     #pragma region "Operators override"

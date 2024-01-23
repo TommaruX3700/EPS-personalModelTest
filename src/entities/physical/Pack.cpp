@@ -9,20 +9,27 @@
 
 using namespace Geometry;
 
+Pack :: Pack()
+    {
+        Geometry::ThreeNum_set<int> empty;
+        empty.X = 0; empty.Y = 0; empty.Z = 0;
+        this->packID = 0;
+        this->rotatableFlag = 0;
+        this->setDims(empty);
+        this->setCenterCoords(empty);
+        this->setWeight(0);
+    }
+
 Pack :: Pack (ThreeNum_set<int> dims, ThreeNum_set<int> coords, float packWeight, int packID, bool rotFlag) 
     {
-        this->packID = packID;
-        this->rotatableFlag = rotFlag;
-
-        this->setDims(dims);
-        
         //TODO: 
         //  - controllare tramite le dimensioni che vengono fornite se la posizione del centro ha senso o meno.
         //  - rilasciare errore di creazione se la creazione è OUT_OF_BOUND o se il pacco entra in CONFLITTO con altri elementi nel piano.
-
+        this->packID = packID;
+        this->rotatableFlag = rotFlag;
+        this->setDims(dims);
         this->setCenterCoords(coords);
         this->setWeight(packWeight);
-
     }
 
 #pragma region "Operator overrides"

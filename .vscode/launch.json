@@ -1,12 +1,16 @@
 {
     "version": "0.2.0",
+    //DEBUG_NOTE: use Ctrl + Shift + P --> launch "Debug: Select and Start debugging" --> select desired configuration
     "configurations": [
         {
-            "name": "EPS - DebugConfig1",
+            "name": "EPS - TEST_1",
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/build/EPS_MODEL", // Change this to your executable path
-            "args": ["./docs/inputPackListSample.json"], // Arguments to your program if any
+            "args": [
+                "./docs/inputPackListSample.json"
+            ], // Arguments to your program if any
+            //C:\Users\tmaruzzo\Documents\VSCODE_repos\EPS-personalModelTest\docs\inputPackListSample.json
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
@@ -23,4 +27,5 @@
             // "miDebuggerPath": "/path/to/your/gdb" // Optional: Specify the path to your GDB executable
         }
     ]
+    
 }

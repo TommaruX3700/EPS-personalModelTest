@@ -6,6 +6,7 @@
 - std::iostream
 
 - nlohmannJSON/json.hpp
+- https://rapidjson.org/
 
 - #### [[Pack.h]]
 
