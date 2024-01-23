@@ -27,7 +27,6 @@
     int consoleErrorMessage(std::string errorString);
     void consoleStartMessage();
     void consoleLog(std::string message);
-    
     void testFunction();
     //json vectorToJson (all the arguments needed);
 
@@ -62,7 +61,7 @@ int main (int argc, char* argv[])
                     {
                         // Open the file 
                         std::ifstream file(inputJsonPath); 
-
+                        
                         // Read the entire file into a string --> https://www.geeksforgeeks.org/rapidjson-file-read-write-in-cpp/
                         std::string jsonStringContent((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>()); 
 

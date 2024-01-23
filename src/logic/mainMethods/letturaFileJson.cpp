@@ -24,7 +24,10 @@ void ReadJson::retrivePacksInfos(nlohmann::json inputJson)
 
     std::string userSettings = mapPack["user_settings"].dump(); //instead of this, get values directly from json object 
 
-    Geometry::ThreeNum_set<int> tempSet;
+    Geometry::ThreeNum_set<int> tempDims;
+    Geometry::ThreeNum_set<int> tempCoords;
+    int tempCollo;
+    float tempWeight;
     nlohmann::json tempJsonPack;
 
     for (auto line : mapPack)
@@ -37,27 +40,27 @@ void ReadJson::retrivePacksInfos(nlohmann::json inputJson)
             {
                 try //remove this once done
                 {
-                    Pack newPack;
-                    tempSet.X = tempJsonPack["BASE_MAGGIORE"];
-                    tempSet.Y = tempJsonPack["BASE_MINORE"];
-                    tempSet.Z = tempJsonPack["ALTEZZA"];
-                    newPack.setDims(tempSet);
-                    tempSet.X = 0;
-                    tempSet.Y = 0;
-                    tempSet.Z = 0;
-                    newPack.setCenterCoords(tempSet);
-                    newPack.setPackID(tempJsonPack["NUMERO_COLLO"]);
+                    Pack* newPk;
+                    tempDims.X = tempJsonPack["BASE_MAGGIORE"];
+                    tempDims.Y = tempJsonPack["BASE_MINORE"];
+                    tempDims.Z = tempJsonPack["ALTEZZA"];
+                    tempCoords.X = 0;
+                    tempCoords.Y = 0;
+                    tempCoords.Z = 0;
+                    tempCollo = tempJsonPack["NUMERO_COLLO"];
+                    std::string weight = tempJsonPack["PESO_NETTO"];
+                    tempWeight = std::stof(weight);
+
                     if (tempJsonPack["FLAG_RUOTABILE"] == "N")
                     {
-                        newPack.setRotatableFlag(false);
+                        newPk = new Pack(tempDims, tempCoords, tempWeight, tempCollo, false);
                     }
                     else
                     {
-                        newPack.setRotatableFlag(true);
+                        newPk = new Pack(tempDims, tempCoords, tempWeight, tempCollo, true);
                     }
-                    std::string weight = tempJsonPack["PESO_NETTO"];
-                    newPack.setWeight(std::stof(weight));
-                    this->outputPackVector.push_back(&newPack);
+
+                    this->outputPackVector.push_back(newPk);
                 }
                 catch(std::exception& e)
                 {
