@@ -97,8 +97,8 @@ Pack::Pack(ThreeNum_set<int> dims, ThreeNum_set<int> coords, float packWeight, i
         outputInfos.append("> Y: " + std::to_string(this->getDims().Y) + "[cm]\n");
         outputInfos.append("> Z: " + std::to_string(this->getDims().Z) + "[cm]\n");
         outputInfos.append("Weight: " + std::to_string(this->weight) + "[kg]\n");
-        outputInfos.append("Density: " + std::to_string(this->getDensity()) + "[kg/cm3]\n");
-        outputInfos.append("Volume: " + std::to_string(this->getVolume()) + "[cm3]\n");
+        outputInfos.append("Density: " + std::to_string(this->getDensity()) + "[kg/m3]\n");
+        outputInfos.append("Volume: " + std::to_string(this->getVolume()) + "[m3]\n");
         outputInfos.append("Orientation: " + std::to_string(this->getOrientation()) + "\n");
         return outputInfos;
     }

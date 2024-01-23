@@ -45,7 +45,9 @@ Description:
         this->originalOrientationDims.Z = dims.Z;
 
         //calculate volume (this.volume)
-        this->m3Volume = dims.X * dims.Y * dims.Z;
+        float x,y,z;
+        x=dims.X/100.00; y=dims.Y/100.0; z=dims.Z/100.0;
+        this->m3Volume = (x) * (y) * (z);
 
         //sets standard orientation
         this->orientation = 1;
