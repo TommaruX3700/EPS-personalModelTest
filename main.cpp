@@ -95,8 +95,8 @@ int main (int argc, char* argv[])
                     Must be iterated untill the end of available packs (palletizablePacksVector).
             */
             
-            std::vector<Pack*> palletizablePacksVector;
-            std::vector<Pack*> nonPalletizablePacksVector;            
+            packVector palletizablePacksVector;
+            packVector nonPalletizablePacksVector;            
 
             #pragma region "BlockCode 2.1 - Ordinamento Input"
                 /*
