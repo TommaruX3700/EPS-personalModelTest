@@ -41,5 +41,3 @@ PalletGroup :: PalletGroup (int max = 0)
         return this->palletGroup.size();
     }
 #pragma endregion
-
-//aa
