@@ -99,6 +99,8 @@ int main (int argc, char* argv[])
             std::vector<Pack*> nonPalletizablePacksVector;            
 
             #pragma region "BlockCode 2.1 - Ordinamento Input"
+
+                palletizablePacksVector = sortInput(packs);
                 /*
                     Author: 
                         Tommaso Maruzzo
