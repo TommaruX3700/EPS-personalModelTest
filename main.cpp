@@ -90,18 +90,38 @@ int main (int argc, char* argv[])
 
             packVector palletizablePacksVector;
             packVector nonPalletizablePacksVector;            
-
+            //qui verrà aggiunto un vettore con i pacchi già flaggati come non pallettizzabili, da mettere immediatamente su singoli pallets e aggiungere subito al pallet group.
+            
             #pragma region "BlockCode 2.1 - Ordinamento Input && Scelta pacchi Nesting"
                 /*
-                *   Filters out all the packs by their flags.
-                *       - not palletizable ones appended on "nonPalletizablePacksVector";
-                *       - palletizable ones appended on "palletizablePacksVector".
+                *   DOING - 2 metodi per la suddivisione input e scelta pacchi nesting 
+                *   dividiPacchiNonPalletizzabilio(packs); ->> 2 outputs: vettore di pacchi non palletizzabili by flag e tutto il resto
+                *   sortInput(packs); ->> 2 outputs: vettore di pacchi che stanno nei limiti imposti del palletExample e tutti quelli invece "scartati"
                 */
             #pragma endregion
         
             auto start = std::chrono::steady_clock::now();
             std::chrono::duration<double> palletLoopDuration;
-            
+
+            /*
+            *   TODO - primo loop per creazione pallet di pacchi non pallettizzabili:
+            *   > crea pallet group
+            *   > crea pallet per ogni pacco non palletizzabile x via del flag
+            *   > aggiungi il singolo pallet al palletGroup
+            */
+
+            /*
+            *   TODO - nesting loop e multithreading
+            *   > loop (probabile do-while) che prende procede solo se ci sono ancora pacchi "scartati" o il tempo di esecuzione è sotto i 15 secondi
+            *   > lancio il multithreading una singola funzione "nesting(scartedPacks)" 
+            *       > dentro la funzione "nesting()" effettuo sortInput(), tutte le operazioni del caso e appeno gli scarti di tutto in un secondo output, quindi ho sempre due outputs
+            *   > sottraggo al vettore con cui ho lanciato la roba i pacchi che ho messo in input e reitero fino a quando non finisconon
+            * 
+            *   TODO - attendo e riprovo con gli scarti
+            *   > await tutte le funzioni lanciate in multithreading e con l'output scelgo che fare o meno.
+            * 
+            */
+
             /*
              * IDEA:
              * make all the nesting process inside the loop launch as multithread fucntions
