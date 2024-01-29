@@ -87,27 +87,16 @@ int main (int argc, char* argv[])
         #pragma endregion
 
         #pragma region "BlockCode 2 - Pallet Loop"
-            /*
-                Author: 
-                    Tommaso Maruzzo
-                Description:
-                    Main pallet creation loop.
-                    Must be iterated untill the end of available packs (palletizablePacksVector).
-            */
-            
+
             packVector palletizablePacksVector;
             packVector nonPalletizablePacksVector;            
 
             #pragma region "BlockCode 2.1 - Ordinamento Input && Scelta pacchi Nesting"
                 /*
-                    Author: 
-                        Tommaso Maruzzo
-                    Description: 
-                        Filters out all the packs by their flags.
-                            - not palletizable ones appended on "nonPalletizablePacksVector";
-                            - palletizable ones appended on "palletizablePacksVector".
+                *   Filters out all the packs by their flags.
+                *       - not palletizable ones appended on "nonPalletizablePacksVector";
+                *       - palletizable ones appended on "palletizablePacksVector".
                 */
-
             #pragma endregion
         
             auto start = std::chrono::steady_clock::now();
@@ -254,7 +243,7 @@ int main (int argc, char* argv[])
             int testID = 10;
             bool testFlag = true;
 
-            Pack testPack1(testDims, testCoords, testWeight, testID, testFlag);
+            Pack testPack1(testDims, testCoords, testWeight, testID, testFlag, false);
 
             testDims.X = 2;
             testDims.Y = 2;
@@ -263,7 +252,7 @@ int main (int argc, char* argv[])
             testCoords.Y = 1;
             testCoords.Z = 1; 
 
-            Pack testPack2(testDims, testCoords, 1, 20, true);
+            Pack testPack2(testDims, testCoords, 1, 20, true, true);
                     
             ThreeNum_set<int> extractedDims;
             extractedDims = testPack1.getDims();
