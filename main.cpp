@@ -100,7 +100,7 @@ int main (int argc, char* argv[])
 
             #pragma region "BlockCode 2.1 - Ordinamento Input"
 
-                palletizablePacksVector = sortInput(packs);
+                //palletizablePacksVector = sortInput(packs);
                 /*
                     Author: 
                         Tommaso Maruzzo
