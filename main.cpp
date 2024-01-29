@@ -98,7 +98,7 @@ int main (int argc, char* argv[])
             packVector palletizablePacksVector;
             packVector nonPalletizablePacksVector;            
 
-            #pragma region "BlockCode 2.1 - Ordinamento Input"
+            #pragma region "BlockCode 2.1 - Ordinamento Input && Scelta pacchi Nesting"
                 /*
                     Author: 
                         Tommaso Maruzzo
@@ -113,15 +113,28 @@ int main (int argc, char* argv[])
             auto start = std::chrono::steady_clock::now();
             std::chrono::duration<double> palletLoopDuration;
             
+            /*
+             * IDEA:
+             * make all the nesting process inside the loop launch as multithread fucntions
+             * give as each inputs the palletizablePacksVector and get 2 outputs for each process:
+             * > a good vector of palletized pallets that will instantly create a new pallet and beign assigned to the pallet group
+             * > a bad one that will be collected (or appended to a vector of discarded packs, that will go throught another set of processes)
+             * recall a Ordinamento Input && Scelta pacchi Nesting prima di far ricominciare il codice con i vettori dei pacchi scartati
+             * settare un timeout per gli scarti
+             * ritornare il palletGroup totale
+            */
+
             //Loop gets back here once ended all the other operations and gets aborted if 15 seconds passed
             while (palletizablePacksVector.size() && (palletLoopDuration.count() < 15))
             {
-                #pragma region "BlockCode 2.2 - Scelta pacchi Nesting"
-                    //Execute only once packToNest  routine 
-
-                #pragma endregion
-
                 #pragma region "BlockCode 2.3 - Nesting loop"
+
+                    /*
+                    * 1. Launch on a separate thread the nesting function 
+                    * 2. Modify the palletizablePacksVector removing the packs taken as input
+                    * 3. get all the function pointers and wait for eachone to terminate them.
+                    */
+
                     // Qui dentro vengono usati i BlockCodes:
                     // - 2.3.1;
                     // - 2.3.2; 
