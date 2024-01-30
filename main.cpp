@@ -99,9 +99,6 @@ int main (int argc, char* argv[])
                 *   sortInput(packs); ->> 2 outputs: vettore di pacchi che stanno nei limiti imposti del palletExample e tutti quelli invece "scartati"
                 */
             #pragma endregion
-        
-            auto start = std::chrono::steady_clock::now();
-            std::chrono::duration<double> palletLoopDuration;
 
             /*
             *   TODO - primo loop per creazione pallet di pacchi non pallettizzabili:
@@ -111,6 +108,15 @@ int main (int argc, char* argv[])
             */
 
             /*
+            * IDEA:
+            * make all the nesting process inside the loop launch as multithread fucntions
+            * give as each inputs the palletizablePacksVector and get 2 outputs for each process:
+            * > a good vector of palletized pallets that will instantly create a new pallet and beign assigned to the pallet group
+            * > a bad one that will be collected (or appended to a vector of discarded packs, that will go throught another set of processes)
+            * recall a Ordinamento Input && Scelta pacchi Nesting prima di far ricominciare il codice con i vettori dei pacchi scartati
+            * settare un timeout per gli scarti
+            * ritornare il palletGroup totale
+            * 
             *   TODO - nesting loop e multithreading
             *   > loop (probabile do-while) che prende procede solo se ci sono ancora pacchi "scartati" o il tempo di esecuzione è sotto i 15 secondi
             *   > lancio il multithreading una singola funzione "nesting(scartedPacks)" 
@@ -122,37 +128,21 @@ int main (int argc, char* argv[])
             * 
             */
 
-            /*
-             * IDEA:
-             * make all the nesting process inside the loop launch as multithread fucntions
-             * give as each inputs the palletizablePacksVector and get 2 outputs for each process:
-             * > a good vector of palletized pallets that will instantly create a new pallet and beign assigned to the pallet group
-             * > a bad one that will be collected (or appended to a vector of discarded packs, that will go throught another set of processes)
-             * recall a Ordinamento Input && Scelta pacchi Nesting prima di far ricominciare il codice con i vettori dei pacchi scartati
-             * settare un timeout per gli scarti
-             * ritornare il palletGroup totale
-            */
+            #pragma region "BlockCode 2.3 - Nesting loop"
+                // Qui dentro vengono usati i BlockCodes:
+                // - 2.3.1;
+                // - 2.3.2; 
+                // - 2.3.3.
+            #pragma endregion
 
-            //Loop gets back here once ended all the other operations and gets aborted if 15 seconds passed
+            #pragma region "oldLoop"
+            // Loop gets back here once ended all the other operations and gets aborted if 15 seconds passed
+            // Put all the rouge packs (from nonPalletizablePacksVector) on single pallets and append them to palletGroup.
+            auto start = std::chrono::steady_clock::now();
+            std::chrono::duration<double> palletLoopDuration;
+
             while (palletizablePacksVector.size() && (palletLoopDuration.count() < 15))
             {
-                #pragma region "BlockCode 2.3 - Nesting loop"
-
-                    /*
-                    * 1. Launch on a separate thread the nesting function 
-                    * 2. Modify the palletizablePacksVector removing the packs taken as input
-                    * 3. get all the function pointers and wait for eachone to terminate them.
-                    */
-
-                    // Qui dentro vengono usati i BlockCodes:
-                    // - 2.3.1;
-                    // - 2.3.2; 
-                    // - 2.3.3.
-
-                #pragma endregion
-
-                //Add non used packs to "packsToNest" vector
-                
                 //gets partial Loop time
                 auto partialTime = std::chrono::steady_clock::now();
                 palletLoopDuration = partialTime - start;
@@ -164,9 +154,8 @@ int main (int argc, char* argv[])
                 //15 seconds has passed inside the loop
                 throw std::invalid_argument("Pallet loop took up to 15 seconds of execution: check code");
             }
+            #pragma endregion
             
-            //  put all the rouge packs (from nonPalletizablePacksVector) on single pallets and append them to palletGroup.
-
         #pragma endregion
 
         #pragma region "BlockCode 3 - End Routine"
@@ -182,7 +171,6 @@ int main (int argc, char* argv[])
 
         #pragma endregion
     #endif
-
         return 0;
     }
 
