@@ -10,16 +10,16 @@
     #include "../../extLibs/nlohmannJSON/json.hpp"
     #include "../../extLibs/rapidjson/document.h"
 
-    #include "../physical/Pack.hpp"
-    #include "../physical/PalletGroup.hpp"
-    #include "../geometry/Grid.hpp"
+    #include "../entities/physical/Pack.hpp"
+    #include "../entities/physical/PalletGroup.hpp"
+    #include "../entities/geometry/Grid.hpp"
 
-    #include "../logic/letturaFileJson.hpp" 
-    #include "../logic/ordinamentoPacchi.hpp"
-    #include "../logic/ottimizzazione.hpp"
-    #include "../logic/sceltaPacchiNesting.hpp"
-    #include "../logic/spostaPacchi.hpp"
-    #include "../logic/trovaDominio.hpp"
+    #include "letturaFileJson.hpp" 
+    #include "ordinamentoPacchi.hpp"
+    #include "ottimizzazione.hpp"
+    #include "sceltaPacchiNesting.hpp"
+    #include "spostaPacchi.hpp"
+    #include "trovaDominio.hpp"
 #pragma endregion
 
 #pragma region  "Test functions"
