@@ -120,8 +120,6 @@ int main (int argc, char* argv[])
                 }
             #pragma endregion
 
-
-
             #pragma region "BlockCode 2.3 - Nesting loop"
                 /*
                 * Qui dentro vengono usati i BlockCodes:
