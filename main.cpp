@@ -96,7 +96,7 @@ int main (int argc, char* argv[])
             
             #pragma region "BlockCode 2.1 - Ordinamento Input && Scelta pacchi Nesting"
                 /*
-                *   DOING - 2 metodi per la suddivisione input e scelta pacchi nesting 
+                *   FEDERICO - 2 metodi per la suddivisione input e scelta pacchi nesting 
                 *   dividiPacchiNonPalletizzabilio(packs); ->> 2 outputs: vettore di pacchi non palletizzabili by flag e tutto il resto
                 *   sortInput(packs); ->> 2 outputs: vettore di pacchi che stanno nei limiti imposti del palletExample e tutti quelli invece "scartati"
                 */
