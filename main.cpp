@@ -101,42 +101,53 @@ int main (int argc, char* argv[])
                 */
             #pragma endregion
 
-            /*
-            *   TODO - primo loop per creazione pallet di pacchi non pallettizzabili:
-            *   > crea pallet group
-            *   > crea pallet per ogni pacco non palletizzabile x via del flag
-            *   > aggiungi il singolo pallet al palletGroup
-            */
-            PalletGroup palletGroup;
-            packVector pacchiNonPallettizzabiliFLAG;
-            
+            #pragma region "BlockCode 2.2 - Crea pallet da pacchi non palletizzabili dal flag"
+                /*
+                *   TODO - primo loop per creazione pallet di pacchi non pallettizzabili:
+                *   > crea pallet group
+                *   > crea pallet per ogni pacco non palletizzabile x via del flag
+                *   > aggiungi il singolo pallet al palletGroup
+                */
+                PalletGroup palletGroup;
+                packVector pacchiNonPallettizzabiliByFLAG;
+                Geometry::ThreeNum_set<int> palletDims;
+                for (auto pack : pacchiNonPallettizzabiliByFLAG)
+                {
+                    palletDims = examplePallet.getPalletDims();
+                    Pallet newPallet(palletDims);
+                    newPallet.addPack(pack);
+                    palletGroup.addPallet(&newPallet);
+                }
+            #pragma endregion
 
-            /*
-            * IDEA:
-            * make all the nesting process inside the loop launch as multithread fucntions
-            * give as each inputs the palletizablePacksVector and get 2 outputs for each process:
-            * > a good vector of palletized pallets that will instantly create a new pallet and beign assigned to the pallet group
-            * > a bad one that will be collected (or appended to a vector of discarded packs, that will go throught another set of processes)
-            * recall a Ordinamento Input && Scelta pacchi Nesting prima di far ricominciare il codice con i vettori dei pacchi scartati
-            * settare un timeout per gli scarti
-            * ritornare il palletGroup totale
-            * 
-            *   TODO - nesting loop e multithreading
-            *   > loop (probabile do-while) che prende procede solo se ci sono ancora pacchi "scartati" o il tempo di esecuzione è sotto i 15 secondi
-            *   > lancio il multithreading una singola funzione "nesting(scartedPacks)" 
-            *       > dentro la funzione "nesting()" effettuo sortInput(), tutte le operazioni del caso e appeno gli scarti di tutto in un secondo output, quindi ho sempre due outputs
-            *   > sottraggo al vettore con cui ho lanciato la roba i pacchi che ho messo in input e reitero fino a quando non finisconon
-            * 
-            *   TODO - attendo e riprovo con gli scarti
-            *   > await tutte le funzioni lanciate in multithreading e con l'output scelgo che fare o meno.
-            * 
-            */
+
 
             #pragma region "BlockCode 2.3 - Nesting loop"
-                // Qui dentro vengono usati i BlockCodes:
-                // - 2.3.1;
-                // - 2.3.2; 
-                // - 2.3.3.
+                /*
+                * Qui dentro vengono usati i BlockCodes:
+                * - 2.3.1;
+                * - 2.3.2; 
+                * - 2.3.3.
+                * 
+                * 
+                * IDEA:
+                * make all the nesting process inside the loop launch as multithread fucntions
+                * give as each inputs the palletizablePacksVector and get 2 outputs for each process:
+                * > a good vector of palletized pallets that will instantly create a new pallet and beign assigned to the pallet group
+                * > a bad one that will be collected (or appended to a vector of discarded packs, that will go throught another set of processes)
+                * recall a Ordinamento Input && Scelta pacchi Nesting prima di far ricominciare il codice con i vettori dei pacchi scartati
+                * settare un timeout per gli scarti
+                * ritornare il palletGroup totale
+                * 
+                *   TODO - nesting loop e multithreading
+                *   > loop (probabile do-while) che prende procede solo se ci sono ancora pacchi "scartati" o il tempo di esecuzione è sotto i 15 secondi
+                *   > lancio il multithreading una singola funzione "nesting(scartedPacks)" 
+                *       > dentro la funzione "nesting()" effettuo sortInput(), tutte le operazioni del caso e appeno gli scarti di tutto in un secondo output, quindi ho sempre due outputs
+                *   > sottraggo al vettore con cui ho lanciato la roba i pacchi che ho messo in input e reitero fino a quando non finisconon
+                * 
+                *   TODO - attendo e riprovo con gli scarti
+                *   > await tutte le funzioni lanciate in multithreading e con l'output scelgo che fare o meno.
+                */
             #pragma endregion
 
             #pragma region "oldLoop"
