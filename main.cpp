@@ -146,16 +146,20 @@ int main (int argc, char* argv[])
                 *   > await tutte le funzioni lanciate in multithreading e con l'output scelgo che fare o meno.
                 */
 
-
-
                 auto start = std::chrono::steady_clock::now();
                 auto partialTime = std::chrono::steady_clock::now();
                 std::chrono::duration<double> loopTimer;
 
                 do
                 {
+                    /*
+                    * NESTING CODE:
+                    * effettua sortInput per il 
+                    * lancia multithreading per ogni nesting operation   
+                    * 
+                    */
 
-                    //NESTING CODE
+                    //palletizablePacksVector = sortInput(nonPalletizablePacksVector);
 
                     partialTime = std::chrono::steady_clock::now();
                     loopTimer = partialTime - start;
