@@ -1,6 +1,11 @@
 #include "../../../headers/entities/physical/PalletGroup.hpp"
 
-PalletGroup :: PalletGroup (int max = 0) 
+PalletGroup :: PalletGroup()
+{
+
+}
+
+PalletGroup :: PalletGroup (int max) 
 {
     this->max = max;
 }

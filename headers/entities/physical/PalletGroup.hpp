@@ -21,6 +21,7 @@ private:
     int max = 0; 
     
 public:
+    PalletGroup();
     PalletGroup(int max);
     
     #pragma region "Set methods"

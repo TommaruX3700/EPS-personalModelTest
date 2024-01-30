@@ -13,6 +13,7 @@
     #include "extLibs/rapidjson/document.h"
 
     #include "headers/entities/physical/Pack.hpp"
+    #include "headers/entities/physical/PalletGroup.hpp"
     #include "headers/entities/geometry/Grid.hpp"
 
     #include "headers/logic/letturaFileJson.hpp" 
@@ -106,6 +107,9 @@ int main (int argc, char* argv[])
             *   > crea pallet per ogni pacco non palletizzabile x via del flag
             *   > aggiungi il singolo pallet al palletGroup
             */
+            PalletGroup palletGroup;
+            packVector pacchiNonPallettizzabiliFLAG;
+            
 
             /*
             * IDEA:
