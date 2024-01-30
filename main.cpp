@@ -127,30 +127,51 @@ int main (int argc, char* argv[])
                 * - 2.3.2; 
                 * - 2.3.3.
                 * 
-                * 
-                * IDEA:
-                * make all the nesting process inside the loop launch as multithread fucntions
-                * give as each inputs the palletizablePacksVector and get 2 outputs for each process:
-                * > a good vector of palletized pallets that will instantly create a new pallet and beign assigned to the pallet group
-                * > a bad one that will be collected (or appended to a vector of discarded packs, that will go throught another set of processes)
-                * recall a Ordinamento Input && Scelta pacchi Nesting prima di far ricominciare il codice con i vettori dei pacchi scartati
-                * settare un timeout per gli scarti
-                * ritornare il palletGroup totale
+                *   IDEA:
+                *   make all the nesting process inside the loop launch as multithread fucntions
+                *   give as each inputs the palletizablePacksVector and get 2 outputs for each process:
+                *   > a good vector of palletized pallets that will instantly create a new pallet and beign assigned to the pallet group
+                *   > a bad one that will be collected (or appended to a vector of discarded packs, that will go throught another set of processes)
+                *   recall a Ordinamento Input && Scelta pacchi Nesting prima di far ricominciare il codice con i vettori dei pacchi scartati
+                *   settare un timeout per gli scarti
+                *   ritornare il palletGroup totale
                 * 
                 *   TODO - nesting loop e multithreading
                 *   > loop (probabile do-while) che prende procede solo se ci sono ancora pacchi "scartati" o il tempo di esecuzione è sotto i 15 secondi
                 *   > lancio il multithreading una singola funzione "nesting(scartedPacks)" 
-                *       > dentro la funzione "nesting()" effettuo sortInput(), tutte le operazioni del caso e appeno gli scarti di tutto in un secondo output, quindi ho sempre due outputs
+                *   > dentro la funzione "nesting()" effettuo sortInput(), tutte le operazioni del caso e appeno gli scarti di tutto in un secondo output, quindi ho sempre due outputs
                 *   > sottraggo al vettore con cui ho lanciato la roba i pacchi che ho messo in input e reitero fino a quando non finisconon
                 * 
                 *   TODO - attendo e riprovo con gli scarti
                 *   > await tutte le funzioni lanciate in multithreading e con l'output scelgo che fare o meno.
                 */
+
+
+
+                auto start = std::chrono::steady_clock::now();
+                auto partialTime = std::chrono::steady_clock::now();
+                std::chrono::duration<double> loopTimer;
+
+                do
+                {
+
+                    //NESTING CODE
+
+                    partialTime = std::chrono::steady_clock::now();
+                    loopTimer = partialTime - start;
+                    if (loopTimer.count() >= 20)
+                    {
+                        //20 seconds has passed inside the loop
+                        throw std::invalid_argument("Pallet loop took up to 15 seconds of execution: check code");
+                    }
+                } while (nonPalletizablePacksVector.size());
+               
             #pragma endregion
 
             #pragma region "oldLoop"
             // Loop gets back here once ended all the other operations and gets aborted if 15 seconds passed
             // Put all the rouge packs (from nonPalletizablePacksVector) on single pallets and append them to palletGroup.
+            /*
             auto start = std::chrono::steady_clock::now();
             std::chrono::duration<double> palletLoopDuration;
 
@@ -167,6 +188,7 @@ int main (int argc, char* argv[])
                 //15 seconds has passed inside the loop
                 throw std::invalid_argument("Pallet loop took up to 15 seconds of execution: check code");
             }
+            */
             #pragma endregion
             
         #pragma endregion
