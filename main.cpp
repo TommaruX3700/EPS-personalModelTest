@@ -48,7 +48,6 @@ int main (int argc, char* argv[])
                     //Gets arguments as INPUT
                     inputJsonPath = argv[1];
                     consoleStartMessage(inputJsonPath);
-
                     //Check if file exists 
                     std :: ifstream inputFile(inputJsonPath);
                     if (!inputFile)
@@ -59,13 +58,10 @@ int main (int argc, char* argv[])
                     else
                     {
                         // Open the file 
-                        std::ifstream file(inputJsonPath); 
-                        
+                        std::ifstream file(inputJsonPath);      
                         // Read the entire file into a string --> https://www.geeksforgeeks.org/rapidjson-file-read-write-in-cpp/
                         std::string jsonStringContent((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>()); 
-
                         ReadJson jsonConverter(jsonStringContent);
-
                         packs = jsonConverter.getPackVector();
                         examplePallet = Pallet(jsonConverter.getPalletInfos());
                     }
@@ -73,6 +69,7 @@ int main (int argc, char* argv[])
                 else
                 {
                     consoleLog("WARNING: NO JSON FILE PROVIDED");
+                    return -1;
                 }
             }
             catch(const std::exception& e)
