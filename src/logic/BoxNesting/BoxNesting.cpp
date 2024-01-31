@@ -2,7 +2,7 @@
 
 BoxNesting :: BoxNesting()
 {
-
+    packVector test;
 }
 
 BoxNesting :: ~BoxNesting()
