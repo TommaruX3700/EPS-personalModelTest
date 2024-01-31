@@ -111,11 +111,6 @@ int main (int argc, char* argv[])
 
             #pragma region "BlockCode 2.3 - Nesting loop"
                 /*
-                * Qui dentro vengono usati i BlockCodes:
-                * - 2.3.1;
-                * - 2.3.2; 
-                * - 2.3.3.
-                * 
                 *   IDEA:
                 *   make all the nesting process inside the loop launch as multithread fucntions
                 *   give as each inputs the palletizablePacksVector and get 2 outputs for each process:
@@ -139,21 +134,38 @@ int main (int argc, char* argv[])
                 auto partialTime = std::chrono::steady_clock::now();
                 std::chrono::duration<double> loopTimer;
 
-                packVector remainingPacks; //MOVE THIS AFTER IMPLEMENTATION OF BLKCODE 2.1: packs that can be nested, fill this with all the remaining packs after flagged pack deletion
+                /*
+                * MOVE THIS AFTER IMPLEMENTATION OF BLKCODE 2.1 and get sortInput() output in this variable:
+                * > packs that can be nested
+                * > fill this with all the remaining packs after flagged pack deletion
+                * > first -> nestable packs on current pallet
+                * > second -> scarted packs to reuse later on another thread untill finished o time enlapsed
+                */
 
+                std::pair<packVector, packVector> remainingPacks; 
+                //Append first part to second part
+                /*
+                *   Il concetto di base è di avere TUTTI i pacchi sul vettore secondario, in modo da iterare successivamente il sortInput()
+                *   e lavorare quindi usando il primo vettore come "vettore operativo" ed il secondo come buffer per i pacchi scartati.
+                */
+
+                remainingPacks.second.insert(std::end(remainingPacks.second), std::begin(remainingPacks.first), std::end(remainingPacks.first));
+            
                 do
                 {
-                    /*
-                    * NESTING CODE:
-                    * effettua sortInput per il 
-                    * lancia multithreading per ogni nesting operation   
-                    * 
-                    */
                     Pallet newPallet(palletDims);
+                    BoxNesting nesting();
 
-                    //palletizablePacksVector = sortInput(nonPalletizablePacksVector);
+                    /*
+                    *   > Questa operazione mi permette di rivalutare ad ogni ciclo ogni pacco contenuto nel buffer dei pacchi scartati  
+                    */
 
-                    
+                    //  remainingPacks = sortInput(remainingPacks.second);
+
+                    /*
+                    *   > Launch multithreading and learn how to wait threads and collect outputs
+                    *   > Understand how to adapt threads to machine (accordingly to max usable thread numbers)
+                    */
 
                     partialTime = std::chrono::steady_clock::now();
                     loopTimer = partialTime - start;
@@ -162,8 +174,7 @@ int main (int argc, char* argv[])
                         //20 seconds has passed inside the loop
                         throw std::invalid_argument("Pallet loop took up to 20 seconds of execution: check code");
                     }
-
-                } while (nonPalletizablePacksVector.size());
+                } while (remainingPacks.second.size());
                
             #pragma endregion
             
