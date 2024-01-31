@@ -107,15 +107,6 @@ int main (int argc, char* argv[])
             #pragma endregion
 
             #pragma region "BlockCode 2.3 - Nesting loop"
-                /*
-                *   TODO - nesting loop e multithreading
-                *   ok > loop (probabile do-while) che prende procede solo se ci sono ancora pacchi "scartati" o il tempo di esecuzione è sotto i 15 secondi
-                *   > lancio il multithreading una singola funzione "nesting(scartedPacks)" 
-                *   > dentro la funzione "nesting()" effettuo sortInput(), tutte le operazioni del caso e appeno gli scarti di tutto in un secondo output, quindi ho sempre due outputs
-                *   > (VALUTARE DI FARLO AUTOMATICAMENTE E RITORNARE NEL SECONDO VETTORE I PACCHI SCARTATI DALLA PROCEDURA) sottraggo al vettore con cui ho lanciato la roba i pacchi che ho messo in input e reitero fino a quando non finiscono
-                *   > await tutte le funzioni lanciate in multithreading e con l'output scelgo che fare o meno.
-                */
-
                 auto start = std::chrono::steady_clock::now();
                 auto partialTime = std::chrono::steady_clock::now();
                 std::chrono::duration<double> loopTimer;
@@ -155,7 +146,8 @@ int main (int argc, char* argv[])
                 * 
                 *   10. Go on with the main program and to output.
                 */ 
-
+               
+#pragma region "LOOP_1 ~ TO MOVE TO EXTERNAL FUNCTION"
                 do
                 {
                     Pallet newPallet(palletDims);
@@ -184,13 +176,16 @@ int main (int argc, char* argv[])
                         throw std::invalid_argument("Pallet loop took up to 20 seconds of execution: check code");
                     }
                 } while (remainingPacks.second.size());
+#pragma endregion
 
+#pragma region "LOOP_2 ~ TO MOVE TO EXTERNAL FUNCTION"
                 /*
                 * Make a loop that waits threads to join.
                 *   make it not to enlapse too much time
-                * 
+                *   NB: note that execution will be blocked until each thread will join correctly.
                 */
-               
+#pragma endregion               
+
             #pragma endregion
             
         #pragma endregion
