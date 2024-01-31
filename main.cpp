@@ -108,22 +108,11 @@ int main (int argc, char* argv[])
 
             #pragma region "BlockCode 2.3 - Nesting loop"
                 /*
-                *   IDEA:
-                *   make all the nesting process inside the loop launch as multithread fucntions
-                *   give as each inputs the palletizablePacksVector and get 2 outputs for each process:
-                *   > a good vector of palletized pallets that will instantly create a new pallet and beign assigned to the pallet group
-                *   > a bad one that will be collected (or appended to a vector of discarded packs, that will go throught another set of processes)
-                *   recall a Ordinamento Input && Scelta pacchi Nesting prima di far ricominciare il codice con i vettori dei pacchi scartati
-                *   settare un timeout per gli scarti
-                *   ritornare il palletGroup totale
-                * 
                 *   TODO - nesting loop e multithreading
-                *   > loop (probabile do-while) che prende procede solo se ci sono ancora pacchi "scartati" o il tempo di esecuzione è sotto i 15 secondi
+                *   ok > loop (probabile do-while) che prende procede solo se ci sono ancora pacchi "scartati" o il tempo di esecuzione è sotto i 15 secondi
                 *   > lancio il multithreading una singola funzione "nesting(scartedPacks)" 
                 *   > dentro la funzione "nesting()" effettuo sortInput(), tutte le operazioni del caso e appeno gli scarti di tutto in un secondo output, quindi ho sempre due outputs
-                *   > sottraggo al vettore con cui ho lanciato la roba i pacchi che ho messo in input e reitero fino a quando non finisconon
-                * 
-                *   TODO - attendo e riprovo con gli scarti
+                *   > (VALUTARE DI FARLO AUTOMATICAMENTE E RITORNARE NEL SECONDO VETTORE I PACCHI SCARTATI DALLA PROCEDURA) sottraggo al vettore con cui ho lanciato la roba i pacchi che ho messo in input e reitero fino a quando non finiscono
                 *   > await tutte le funzioni lanciate in multithreading e con l'output scelgo che fare o meno.
                 */
 
@@ -131,6 +120,7 @@ int main (int argc, char* argv[])
                 auto partialTime = std::chrono::steady_clock::now();
                 std::chrono::duration<double> loopTimer;
 
+#pragma region "TO_MOVE"
                 /*
                 * MOVE THIS AFTER IMPLEMENTATION OF BLKCODE 2.1 and get sortInput() output in this variable:
                 * > packs that can be nested
@@ -140,14 +130,32 @@ int main (int argc, char* argv[])
                 */
 
                 std::pair<packVector, packVector> remainingPacks; 
-                //Append first part to second part
                 /*
-                *   Il concetto di base è di avere TUTTI i pacchi sul vettore secondario, in modo da iterare successivamente il sortInput()
-                *   e lavorare quindi usando il primo vettore come "vettore operativo" ed il secondo come buffer per i pacchi scartati.
+                *   Append first part to second part:
+                *       Il concetto di base è di avere TUTTI i pacchi sul vettore secondario, in modo da iterare successivamente il sortInput()
+                *       e lavorare quindi usando il primo vettore come "vettore operativo" ed il secondo come buffer per i pacchi scartati.
                 */
-
                 remainingPacks.second.insert(std::end(remainingPacks.second), std::begin(remainingPacks.first), std::end(remainingPacks.first));
-            
+#pragma endregion
+
+                /*
+                *   1.  get number of threads to use and set it 
+                *   2.  make a datastracture (ORDERED_SET of PAIRs of PACKVECTORs) to contain all threads ouputs (pass the single "output_slot" by reference to threads)  
+                *   
+                *   LOOP_1 (do-while) (RESUME INTO A FUNCTION)
+                *   3.  create a new thread(&inputPacks, &outputSlot)
+                *   4.  store the pointer to the new thread in a datastracture (ORDERED_SET of THREADS_POINTERS) 
+                *   5.  once all possible threads have been launched (depends on max threads and remainingPacks.second.size()), exit the loop 
+                *  
+                *   LOOP_2 (RESUME INTO A FUNCTION)
+                *   6.  enter a new loop and cycle all the threads references contained inside the ORDERED_SET_OF_THREADS to join all of them
+                *   7.  take all the FIRST vector objects, add them into a pallet and add the pallet to the Pallet Group
+                *   8.  take all the SECOND vector objects and add them to an another vector to recicle (unNestedPacks).
+                *   9.  With this new vector, repeat the LOOP_1 with the same operations, for a max of lets say, 5 times (or timeout)
+                * 
+                *   10. Go on with the main program and to output.
+                */ 
+
                 do
                 {
                     Pallet newPallet(palletDims);
@@ -155,6 +163,9 @@ int main (int argc, char* argv[])
 
                     /*
                     *   > Questa operazione mi permette di rivalutare ad ogni ciclo ogni pacco contenuto nel buffer dei pacchi scartati  
+                    *   NB:
+                    *   > remainingPacks.first -> pacchi su cui lanciare il thread di nesting
+                    *   > remainingPacks.second -> pacchi "scartati" dal nesting e che necessitano di tornare sotto elaborazione fino ad un tot massimo.
                     */
 
                     //  remainingPacks = sortInput(remainingPacks.second);
@@ -168,10 +179,17 @@ int main (int argc, char* argv[])
                     loopTimer = partialTime - start;
                     if (loopTimer.count() >= 20)
                     {
+                        //MOVE THIS TIMER COUNTER ON THE THREAD JOIN FUNCTION BELOW
                         //20 seconds has passed inside the loop
                         throw std::invalid_argument("Pallet loop took up to 20 seconds of execution: check code");
                     }
                 } while (remainingPacks.second.size());
+
+                /*
+                * Make a loop that waits threads to join.
+                *   make it not to enlapse too much time
+                * 
+                */
                
             #pragma endregion
             
