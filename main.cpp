@@ -15,7 +15,8 @@
     #include "headers/entities/physical/Pack.hpp"
     #include "headers/entities/physical/PalletGroup.hpp"
     #include "headers/entities/geometry/Grid.hpp"
-
+    
+    #include "headers/logic/BoxNesting/BoxNesting.hpp"
     #include "headers/logic/messages.hpp" 
     #include "headers/logic/letturaFileJson.hpp" 
     #include "headers/logic/ordinamentoPacchi.hpp"
@@ -25,8 +26,6 @@
     #include "headers/logic/trovaDominio.hpp"
     #include "headers/logic/test.hpp"
 #pragma endregion
-
-
 
 int main (int argc, char* argv[]) 
 {  
@@ -97,19 +96,13 @@ int main (int argc, char* argv[])
                 */
             #pragma endregion
 
+            PalletGroup palletGroup;
+            packVector pacchiNonPallettizzabiliByFLAG; //ASSEGNARE QUI I PACCHI SCARTATI FLAGGATI NON PALLETTIZZABILI, anzi sostituire con il terzo packVector creato nel BlockCode 2.1
+            Geometry::ThreeNum_set<int> palletDims = examplePallet.getPalletDims();
+
             #pragma region "BlockCode 2.2 - Crea pallet da pacchi non palletizzabili dal flag"
-                /*
-                *   TODO - primo loop per creazione pallet di pacchi non pallettizzabili:
-                *   > crea pallet group
-                *   > crea pallet per ogni pacco non palletizzabile x via del flag
-                *   > aggiungi il singolo pallet al palletGroup
-                */
-                PalletGroup palletGroup;
-                packVector pacchiNonPallettizzabiliByFLAG;
-                Geometry::ThreeNum_set<int> palletDims;
                 for (auto pack : pacchiNonPallettizzabiliByFLAG)
                 {
-                    palletDims = examplePallet.getPalletDims();
                     Pallet newPallet(palletDims);
                     newPallet.addPack(pack);
                     palletGroup.addPallet(&newPallet);
@@ -146,6 +139,8 @@ int main (int argc, char* argv[])
                 auto partialTime = std::chrono::steady_clock::now();
                 std::chrono::duration<double> loopTimer;
 
+                packVector remainingPacks; //MOVE THIS AFTER IMPLEMENTATION OF BLKCODE 2.1: packs that can be nested, fill this with all the remaining packs after flagged pack deletion
+
                 do
                 {
                     /*
@@ -154,41 +149,22 @@ int main (int argc, char* argv[])
                     * lancia multithreading per ogni nesting operation   
                     * 
                     */
+                    Pallet newPallet(palletDims);
 
                     //palletizablePacksVector = sortInput(nonPalletizablePacksVector);
+
+                    
 
                     partialTime = std::chrono::steady_clock::now();
                     loopTimer = partialTime - start;
                     if (loopTimer.count() >= 20)
                     {
                         //20 seconds has passed inside the loop
-                        throw std::invalid_argument("Pallet loop took up to 15 seconds of execution: check code");
+                        throw std::invalid_argument("Pallet loop took up to 20 seconds of execution: check code");
                     }
+
                 } while (nonPalletizablePacksVector.size());
                
-            #pragma endregion
-
-            #pragma region "oldLoop"
-            // Loop gets back here once ended all the other operations and gets aborted if 15 seconds passed
-            // Put all the rouge packs (from nonPalletizablePacksVector) on single pallets and append them to palletGroup.
-            /*
-            auto start = std::chrono::steady_clock::now();
-            std::chrono::duration<double> palletLoopDuration;
-
-            while (palletizablePacksVector.size() && (palletLoopDuration.count() < 15))
-            {
-                //gets partial Loop time
-                auto partialTime = std::chrono::steady_clock::now();
-                palletLoopDuration = partialTime - start;
-            }
-
-    	    //Ticket "BlockCode 2 - End routine":
-            if (palletLoopDuration.count() >= 15)
-            {
-                //15 seconds has passed inside the loop
-                throw std::invalid_argument("Pallet loop took up to 15 seconds of execution: check code");
-            }
-            */
             #pragma endregion
             
         #pragma endregion
