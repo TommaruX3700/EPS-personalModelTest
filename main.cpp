@@ -26,19 +26,17 @@
     #include "headers/logic/test.hpp"
 #pragma endregion
 
-#pragma region "Function declarations"
-    //json vectorToJson (all the arguments needed);
 
-#pragma endregion
-
-std :: string inputJsonPath;
 
 int main (int argc, char* argv[]) 
 {  
     try
     {
+    #pragma region "Global Variables"
+        std :: string inputJsonPath;
         packVector packs;
         Pallet examplePallet;
+    #pragma endregion
 
     #if TEST_MODE == 1
         testFunction();
