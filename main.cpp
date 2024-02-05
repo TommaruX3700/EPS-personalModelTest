@@ -137,33 +137,26 @@ int main (int argc, char* argv[])
                 std::chrono::duration<double> loopTimer;
                 
                 std::set<std::thread> operatingThreads;
-               
+                std::set<Pallet> nestedPallets;
 
                 #pragma region "LOOP_1 ~ TO MOVE TO EXTERNAL FUNCTION"
-                    /*
-                    *   LOOP_1 (do-while) (RESUME INTO A FUNCTION)
-                    *   3.  create a new thread(&inputPacks, &outputSlot)
-                    *   4.  store the pointer to the new thread in a datastracture (ORDERED_SET of THREADS_POINTERS) 
-                    *   5.  once all possible threads have been launched (depends on max threads and remainingPacks.second.size()), exit the loop 
-                    */
+
                     do
                     {
-                        Pallet newPallet(palletDims);
-                        BoxNesting nesting();
-
                         /*
-                        *   > Questa operazione mi permette di rivalutare ad ogni ciclo ogni pacco contenuto nel buffer dei pacchi scartati  
-                        *   NB:
-                        *   > remainingPacks.first -> pacchi su cui lanciare il thread di nesting
-                        *   > remainingPacks.second -> pacchi "scartati" dal nesting e che necessitano di tornare sotto elaborazione fino ad un tot massimo.
+                        *   LOOP_1 (do-while) (RESUME INTO A FUNCTION) 
+                        *       > Questo loop ad ogni ciclo ogni pacco contenuto nel buffer dei pacchi scartati.
+                        *       > remainingPacks.first -> pacchi su cui lanciare il thread di nesting
+                        *       > remainingPacks.second -> pacchi "scartati" dal nesting e che necessitano di tornare sotto elaborazione fino ad un tot massimo.
                         */
+
+                        Pallet newPallet(palletDims);
+                        BoxNesting threadOperation();
+                        //add packs to the nesting
+                        std::thread newThread (&BoxNesting::nesting, &threadOperation, &newPallet);
+                        operatingThreads.insert(newThread);
 
                         //  remainingPacks = sortInput(remainingPacks.second);
-
-                        /*
-                        *   > Launch multithreading and learn how to wait threads and collect outputs
-                        *   > Understand how to adapt threads to machine (accordingly to max usable thread numbers)
-                        */
 
                         partialTime = std::chrono::steady_clock::now();
                         loopTimer = partialTime - start;
@@ -173,6 +166,8 @@ int main (int argc, char* argv[])
                             //20 seconds has passed inside the loop
                             throw std::invalid_argument("Pallet loop took up to 20 seconds of execution: check code");
                         }
+
+                        //TODO: funzione per esportare tutti i pallet
                     } while (remainingPacks.second.size());
                 #pragma endregion
 

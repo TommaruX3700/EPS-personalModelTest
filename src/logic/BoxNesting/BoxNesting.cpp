@@ -13,3 +13,8 @@ BoxNesting :: ~BoxNesting()
     *   > Clean all pointers used and created in this class.
     */
 }
+
+void BoxNesting :: nesting(palletPtr inPallet)
+{
+
+}

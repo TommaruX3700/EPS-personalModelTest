@@ -9,14 +9,17 @@
 
 #include <vector>
 #include "../../entities/physical/Pack.hpp"
+#include "../../entities/physical/Pallet.hpp"
 
 class BoxNesting
 {
     private:
         typedef std::vector<Pack*> packVector;        
-        
+        typedef Pallet* palletPtr;
     public:
         BoxNesting();
         ~BoxNesting();
+
+        void nesting(palletPtr inPallet);
 };
 
