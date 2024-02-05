@@ -8,6 +8,7 @@
     #include <chrono>
     #include <algorithm>
     #include <regex>
+    #include <thread>
 
     #include "extLibs/nlohmannJSON/json.hpp"
     #include "extLibs/rapidjson/document.h"
@@ -32,7 +33,7 @@ int main (int argc, char* argv[])
     try
     {
     #pragma region "Global Variables"
-        std :: string inputJsonPath;
+        std::string inputJsonPath;
         packVector packs;
         Pallet examplePallet;
     #pragma endregion
@@ -93,9 +94,33 @@ int main (int argc, char* argv[])
                 */
             #pragma endregion
 
+            #pragma region "To adapt to Federico's modifications"
+            /*
+            * get sortInput() output in this variable:
+            * > packs that can be nested
+            * > fill this with all the remaining packs after flagged pack deletion
+            * > first -> nestable packs on current pallet
+            * > second -> scarted packs to reuse later on another thread untill finished o time enlapsed
+            */
+            std::pair<packVector, packVector> remainingPacks; 
+
+            /*
+            *   Append first part to second part:
+            *       Il concetto di base è di avere TUTTI i pacchi sul vettore secondario, in modo da iterare successivamente il sortInput()
+            *       e lavorare quindi usando il primo vettore come "vettore operativo" ed il secondo come buffer per i pacchi scartati.
+            */
+            remainingPacks.second.insert(std::end(remainingPacks.second), std::begin(remainingPacks.first), std::end(remainingPacks.first));
+
             PalletGroup palletGroup;
-            packVector pacchiNonPallettizzabiliByFLAG; //ASSEGNARE QUI I PACCHI SCARTATI FLAGGATI NON PALLETTIZZABILI, anzi sostituire con il terzo packVector creato nel BlockCode 2.1
+
+            /*
+            *   SOSTITUIRE con il terzo packVector creato nel BlockCode 2.1
+            *   ASSEGNARE QUI I PACCHI SCARTATI FLAGGATI NON PALLETTIZZABILI 
+            */
+            packVector pacchiNonPallettizzabiliByFLAG; 
+
             Geometry::ThreeNum_set<int> palletDims = examplePallet.getPalletDims();
+            #pragma endregion
 
             #pragma region "BlockCode 2.2 - Crea pallet da pacchi non palletizzabili dal flag"
                 for (auto pack : pacchiNonPallettizzabiliByFLAG)
@@ -110,85 +135,66 @@ int main (int argc, char* argv[])
                 auto start = std::chrono::steady_clock::now();
                 auto partialTime = std::chrono::steady_clock::now();
                 std::chrono::duration<double> loopTimer;
-
-#pragma region "TO_MOVE"
-                /*
-                * MOVE THIS AFTER IMPLEMENTATION OF BLKCODE 2.1 and get sortInput() output in this variable:
-                * > packs that can be nested
-                * > fill this with all the remaining packs after flagged pack deletion
-                * > first -> nestable packs on current pallet
-                * > second -> scarted packs to reuse later on another thread untill finished o time enlapsed
-                */
-
-                std::pair<packVector, packVector> remainingPacks; 
-                /*
-                *   Append first part to second part:
-                *       Il concetto di base è di avere TUTTI i pacchi sul vettore secondario, in modo da iterare successivamente il sortInput()
-                *       e lavorare quindi usando il primo vettore come "vettore operativo" ed il secondo come buffer per i pacchi scartati.
-                */
-                remainingPacks.second.insert(std::end(remainingPacks.second), std::begin(remainingPacks.first), std::end(remainingPacks.first));
-#pragma endregion
-
-                /*
-                *   1.  get number of threads to use and set it 
-                *   2.  make a datastracture (ORDERED_SET of PAIRs of PACKVECTORs) to contain all threads ouputs (pass the single "output_slot" by reference to threads)  
-                *   
-                *   LOOP_1 (do-while) (RESUME INTO A FUNCTION)
-                *   3.  create a new thread(&inputPacks, &outputSlot)
-                *   4.  store the pointer to the new thread in a datastracture (ORDERED_SET of THREADS_POINTERS) 
-                *   5.  once all possible threads have been launched (depends on max threads and remainingPacks.second.size()), exit the loop 
-                *  
-                *   LOOP_2 (RESUME INTO A FUNCTION)
-                *   6.  enter a new loop and cycle all the threads references contained inside the ORDERED_SET_OF_THREADS to join all of them
-                *   7.  take all the FIRST vector objects, add them into a pallet and add the pallet to the Pallet Group
-                *   8.  take all the SECOND vector objects and add them to an another vector to recicle (unNestedPacks).
-                *   9.  With this new vector, repeat the LOOP_1 with the same operations, for a max of lets say, 5 times (or timeout)
-                * 
-                *   10. Go on with the main program and to output.
-                */ 
+                
+                std::set<std::thread> operatingThreads;
                
-#pragma region "LOOP_1 ~ TO MOVE TO EXTERNAL FUNCTION"
-                do
-                {
-                    Pallet newPallet(palletDims);
-                    BoxNesting nesting();
 
+                #pragma region "LOOP_1 ~ TO MOVE TO EXTERNAL FUNCTION"
                     /*
-                    *   > Questa operazione mi permette di rivalutare ad ogni ciclo ogni pacco contenuto nel buffer dei pacchi scartati  
-                    *   NB:
-                    *   > remainingPacks.first -> pacchi su cui lanciare il thread di nesting
-                    *   > remainingPacks.second -> pacchi "scartati" dal nesting e che necessitano di tornare sotto elaborazione fino ad un tot massimo.
+                    *   LOOP_1 (do-while) (RESUME INTO A FUNCTION)
+                    *   3.  create a new thread(&inputPacks, &outputSlot)
+                    *   4.  store the pointer to the new thread in a datastracture (ORDERED_SET of THREADS_POINTERS) 
+                    *   5.  once all possible threads have been launched (depends on max threads and remainingPacks.second.size()), exit the loop 
                     */
-
-                    //  remainingPacks = sortInput(remainingPacks.second);
-
-                    /*
-                    *   > Launch multithreading and learn how to wait threads and collect outputs
-                    *   > Understand how to adapt threads to machine (accordingly to max usable thread numbers)
-                    */
-
-                    partialTime = std::chrono::steady_clock::now();
-                    loopTimer = partialTime - start;
-                    if (loopTimer.count() >= 20)
+                    do
                     {
-                        //MOVE THIS TIMER COUNTER ON THE THREAD JOIN FUNCTION BELOW
-                        //20 seconds has passed inside the loop
-                        throw std::invalid_argument("Pallet loop took up to 20 seconds of execution: check code");
-                    }
-                } while (remainingPacks.second.size());
-#pragma endregion
+                        Pallet newPallet(palletDims);
+                        BoxNesting nesting();
 
-#pragma region "LOOP_2 ~ TO MOVE TO EXTERNAL FUNCTION"
-                /*
-                * Make a loop that waits threads to join.
-                *   make it not to enlapse too much time
-                *   NB: note that execution will be blocked until each thread will join correctly.
-                */
-#pragma endregion               
+                        /*
+                        *   > Questa operazione mi permette di rivalutare ad ogni ciclo ogni pacco contenuto nel buffer dei pacchi scartati  
+                        *   NB:
+                        *   > remainingPacks.first -> pacchi su cui lanciare il thread di nesting
+                        *   > remainingPacks.second -> pacchi "scartati" dal nesting e che necessitano di tornare sotto elaborazione fino ad un tot massimo.
+                        */
+
+                        //  remainingPacks = sortInput(remainingPacks.second);
+
+                        /*
+                        *   > Launch multithreading and learn how to wait threads and collect outputs
+                        *   > Understand how to adapt threads to machine (accordingly to max usable thread numbers)
+                        */
+
+                        partialTime = std::chrono::steady_clock::now();
+                        loopTimer = partialTime - start;
+                        if (loopTimer.count() >= 20)
+                        {
+                            //MOVE THIS TIMER COUNTER ON THE THREAD JOIN FUNCTION BELOW
+                            //20 seconds has passed inside the loop
+                            throw std::invalid_argument("Pallet loop took up to 20 seconds of execution: check code");
+                        }
+                    } while (remainingPacks.second.size());
+                #pragma endregion
+
+                #pragma region "LOOP_2 ~ TO MOVE TO EXTERNAL FUNCTION"
+                    /*
+                    *   LOOP_2 (RESUME INTO A FUNCTION)
+                    *   6.  enter a new loop and cycle all the threads references contained inside the ORDERED_SET_OF_THREADS to join all of them
+                    *   7.  take all the FIRST vector objects, add them into a pallet and add the pallet to the Pallet Group
+                    *   8.  take all the SECOND vector objects and add them to an another vector to recicle (unNestedPacks).
+                    *   9.  With this new vector, repeat the LOOP_1 with the same operations, for a max of lets say, 5 times (or timeout)
+                    * 
+                    *   Make a loop that waits threads to join.
+                    *   make it not to enlapse too much time
+                    *   NB: note that execution will be blocked until each thread will join correctly.
+                    */
+                #pragma endregion  
+                    /*
+                    *   10. Go on with the main program and to output.
+                    */ 
+                #pragma endregion
 
             #pragma endregion
-            
-        #pragma endregion
 
         #pragma region "BlockCode 3 - End Routine"
             
