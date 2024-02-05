@@ -14,7 +14,7 @@ BoxNesting :: ~BoxNesting()
     */
 }
 
-void BoxNesting :: nesting(palletPtr inPallet)
+void BoxNesting :: nesting(palletPtr outPallet, packVector inPacks, packVector outNotNested)
 {
 
 }

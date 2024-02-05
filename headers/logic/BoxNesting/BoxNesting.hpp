@@ -19,7 +19,6 @@ class BoxNesting
     public:
         BoxNesting();
         ~BoxNesting();
-
-        void nesting(palletPtr inPallet);
+        void nesting(palletPtr outPallet, packVector inPacks, packVector outNotNested);
 };
 
