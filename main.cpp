@@ -158,6 +158,8 @@ int main (int argc, char* argv[])
                         BoxNesting threadOperation();
                         std::thread newThread (&BoxNesting::nesting, &threadOperation, &newPallet, &remainingPacks.first, &notNested);
                         operatingThreads.insert(newThread);
+                        
+                        //TODO:this wont work because it notNested may be compiled or not: use this informations in the join loop
                         remainingPacks.second.insert(remainingPacks.second.end(), notNested.begin(), notNested.end());
 
                         partialTime = std::chrono::steady_clock::now();
@@ -186,7 +188,6 @@ int main (int argc, char* argv[])
                         auto currentThread = --operatingThreads.end();
                         if (currentThread->joinable())
                         {
-                            
                             std::thread& joinableThread = const_cast<std::thread&>(*currentThread);
                             joinableThread.join();
                         }
