@@ -7,6 +7,7 @@
 #include "BoxNesting.hpp"
 #include "../../entities/physical/Pack.hpp"
 #include "../../entities/physical/Pallet.hpp"
+//Add include to Federico sorting
 
 typedef std::set<Pallet> palletSet;
 typedef std::vector<Pack*> packVector;

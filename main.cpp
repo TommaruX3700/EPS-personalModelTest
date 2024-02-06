@@ -84,43 +84,43 @@ int main (int argc, char* argv[])
         #pragma region "BlockCode 2 - Pallet Loop"
 
             packVector palletizablePacksVector;
-            packVector nonPalletizablePacksVector;            
+            packVector nonPalletizablePacksVector;     
+            packVector pacchiNonPallettizzabiliByFLAG;
+
             //qui verrà aggiunto un vettore con i pacchi già flaggati come non pallettizzabili, da mettere immediatamente su singoli pallets e aggiungere subito al pallet group.
             
             #pragma region "BlockCode 2.1 - Ordinamento Input && Scelta pacchi Nesting"
                 /*
                 *   FEDERICO - 2 metodi per la suddivisione input e scelta pacchi nesting 
-                *   dividiPacchiNonPalletizzabilio(packs); ->> 2 outputs: vettore di pacchi non palletizzabili by flag e tutto il resto
-                *   sortInput(packs); ->> 2 outputs: vettore di pacchi che stanno nei limiti imposti del palletExample e tutti quelli invece "scartati"
+                *   > dividiPacchiNonPalletizzabilio(packs); ->> 2 outputs: vettore di pacchi non palletizzabili by flag e tutto il resto
+                *   > sortInput(packs); ->> 2 outputs: vettore di pacchi che stanno nei limiti imposti del palletExample e tutti quelli invece "scartati"
                 */
+
+                /*
+                * PACCHI SCARTATI FLAGGATI COME NON PALLETTIZZABILI 
+                */
+                //pacchiNonPallettizzabiliByFLAG = dividiPacchiNonPalletizzabilio(packs);
+
+                std::pair<packVector, packVector> remainingPacks; 
+                //remainingPacks = sortInput(packs);
+
             #pragma endregion
 
             #pragma region "To adapt to Federico's modifications"
-            /*
-            * get sortInput() output in this variable:
-            * > packs that can be nested
-            * > fill this with all the remaining packs after flagged pack deletion
-            * > first -> nestable packs on current pallet
-            * > second -> scarted packs to reuse later on another thread untill finished o time enlapsed
-            */
-            std::pair<packVector, packVector> remainingPacks; 
+                /*
+                * get sortInput() output in this variable:
+                * > packs that can be nested
+                * > fill this with all the remaining packs after flagged pack deletion
+                * > first -> nestable packs on current pallet
+                * > second -> scarted packs to reuse later on another thread untill finished o time enlapsed
+                * 
+                *       Il concetto di base è di avere TUTTI i pacchi sul vettore secondario, in modo da iterare successivamente il sortInput()
+                *       e lavorare quindi usando il primo vettore come "vettore operativo" ed il secondo come buffer per i pacchi scartati.
+                */
 
-            /*
-            *   Append first part to second part:
-            *       Il concetto di base è di avere TUTTI i pacchi sul vettore secondario, in modo da iterare successivamente il sortInput()
-            *       e lavorare quindi usando il primo vettore come "vettore operativo" ed il secondo come buffer per i pacchi scartati.
-            */
-            remainingPacks.second.insert(std::end(remainingPacks.second), std::begin(remainingPacks.first), std::end(remainingPacks.first));
-
-            PalletGroup palletGroup;
-
-            /*
-            *   SOSTITUIRE con il terzo packVector creato nel BlockCode 2.1
-            *   ASSEGNARE QUI I PACCHI SCARTATI FLAGGATI NON PALLETTIZZABILI 
-            */
-            packVector pacchiNonPallettizzabiliByFLAG; 
-
-            Geometry::ThreeNum_set<int> palletDims = examplePallet.getPalletDims();
+                PalletGroup palletGroup;
+                Geometry::ThreeNum_set<int> palletDims = examplePallet.getPalletDims();
+                
             #pragma endregion
 
             #pragma region "BlockCode 2.2 - Crea pallet da pacchi non palletizzabili dal flag"
@@ -141,21 +141,16 @@ int main (int argc, char* argv[])
         #pragma endregion
 
         #pragma region "BlockCode 3 - End Routine"
-            
             //Output as json (Plan B: output string)
-
             //TODO: 
             //  - [ ] Ticket: "main: End Routine - vectorToJson() implementation"
-          
             //Execute function to prepare the output json
             //nlohmann::json outputJson = vectorToJson(all the arguments needed)
             //std::cout << outputJson << '\n';
-
         #pragma endregion
     #endif
         return 0;
     }
-
     catch(const std::invalid_argument& e) 
     {
         return consoleErrorMessage(e.what());

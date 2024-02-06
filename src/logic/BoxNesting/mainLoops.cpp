@@ -18,12 +18,25 @@ palletSet MainNestLoops(dims palletDims, palletSet &nestedPallets, pairPackVecto
             // remainingPacks = sortInput(remainingPacks.second);
             packVector notNested;
             Pallet newPallet(palletDims);
-            //add pallet vector reference to save reference
+
+            /*
+            * Aggiungo alla fine del mio second vector il first vector ed eseguo un sortInput sul secondo vettore.
+            * In questo modo ho sempre tutto ordinato 
+            */
+            packs.second.insert(std::end(packs.second), std::begin(packs.first), std::end(packs.first));
+            //packs = sortInput(packs.second());
+
+            /*
+            * Add pallet vector reference to save reference
+            */
             nestedPallets.insert(newPallet);
             BoxNesting threadOperation();
             std::thread newThread (&BoxNesting::nesting, &threadOperation, &newPallet, &packs.first, &notNested);
             operatingThreads.push(newThread);
-            //TODO:this wont work because it notNested may be compiled or not: use this informations in the join loop
+
+            /*
+            * TODO:this wont work because it notNested may be compiled or not: use this informations in the join loop
+            */
             packs.second.insert(packs.second.end(), notNested.begin(), notNested.end());
             partialTime = std::chrono::steady_clock::now();
             loopTimer = partialTime - start;
@@ -39,14 +52,8 @@ palletSet MainNestLoops(dims palletDims, palletSet &nestedPallets, pairPackVecto
         while (!operatingThreads.empty())
         {
             /*
-            *   LOOP_2 (RESUME INTO A FUNCTION)
-            *   7.  take all the FIRST vector objects, add them into a pallet and add the pallet to the Pallet Group
-            *   8.  take all the SECOND vector objects and add them to an another vector to recicle (unNestedPacks).
-            *   9.  With this new vector, repeat the LOOP_1 with the same operations, for a max of lets say, 5 times (or timeout)
-            * 
-            *   Make a loop that waits threads to join.
-            *   make it not to enlapse too much time
-            *   NB: note that execution will be blocked until each thread will join correctly.
+            *   LOOP_2 (RESUME INTO A FUNCTION):
+            *       loop that waits threads to join.
             */
 
             if (operatingThreads.top().joinable())
