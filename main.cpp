@@ -136,7 +136,8 @@ int main (int argc, char* argv[])
                 auto partialTime = std::chrono::steady_clock::now();
                 std::chrono::duration<double> loopTimer;
                 
-                std::set<std::thread> operatingThreads;
+                //STACK: (FILO logic, O(1) time complexity in all operations, refers easily to elements, not useless characterisics)
+                std::stack<std::thread> operatingThreads;
                 std::set<Pallet> nestedPallets;
 
                 #pragma region "Thread Loops"
@@ -157,7 +158,7 @@ int main (int argc, char* argv[])
                         nestedPallets.insert(newPallet);
                         BoxNesting threadOperation();
                         std::thread newThread (&BoxNesting::nesting, &threadOperation, &newPallet, &remainingPacks.first, &notNested);
-                        operatingThreads.insert(newThread);
+                        operatingThreads.push(newThread);
                         
                         //TODO:this wont work because it notNested may be compiled or not: use this informations in the join loop
                         remainingPacks.second.insert(remainingPacks.second.end(), notNested.begin(), notNested.end());
@@ -173,7 +174,7 @@ int main (int argc, char* argv[])
                     } while (remainingPacks.second.size());
 
                     start = std::chrono::steady_clock::now();
-                    while (operatingThreads.size())
+                    while (!operatingThreads.empty())
                     {
                         /*
                         *   LOOP_2 (RESUME INTO A FUNCTION)
@@ -185,11 +186,13 @@ int main (int argc, char* argv[])
                         *   make it not to enlapse too much time
                         *   NB: note that execution will be blocked until each thread will join correctly.
                         */
-                        auto currentThread = --operatingThreads.end();
-                        if (currentThread->joinable())
+                        std::thread currentThread = operatingThreads.top();
+
+                        if (currentThread.joinable())
                         {
-                            std::thread& joinableThread = const_cast<std::thread&>(*currentThread);
+                            std::thread& joinableThread = const_cast<std::thread&>(currentThread);
                             joinableThread.join();
+                            operatingThreads.pop();
                         }
                         
                         partialTime = std::chrono::steady_clock::now();
