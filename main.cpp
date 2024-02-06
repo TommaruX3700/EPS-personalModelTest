@@ -17,7 +17,8 @@
     #include "headers/entities/physical/PalletGroup.hpp"
     #include "headers/entities/geometry/Grid.hpp"
     
-    #include "headers/logic/BoxNesting/BoxNesting.hpp"
+    #include "headers/logic/BoxNesting/mainLoops.hpp"
+
     #include "headers/logic/messages.hpp" 
     #include "headers/logic/letturaFileJson.hpp" 
     #include "headers/logic/ordinamentoPacchi.hpp"
@@ -132,79 +133,8 @@ int main (int argc, char* argv[])
             #pragma endregion
 
             #pragma region "BlockCode 2.3 - Nesting loop"
-                auto start = std::chrono::steady_clock::now();
-                auto partialTime = std::chrono::steady_clock::now();
-                std::chrono::duration<double> loopTimer;
-                
-                //STACK: (FILO logic, O(1) time complexity in all operations, refers easily to elements, not useless characterisics)
-                std::stack<std::thread> operatingThreads;
                 std::set<Pallet> nestedPallets;
-
-                #pragma region "Thread Loops"
-
-                    do
-                    {
-                        /*
-                        *   LOOP_1 (do-while) (RESUME INTO A FUNCTION) 
-                        *       > Questo loop ad ogni ciclo ogni pacco contenuto nel buffer dei pacchi scartati.
-                        *       > remainingPacks.first -> pacchi su cui lanciare il thread di nesting
-                        *       > remainingPacks.second -> pacchi "scartati" dal nesting e che necessitano di tornare sotto elaborazione fino ad un tot massimo.
-                        */
-
-                        // remainingPacks = sortInput(remainingPacks.second);
-                        packVector notNested;
-                        Pallet newPallet(palletDims);
-                        //add pallet vector reference to save reference
-                        nestedPallets.insert(newPallet);
-                        BoxNesting threadOperation();
-                        std::thread newThread (&BoxNesting::nesting, &threadOperation, &newPallet, &remainingPacks.first, &notNested);
-                        operatingThreads.push(newThread);
-                        
-                        //TODO:this wont work because it notNested may be compiled or not: use this informations in the join loop
-                        remainingPacks.second.insert(remainingPacks.second.end(), notNested.begin(), notNested.end());
-
-                        partialTime = std::chrono::steady_clock::now();
-                        loopTimer = partialTime - start;
-
-                        if (loopTimer.count() >= 20)
-                        {
-                            throw std::invalid_argument("Threads creation loop took up to 20 seconds for execution: check code");
-                        }
-
-                    } while (remainingPacks.second.size());
-
-                    start = std::chrono::steady_clock::now();
-                    while (!operatingThreads.empty())
-                    {
-                        /*
-                        *   LOOP_2 (RESUME INTO A FUNCTION)
-                        *   7.  take all the FIRST vector objects, add them into a pallet and add the pallet to the Pallet Group
-                        *   8.  take all the SECOND vector objects and add them to an another vector to recicle (unNestedPacks).
-                        *   9.  With this new vector, repeat the LOOP_1 with the same operations, for a max of lets say, 5 times (or timeout)
-                        * 
-                        *   Make a loop that waits threads to join.
-                        *   make it not to enlapse too much time
-                        *   NB: note that execution will be blocked until each thread will join correctly.
-                        */
-                        std::thread currentThread = operatingThreads.top();
-
-                        if (currentThread.joinable())
-                        {
-                            std::thread& joinableThread = const_cast<std::thread&>(currentThread);
-                            joinableThread.join();
-                            operatingThreads.pop();
-                        }
-                        
-                        partialTime = std::chrono::steady_clock::now();
-                        loopTimer = partialTime - start;
-                        
-                        if (loopTimer.count() >= 20)
-                        {
-                            throw std::invalid_argument("Threads join loop took up to 20 seconds for execution: check code");
-                        }
-                    }
-
-                #pragma endregion  
+                MainNestLoops(palletDims, nestedPallets, remainingPacks);
 
             #pragma endregion
 
