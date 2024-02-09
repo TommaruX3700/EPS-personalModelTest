@@ -35,6 +35,7 @@ public:
     #pragma region "Get methods"
         int getPackID() const;
         bool getRotatableFlag() const;
+        bool getPalletizableFlag() const;
         std::string getInfo();
     #pragma endregion
 
