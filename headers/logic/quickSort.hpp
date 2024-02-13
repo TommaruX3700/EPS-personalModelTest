@@ -4,6 +4,8 @@
 #include <vector>
 #include "../entities/physical/Pack.hpp"
 
+typedef std::vector<Pack*> packVector;
+
 double calculateArea(const Pack& p);
 
 int partition(packVector& pacchi, int low, int high);
