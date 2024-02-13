@@ -99,7 +99,6 @@ int main (int argc, char* argv[])
 
 #pragma endregion
 
-#pragma region "To adapt to Federico's modifications"
                 /*
                 * get sortInput() output in this variable:
                 * > packs that can be nested
@@ -113,8 +112,6 @@ int main (int argc, char* argv[])
 
                 PalletGroup palletGroup;
                 Geometry::ThreeNum_set<int> palletDims = examplePallet.getPalletDims();
-                
-#pragma endregion
 
 #pragma region "BlockCode 2.2 - Crea pallet da pacchi non palletizzabili dal flag"
                 for (auto pack : pacchiNonPallettizzabiliByFLAG)
