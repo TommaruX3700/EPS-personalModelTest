@@ -1,4 +1,5 @@
-#define TEST_MODE 0 //Enable to 1 to execute only "TEST_REGION"
+//Enable to 1 to execute only "TEST_REGION"
+#define TEST_MODE 0 
 
 #pragma region "Includes" 
     #include <iostream>
@@ -33,16 +34,16 @@ int main (int argc, char* argv[])
 {  
     try
     {
-    #pragma region "Global Variables"
+#pragma region "Global Variables"
         std::string inputJsonPath;
         packVector packs;
         Pallet examplePallet;
-    #pragma endregion
+#pragma endregion
 
-    #if TEST_MODE == 1
+#if TEST_MODE == 1
         testFunction();
-    #else
-        #pragma region "BlockCode 1 - Startup Routine"
+#else
+#pragma region "BlockCode 1 - Startup Routine"
             try
             {
                 if (argc > 1)
@@ -79,51 +80,26 @@ int main (int argc, char* argv[])
                 return consoleErrorMessage(e.what());
             }
 
-        #pragma endregion
+#pragma endregion
 
-        #pragma region "BlockCode 2 - Pallet Loop"
-
-            packVector palletizablePacksVector;
-            packVector nonPalletizablePacksVector;
-
-            packVector packablePacksVector;
-            packVector unpackablePacksVector; 
-            
-
+#pragma region "BlockCode 2 - Pallet Loop"
             packVector nonPalletizablePacksVector;     
             packVector pacchiNonPallettizzabiliByFLAG;
-
-            //qui verrà aggiunto un vettore con i pacchi già flaggati come non pallettizzabili, da mettere immediatamente su singoli pallets e aggiungere subito al pallet group.
             
-            #pragma region "BlockCode 2.1 - Ordinamento Input && Scelta pacchi Nesting"
+#pragma region "BlockCode 2.1 - Ordinamento Input && Scelta pacchi Nesting"
+            std::pair<packVector, packVector> dividedPacks;
+            std::pair<packVector, packVector> remainingPacks;
 
-            //Esempio di utilizzo
+            dividedPacks = isPalletizable(packs);
 
-            // Divide i pacchi in 2 vettori: pallettizzabili e non pallettizzabili
-            palletizablePacksVector = isPalletizable(packs).first;
-            nonPalletizablePacksVector = isPalletizable(packs).second;
-            
-            // Divide i pacchi pallettizzabili in 2 vettori: pacchi inseribili nel pallet e non inseribili
-            packablePacksVector = sortInput(palletizablePacksVector, examplePallet).first;
-            unpackablePacksVector = sortInput(palletizablePacksVector, examplePallet).second;
+            pacchiNonPallettizzabiliByFLAG = dividedPacks.second;
+            remainingPacks.second = dividedPacks.first;
+            //Eseguo il sortInput sul secondo vettore per ottenere un vettore già diviso e utilizzabile x il nesting successivo
+            remainingPacks = sortInput(remainingPacks.second, examplePallet);
 
-                /*
-                *   FEDERICO - 2 metodi per la suddivisione input e scelta pacchi nesting 
-                *   > dividiPacchiNonPalletizzabilio(packs); ->> 2 outputs: vettore di pacchi non palletizzabili by flag e tutto il resto
-                *   > sortInput(packs); ->> 2 outputs: vettore di pacchi che stanno nei limiti imposti del palletExample e tutti quelli invece "scartati"
-                */
+#pragma endregion
 
-                /*
-                * PACCHI SCARTATI FLAGGATI COME NON PALLETTIZZABILI 
-                */
-                //pacchiNonPallettizzabiliByFLAG = dividiPacchiNonPalletizzabilio(packs);
-
-                std::pair<packVector, packVector> remainingPacks; 
-                //remainingPacks = sortInput(packs);
-
-            #pragma endregion
-
-            #pragma region "To adapt to Federico's modifications"
+#pragma region "To adapt to Federico's modifications"
                 /*
                 * get sortInput() output in this variable:
                 * > packs that can be nested
@@ -138,34 +114,35 @@ int main (int argc, char* argv[])
                 PalletGroup palletGroup;
                 Geometry::ThreeNum_set<int> palletDims = examplePallet.getPalletDims();
                 
-            #pragma endregion
+#pragma endregion
 
-            #pragma region "BlockCode 2.2 - Crea pallet da pacchi non palletizzabili dal flag"
+#pragma region "BlockCode 2.2 - Crea pallet da pacchi non palletizzabili dal flag"
                 for (auto pack : pacchiNonPallettizzabiliByFLAG)
                 {
                     Pallet newPallet(palletDims);
                     newPallet.addPack(pack);
                     palletGroup.addPallet(&newPallet);
                 }
-            #pragma endregion
+#pragma endregion
 
-            #pragma region "BlockCode 2.3 - Nesting loop"
+#pragma region "BlockCode 2.3 - Nesting loop"
                 std::set<Pallet> nestedPallets;
                 MainNestLoops(palletDims, nestedPallets, remainingPacks);
 
-            #pragma endregion
+#pragma endregion
 
-        #pragma endregion
+#pragma endregion
 
-        #pragma region "BlockCode 3 - End Routine"
+#pragma region "BlockCode 3 - End Routine"
             //Output as json (Plan B: output string)
             //TODO: 
             //  - [ ] Ticket: "main: End Routine - vectorToJson() implementation"
             //Execute function to prepare the output json
             //nlohmann::json outputJson = vectorToJson(all the arguments needed)
             //std::cout << outputJson << '\n';
-        #pragma endregion
-    #endif
+#pragma endregion
+    
+#endif
         return 0;
     }
     catch(const std::invalid_argument& e) 
@@ -177,18 +154,3 @@ int main (int argc, char* argv[])
         return consoleErrorMessage(e.what());
     }  
 }
-
-#pragma region "Function implementations"
-
-    //TODO: move most of this in external files
-
-    //TODO:
-    //  - [ ] Ticket: "main: End Routine - vectorToJson() implementation"
-    //
-    //json vectorToJson (all the arguments needed)
-    //{ 
-    //      Build the output json, structure defined in Documentation.
-    //      Examples&Wiki: https://json.nlohmann.me/api/json/
-    //}
-    
-#pragma endregion
