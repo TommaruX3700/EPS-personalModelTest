@@ -2,8 +2,9 @@
 #define ORDINAMENTOPACCHI_HPP
 
 #include "../entities/physical/Pack.hpp"
+#include "quickSort.hpp"
+#include "../entities/physical/Pallet.hpp"
 #include <vector>
-#include <set>
 
 /*
 Author:
@@ -13,8 +14,9 @@ Description:
 */
 
 typedef std::vector<Pack*> packVector;
-typedef std::set<packVector> output;
+typedef std::pair<std::vector<Pack*>, std::vector<Pack*>> output;
 
-output sortInput(packVector inputVector);
+output isPalletizable(packVector inputVector);
+output sortInput(packVector inputVector, Pallet pallet);
 
 #endif

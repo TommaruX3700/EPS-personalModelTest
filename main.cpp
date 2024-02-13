@@ -96,17 +96,24 @@ int main (int argc, char* argv[])
             */
             
             packVector palletizablePacksVector;
-            packVector nonPalletizablePacksVector;            
+            packVector nonPalletizablePacksVector;
+
+            packVector packablePacksVector;
+            packVector unpackablePacksVector; 
+            
 
             #pragma region "BlockCode 2.1 - Ordinamento Input && Scelta pacchi Nesting"
-                /*
-                    Author: 
-                        Tommaso Maruzzo
-                    Description: 
-                        Filters out all the packs by their flags.
-                            - not palletizable ones appended on "nonPalletizablePacksVector";
-                            - palletizable ones appended on "palletizablePacksVector".
-                */
+
+            //Esempio di utilizzo
+
+            // Divide i pacchi in 2 vettori: pallettizzabili e non pallettizzabili
+            palletizablePacksVector = isPalletizable(packs).first;
+            nonPalletizablePacksVector = isPalletizable(packs).second;
+            
+            // Divide i pacchi pallettizzabili in 2 vettori: pacchi inseribili nel pallet e non inseribili
+            packablePacksVector = sortInput(palletizablePacksVector, examplePallet).first;
+            unpackablePacksVector = sortInput(palletizablePacksVector, examplePallet).second;
+
 
             #pragma endregion
         
