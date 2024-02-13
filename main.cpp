@@ -84,12 +84,29 @@ int main (int argc, char* argv[])
         #pragma region "BlockCode 2 - Pallet Loop"
 
             packVector palletizablePacksVector;
+            packVector nonPalletizablePacksVector;
+
+            packVector packablePacksVector;
+            packVector unpackablePacksVector; 
+            
+
             packVector nonPalletizablePacksVector;     
             packVector pacchiNonPallettizzabiliByFLAG;
 
             //qui verrà aggiunto un vettore con i pacchi già flaggati come non pallettizzabili, da mettere immediatamente su singoli pallets e aggiungere subito al pallet group.
             
             #pragma region "BlockCode 2.1 - Ordinamento Input && Scelta pacchi Nesting"
+
+            //Esempio di utilizzo
+
+            // Divide i pacchi in 2 vettori: pallettizzabili e non pallettizzabili
+            palletizablePacksVector = isPalletizable(packs).first;
+            nonPalletizablePacksVector = isPalletizable(packs).second;
+            
+            // Divide i pacchi pallettizzabili in 2 vettori: pacchi inseribili nel pallet e non inseribili
+            packablePacksVector = sortInput(palletizablePacksVector, examplePallet).first;
+            unpackablePacksVector = sortInput(palletizablePacksVector, examplePallet).second;
+
                 /*
                 *   FEDERICO - 2 metodi per la suddivisione input e scelta pacchi nesting 
                 *   > dividiPacchiNonPalletizzabilio(packs); ->> 2 outputs: vettore di pacchi non palletizzabili by flag e tutto il resto
