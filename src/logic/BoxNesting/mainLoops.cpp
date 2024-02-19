@@ -1,6 +1,6 @@
 #include "../../../headers/logic/BoxNesting/mainLoops.hpp"
 
-palletSet MainNestLoops(dims palletDims, palletSet &nestedPallets, pairPackVector &packs)
+palletVtr MainNestLoops(dims palletDims, palletVtr &nestedPallets, pairPackVector &packs)
 {
     auto start = std::chrono::steady_clock::now();
     auto partialTime = std::chrono::steady_clock::now();
@@ -24,7 +24,7 @@ palletSet MainNestLoops(dims palletDims, palletSet &nestedPallets, pairPackVecto
             /*
             *   Add pallet vector reference to save reference.
             */
-            nestedPallets.insert(newPallet);
+            nestedPallets.push_back(newPallet);
             /*
             *   Creating new nesting thread operation.
             */

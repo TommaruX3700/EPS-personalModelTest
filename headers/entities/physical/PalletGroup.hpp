@@ -32,6 +32,7 @@ public:
         int addPallet(ptrPallet palletPtr);
         int rmvPallet(int index);
         int palletCount() const;
+        void appendPalletVector(std::vector<ptrPallet> input);
     #pragma endregion
 };
 

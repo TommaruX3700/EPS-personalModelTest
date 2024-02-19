@@ -83,49 +83,39 @@ int main (int argc, char* argv[])
 #pragma endregion
 
 #pragma region "BlockCode 2 - Pallet Loop"
-            packVector nonPalletizablePacksVector;     
-            packVector pacchiNonPallettizzabiliByFLAG;
             
 #pragma region "BlockCode 2.1 - Ordinamento Input && Scelta pacchi Nesting"
+            packVector pacchiNonPallettizzabiliByFLAG;
             std::pair<packVector, packVector> dividedPacks;
             std::pair<packVector, packVector> remainingPacks;
 
             dividedPacks = isPalletizable(packs);
-
             pacchiNonPallettizzabiliByFLAG = dividedPacks.second;
             remainingPacks.second = dividedPacks.first;
-            //Eseguo il sortInput sul secondo vettore per ottenere un vettore già diviso e utilizzabile x il nesting successivo
             remainingPacks = sortInput(remainingPacks.second, examplePallet);
-
 #pragma endregion
-
-                /*
-                * get sortInput() output in this variable:
-                * > packs that can be nested
-                * > fill this with all the remaining packs after flagged pack deletion
-                * > first -> nestable packs on current pallet
-                * > second -> scarted packs to reuse later on another thread untill finished o time enlapsed
-                * 
-                *       Il concetto di base è di avere TUTTI i pacchi sul vettore secondario, in modo da iterare successivamente il sortInput()
-                *       e lavorare quindi usando il primo vettore come "vettore operativo" ed il secondo come buffer per i pacchi scartati.
-                */
-
-                PalletGroup palletGroup;
-                Geometry::ThreeNum_set<int> palletDims = examplePallet.getPalletDims();
+            /*
+            *   Il concetto di base è di avere TUTTI i pacchi sul vettore secondario, in modo da iterare successivamente il sortInput()
+            *   e lavorare quindi usando il primo vettore come "vettore operativo" ed il secondo come buffer per i pacchi scartati.
+            */
+            PalletGroup palletGroup;
+            Geometry::ThreeNum_set<int> palletDims = examplePallet.getPalletDims();
 
 #pragma region "BlockCode 2.2 - Crea pallet da pacchi non palletizzabili dal flag"
-                for (auto pack : pacchiNonPallettizzabiliByFLAG)
-                {
-                    Pallet newPallet(palletDims);
-                    newPallet.addPack(pack);
-                    palletGroup.addPallet(&newPallet);
-                }
+            for (auto pack : pacchiNonPallettizzabiliByFLAG)
+            {
+                Pallet newPallet(palletDims);
+                newPallet.addPack(pack);
+                palletGroup.addPallet(&newPallet);
+            }
 #pragma endregion
 
 #pragma region "BlockCode 2.3 - Nesting loop"
-                std::set<Pallet> nestedPallets;
-                MainNestLoops(palletDims, nestedPallets, remainingPacks);
-
+            std::set<Pallet> nestedPallets;
+            //  TODO: PalletGroup.hpp make a method to add an entire vector to a still existing one 
+            palletGroup.appendPalletVector(&MainNestLoops(palletDims, nestedPallets, remainingPacks));
+            
+            
 #pragma endregion
 
 #pragma endregion

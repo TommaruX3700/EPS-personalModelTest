@@ -7,9 +7,9 @@
 #include "BoxNesting.hpp"
 #include "../../entities/physical/Pack.hpp"
 #include "../../entities/physical/Pallet.hpp"
-//Add include to Federico sorting
+#include "../ordinamentoPacchi.hpp"
 
-typedef std::set<Pallet> palletSet;
+typedef std::vector<Pallet> palletVtr;
 typedef std::vector<Pack*> packVector;
 typedef Geometry::ThreeNum_set<int> dims;
 typedef std::pair<packVector, packVector> pairPackVector;
@@ -18,8 +18,8 @@ typedef std::pair<packVector, packVector> pairPackVector;
 std::stack<std::thread> operatingThreads;
 
 //maybe chage this with a hash table (unordered_set), using as hash (key) the thread pointers 
-palletSet outputNestedPallets;
+palletVtr outputNestedPallets;
 
 //Nesting loops
-palletSet MainNestLoops(dims palletDims, palletSet &outPalletSet, pairPackVector &packs);
+palletVtr MainNestLoops(dims palletDims, palletVtr &outPalletSet, pairPackVector &packs);
 
