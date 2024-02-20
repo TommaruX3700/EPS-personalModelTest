@@ -102,6 +102,9 @@ int main (int argc, char* argv[])
             Geometry::ThreeNum_set<int> palletDims = examplePallet.getPalletDims();
 
 #pragma region "BlockCode 2.2 - Crea pallet da pacchi non palletizzabili dal flag"
+            /*
+            *   Aggiungo tutti i pacchi non palletizzabili by flag a dei Pallet dedicati.
+            */
             for (auto pack : pacchiNonPallettizzabiliByFLAG)
             {
                 Pallet newPallet(palletDims);
@@ -111,22 +114,27 @@ int main (int argc, char* argv[])
 #pragma endregion
 
 #pragma region "BlockCode 2.3 - Nesting loop"
-            std::set<Pallet> nestedPallets;
-            //  TODO: PalletGroup.hpp make a method to add an entire vector to a still existing one 
-            palletGroup.appendPalletVector(&MainNestLoops(palletDims, nestedPallets, remainingPacks));
-            
-            
+            /*
+            *   Raccolgo l'output dei miei threads nel vettore "nestedPallets", mentre in "remainingPacks" i pacchi scartati.
+            */
+            std::vector<Pallet> nestedPallets;
+            // TODO: capire se il codice aspetta la risoluzione di tutti i threads con i join o se rischia, andando avanti con l'esecuzione, di accedere a nested pallets ancora in uso.
+            MainNestLoops(palletDims, &nestedPallets, remainingPacks);
+            for (auto pallet : nestedPallets)
+            {
+                palletGroup.addPallet(&pallet);
+            }
+            // TODO:
 #pragma endregion
 
 #pragma endregion
 
 #pragma region "BlockCode 3 - End Routine"
-            //Output as json (Plan B: output string)
-            //TODO: 
-            //  - [ ] Ticket: "main: End Routine - vectorToJson() implementation"
-            //Execute function to prepare the output json
-            //nlohmann::json outputJson = vectorToJson(all the arguments needed)
-            //std::cout << outputJson << '\n';
+            /*
+            *   TODO outputToJSON(), containing these informations: 
+            *   > palletGroup (nested and on pallets)
+            *   > remainingPacks (not nested, excluded definitely)
+            */
 #pragma endregion
     
 #endif

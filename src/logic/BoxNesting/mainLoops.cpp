@@ -1,6 +1,6 @@
 #include "../../../headers/logic/BoxNesting/mainLoops.hpp"
 
-palletVtr MainNestLoops(dims palletDims, palletVtr &nestedPallets, pairPackVector &packs)
+void MainNestLoops(dims palletDims, palletVtr &nestedPallets, pairPackVector &packs)
 {
     auto start = std::chrono::steady_clock::now();
     auto partialTime = std::chrono::steady_clock::now();
@@ -51,7 +51,7 @@ palletVtr MainNestLoops(dims palletDims, palletVtr &nestedPallets, pairPackVecto
         {
             /*
             *   LOOP_2:
-            *       loop that waits threads to join.
+            *       loop that waits threads to join: all the output is collected in the thread-assigned Pallet in LOOP_1
             */
             if (operatingThreads.top().joinable())
             {

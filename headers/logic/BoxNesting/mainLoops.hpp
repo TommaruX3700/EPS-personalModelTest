@@ -21,5 +21,5 @@ std::stack<std::thread> operatingThreads;
 palletVtr outputNestedPallets;
 
 //Nesting loops
-palletVtr MainNestLoops(dims palletDims, palletVtr &outPalletSet, pairPackVector &packs);
+void MainNestLoops(dims palletDims, palletVtr &outPalletSet, pairPackVector &packs);
 
