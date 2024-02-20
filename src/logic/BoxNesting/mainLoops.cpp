@@ -28,9 +28,9 @@ void MainNestLoops(dims palletDims, palletVtr &nestedPallets, pairPackVector &pa
             /*
             *   Creating new nesting thread operation.
             */
-            BoxNesting threadOperation();
-            std::thread newThread (&BoxNesting::nesting, &threadOperation, &newPallet, &packs.first, &notNested);
-            operatingThreads.push(newThread);
+            
+            std::thread newThread (BoxNesting::nesting, newPallet, packs.first, notNested);
+            operatingThreads.push(std::move(newThread));
             /*
             *   Move un-Nested Packs to the second part of the pair.
             */
@@ -55,10 +55,11 @@ void MainNestLoops(dims palletDims, palletVtr &nestedPallets, pairPackVector &pa
             */
             if (operatingThreads.top().joinable())
             {
-                std::thread& joinableThread = const_cast<std::thread&>(operatingThreads.top());
+                std::thread joinableThread = std::move(operatingThreads.top());
                 joinableThread.join();
                 operatingThreads.pop();
             }
+
             partialTime = std::chrono::steady_clock::now();
             loopTimer = partialTime - start;
 

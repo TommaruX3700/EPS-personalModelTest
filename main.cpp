@@ -117,14 +117,15 @@ int main (int argc, char* argv[])
             /*
             *   Raccolgo l'output dei miei threads nel vettore "nestedPallets", mentre in "remainingPacks" i pacchi scartati.
             */
-            std::vector<Pallet> nestedPallets;
+            //std::vector<Pallet> nestedPallets;
+            palletVtr nestedPallets;
             // TODO: capire se il codice aspetta la risoluzione di tutti i threads con i join o se rischia, andando avanti con l'esecuzione, di accedere a nested pallets ancora in uso.
-            MainNestLoops(palletDims, &nestedPallets, remainingPacks);
+            MainNestLoops(palletDims, nestedPallets, remainingPacks);
             for (auto pallet : nestedPallets)
             {
                 palletGroup.addPallet(&pallet);
             }
-            // TODO:
+            
 #pragma endregion
 
 #pragma endregion
