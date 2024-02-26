@@ -20,7 +20,7 @@ private:
     
 public:
     Pack();
-    Pack(ThreeNum_set<int> dims, ThreeNum_set<int> coords, float packWeight, int packID, bool rotFlag);
+    Pack(ThreeNum_set<int> dims, ThreeNum_set<int> coords, float packWeight, int packID, bool rotFlag, bool palletizableFlag);
 
     #pragma region "Operators override"
         void operator=(const Pack& n);

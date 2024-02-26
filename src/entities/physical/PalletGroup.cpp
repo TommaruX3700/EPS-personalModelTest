@@ -1,6 +1,11 @@
 #include "../../../headers/entities/physical/PalletGroup.hpp"
 
-PalletGroup :: PalletGroup (int max = 0) 
+PalletGroup :: PalletGroup()
+{
+
+}
+
+PalletGroup :: PalletGroup (int max) 
 {
     this->max = max;
 }
@@ -15,29 +20,26 @@ PalletGroup :: PalletGroup (int max = 0)
 #pragma region "Public methods" 
     int PalletGroup :: addPallet(ptrPallet palletPtr)
     {
-        //TODO: add error handling
         this->palletGroup.push_back(palletPtr);
         return 1;
     }
 
     int PalletGroup :: rmvPallet(int index = -1)
     {
-        //TODO: add error handling
         if (index == -1)
-        {
-            //Index not specified: delete the last one
             this->palletGroup.pop_back();
-        }
         else
-        {
-            //Index specified: delete in the ptrPallet in the specified position
             this->palletGroup.erase(this->palletGroup.begin() + index);
-        }
         return 1;
     }
 
     int PalletGroup :: palletCount() const
     {
         return this->palletGroup.size();
+    }
+
+    void PalletGroup :: appendPalletVector(std::vector<ptrPallet> input)
+    {
+        this->palletGroup.insert(this->palletGroup.end(), input.begin(), input.end());
     }
 #pragma endregion

@@ -21,6 +21,7 @@ private:
     int max = 0; 
     
 public:
+    PalletGroup();
     PalletGroup(int max);
     
     #pragma region "Set methods"
@@ -31,6 +32,7 @@ public:
         int addPallet(ptrPallet palletPtr);
         int rmvPallet(int index);
         int palletCount() const;
+        void appendPalletVector(std::vector<ptrPallet> input);
     #pragma endregion
 };
 

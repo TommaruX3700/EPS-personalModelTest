@@ -20,7 +20,7 @@ Pack::Pack()
         this->setWeight(0);
     }
 
-Pack::Pack(ThreeNum_set<int> dims, ThreeNum_set<int> coords, float packWeight, int packID, bool rotFlag) 
+Pack::Pack(ThreeNum_set<int> dims, ThreeNum_set<int> coords, float packWeight, int packID, bool rotFlag, bool palletizableFlag) 
     {
         //TODO: 
         //  - controllare tramite le dimensioni che vengono fornite se la posizione del centro ha senso o meno.
@@ -30,6 +30,7 @@ Pack::Pack(ThreeNum_set<int> dims, ThreeNum_set<int> coords, float packWeight, i
         this->setDims(dims);
         this->setCenterCoords(coords);
         this->setWeight(packWeight);
+        this->palletizableFlag = palletizableFlag;
     }
 
 #pragma region "Operator overrides"

@@ -23,6 +23,8 @@ void ReadJson::retrivePacksInfos(nlohmann::json inputJson)
     Geometry::ThreeNum_set<int> tempCoords;
     int tempCollo;
     float tempWeight;
+    bool tempRotatableFlag;
+    bool tempPalletizableFlag;
     nlohmann::json tempJsonPack;
 
     for (auto line : mapPack)
@@ -48,12 +50,23 @@ void ReadJson::retrivePacksInfos(nlohmann::json inputJson)
 
                     if (tempJsonPack["FLAG_RUOTABILE"] == "N")
                     {
-                        newPk = new Pack(tempDims, tempCoords, tempWeight, tempCollo, false);
+                        tempRotatableFlag = false;
                     }
                     else
                     {
-                        newPk = new Pack(tempDims, tempCoords, tempWeight, tempCollo, true);
+                        tempRotatableFlag = true;
                     }
+
+                    if (tempJsonPack["FLAG_PALETTIZZABILE"] == "N")
+                    {
+                        tempPalletizableFlag = false;
+                    }
+                    else
+                    {
+                        tempPalletizableFlag = true;
+                    }
+
+                    newPk = new Pack(tempDims, tempCoords, tempWeight, tempCollo, tempRotatableFlag, tempPalletizableFlag);
 
                     this->outputPackVector.push_back(newPk);
                 }
