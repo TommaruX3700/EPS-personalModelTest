@@ -2,14 +2,21 @@
 
 BoxNesting :: BoxNesting(Pallet* outPallet, packVector inPacks, packVector* outNotNested)
 {
-    
+    this->outputPalletConfig = outPallet;
+    this->inputPacks = inPacks;
+    this->outputNotNestedPacks = outNotNested;
 }
 
 BoxNesting :: ~BoxNesting()
 {
     /*
-    *   > Delete all structures used in this class;
-    *   > Clean all pointers used and created in this class.
+    *   IMPORTANT: Thread creation routine will create lots of this class object
+    *       instances, i must make a good garbage collection to ensure performance 
+    *       and avoid memory leaking.
+    * 
+    *   TODO: 
+    *       > Delete all structures used in this class;
+    *       > Clean all pointers used and created in this class.
     */
 }
 

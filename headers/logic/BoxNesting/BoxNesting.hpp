@@ -14,7 +14,10 @@
 class BoxNesting
 {
     private:
-        typedef std::vector<Pack*> packVector;        
+        typedef std::vector<Pack*> packVector;    
+        Pallet* outputPalletConfig;
+        packVector inputPacks;
+        packVector* outputNotNestedPacks;    
         
     public:
         BoxNesting(Pallet* outPallet, packVector inPacks, packVector* outNotNested);
