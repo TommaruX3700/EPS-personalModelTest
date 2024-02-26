@@ -1,8 +1,8 @@
 #include "../../../headers/logic/BoxNesting/BoxNesting.hpp"
 
-BoxNesting :: BoxNesting()
+BoxNesting :: BoxNesting(Pallet* outPallet, packVector inPacks, packVector* outNotNested)
 {
-    packVector test;
+    
 }
 
 BoxNesting :: ~BoxNesting()
@@ -13,7 +13,7 @@ BoxNesting :: ~BoxNesting()
     */
 }
 
-void BoxNesting :: nesting(palletPtr outPallet, packVector inPacks, packVector outNotNested)
+void BoxNesting :: nesting()
 {
 
 }

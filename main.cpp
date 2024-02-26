@@ -120,7 +120,7 @@ int main (int argc, char* argv[])
             palletVector nestedPallets;
 
             packsToNest = dividedPacks.first;
-            MainNestLoops(palletDims, &nestedPallets, packsToNest, remainingPacks);
+            MainNestLoops(palletDims, &nestedPallets, packsToNest, &remainingPacks);
             for (auto pallet : nestedPallets)
             {
                 palletGroup.addPallet(&pallet);

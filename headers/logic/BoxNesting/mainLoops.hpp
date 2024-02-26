@@ -3,6 +3,7 @@
 #include <thread>
 #include <iostream>
 #include <vector>
+#include <functional>
 
 #include "BoxNesting.hpp"
 #include "../../entities/physical/Pack.hpp"
@@ -14,12 +15,6 @@ typedef std::vector<Pack*> packVector;
 typedef Geometry::ThreeNum_set<int> dims;
 typedef std::pair<packVector, packVector> pairPackVector;
 
-//STACK: (FILO logic, O(1) time complexity in all operations, refers easily to elements, not useless characterisics)
-std::stack<std::thread> operatingThreads;
-
-//maybe chage this with a hash table (unordered_set), using as hash (key) the thread pointers 
-palletVector outputNestedPallets;
-
 //Nesting loops
-void MainNestLoops(dims palletDims, palletVector* outPalletSet, packVector inPacksToNest, packVector outUnNestablePacks);
+void MainNestLoops(dims palletDims, palletVector* outPalletVector, packVector inPacksToNest, packVector* outUnNestablePacks);
 
