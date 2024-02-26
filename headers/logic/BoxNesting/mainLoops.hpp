@@ -9,7 +9,7 @@
 #include "../../entities/physical/Pallet.hpp"
 #include "../ordinamentoPacchi.hpp"
 
-typedef std::vector<Pallet> palletVtr;
+typedef std::vector<Pallet> palletVector;
 typedef std::vector<Pack*> packVector;
 typedef Geometry::ThreeNum_set<int> dims;
 typedef std::pair<packVector, packVector> pairPackVector;
@@ -18,8 +18,8 @@ typedef std::pair<packVector, packVector> pairPackVector;
 std::stack<std::thread> operatingThreads;
 
 //maybe chage this with a hash table (unordered_set), using as hash (key) the thread pointers 
-palletVtr outputNestedPallets;
+palletVector outputNestedPallets;
 
 //Nesting loops
-void MainNestLoops(dims palletDims, palletVtr &outPalletSet, pairPackVector &packs);
+void MainNestLoops(dims palletDims, palletVector* outPalletSet, packVector inPacksToNest, packVector outUnNestablePacks);
 

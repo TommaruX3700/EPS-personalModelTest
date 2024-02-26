@@ -85,21 +85,20 @@ int main (int argc, char* argv[])
 #pragma region "BlockCode 2 - Pallet Loop"
             
 #pragma region "BlockCode 2.1 - Ordinamento Input && Scelta pacchi Nesting"
-            packVector pacchiNonPallettizzabiliByFLAG;
-            std::pair<packVector, packVector> dividedPacks;
-            std::pair<packVector, packVector> remainingPacks;
-
-            dividedPacks = isPalletizable(packs);
-            pacchiNonPallettizzabiliByFLAG = dividedPacks.second;
-            remainingPacks.second = dividedPacks.first;
-            remainingPacks = sortInput(remainingPacks.second, examplePallet);
-#pragma endregion
             /*
             *   Il concetto di base è di avere TUTTI i pacchi sul vettore secondario, in modo da iterare successivamente il sortInput()
             *   e lavorare quindi usando il primo vettore come "vettore operativo" ed il secondo come buffer per i pacchi scartati.
             */
             PalletGroup palletGroup;
             Geometry::ThreeNum_set<int> palletDims = examplePallet.getPalletDims();
+
+            packVector pacchiNonPallettizzabiliByFLAG;
+            std::pair<packVector, packVector> dividedPacks;
+
+            dividedPacks = isPalletizable(packs);
+            pacchiNonPallettizzabiliByFLAG = dividedPacks.second;
+
+#pragma endregion
 
 #pragma region "BlockCode 2.2 - Crea pallet da pacchi non palletizzabili dal flag"
             /*
@@ -117,10 +116,11 @@ int main (int argc, char* argv[])
             /*
             *   Raccolgo l'output dei miei threads nel vettore "nestedPallets", mentre in "remainingPacks" i pacchi scartati.
             */
-            //std::vector<Pallet> nestedPallets;
-            palletVtr nestedPallets;
-            // TODO: capire se il codice aspetta la risoluzione di tutti i threads con i join o se rischia, andando avanti con l'esecuzione, di accedere a nested pallets ancora in uso.
-            MainNestLoops(palletDims, nestedPallets, remainingPacks);
+            packVector packsToNest, remainingPacks;
+            palletVector nestedPallets;
+
+            packsToNest = dividedPacks.first;
+            MainNestLoops(palletDims, &nestedPallets, packsToNest, remainingPacks);
             for (auto pallet : nestedPallets)
             {
                 palletGroup.addPallet(&pallet);

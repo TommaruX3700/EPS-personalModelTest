@@ -1,6 +1,6 @@
 #include "../../../headers/logic/BoxNesting/mainLoops.hpp"
 
-void MainNestLoops(dims palletDims, palletVtr &nestedPallets, pairPackVector &packs)
+void MainNestLoops(dims palletDims, palletVector* outPalletSet, packVector inPacksToNest, packVector outUnNestablePacks)
 {
     auto start = std::chrono::steady_clock::now();
     auto partialTime = std::chrono::steady_clock::now();
@@ -9,6 +9,8 @@ void MainNestLoops(dims palletDims, palletVtr &nestedPallets, pairPackVector &pa
 #pragma region "LOOP_1"
         do
         {
+            // TODO: do sortInput() operation in all the single threads.
+
             /*
             *   LOOP_1:
             *       > Questo loop ad ogni ciclo ogni pacco contenuto nel buffer dei pacchi scartati.
@@ -24,12 +26,11 @@ void MainNestLoops(dims palletDims, palletVtr &nestedPallets, pairPackVector &pa
             /*
             *   Add pallet vector reference to save reference.
             */
-            nestedPallets.push_back(newPallet);
+            outNestedPallets.push_back(newPallet);
             /*
             *   Creating new nesting thread operation.
             */
-            
-            std::thread newThread (BoxNesting::nesting, newPallet, packs.first, notNested);
+            std::thread newThread (BoxNesting::nesting, &newPallet, packs.first, notNested);
             operatingThreads.push(std::move(newThread));
             /*
             *   Move un-Nested Packs to the second part of the pair.
