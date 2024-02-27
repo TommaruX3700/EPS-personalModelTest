@@ -15,13 +15,19 @@
 class BoxNesting
 {
     private:
-        typedef std::vector<Pack*> packVector;    
+        typedef std::vector<Pack*> packVector;
+
+        // Pallet con inerente configurazione di nestata di pacchi    
         Pallet* outputPalletConfig;
+        // Vettore di pacchi palletizzabili
         packVector inputPacks;
+        // Vettore di pacchi che non sono riuscito a nestare
         packVector* outputNotNestedPacks;  
+        // Configurazione ROOT del pallet
+        Pallet rootConfiguration;
+
         /*
         *   TODO:
-        *       > generare variabile ROOT/Config basata sul pallet (recuperare info pallet)
         *       > includere variabili di "ottimizzazione" (domini punti da scartare, varibili di valutazione, etc)
         */  
         
