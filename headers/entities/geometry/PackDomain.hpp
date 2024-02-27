@@ -1,5 +1,8 @@
+#include "Geometry.hpp"
+
 /*
-*   Author: Tommaso Maruzzo
+*   Author: 
+*       Tommaso Maruzzo
 *   Description:
 *       Total domains and methods.
 */
@@ -13,7 +16,5 @@ public:
     ~PackDomain();
 };
 
-PackDomain::PackDomain()
-{
-}
+
 
