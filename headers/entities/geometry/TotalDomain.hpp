@@ -8,14 +8,14 @@
 *       This class is used to display pallet domains.
 */
 
-class TotalDomain
+class Domain
 {
     private:
-        std::vector<PackDomain> Domain;
+        std::vector<PackDomain> domainComponents;
         
     public:
-        TotalDomain(/* args */);
-        ~TotalDomain();
+        Domain(/* args */);
+        ~Domain();
 };
 
 

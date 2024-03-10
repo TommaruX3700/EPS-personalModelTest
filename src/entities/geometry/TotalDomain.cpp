@@ -1,9 +1,9 @@
 #include "../../../headers/entities/geometry/TotalDomain.hpp"
 
-TotalDomain::TotalDomain(/* args */)
+Domain::Domain(/* args */)
 {
 }
 
-TotalDomain::~TotalDomain()
+Domain::~Domain()
 {
 }
