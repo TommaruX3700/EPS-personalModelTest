@@ -4,16 +4,16 @@
 *   Author: 
 *       Tommaso Maruzzo
 *   Description:
-*       Total domains and methods.
+*       This class is used to display pack domains: each pack has one.
 */
 
 class PackDomain
 {
-private:
-    
-public:
-    PackDomain();
-    ~PackDomain();
+    private:
+        
+    public:
+        PackDomain();
+        ~PackDomain();
 };
 
 
