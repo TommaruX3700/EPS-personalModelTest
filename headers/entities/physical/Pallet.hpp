@@ -32,6 +32,7 @@ public:
 
     #pragma region "Get methods"
         int getPackCount() const;
+        std::vector<Pack*> getPackVector() const;
         Geometry :: ThreeNum_set<int> getPalletDims() const;
     #pragma endregion
 

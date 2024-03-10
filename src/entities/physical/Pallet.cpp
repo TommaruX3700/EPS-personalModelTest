@@ -22,6 +22,12 @@ Pallet :: Pallet(ThreeNum_set<int> maxDimensions)
         return this->pallet.size();
     }
 
+    std::vector<Pack*> Pallet :: getPackVector() const
+    {
+        return this->pallet;
+    }
+
+
     ThreeNum_set<int> Pallet :: getPalletDims() const
     {
         return this->maxDims;

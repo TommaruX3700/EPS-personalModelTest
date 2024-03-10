@@ -33,7 +33,10 @@ void BoxNesting :: nesting()
     /*
     *   Convert Vector to Stack, to achive better complexity and operations
     */
-    std::stack<Pack*, std::vector<Pack*>> inputStack(this->inputPacks);
+    std::stack<Pack*> inputStack;
+    for (auto lastPack = this->inputPacks.rbegin(); lastPack != inputPacks.rend(); ++lastPack) {
+        inputStack.push(*lastPack);
+    }
 
     /*
     *   Nesting loop, cycling until there are any elements left inside inputStack
@@ -50,52 +53,46 @@ void BoxNesting :: nesting()
             *   Using only "top" pack grants me freedom on iterating a single Pack element again, usually after a domain optimization
             */
             nextPack = *inputStack.top();   
-            
-            /*  
-            *  #################################################################### TODO - UNDER DEVELOPMENT: ####################################################################
-            *       - aggiungere variabile Dominio_Totale anche se non so quanto utile sia, dato che va ricalcolato ad ogni aggiunta di pacco.
-            *       - aggiungere variabile per "ottimizzazione" nel calcolo Dominio_Totale (identificare come fare)
-            */
 
-            /*   
-            *   OPERATIONS: 
-            *       if(is primo pacco nel pallet)
-            *           {
-            *               placeAtCenter(pacco);
-            *               // elimina nextPack dalla stack "inputPacks"
-            *           } 
-            *       else 
-            *           {
-            *               if(findDomain(pallet.packVector, pacco_in_entrata, old_DominioTotale, optimization, &Dominio_Totale)) 
-            *                   {
-            *                       if(startingPlacement()) 
-            *                           { 
-            *                               //fatto questo, ho generato la mia configurazione ROOT di partenza, che va ora però ottimizzata MUOVENDO i pacchi
-            *                               if(nestingForMinN())
-            *                                   {
-            *                                       // il minimo esiste, pacchi già spostati e nextPack piazzato
-            *                                       deletePack(); 
-            *                                   }
-            *                               else 
-            *                                   {
-            *                                       // il minimo NON esiste, modifica ottimizzazione e ricomincia
-            *                                   }
-            *                           }
-            *                       else
-            *                           {
-            *                               addToNotPalletizable(pacco); 
-            *                               deletePack(); 
-            *                           }
-            *                               
-            *                   } 
-            *               else
-            *                   {
-            *                       addToNotPalletizable(pacco);
-            *                       deletePack(); 
-            *                   }
-            *           }
-            *  ###################################################################################################################################################################
-            */
+            if (workingPallet.getPackCount() == 0)
+            {
+                placeAtCenter(nextPack);
+                inputStack.pop();
+            }
+            else
+            {
+                if (findDomain(workingPallet.getPackVector(), nextPack))
+                {
+                    if (startingPlacement())
+                    {
+                        /*
+                        *   TODO: Generata la mia configurazione ROOT di partenza, che va ora però ottimizzata MUOVENDO i pacchi
+                        */ 
+                        if (nestingForMin())
+                        {
+                            /*
+                            *   TODO: Minimo esiste, pacchi già spostati e nextPack piazzato
+                            */ 
+                            inputStack.pop();
+                        }
+                        else
+                        {
+                            // TODO: il minimo NON esiste, modifica ottimizzazione e ricomincia
+                        }
+                    }
+                    else
+                    {
+                        addToNotPalletizable(nextPack);
+                        inputStack.pop();
+                    }
+                }
+                else
+                {
+                    addToNotPalletizable(nextPack);
+                    inputStack.pop();
+                }
+                
+            }
         }
         catch(const std::exception& e)
         {
@@ -117,7 +114,10 @@ void BoxNesting :: placeAtCenter(Pack input){
 
 }
 
-bool BoxNesting :: findDomain(packVector packsInsidePallet, Pack incomingPack, PackDomain domain_obj, PackDomain optimization_obj){
+bool BoxNesting :: findDomain(packVector packsInsidePallet, Pack incomingPack){
+    /*
+    *   Use here locals this->totalDomain, this->optimization_obj: they will be always stored in the class.
+    */
     return true;
 }
 
@@ -136,7 +136,3 @@ bool BoxNesting :: nestingForMin()
     return true;
 }
 
-void BoxNesting :: deletePack()
-{
-
-}

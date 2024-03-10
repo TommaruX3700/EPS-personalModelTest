@@ -41,7 +41,7 @@ class BoxNesting
         /*
         *   trovo nuovo dominio di piazzamento rispetto alla configurazione attuale, rispettando anche i domini esclusi da "optimization"
         */
-        bool findDomain(packVector packsInsidePallet, Pack incomingPack, PackDomain domain_obj, PackDomain optimization_obj);
+        bool findDomain(packVector packsInsidePallet, Pack incomingPack);
         /*
         *   funzione che piazza il pacco in un punto del piano ammesso dal Dominio_totale
         */
@@ -54,10 +54,6 @@ class BoxNesting
         *   trovo il min(Ntot), ovvero trovo il valore VERO più vicino al minimo, per cui TUTTI i percorsi che iterconnettono i centri dei pacchi tra loro è il minimo possibile, rispettando le dimensioni dei pacchi, baricentro, limiti del pallet 
         */
         bool nestingForMin();
-        /*
-        *   Deletes first pack on the stack
-        */
-        void deletePack();
 
     public:
         BoxNesting(Pallet* outPallet, packVector inPacks, packVector* outNotNested);
