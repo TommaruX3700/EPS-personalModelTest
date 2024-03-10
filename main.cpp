@@ -41,6 +41,9 @@ int main (int argc, char* argv[])
 #pragma endregion
 
 #if TEST_MODE == 1
+        /*
+        * FOR NESTING DEBUG, LAUNCH OPERATIONS STRAIGHT FROM HERE 
+        */
         testFunction();
 #else
 #pragma region "BlockCode 1 - Startup Routine"

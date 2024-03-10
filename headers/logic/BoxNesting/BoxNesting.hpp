@@ -25,7 +25,9 @@ class BoxNesting
         packVector* outputNotNestedPacks;  
         // Configurazione ROOT del pallet
         Pallet rootConfiguration;
-
+        // TODO: Variabile Dominio_totale del pallet
+        
+        
         /*
         *   TODO:
         *       > includere variabili di "ottimizzazione" (domini punti da scartare, varibili di valutazione, etc)

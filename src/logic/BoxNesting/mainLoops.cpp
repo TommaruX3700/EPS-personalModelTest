@@ -2,6 +2,7 @@
 
 void MainNestLoops(dims palletDims, palletVector* outPalletVector, packVector inPacksToNest, packVector* outUnNestablePacks)
 {
+#pragma region "Initial Preparation"
     //STACK: (FILO logic, O(1) time complexity in all operations, refers easily to elements, not useless characterisics)
     std::stack<std::thread> operatingThreads;
     /*
@@ -19,6 +20,7 @@ void MainNestLoops(dims palletDims, palletVector* outPalletVector, packVector in
     *   Aggiungo alla fine del mio second vector il first vector ed eseguo un sortInput sul secondo vettore.
     */
     packs.second.insert(std::end(packs.second), std::begin(packs.first), std::end(packs.first));
+#pragma endregion
 
 #pragma region "LOOP_1"
     /*
