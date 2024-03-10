@@ -37,7 +37,6 @@ void BoxNesting :: nesting()
     for (auto lastPack = this->inputPacks.rbegin(); lastPack != inputPacks.rend(); ++lastPack) {
         inputStack.push(*lastPack);
     }
-
     /*
     *   Nesting loop, cycling until there are any elements left inside inputStack
     */
@@ -56,22 +55,31 @@ void BoxNesting :: nesting()
 
             if (workingPallet.getPackCount() == 0)
             {
+                /*
+                *   First pack arrived: place at the center.
+                */
                 placeAtCenter(nextPack);
                 inputStack.pop();
             }
             else
             {
+                /*
+                *   New pack adding to the ROOT config: perform operations
+                */
                 if (findDomain(workingPallet.getPackVector(), nextPack))
                 {
+                    /*
+                    *   Domain found: proceed to placement
+                    */
                     if (startingPlacement())
                     {
                         /*
-                        *   TODO: Generata la mia configurazione ROOT di partenza, che va ora però ottimizzata MUOVENDO i pacchi
+                        *   Pack placed successfully and new ROOT configuration generated: now moving to nesting
                         */ 
                         if (nestingForMin())
                         {
                             /*
-                            *   TODO: Minimo esiste, pacchi già spostati e nextPack piazzato
+                            *   Minimum exists: all packs placed successfully
                             */ 
                             inputStack.pop();
                         }
@@ -82,13 +90,19 @@ void BoxNesting :: nesting()
                     }
                     else
                     {
-                        addToNotPalletizable(nextPack);
+                        /*
+                        *   I add not nestable pack to scarted-output vector
+                        */
+                        notNestedPacks.push_back(&nextPack);
                         inputStack.pop();
                     }
                 }
                 else
                 {
-                    addToNotPalletizable(nextPack);
+                    /*
+                    *   I add not nestable pack to scarted-output vector
+                    */                    
+                    notNestedPacks.push_back(&nextPack);
                     inputStack.pop();
                 }
                 
@@ -100,6 +114,12 @@ void BoxNesting :: nesting()
             this->outputNotNestedPacks->push_back(&nextPack);
         }
     }
+
+    /*
+    *   DUBBIO: ritornare indirizzi di oggetti pacco nei vettori di output, non fa in modo che questi puntatori a oggetti pacco puntino
+    *           ancora agli oggetti dichiarati qui dentro, che se cancellati vanno a ritornare risultati nulli?
+    */
+
     /*
     *   Copy the nested configuration in the output referenced pallet location.
     */
@@ -110,11 +130,14 @@ void BoxNesting :: nesting()
     *outputNotNestedPacks = notNestedPacks;
 }
 
-void BoxNesting :: placeAtCenter(Pack input){
-
+void BoxNesting :: placeAtCenter(Pack input)
+{
+    //TODO
 }
 
-bool BoxNesting :: findDomain(packVector packsInsidePallet, Pack incomingPack){
+bool BoxNesting :: findDomain(packVector packsInsidePallet, Pack incomingPack)
+{
+    //TODO
     /*
     *   Use here locals this->totalDomain, this->optimization_obj: they will be always stored in the class.
     */
@@ -123,16 +146,13 @@ bool BoxNesting :: findDomain(packVector packsInsidePallet, Pack incomingPack){
 
 bool BoxNesting :: startingPlacement() 
 {
+    //TODO
     return true;
-}
-
-void BoxNesting :: addToNotPalletizable(Pack invalidPack)
-{
-
 }
 
 bool BoxNesting :: nestingForMin()
 {
+    //TODO
     return true;
 }
 

@@ -47,10 +47,6 @@ class BoxNesting
         */
         bool startingPlacement();
         /*
-        *   aggiungo pacco a vettore di pacchi non palletizzabili
-        */
-        void addToNotPalletizable(Pack invalidPack);
-        /*
         *   trovo il min(Ntot), ovvero trovo il valore VERO più vicino al minimo, per cui TUTTI i percorsi che iterconnettono i centri dei pacchi tra loro è il minimo possibile, rispettando le dimensioni dei pacchi, baricentro, limiti del pallet 
         */
         bool nestingForMin();
