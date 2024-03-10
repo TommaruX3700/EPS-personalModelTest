@@ -27,20 +27,32 @@ void BoxNesting :: nesting()
     */
     Pallet workingPallet = *outputPalletConfig;
     /*
-    *   Nesting loop, cycling until there are any elements left inside inputPacks
+    *   Pack vector for scarted packs
     */
-    while (this->inputPacks.size())
-    {
+    packVector notNestedPacks;
+    /*
+    *   Convert Vector to Stack, to achive better complexity and operations
+    */
+    std::stack<Pack*, std::vector<Pack*>> inputStack(this->inputPacks);
+
+    /*
+    *   Nesting loop, cycling until there are any elements left inside inputStack
+    */
+    while (!inputStack.empty())
+    {   
+        /*
+        *   Incoming pack
+        */
         Pack nextPack;
         try
         {
             /*
-            *   Using only "front" pack grants me freedom on iterating a single Pack element again, usually after a domain optimization
+            *   Using only "top" pack grants me freedom on iterating a single Pack element again, usually after a domain optimization
             */
-            nextPack = *this->inputPacks.front();   
+            nextPack = *inputStack.top();   
             
             /*  
-            *   TODO: 
+            *  #################################################################### TODO - UNDER DEVELOPMENT: ####################################################################
             *       - aggiungere variabile Dominio_Totale anche se non so quanto utile sia, dato che va ricalcolato ad ogni aggiunta di pacco.
             *       - aggiungere variabile per "ottimizzazione" nel calcolo Dominio_Totale (identificare come fare)
             */
@@ -56,14 +68,13 @@ void BoxNesting :: nesting()
             *           {
             *               if(findDomain(pallet.packVector, pacco_in_entrata, old_DominioTotale, optimization, &Dominio_Totale)) 
             *                   {
-            *                       if(firstPlacement()) 
+            *                       if(startingPlacement()) 
             *                           { 
             *                               //fatto questo, ho generato la mia configurazione ROOT di partenza, che va ora però ottimizzata MUOVENDO i pacchi
             *                               if(nestingForMinN())
             *                                   {
-            *                                       // il minimo esiste
-            *                                       // pacchi già spostati e nextPack piazzato
-            *                                       deleteFrontPack(); 
+            *                                       // il minimo esiste, pacchi già spostati e nextPack piazzato
+            *                                       deletePack(); 
             *                                   }
             *                               else 
             *                                   {
@@ -73,37 +84,17 @@ void BoxNesting :: nesting()
             *                       else
             *                           {
             *                               addToNotPalletizable(pacco); 
-            *                               deleteFrontPack(); 
+            *                               deletePack(); 
             *                           }
             *                               
             *                   } 
             *               else
             *                   {
             *                       addToNotPalletizable(pacco);
-            *                       deleteFrontPack(); 
+            *                       deletePack(); 
             *                   }
             *           }
-            */
-
-            /*
-            *   OTHER_FUNCTIONS:
-            *       - void placeAtCenter(pacco);
-            *               > piazzo al centro del pallet"
-            * 
-            *       - bool findDomain(pallet.packVector, pacco_in_entrata, old_DominioTotale, optimization, &Dominio_Totale);
-            *               > trovo nuovo dominio di piazzamento rispetto alla configurazione attuale, rispettando anche i domini esclusi da "optimization"
-            * 
-            *       - startingPlacement(pacco, (&Dominio_Totale));
-            *               > funzione che piazza il pacco in un punto del piano ammesso dal Dominio_totale
-            * 
-            *       - addToNotPalletizable(pacco);
-            *               > aggiungo pacco a vettore di pacchi non palletizzabili
-            * 
-            *       - nestingForMinN();
-            *               > trovo il min(Ntot), ovvero trovo il valore VERO più vicino al minimo, per cui TUTTI i percorsi che iterconnettono i centri dei pacchi tra loro è il minimo possibile, rispettando le dimensioni dei pacchi, baricentro, limiti del pallet 
-            * 
-            *       - deleteFrontPack(); 
-            *               > elimina nextPack dalla stack "inputPacks"
+            *  ###################################################################################################################################################################
             */
         }
         catch(const std::exception& e)
@@ -113,7 +104,39 @@ void BoxNesting :: nesting()
         }
     }
     /*
-    * Copy the nested configuration in the output referenced pallet location.
+    *   Copy the nested configuration in the output referenced pallet location.
     */
     *outputPalletConfig = workingPallet;
+    /*
+    *   Copy unnestable packs to output referenced pack vector.
+    */
+    *outputNotNestedPacks = notNestedPacks;
+}
+
+void BoxNesting :: placeAtCenter(Pack input){
+
+}
+
+bool BoxNesting :: findDomain(packVector packsInsidePallet, Pack incomingPack, PackDomain domain_obj, PackDomain optimization_obj){
+    return true;
+}
+
+bool BoxNesting :: startingPlacement() 
+{
+    return true;
+}
+
+void BoxNesting :: addToNotPalletizable(Pack invalidPack)
+{
+
+}
+
+bool BoxNesting :: nestingForMin()
+{
+    return true;
+}
+
+void BoxNesting :: deletePack()
+{
+
 }
