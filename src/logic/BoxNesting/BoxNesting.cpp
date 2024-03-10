@@ -23,6 +23,10 @@ BoxNesting :: ~BoxNesting()
 void BoxNesting :: nesting()
 {
     /*
+    *   Pallet on where I will work in this loop
+    */
+    Pallet workingPallet = *outputPalletConfig;
+    /*
     *   Nesting loop, cycling until there are any elements left inside inputPacks
     */
     while (this->inputPacks.size())
@@ -108,9 +112,8 @@ void BoxNesting :: nesting()
             this->outputNotNestedPacks->push_back(&nextPack);
         }
     }
-
     /*
-    *    Output: vettore pallettizzato
+    * Copy the nested configuration in the output referenced pallet location.
     */
-    
+    *outputPalletConfig = workingPallet;
 }
