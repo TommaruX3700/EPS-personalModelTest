@@ -1,7 +1,7 @@
 #include <vector>
 #include "../../../headers/entities/physical/Pack.hpp"
-#include "../../../headers/logic/quickSort.hpp"
-#include "../../../headers/logic/ordinamentoPacchi.hpp"
+#include "../../../headers/logic/OrdinamentoPacchi/quickSort.hpp"
+#include "../../../headers/logic/OrdinamentoPacchi/ordinamentoPacchi.hpp"
 
 double calculateArea(const Pack& p) {
     return p.getDims().X * p.getDims().Y;
