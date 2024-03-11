@@ -1,4 +1,4 @@
-#include "../../../headers/logic/test.hpp"
+#include "../../../headers/logic/MainMethods/test.hpp"
 
 void testFunction()
     {
