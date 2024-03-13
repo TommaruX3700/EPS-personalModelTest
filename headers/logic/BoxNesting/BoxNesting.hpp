@@ -12,8 +12,7 @@
 #include <stack>
 #include "../../entities/physical/Pack.hpp"
 #include "../../entities/physical/Pallet.hpp"
-#include "../../entities/geometry/PackDomain.hpp"
-
+#include "../../entities/geometry/Domain.hpp"
 
 class BoxNesting
 {
@@ -30,16 +29,16 @@ class BoxNesting
         // Configurazione ROOT del pallet
         Pallet rootConfiguration;
         // Dominio_totale del pallet
-        PackDomain totalDomain;
-        // "Ottimizzazione", racchiude il dominio di punti da scartare
-        PackDomain optimization_obj;
+        Domain TotalDomain;
+
+        // TODO: "Ottimizzazione", racchiude il dominio di punti da scartare
 
         /*
-        *   piazzo al centro del pallet"
+        *   Piazzo al centro del pallet"
         */
         void placeAtCenter(Pack input);
         /*
-        *   trovo nuovo dominio di piazzamento rispetto alla configurazione attuale, rispettando anche i domini esclusi da "optimization"
+        *   Trovo nuovo dominio di piazzamento rispetto alla configurazione attuale, rispettando anche i domini esclusi da "optimization"
         */
         bool findDomain(packVector packsInsidePallet, Pack incomingPack);
         /*
