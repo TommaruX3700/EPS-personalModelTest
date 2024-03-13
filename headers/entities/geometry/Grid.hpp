@@ -12,7 +12,7 @@
 *       which rappresents the max dimensions of the grids.
 *   
 *   NB: 
-*       ORIGIN IS 0,0,0 -> "corner"
+*       ORIGIN IS AT O(0, 0, 0) -> "the corner"
 */
 
 class Grid

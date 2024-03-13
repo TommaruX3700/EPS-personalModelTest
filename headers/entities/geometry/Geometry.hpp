@@ -27,8 +27,13 @@ namespace Geometry {
 	*	Type for 3 num sets.
 	*	Used for coordinates, ranges and similar applications involving 3 values working togheter
 	*/
-	struct ThreeNum_set { 
-		type num1, num2, num3;
+	struct ThreeNum_set {
+		//Uses: X or First_number
+		type num1;
+		//Uses: Y or Second_number
+		type num2;
+		//Uses: Z or Third_number
+		type num3;
 		ThreeNum_set() : num1(type(0)), num2(type(0)), num3(type(0)) {}; //general constructor
 		ThreeNum_set(type num1_val, type num2_val, type num3_val) : num1(type(num1_val)), num2(type(num2_val)), num3(type(num3_val)) {}; //specific constructor
 	};
@@ -39,7 +44,10 @@ namespace Geometry {
 	*	Used for coordinates, ranges and similar applications involving 2 values working togheter
 	*/
 	struct TwoNum_set { 
-		type num1, num2;
+		//Uses: X, First_number or min
+		type num1;
+		//Uses: Y, Second_number or max
+		type num2;
 		TwoNum_set() : num1(type(0)), num2(type(0)) {};
 		TwoNum_set(type num1_val, type num2_val) : num1(type(num1_val)), num2(type(num2_val)) {};
 	};
@@ -48,8 +56,11 @@ namespace Geometry {
 
 	struct GraphRange
 	{
+		//First "height" value from parallel axis
 		int h1;
+		//Second "height" value from parallel axis
 		int h2;
+		//Actual range of values, from min to max
 		TwoNum_set<int> range;
 	};
 	
