@@ -21,12 +21,8 @@ class PackDomain
     *       > incoming pack, with the root defines Domain height and ranges
     */
     private:
-        //Admited X_coords on the grid
-        GraphRange X_range; 
-        //Admited Y_coords on the grid
-        GraphRange Y_range;
-        //Admited Z_coords on the grid, NOT USED IN DEMO
-        GraphRange Z_range; 
+        //Admited points
+        GraphRange pointDomain; 
 
     public:
         PackDomain(Pack* root_pack, Pack* incoming_pack);

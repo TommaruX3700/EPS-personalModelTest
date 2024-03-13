@@ -8,22 +8,20 @@ PackDomain::PackDomain(Pack* root_pack, Pack* incoming_pack)
     incoming_dims = incoming_pack->getDims();
 
     /*
-    *   Admitted X points
+    *   Admitted points: each range may be modifiable by the presence of other PackDomains into a TotalDomain.
+    *   Z points are not implemented.
     */
-    this->X_range.h1_min = root_center.num2 - (root_dims.num2/2) - (incoming_dims.num2/2);
-    this->X_range.h2_max = root_center.num2 + (root_dims.num2/2) + (incoming_dims.num2/2);
-    this->X_range.range.num1 = root_center.num1 - (root_dims.num1/2) - (incoming_dims.num1/2);
-    this->X_range.range.num2 = root_center.num1 + (root_dims.num1/2) + (incoming_dims.num1/2);
-    /*
-    *   Admitted Y points
-    */
-    this->Y_range.h1_min = root_center.num1 - (root_dims.num1/2) - (incoming_dims.num1/2);
-    this->Y_range.h2_max = root_center.num1 + (root_dims.num1/2) + (incoming_dims.num1/2);
-    this->Y_range.range.num1 = root_center.num2 - (root_dims.num2/2) - (incoming_dims.num2/2);
-    this->Y_range.range.num2 = root_center.num2 + (root_dims.num2/2) + (incoming_dims.num2/2);
-    /*
-    *   Admitted Z points ARE NOT IMPLEMENTED
-    */
+    this->pointDomain.Xmin_range.num1 = root_center.num1 - (root_dims.num1/2) - (incoming_dims.num1/2);
+    this->pointDomain.Xmin_range.num2 = root_center.num1 + (root_dims.num1/2) + (incoming_dims.num1/2);
+
+    this->pointDomain.Xmax_range.num1 = root_center.num1 - (root_dims.num1/2) - (incoming_dims.num1/2);
+    this->pointDomain.Xmax_range.num2 = root_center.num1 + (root_dims.num1/2) + (incoming_dims.num1/2);
+
+    this->pointDomain.Ymin_range.num1 = root_center.num2 - (root_dims.num2/2) - (incoming_dims.num2/2);
+    this->pointDomain.Ymin_range.num2 = root_center.num2 + (root_dims.num2/2) + (incoming_dims.num2/2);
+
+    this->pointDomain.Xmax_range.num1 = root_center.num2 - (root_dims.num2/2) - (incoming_dims.num2/2);
+    this->pointDomain.Xmax_range.num2 = root_center.num2 + (root_dims.num2/2) + (incoming_dims.num2/2);
 }
 
 PackDomain::~PackDomain()
