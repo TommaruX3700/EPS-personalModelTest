@@ -19,7 +19,7 @@ class PackDomain
         PackDomain();
         ~PackDomain();
 };
-/*
+/*   
 *   How should I rappresent an interval of points into a XY graph, in C++?
 *   IDEA:
 *       Copy the idea of Plane class method "findDimsRoutine()" and get then a TwoNum_set of integers, rapresenting both the intervals
