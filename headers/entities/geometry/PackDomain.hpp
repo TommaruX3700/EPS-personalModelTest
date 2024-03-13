@@ -28,8 +28,3 @@ class PackDomain
         PackDomain(Pack* root_pack, Pack* incoming_pack);
         ~PackDomain();
 };
-
-/*   
-*   IDEA:
-*       Copy the idea of Plane class method "findDimsRoutine()" and get then a TwoNum_set of integers, rapresenting both the intervals
-*/
