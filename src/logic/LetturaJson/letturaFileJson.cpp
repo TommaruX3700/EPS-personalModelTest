@@ -38,12 +38,12 @@ void ReadJson::retrivePacksInfos(nlohmann::json inputJson)
                 try //remove this once done
                 {
                     Pack* newPk;
-                    tempDims.X = tempJsonPack["BASE_MAGGIORE"];
-                    tempDims.Y = tempJsonPack["BASE_MINORE"];
-                    tempDims.Z = tempJsonPack["ALTEZZA"];
-                    tempCoords.X = 0;
-                    tempCoords.Y = 0;
-                    tempCoords.Z = 0;
+                    tempDims.num1 = tempJsonPack["BASE_MAGGIORE"];
+                    tempDims.num2 = tempJsonPack["BASE_MINORE"];
+                    tempDims.num3 = tempJsonPack["ALTEZZA"];
+                    tempCoords.num1 = 0;
+                    tempCoords.num2 = 0;
+                    tempCoords.num3 = 0;
                     tempCollo = tempJsonPack["NUMERO_COLLO"];
                     std::string weight = tempJsonPack["PESO_NETTO"];
                     tempWeight = std::stof(weight);
@@ -80,9 +80,9 @@ void ReadJson::retrivePacksInfos(nlohmann::json inputJson)
         {
             //get pallet info here instead
             tempJsonPack = nlohmann::json::parse(mapPack[line.first].dump());
-            this->outputPalletMaxs.X = tempJsonPack["Lenght"];
-            this->outputPalletMaxs.Y = tempJsonPack["Width"];
-            this->outputPalletMaxs.Z = tempJsonPack["Height"];
+            this->outputPalletMaxs.num1 = tempJsonPack["Lenght"];
+            this->outputPalletMaxs.num2 = tempJsonPack["Width"];
+            this->outputPalletMaxs.num3 = tempJsonPack["Height"];
         }
     }
 }

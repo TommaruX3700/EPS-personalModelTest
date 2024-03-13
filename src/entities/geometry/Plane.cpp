@@ -3,12 +3,12 @@
 
 Plane :: Plane (TwoNum_set<int> maxDimensions)
 {
-    this->maxDimensions.X = maxDimensions.X;
-    this->maxDimensions.Y = maxDimensions.Y;
+    this->maxDimensions.num1 = maxDimensions.num1;
+    this->maxDimensions.num2 = maxDimensions.num2;
 
     // Inizializzazione del piano con le celle
-    int x = static_cast<int>(maxDimensions.X);
-    int y = static_cast<int>(maxDimensions.Y);
+    int x = static_cast<int>(maxDimensions.num1);
+    int y = static_cast<int>(maxDimensions.num2);
 
     // Allocazione della memoria per il piano
     plane = new Cell*[x];
@@ -20,8 +20,8 @@ Plane :: Plane (TwoNum_set<int> maxDimensions)
     for (int i = 0; i < x; ++i) {
         for (int j = 0; j < y; ++j) {
             // by using "+0" we will start considering by the down-left corner of the cells
-            plane[i][j].coords.X = i+0;
-            plane[i][j].coords.Y = j+0;
+            plane[i][j].coords.num1 = i+0;
+            plane[i][j].coords.num2 = j+0;
         }
     }
 
@@ -30,7 +30,7 @@ Plane :: Plane (TwoNum_set<int> maxDimensions)
 Plane :: ~Plane ()
 {
     // Deallocazione della memoria del piano
-    int x = static_cast<int>(maxDimensions.X);
+    int x = static_cast<int>(maxDimensions.num1);
     for (int i = 0; i < x; ++i) {
         delete[] plane[i];
     }
@@ -59,8 +59,8 @@ Plane :: ~Plane ()
     TwoNum_set<int> findDimsRoutine (int center, int dimension)
     {
         TwoNum_set<int> output;
-        output.X = abs(center - (dimension/2));
-        output.Y = abs(center + (dimension/2));
+        output.num1 = abs(center - (dimension/2));
+        output.num2 = abs(center + (dimension/2));
         return output;
     }
 
@@ -70,9 +70,9 @@ Plane :: ~Plane ()
         
         //TODO: CHECK IF OVERLAPS OTHER PACKS POSITIOIN: THROW AN ERROR IF OVELAPS
 
-        for (int i = set1.X; i < set1.Y; i++)
+        for (int i = set1.num1; i < set1.num2; i++)
         {
-            for (int j = set2.X; j < set2.Y; j++)
+            for (int j = set2.num1; j < set2.num2; j++)
             {
                 plane[i][j].pack = inputPack;
             }
@@ -82,9 +82,9 @@ Plane :: ~Plane ()
     void Plane :: freeArea (TwoNum_set<int> set1, TwoNum_set<int> set2, Pack* inputPack) 
     {
         //Private method: used to delete a Pack pointers area
-        for (int i = set1.X; i < set1.Y; i++)
+        for (int i = set1.num1; i < set1.num2; i++)
         {
-            for (int j = set2.X; j < set2.Y; j++)
+            for (int j = set2.num1; j < set2.num2; j++)
             {
                 if (plane[i][j].pack == inputPack)
                 {
@@ -107,20 +107,20 @@ Plane :: ~Plane ()
                     //XY
                         center = inputPack->getCenterCoords();
                         dimensions = inputPack->getDims();
-                        fillArea(findDimsRoutine(center.X, dimensions.X), findDimsRoutine(center.Y, dimensions.Y), inputPack);
+                        fillArea(findDimsRoutine(center.num1, dimensions.num1), findDimsRoutine(center.num2, dimensions.num2), inputPack);
                     break;
 
                 case 2:
                     //YZ
                         center = inputPack->getCenterCoords();
                         dimensions = inputPack->getDims();
-                        fillArea(findDimsRoutine(center.Y, dimensions.Y), findDimsRoutine(center.Z, dimensions.Z), inputPack);
+                        fillArea(findDimsRoutine(center.num2, dimensions.num2), findDimsRoutine(center.num3, dimensions.num3), inputPack);
                     break; 
                 case 3:
                     //XZ
                         center = inputPack->getCenterCoords();
                         dimensions = inputPack->getDims();
-                        fillArea(findDimsRoutine(center.X, dimensions.X), findDimsRoutine(center.Z, dimensions.Z), inputPack);
+                        fillArea(findDimsRoutine(center.num1, dimensions.num1), findDimsRoutine(center.num3, dimensions.num3), inputPack);
                     break;
 
                 default:
@@ -149,20 +149,20 @@ Plane :: ~Plane ()
                     //XY
                         center = inputPack->getCenterCoords();
                         dimensions = inputPack->getDims();
-                        freeArea(findDimsRoutine(center.X, dimensions.X), findDimsRoutine(center.Y, dimensions.Y), inputPack);
+                        freeArea(findDimsRoutine(center.num1, dimensions.num1), findDimsRoutine(center.num2, dimensions.num2), inputPack);
                     break;
 
                 case 2:
                     //YZ
                         center = inputPack->getCenterCoords();
                         dimensions = inputPack->getDims();
-                        freeArea(findDimsRoutine(center.Y, dimensions.Y), findDimsRoutine(center.Z, dimensions.Z), inputPack);
+                        freeArea(findDimsRoutine(center.num2, dimensions.num2), findDimsRoutine(center.num3, dimensions.num3), inputPack);
                     break; 
                 case 3:
                     //XZ
                         center = inputPack->getCenterCoords();
                         dimensions = inputPack->getDims();
-                        freeArea(findDimsRoutine(center.X, dimensions.X), findDimsRoutine(center.Z, dimensions.Z), inputPack);
+                        freeArea(findDimsRoutine(center.num1, dimensions.num1), findDimsRoutine(center.num3, dimensions.num3), inputPack);
                     break;
 
                 default:
@@ -182,8 +182,8 @@ Plane :: ~Plane ()
 
 void Plane :: printPlane()
 {
-    int x = static_cast<int>(this->maxDimensions.X);
-    int y = static_cast<int>(this->maxDimensions.Y);
+    int x = static_cast<int>(this->maxDimensions.num1);
+    int y = static_cast<int>(this->maxDimensions.num2);
 
     std :: cout << "+";
     for (int i = 0; i < x; i++)

@@ -10,12 +10,12 @@ void testFunction()
         #pragma region "test Pack & 3D_object"
             //PACK: funziona
             ThreeNum_set<int> testDims, testCoords;
-            testDims.X = 4;
-            testDims.Y = 6;
-            testDims.Z = 2;
-            testCoords.X = 5; 
-            testCoords.Y = 5;
-            testCoords.Z = 5; 
+            testDims.num1 = 4;
+            testDims.num2 = 6;
+            testDims.num3 = 2;
+            testCoords.num1 = 5; 
+            testCoords.num2 = 5;
+            testCoords.num3 = 5; 
 
             float testWeight = 2.4;
             int testID = 10;
@@ -23,12 +23,12 @@ void testFunction()
 
             Pack testPack1(testDims, testCoords, testWeight, testID, testFlag, false);
 
-            testDims.X = 2;
-            testDims.Y = 2;
-            testDims.Z = 2;
-            testCoords.X = 1; 
-            testCoords.Y = 1;
-            testCoords.Z = 1; 
+            testDims.num1 = 2;
+            testDims.num2 = 2;
+            testDims.num3 = 2;
+            testCoords.num1 = 1; 
+            testCoords.num2 = 1;
+            testCoords.num3 = 1; 
 
             Pack testPack2(testDims, testCoords, 1, 20, true, true);
                     
@@ -37,8 +37,8 @@ void testFunction()
             ThreeNum_set<int> extractedCoords;
             extractedCoords = testPack1.getCenterCoords();
 
-            outputTestString = " Pack1 dims are: \n X -> " + std::to_string(extractedDims.X) + "\n Y -> " + std::to_string(extractedDims.Y) + "\n Z -> " + std::to_string(extractedDims.Z) + "\n";
-            outputTestString += "\n Pack1 coords are: \n X -> " + std::to_string(extractedCoords.X) + "\n Y -> " + std::to_string(extractedCoords.Y) + "\n Z -> " + std::to_string(extractedCoords.Z) + "\n";
+            outputTestString = " Pack1 dims are: \n X -> " + std::to_string(extractedDims.num1) + "\n Y -> " + std::to_string(extractedDims.num2) + "\n Z -> " + std::to_string(extractedDims.num3) + "\n";
+            outputTestString += "\n Pack1 coords are: \n X -> " + std::to_string(extractedCoords.num1) + "\n Y -> " + std::to_string(extractedCoords.num2) + "\n Z -> " + std::to_string(extractedCoords.num3) + "\n";
             outputTestString += "\n Pack1 Volume: " + std::to_string(testPack1.getVolume());
             outputTestString += "\n Pack1 ID: " + std::to_string(testPack1.getPackID());
             outputTestString += "\n Pack1 Density: " + std::to_string(testPack1.getDensity());
@@ -48,8 +48,8 @@ void testFunction()
             extractedDims = testPack2.getDims();
             extractedCoords = testPack2.getCenterCoords();
 
-            outputTestString += "\n\n Pack2 dims are: \n X -> " + std::to_string(extractedDims.X) + "\n Y -> " + std::to_string(extractedDims.Y) + "\n Z -> " + std::to_string(extractedDims.Z) + "\n";
-            outputTestString += "\n Pack2 coords are: \n X -> " + std::to_string(extractedCoords.X) + "\n Y -> " + std::to_string(extractedCoords.Y) + "\n Z -> " + std::to_string(extractedCoords.Z) + "\n";
+            outputTestString += "\n\n Pack2 dims are: \n X -> " + std::to_string(extractedDims.num1) + "\n Y -> " + std::to_string(extractedDims.num2) + "\n Z -> " + std::to_string(extractedDims.num3) + "\n";
+            outputTestString += "\n Pack2 coords are: \n X -> " + std::to_string(extractedCoords.num1) + "\n Y -> " + std::to_string(extractedCoords.num2) + "\n Z -> " + std::to_string(extractedCoords.num3) + "\n";
             outputTestString += "\n Pack2 Volume: " + std::to_string(testPack2.getVolume());
             outputTestString += "\n Pack2 ID: " + std::to_string(testPack2.getPackID());
             outputTestString += "\n Pack2 Density: " + std::to_string(testPack2.getDensity());
@@ -66,9 +66,9 @@ void testFunction()
         #pragma region "test creazione Grid"
             //funziona
             ThreeNum_set<int> testMaxDims;
-            testMaxDims.X = 20;
-            testMaxDims.Y = 20;
-            testMaxDims.Z = 20;
+            testMaxDims.num1 = 20;
+            testMaxDims.num2 = 20;
+            testMaxDims.num3 = 20;
 
             Grid testGrid(testMaxDims);
 

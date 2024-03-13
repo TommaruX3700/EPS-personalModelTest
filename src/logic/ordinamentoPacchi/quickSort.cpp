@@ -4,7 +4,7 @@
 #include "../../../headers/logic/OrdinamentoPacchi/ordinamentoPacchi.hpp"
 
 double calculateArea(const Pack& p) {
-    return p.getDims().X * p.getDims().Y;
+    return p.getDims().num1 * p.getDims().num2;
 }
 
 int partition(packVector& pacchi, int low, int high) {

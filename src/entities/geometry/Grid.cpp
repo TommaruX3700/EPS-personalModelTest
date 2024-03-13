@@ -5,18 +5,18 @@ Grid :: Grid (ThreeNum_set<int> maxDimensions)
     TwoNum_set<int> cpySet;
 
     //XY plane
-    cpySet.X = maxDimensions.X;
-    cpySet.Y = maxDimensions.Y;
+    cpySet.num1 = maxDimensions.num1;
+    cpySet.num2 = maxDimensions.num2;
     this->XY = new Plane(cpySet);
 
     //XZ plane
-    cpySet.X = maxDimensions.X;
-    cpySet.Y = maxDimensions.Z;
+    cpySet.num1 = maxDimensions.num1;
+    cpySet.num2 = maxDimensions.num3;
     this->XZ = new Plane(cpySet);
 
     //YZ plane
-    cpySet.X = maxDimensions.Y;
-    cpySet.Y = maxDimensions.Z;
+    cpySet.num1 = maxDimensions.num2;
+    cpySet.num2 = maxDimensions.num3;
     this->YZ = new Plane(cpySet);
 
 }
