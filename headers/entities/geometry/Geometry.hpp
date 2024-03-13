@@ -56,11 +56,11 @@ namespace Geometry {
 
 	struct GraphRange
 	{
-		//First "height" value from parallel axis
-		int h1;
-		//Second "height" value from parallel axis
-		int h2;
-		//Actual range of values, from min to max
+		//Smallest "height" value from parallel axis
+		int h1_min;
+		//Biggest "height" value from parallel axis
+		int h2_max;
+		//Actual range of values: num1 = min ; num2 = max
 		TwoNum_set<int> range;
 	};
 	
