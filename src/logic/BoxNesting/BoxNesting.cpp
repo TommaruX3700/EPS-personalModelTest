@@ -66,15 +66,11 @@ void BoxNesting :: nesting()
                 /*
                 *   New pack adding to the ROOT config: perform operations
                 */
-                if (findDomain(workingPallet.getPackVector(), nextPack))
-                {
-                    /*
-                    *   Domain found: proceed to placement
-                    */
                     if (startingPlacement())
                     {
                         /*
-                        *   Pack placed successfully and new ROOT configuration generated: now moving to nesting
+                        *   Domain found: proceed to placement.
+                        *   Pack placed successfully and new ROOT configuration generated: now moving to nesting.
                         */ 
                         if (nestingForMin())
                         {
@@ -97,16 +93,6 @@ void BoxNesting :: nesting()
                         inputStack.pop();
                     }
                 }
-                else
-                {
-                    /*
-                    *   I add not nestable pack to scarted-output vector
-                    */                    
-                    notNestedPacks.push_back(&nextPack);
-                    inputStack.pop();
-                }
-                
-            }
         }
         catch(const std::exception& e)
         {
@@ -123,11 +109,11 @@ void BoxNesting :: nesting()
     /*
     *   Copy the nested configuration in the output referenced pallet location.
     */
-    *outputPalletConfig = workingPallet;
+    *this->outputPalletConfig = workingPallet;
     /*
     *   Copy unnestable packs to output referenced pack vector.
     */
-    *outputNotNestedPacks = notNestedPacks;
+    *this->outputNotNestedPacks = notNestedPacks;
 }
 
 void BoxNesting :: placeAtCenter(Pack input)
@@ -135,18 +121,10 @@ void BoxNesting :: placeAtCenter(Pack input)
     //TODO
 }
 
-bool BoxNesting :: findDomain(packVector packsInsidePallet, Pack incomingPack)
-{
-    //TODO
-    /*
-    *   Use here locals this->totalDomain, this->optimization_obj: they will be always stored in the class.
-    */
-    return true;
-}
-
 bool BoxNesting :: startingPlacement() 
 {
-    //TODO
+    //TODO:
+    //  - use Domain::findDomain() here
     return true;
 }
 
