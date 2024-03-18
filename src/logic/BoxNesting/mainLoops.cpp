@@ -71,6 +71,7 @@ void MainNestLoops(dims palletDims, palletVector* outPalletVector, packVector in
     {
         /*
         *   loop that waits threads to join: all the output is collected in the thread-assigned Pallet in LOOP_1
+        *   TODO: make a better "joinable" condition: this is too stoopid (method already exits in BoxNesting (isFinished()))
         */
         if (operatingThreads.top().joinable())
         {

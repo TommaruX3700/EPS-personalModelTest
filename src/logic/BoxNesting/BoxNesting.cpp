@@ -5,6 +5,7 @@ BoxNesting :: BoxNesting(Pallet* outPallet, packVector inPacks, packVector* outN
     this->outputPalletConfig = outPallet;
     this->inputPacks = inPacks;
     this->outputNotNestedPacks = outNotNested;
+    this->ThreadHasFinished = false;
 }
 
 BoxNesting :: ~BoxNesting()
@@ -110,10 +111,16 @@ void BoxNesting :: nesting()
     *   Copy the nested configuration in the output referenced pallet location.
     */
     *this->outputPalletConfig = workingPallet;
+    this->ThreadHasFinished = true;
     /*
     *   Copy unnestable packs to output referenced pack vector.
     */
     *this->outputNotNestedPacks = notNestedPacks;
+}
+
+bool BoxNesting :: isFinished()
+{
+    return this->ThreadHasFinished;
 }
 
 void BoxNesting :: placeAtCenter(Pack input)

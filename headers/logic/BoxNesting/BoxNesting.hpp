@@ -30,6 +30,9 @@ class BoxNesting
         Pallet rootConfiguration;
         // Dominio_totale del pallet
         Domain TotalDomain;
+        // Variabile di controllo operazioni del thread
+        bool ThreadHasFinished;
+        
 
         // TODO: "Ottimizzazione", racchiude il dominio di punti da scartare
 
@@ -47,9 +50,14 @@ class BoxNesting
         */
         bool nestingForMin();
 
+
     public:
         BoxNesting(Pallet* outPallet, packVector inPacks, packVector* outNotNested);
         ~BoxNesting();
         void nesting();
+        /*
+        *   Controlla se tutte le operazioni sono terminate o meno.
+        */
+        bool isFinished();
 };
 
