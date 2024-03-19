@@ -38,6 +38,7 @@ bool PackDomain :: isInDomain(Pack* inputPack)
     ThreeNum_set<int> inputCoords = inputPack->getCenterCoords();
     if (checkOverlapping(inputCoords))
         // il pacco si compenetra con il root
+        // consider optimization
         return true;
     else
         // Consider optimization
