@@ -29,5 +29,5 @@ class PackDomain
         PackDomain(Pack* root_pack, Pack* incoming_pack);
         ~PackDomain();
         bool isInDomain(Pack* inputPack);
-        bool isWithinRange(ThreeNum_set<int> coordsToChecks);
+        bool checkOverlapping(ThreeNum_set<int> coordsToChecks);
 };

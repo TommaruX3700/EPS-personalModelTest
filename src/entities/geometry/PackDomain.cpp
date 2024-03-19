@@ -33,38 +33,37 @@ PackDomain::~PackDomain()
 bool PackDomain :: isInDomain(Pack* inputPack)
 {
     /*
-    * Single domain 
-    */
+     * Single domain 
+     */
     ThreeNum_set<int> inputCoords = inputPack->getCenterCoords();
-    if (isWithinRange(inputCoords))
+    if (checkOverlapping(inputCoords))
+        // il pacco si compenetra con il root
         return true;
     else
         // Consider optimization
         return false;
 }
 
-bool PackDomain :: isWithinRange(ThreeNum_set<int> coordsToChecks)
+bool PackDomain :: checkOverlapping(ThreeNum_set<int> coordsToChecks)
 {
-    int Ymin, Ymax, Xmin, Xmax;
-    Ymin = this->pointDomain.Ymin_range.num1;
-    Ymax = this->pointDomain.Ymin_range.num2;
-    Xmin = this->pointDomain.Xmin_range.num1;
-    Xmax = this->pointDomain.Xmin_range.num2;
-
-    if (coordsToChecks.num2 <= Ymin)
+    // return false quando center è dentro i limiti identificati (compenetra il pacco)
+    if (
+            coordsToChecks.num1 > this->pointDomain.Xmin_range.num1 && coordsToChecks.num1 < this->pointDomain.Xmin_range.num2 
+            &&
+            coordsToChecks.num1 > this->pointDomain.Xmax_range.num1 && coordsToChecks.num1 < this->pointDomain.Xmax_range.num2
+            &&
+            coordsToChecks.num2 > this->pointDomain.Ymin_range.num1 && coordsToChecks.num2 < this->pointDomain.Ymin_range.num2
+            && 
+            coordsToChecks.num2 > this->pointDomain.Ymax_range.num1 && coordsToChecks.num2 < this->pointDomain.Ymax_range.num2
+        )
     {
-        // Controllo il range X inferiore
-    } 
-    else if(coordsToChecks.num2 >= Ymax)
-    {
-        // Controllo il range X superiore
+        // Is not in Domain (pack overlaps pack)
+        return true;
     }
     else
     {
-        // Controllo altri due range
+        // Is in Domain or outer
+        return false;
     }
-    
-
-    
 }
 
