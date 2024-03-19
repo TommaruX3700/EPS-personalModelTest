@@ -11,14 +11,18 @@ Domain::~Domain()
 
 bool Domain :: findDomain(packVector packsInsidePallet, Pack incomingPack)
 {
-    //TODO
     /*
-    *   Use here locals this->totalDomain, this->optimization_obj: they will be always stored in the class.
+    *   TODO:
+    *       Use here locals this->totalDomain, this->optimization_obj: they will be always stored in the class.
     */
     return true;
 }
 
-bool Domain :: checkSpace()
+bool Domain :: checkSpace(Pack* packToCheck)
 {
-    
+    /*
+    *   TODO:
+    *       Check if packToCheck exits within the Domain points
+    */
+    return true;
 }

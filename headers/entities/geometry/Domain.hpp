@@ -27,7 +27,7 @@ class Domain
         /*
         *   Controllo se il pacco è in uno spazio valido che rispetta tutte le regole del dominio.
         */
-        bool checkSpace();
+        bool checkSpace(Pack* packToCheck);
 };
 
 
