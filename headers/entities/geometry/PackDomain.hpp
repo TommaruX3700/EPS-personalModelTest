@@ -20,12 +20,14 @@ class PackDomain
     *       > root pack, the one Domain is "built" around
     *       > incoming pack, with the root defines Domain height and ranges
     */
+
     private:
         //Admited points
-        GraphRange pointDomain; 
+        GraphRange pointDomain;
 
     public:
         PackDomain(Pack* root_pack, Pack* incoming_pack);
         ~PackDomain();
         bool isInDomain(Pack* inputPack);
+        bool isWithinRange(ThreeNum_set<int> coordsToChecks);
 };

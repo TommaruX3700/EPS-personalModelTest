@@ -45,7 +45,9 @@ namespace Geometry {
 	*/
 	struct TwoNum_set { 
 		//Typical use case: X, First_number or min
-		type num1, num2;
+		type num1;
+		//Typical use case: Y, Second_number or max
+		type num2;
 		TwoNum_set() : num1(type(0)), num2(type(0)) {};
 		TwoNum_set(type num1_val, type num2_val) : num1(type(num1_val)), num2(type(num2_val)) {};
 	};
