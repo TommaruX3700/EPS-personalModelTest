@@ -27,4 +27,5 @@ class PackDomain
     public:
         PackDomain(Pack* root_pack, Pack* incoming_pack);
         ~PackDomain();
+        bool isInDomain(Pack* inputPack);
 };

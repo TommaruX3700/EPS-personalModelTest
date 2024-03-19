@@ -18,7 +18,7 @@ class Domain
         std::vector<PackDomain> domainComponents;
         
     public:
-        Domain(/* args */);
+        Domain();
         ~Domain();
         /*
         *   Trovo nuovo dominio di piazzamento rispetto alla configurazione attuale, rispettando anche i domini esclusi da "optimization"

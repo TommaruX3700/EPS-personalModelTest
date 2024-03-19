@@ -28,3 +28,10 @@ PackDomain::~PackDomain()
 {
 
 }
+
+bool PackDomain :: isInDomain(Pack* inputPack)
+{
+    /*
+    * Single domain 
+    */
+}
