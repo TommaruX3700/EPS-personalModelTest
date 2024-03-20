@@ -52,7 +52,6 @@ bool PackDomain :: checkOverlapping(ThreeNum_set<int> coordsToChecks)
     /*
      *  Return false quando center è dentro i limiti identificati (compenetra il pacco) 
      */
-
     if (
             coordsToChecks.num1 > this->pointDomain.Xmin_range.num1 && coordsToChecks.num1 < this->pointDomain.Xmin_range.num2 
             &&
