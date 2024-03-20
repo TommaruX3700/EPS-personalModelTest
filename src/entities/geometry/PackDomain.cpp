@@ -8,19 +8,17 @@ PackDomain::PackDomain(Pack* root_pack, Pack* incoming_pack)
     incoming_dims = incoming_pack->getDims();
 
     /*
-    *   Admitted points: each range may be modifiable by the presence of other PackDomains into a TotalDomain.
-    *   Z points are not implemented.
-    *   X full range involves 2 X range define "points" (min and max) and the related Y height may be both Y min or max 
-    */
+     *   Admitted points: each range may be modifiable by the presence of other PackDomains into a TotalDomain.
+     *   Z points are not implemented.
+     *   X full range involves 2 X range define "points" (min and max) and the related Y height may be both Y min or max 
+     */
     this->pointDomain.Xmin_range.num1 = root_center.num1 - (root_dims.num1/2) - (incoming_dims.num1/2);
     this->pointDomain.Xmin_range.num2 = root_center.num1 + (root_dims.num1/2) + (incoming_dims.num1/2);
-
     this->pointDomain.Xmax_range.num1 = this->pointDomain.Xmin_range.num1;
     this->pointDomain.Xmax_range.num2 = this->pointDomain.Xmin_range.num2;
 
     this->pointDomain.Ymin_range.num1 = root_center.num2 - (root_dims.num2/2) - (incoming_dims.num2/2);
     this->pointDomain.Ymin_range.num2 = root_center.num2 + (root_dims.num2/2) + (incoming_dims.num2/2);
-
     this->pointDomain.Ymax_range.num1 = this->pointDomain.Ymin_range.num1;
     this->pointDomain.Ymax_range.num2 = this->pointDomain.Ymin_range.num2;
 }
