@@ -8,9 +8,10 @@ PackDomain::PackDomain(Pack* root_pack, Pack* incoming_pack)
     incoming_dims = incoming_pack->getDims();
 
     /*
-     *   Admitted points: each range may be modifiable by the presence of other PackDomains into a TotalDomain.
-     *   Z points are not implemented.
-     *   X full range involves 2 X range define "points" (min and max) and the related Y height may be both Y min or max 
+     *   Admitted points: 
+     *      Each range may be modifiable by the presence of other PackDomains into a TotalDomain.
+     *      Z points are not implemented.
+     *      X full range involves 2 X range define "points" (min and max) and the related Y height may be both Y min or max 
      */
     this->pointDomain.Xmin_range.num1 = root_center.num1 - (root_dims.num1/2) - (incoming_dims.num1/2);
     this->pointDomain.Xmin_range.num2 = root_center.num1 + (root_dims.num1/2) + (incoming_dims.num1/2);
@@ -31,21 +32,27 @@ PackDomain::~PackDomain()
 bool PackDomain :: isInDomain(Pack* inputPack)
 {
     /*
-     * Single domain 
+     *  Single domain.
      */
     ThreeNum_set<int> inputCoords = inputPack->getCenterCoords();
     if (checkOverlapping(inputCoords))
-        // il pacco si compenetra con il root
-        // consider optimization
+        /*
+         *  Il pacco si compenetra con il root, consider optimization
+         */ 
         return true;
     else
-        // Consider optimization
+        /*
+        *   Consider optimization
+        */
         return false;
 }
 
 bool PackDomain :: checkOverlapping(ThreeNum_set<int> coordsToChecks)
 {
-    // return false quando center è dentro i limiti identificati (compenetra il pacco)
+    /*
+     *  Return false quando center è dentro i limiti identificati (compenetra il pacco) 
+     */
+
     if (
             coordsToChecks.num1 > this->pointDomain.Xmin_range.num1 && coordsToChecks.num1 < this->pointDomain.Xmin_range.num2 
             &&
@@ -56,12 +63,16 @@ bool PackDomain :: checkOverlapping(ThreeNum_set<int> coordsToChecks)
             coordsToChecks.num2 > this->pointDomain.Ymax_range.num1 && coordsToChecks.num2 < this->pointDomain.Ymax_range.num2
         )
     {
-        // Is not in Domain (pack overlaps pack)
+        /* 
+         *  Is not in Domain (pack overlaps pack) 
+         */
         return true;
     }
     else
     {
-        // Is in Domain or outer
+        /* 
+         *  Is in Domain or outer 
+         */
         return false;
     }
 }
