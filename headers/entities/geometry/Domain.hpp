@@ -1,11 +1,12 @@
 #include <vector>
+#include <memory>
 #include "PackDomain.hpp"
 
 /*
 *   Author: 
 *       Tommaso Maruzzo
 *   Description:
-*       This class is used to display pallet domain.
+*       This class is used to display total pallet domain (multiple single domains together).
 */
 
 class Domain
@@ -18,12 +19,11 @@ class Domain
         std::vector<PackDomain> domainComponents;
         
     public:
-        Domain();
-        ~Domain();
         /*
-        *   Trovo nuovo dominio di piazzamento rispetto alla configurazione attuale, rispettando anche i domini esclusi da "optimization"
-        */
-        bool findDomain(packVector packsInsidePallet, Pack incomingPack);
+         *  "Domain" pallet should be re-created every time a pack is added to the pallet configuration.
+         */
+        Domain(packVector* packsInsidePallet, Pack* incomingPacks);
+        ~Domain();
         /*
         *   Controllo se il pacco è in uno spazio valido che rispetta tutte le regole del dominio.
         */

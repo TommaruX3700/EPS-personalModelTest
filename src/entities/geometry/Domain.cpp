@@ -1,42 +1,35 @@
 #include "../../../headers/entities/geometry/Domain.hpp"
 
-Domain::Domain(/* args */)
+Domain::Domain(packVector* packsInsidePallet, Pack* incomingPack)
 {   
+    /*
+     *   TODO:
+     *       Use here locals this->totalDomain, this->optimization_obj: they will be always stored in the class.
+     */
+    this->domainComponents.clear();
+    PackDomain* tempRoot;
+    for (Pack* rootPack : *packsInsidePallet)
+    {
+        std::unique_ptr<PackDomain> tempRoot(new PackDomain(rootPack, incomingPack));
+        this->domainComponents.push_back(std::move(*tempRoot));
+    }
 }
 
 Domain::~Domain()
 {
-}
-
-bool Domain :: findDomain(packVector packsInsidePallet, Pack incomingPack)
-{
-    /*
-    *   TODO:
-    *       Use here locals this->totalDomain, this->optimization_obj: they will be always stored in the class.
-    */
-
-    return true;
+    this->domainComponents.clear();
 }
 
 bool Domain :: checkSpace(Pack* packToCheck)
 {
     /*
-    *   TODO:
-    *       Check if packToCheck exits within the Domain points
-    */
-
+     *   Simple check if within every single packs' domain.
+     *   Consider furtther implementations or optimizations only if needed.
+     */
     for(auto domain : domainComponents)
     {
-        // Cicle between all registered domines
-        if(domain.isInDomain(packToCheck))
-        {
-            //Pacco è nel dominio
-        }
-        else
-        {
-            //Pacco non è nel dominio
-        }
+        if(!domain.isInDomain(packToCheck))
+            return false;
     }
-
     return true;
 }
