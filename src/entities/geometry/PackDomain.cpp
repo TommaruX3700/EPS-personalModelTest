@@ -32,19 +32,20 @@ PackDomain::~PackDomain()
 bool PackDomain :: isInDomain(Pack* inputPack)
 {
     /*
-     *  Single domain.
+     *  Single domain check.
+     *  Add other implementation only if needed.
      */
     ThreeNum_set<int> inputCoords = inputPack->getCenterCoords();
     if (checkOverlapping(inputCoords))
         /*
-         *  Il pacco si compenetra con il root, consider optimization.
+         *  inputPack collides with rootPack, consider optimization
          */ 
-        return true;
+        return false;
     else
         /*
-        *   Consider optimization.
+        *   Pack is in a valid position, due to Domain.
         */
-        return false;
+        return true;
 }
 
 bool PackDomain :: checkOverlapping(ThreeNum_set<int> coordsToChecks)
