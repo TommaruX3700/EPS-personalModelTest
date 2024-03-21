@@ -1,4 +1,4 @@
-#include "../../../headers/logic/messages.hpp"
+#include "../../../headers/logic/MainMethods/messages.hpp"
 
 void consoleLog (std::string message)
 {

@@ -12,7 +12,7 @@ using namespace Geometry;
 Pack::Pack()
     {
         Geometry::ThreeNum_set<int> empty;
-        empty.X = 0; empty.Y = 0; empty.Z = 0;
+        empty.num1 = 0; empty.num2 = 0; empty.num3 = 0;
         this->packID = 0;
         this->rotatableFlag = 0;
         this->setDims(empty);
@@ -100,13 +100,13 @@ Pack::Pack(ThreeNum_set<int> dims, ThreeNum_set<int> coords, float packWeight, i
         std::string outputInfos;
         outputInfos.append("Pack_ID: #" + std::to_string(this->getPackID()) + "\n");
         outputInfos.append("Coordinates:\n");
-        outputInfos.append("> X: " + std::to_string(this->getCenterCoords().X) + "[cm]\n");
-        outputInfos.append("> Y: " + std::to_string(this->getCenterCoords().Y) + "[cm]\n");
-        outputInfos.append("> Z: " + std::to_string(this->getCenterCoords().Z) + "[cm]\n");
+        outputInfos.append("> X: " + std::to_string(this->getCenterCoords().num1) + "[cm]\n");
+        outputInfos.append("> Y: " + std::to_string(this->getCenterCoords().num2) + "[cm]\n");
+        outputInfos.append("> Z: " + std::to_string(this->getCenterCoords().num3) + "[cm]\n");
         outputInfos.append("Dimensions:\n");
-        outputInfos.append("> X: " + std::to_string(this->getDims().X) + "[cm]\n");
-        outputInfos.append("> Y: " + std::to_string(this->getDims().Y) + "[cm]\n");
-        outputInfos.append("> Z: " + std::to_string(this->getDims().Z) + "[cm]\n");
+        outputInfos.append("> X: " + std::to_string(this->getDims().num1) + "[cm]\n");
+        outputInfos.append("> Y: " + std::to_string(this->getDims().num2) + "[cm]\n");
+        outputInfos.append("> Z: " + std::to_string(this->getDims().num3) + "[cm]\n");
         outputInfos.append("Weight: " + std::to_string(this->weight) + "[kg]\n");
         outputInfos.append("Density: " + std::to_string(this->getDensity()) + "[kg/m3]\n");
         outputInfos.append("Volume: " + std::to_string(this->getVolume()) + "[m3]\n");

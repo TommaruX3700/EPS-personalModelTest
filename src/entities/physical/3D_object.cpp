@@ -11,13 +11,13 @@ Description:
     // ThreeD_object :: ThreeD_object() 
     // {
     //     //General constructor
-    //     this->objectDims.X = 0;
-    //     this->objectDims.Y = 0;
-    //     this->objectDims.Z = 0;
+    //     this->objectDims.num1 = 0;
+    //     this->objectDims.num2 = 0;
+    //     this->objectDims.num3 = 0;
 
-    //     this->centerCoords.X = 0;
-    //     this->centerCoords.Y = 0;
-    //     this->centerCoords.Z = 0;
+    //     this->centerCoords.num1 = 0;
+    //     this->centerCoords.num2 = 0;
+    //     this->centerCoords.num3 = 0;
 
     //     this->weight = 0.0;
     //     this->density = 0.0;
@@ -35,18 +35,18 @@ Description:
     void ThreeD_object :: setDims(ThreeNum_set<int> dims)
     {
         //set object X, Y, Z dimensions (this.objectDims) 
-        this->objectDims.X = dims.X;
-        this->objectDims.Y = dims.Y;
-        this->objectDims.Z = dims.Z;
+        this->objectDims.num1 = dims.num1;
+        this->objectDims.num2 = dims.num2;
+        this->objectDims.num3 = dims.num3;
 
         //set originalOrientationDims X, Y, Z dimensions (this.originOrientationDims)
-        this->originalOrientationDims.X = dims.X;
-        this->originalOrientationDims.Y = dims.Y;
-        this->originalOrientationDims.Z = dims.Z;
+        this->originalOrientationDims.num1 = dims.num1;
+        this->originalOrientationDims.num2 = dims.num2;
+        this->originalOrientationDims.num3 = dims.num3;
 
         //calculate volume (this.volume)
         float x,y,z;
-        x=dims.X/100.00; y=dims.Y/100.0; z=dims.Z/100.0;
+        x=dims.num1/100.00; y=dims.num2/100.0; z=dims.num3/100.0;
         this->m3Volume = (x) * (y) * (z);
 
         //sets standard orientation
@@ -56,9 +56,9 @@ Description:
     void ThreeD_object :: setCenterCoords(ThreeNum_set<int> coords)
     {
         //set object certer coordinates (this.centerCoords)
-        this->centerCoords.X = coords.X;
-        this->centerCoords.Y = coords.Y;
-        this->centerCoords.Z = coords.Z;
+        this->centerCoords.num1 = coords.num1;
+        this->centerCoords.num2 = coords.num2;
+        this->centerCoords.num3 = coords.num3;
     }
 
     void ThreeD_object :: setWeight(float kg)
@@ -112,9 +112,9 @@ Description:
     void ThreeD_object :: backToOriginalPosition() 
     {
         //brings back to the original Pack dims and position
-        this->objectDims.X = this->originalOrientationDims.X;
-        this->objectDims.Y = this->originalOrientationDims.Y;
-        this->objectDims.Z = this->originalOrientationDims.Z;
+        this->objectDims.num1 = this->originalOrientationDims.num1;
+        this->objectDims.num2 = this->originalOrientationDims.num2;
+        this->objectDims.num3 = this->originalOrientationDims.num3;
     }
 
     void ThreeD_object :: changeObjectOrientation(int orientation)
@@ -137,33 +137,33 @@ Description:
                     break;
                 case 2:
                         setOrientation(2);
-                        this->objectDims.X = originalDims.Y;
-                        this->objectDims.Y = originalDims.X;
-                        this->objectDims.Z = originalDims.Z;
+                        this->objectDims.num1 = originalDims.num2;
+                        this->objectDims.num2 = originalDims.num1;
+                        this->objectDims.num3 = originalDims.num3;
                     break;
                 case 3:
                         setOrientation(3);
-                        this->objectDims.X = originalDims.X;
-                        this->objectDims.Y = originalDims.Z;
-                        this->objectDims.Z = originalDims.Y;
+                        this->objectDims.num1 = originalDims.num1;
+                        this->objectDims.num2 = originalDims.num3;
+                        this->objectDims.num3 = originalDims.num2;
                     break;
                 case 4:
                         setOrientation(4);
-                        this->objectDims.X = originalDims.Y;
-                        this->objectDims.Y = originalDims.Z;
-                        this->objectDims.Z = originalDims.X;
+                        this->objectDims.num1 = originalDims.num2;
+                        this->objectDims.num2 = originalDims.num3;
+                        this->objectDims.num3 = originalDims.num1;
                     break;
                 case 5:
                         setOrientation(5);
-                        this->objectDims.X = originalDims.Z;
-                        this->objectDims.Y = originalDims.Y;
-                        this->objectDims.Z = originalDims.X;
+                        this->objectDims.num1 = originalDims.num3;
+                        this->objectDims.num2 = originalDims.num2;
+                        this->objectDims.num3 = originalDims.num1;
                     break;
                 case 6:
                         setOrientation(6);
-                        this->objectDims.X = originalDims.Z;
-                        this->objectDims.Y = originalDims.X;
-                        this->objectDims.Z = originalDims.Y;
+                        this->objectDims.num1 = originalDims.num3;
+                        this->objectDims.num2 = originalDims.num1;
+                        this->objectDims.num3 = originalDims.num2;
                     break;
                 default:
                     break;

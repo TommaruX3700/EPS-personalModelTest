@@ -10,9 +10,9 @@
 bool Geometry::compareThreeNum_set(Geometry::ThreeNum_set<int> firstSet, Geometry::ThreeNum_set<int> secondSet)
 {
     if (
-        firstSet.X == secondSet.X && 
-        firstSet.Y == secondSet.Y &&
-        firstSet.Z == secondSet.Z
+        firstSet.num1 == secondSet.num1 && 
+        firstSet.num2 == secondSet.num2 && 
+        firstSet.num3 == secondSet.num3    
         )
     {
         return true;

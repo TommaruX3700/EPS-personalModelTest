@@ -19,15 +19,12 @@
     #include "headers/entities/geometry/Grid.hpp"
     
     #include "headers/logic/BoxNesting/mainLoops.hpp"
+    
+    #include "headers/logic/LetturaJson/letturaFileJson.hpp"
+    #include "headers/logic/OrdinamentoPacchi/ordinamentoPacchi.hpp"
 
-    #include "headers/logic/messages.hpp" 
-    #include "headers/logic/letturaFileJson.hpp" 
-    #include "headers/logic/ordinamentoPacchi.hpp"
-    #include "headers/logic/ottimizzazione.hpp"
-    #include "headers/logic/sceltaPacchiNesting.hpp"
-    #include "headers/logic/spostaPacchi.hpp"
-    #include "headers/logic/trovaDominio.hpp"
-    #include "headers/logic/test.hpp"
+    #include "headers/logic/MainMethods/messages.hpp" 
+    #include "headers/logic/MainMethods/test.hpp"
 #pragma endregion
 
 int main (int argc, char* argv[]) 
@@ -41,6 +38,9 @@ int main (int argc, char* argv[])
 #pragma endregion
 
 #if TEST_MODE == 1
+        /*
+        * FOR NESTING DEBUG, LAUNCH OPERATIONS STRAIGHT FROM HERE 
+        */
         testFunction();
 #else
 #pragma region "BlockCode 1 - Startup Routine"

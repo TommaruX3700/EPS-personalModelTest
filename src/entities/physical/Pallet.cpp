@@ -2,17 +2,17 @@
 
 Pallet :: Pallet()
 {
-    this->maxDims.X = 0;
-    this->maxDims.Y = 0;
-    this->maxDims.Z = 0;
+    this->maxDims.num1 = 0;
+    this->maxDims.num2 = 0;
+    this->maxDims.num3 = 0;
     this->pallet.clear();
 }
 
 Pallet :: Pallet(ThreeNum_set<int> maxDimensions)
 {
-    this->maxDims.X = maxDimensions.X;
-    this->maxDims.Y = maxDimensions.Y;
-    this->maxDims.Z = maxDimensions.Z;
+    this->maxDims.num1 = maxDimensions.num1;
+    this->maxDims.num2 = maxDimensions.num2;
+    this->maxDims.num3 = maxDimensions.num3;
     this->pallet.clear();
 }
 
@@ -21,6 +21,12 @@ Pallet :: Pallet(ThreeNum_set<int> maxDimensions)
     {
         return this->pallet.size();
     }
+
+    std::vector<Pack*> Pallet :: getPackVector() const
+    {
+        return this->pallet;
+    }
+
 
     ThreeNum_set<int> Pallet :: getPalletDims() const
     {

@@ -23,24 +23,46 @@ Description:
 
 namespace Geometry {
 	template<typename type>
-	struct ThreeNum_set { 
-		//type for 3 num sets
-		type X, Y, Z;
-		ThreeNum_set() : X(type(0)), Y(type(0)), Z(type(0)) {}; //general constructor
-		ThreeNum_set(type x_val, type y_val, type z_val) : X(type(x_val)), Y(type(y_val)), Z(type(z_val)) {}; //specific constructor
+	/*
+	*	Type for 3 num sets.
+	*	Used for coordinates, ranges and similar applications involving 3 values working togheter
+	*/
+	struct ThreeNum_set {
+		//Typical use case: X or First_number
+		type num1;
+		//Typical use case: Y or Second_number
+		type num2;
+		//Typical use case: Z or Third_number
+		type num3;
+		ThreeNum_set() : num1(type(0)), num2(type(0)), num3(type(0)) {}; 
+		ThreeNum_set(type num1_val, type num2_val, type num3_val) : num1(type(num1_val)), num2(type(num2_val)), num3(type(num3_val)) {}; 
 	};
 
 	template<typename type>
+	/*
+	*	Type for 2 num sets.
+	*	Used for coordinates, ranges and similar applications involving 2 values working togheter
+	*/
 	struct TwoNum_set { 
-		//type for 2 num sets
-		type X, Y;
-		TwoNum_set() : X(type(0)), Y(type(0)) {};
-		TwoNum_set(type x_val, type y_val) : X(type(x_val)), Y(type(y_val)) {};
+		//Typical use case: X, First_number or min
+		type num1;
+		//Typical use case: Y, Second_number or max
+		type num2;
+		TwoNum_set() : num1(type(0)), num2(type(0)) {};
+		TwoNum_set(type num1_val, type num2_val) : num1(type(num1_val)), num2(type(num2_val)) {};
 	};
 
-	//TODO: make a geometry object "AREA"
 	bool compareThreeNum_set (ThreeNum_set <int> firstSet, ThreeNum_set<int> secondSet);
 
+	struct GraphRange
+	{
+		/*
+		*	Actual possible range of values: num1 = min ; num2 = max.
+		*	With these four ranges, I can define an area on a graph or a range of points.
+		*	All the four ranges are modifiable, granting future modifications during runtime in order to modify viable point domains.
+		*/
+		TwoNum_set<int> Xmin_range, Xmax_range, Ymin_range, Ymax_range;
+	};
 }
 
 #endif

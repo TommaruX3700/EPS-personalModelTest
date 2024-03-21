@@ -8,7 +8,7 @@
 #include "BoxNesting.hpp"
 #include "../../entities/physical/Pack.hpp"
 #include "../../entities/physical/Pallet.hpp"
-#include "../ordinamentoPacchi.hpp"
+#include "../OrdinamentoPacchi/ordinamentoPacchi.hpp"
 
 typedef std::vector<Pallet> palletVector;
 typedef std::vector<Pack*> packVector;

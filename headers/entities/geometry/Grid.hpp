@@ -4,12 +4,15 @@
 #include "Plane.hpp"
 
 /*
-Author:
-    Federico Casarotto
-Description:
-    Grid based upon 3 plane objects. 
-    Grid is built upon a ThreeNum_set<int> object ("dimensions"),
-    which rappresents the max dimensions of the grids.
+*   Author:
+*       Federico Casarotto
+*   Description:
+*       Grid based upon 3 plane objects. 
+*       Grid is built upon a ThreeNum_set<int> object ("dimensions"),
+*       which rappresents the max dimensions of the grids.
+*   
+*   NB: 
+*       ORIGIN IS AT O(0, 0, 0) -> "the corner"
 */
 
 class Grid

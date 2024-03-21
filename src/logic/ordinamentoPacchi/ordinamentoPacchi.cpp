@@ -1,5 +1,5 @@
-#include "../../../headers/logic/ordinamentoPacchi.hpp"
-#include "../../../headers/logic/quickSort.hpp"
+#include "../../../headers/logic/OrdinamentoPacchi/ordinamentoPacchi.hpp"
+#include "../../../headers/logic/OrdinamentoPacchi/quickSort.hpp"
 
 /*
 *   Gives as output a pair of Pack* vectors, based on their flag:
@@ -29,8 +29,8 @@ output sortInput(packVector inputVector, Pallet pallet)
     float area = 0;
     quickSort(inputVector, 0, inputVector.size()-1);
     for(const auto& pack : inputVector){
-        area+=(pack->getDims().X*pack->getDims().Y);
-        if (area <= (pallet.getPalletDims().X*pallet.getPalletDims().Y))
+        area+=(pack->getDims().num1*pack->getDims().num2);
+        if (area <= (pallet.getPalletDims().num1*pallet.getPalletDims().num2))
             output.first.push_back(pack);
         else
             output.second.push_back(pack);
