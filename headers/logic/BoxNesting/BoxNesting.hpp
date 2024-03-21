@@ -28,8 +28,6 @@ class BoxNesting
         packVector* outputNotNestedPacks;  
         // Configurazione ROOT del pallet
         Pallet rootConfiguration;
-        // Dominio_totale del pallet
-        Domain TotalDomain;
         // Variabile di controllo operazioni del thread
         bool ThreadHasFinished;
         

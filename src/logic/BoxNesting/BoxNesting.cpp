@@ -53,6 +53,11 @@ void BoxNesting :: nesting()
             *   Using only "top" pack grants me freedom on iterating a single Pack element again, usually after a domain optimization
             */
             nextPack = *inputStack.top();   
+            packVector curRootConf = this->rootConfiguration.getPackVector();
+            /*
+             *  I calculate initial Total Domain
+             */
+            Domain curTotalDomain(&curRootConf, &nextPack);
 
             if (workingPallet.getPackCount() == 0)
             {
@@ -131,13 +136,14 @@ void BoxNesting :: placeAtCenter(Pack input)
 bool BoxNesting :: startingPlacement() 
 {
     //TODO:
-    //  - use Domain::findDomain() here
+    //  make a domain check and recalculation afhter that
     return true;
 }
 
 bool BoxNesting :: nestingForMin()
 {
     //TODO
+    // re-caculare domain every time and make checks with it and find optimal configuration
     return true;
 }
 
