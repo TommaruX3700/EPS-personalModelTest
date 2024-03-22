@@ -33,3 +33,8 @@ bool Domain :: checkSpace(Pack* packToCheck)
     }
     return true;
 }
+
+TwoNum_set<int> Domain :: getValidPlacingPoint(Pack* packToInsert)
+{
+    
+}

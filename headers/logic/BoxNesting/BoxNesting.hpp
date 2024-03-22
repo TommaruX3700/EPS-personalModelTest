@@ -30,7 +30,6 @@ class BoxNesting
         Pallet rootConfiguration;
         // Variabile di controllo operazioni del thread
         bool ThreadHasFinished;
-        
 
         // TODO: "Ottimizzazione", racchiude il dominio di punti da scartare
 
@@ -42,12 +41,11 @@ class BoxNesting
         /*
         *   Metodo che piazza il pacco in un punto del piano ammesso dal Dominio_totale
         */
-        bool startingPlacement();
+        bool startingPlacement(Domain inputDomain, Pack inputPack);
         /*
         *   Trovo il min(Ntot), ovvero trovo il valore VERO più vicino al minimo, per cui TUTTI i percorsi che iterconnettono i centri dei pacchi tra loro è il minimo possibile, rispettando le dimensioni dei pacchi, baricentro, limiti del pallet 
         */
         bool nestingForMin();
-
 
     public:
         BoxNesting(Pallet* outPallet, packVector inPacks, packVector* outNotNested);

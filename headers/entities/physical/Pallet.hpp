@@ -37,7 +37,7 @@ public:
     #pragma endregion
 
     #pragma region "Public methods"
-        void addPack(ptrPack packToAddPtr); 
+        void addPack(Pack packToAddPtr); 
         void rmvPack(int index); //Delete the pack in the given position from the "pallet" vector
         void rmvPackByID(int packID); //Delete pack by ID    
     #pragma endregion

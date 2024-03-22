@@ -35,10 +35,10 @@ Pallet :: Pallet(ThreeNum_set<int> maxDimensions)
 #pragma endregion
 
 #pragma region "Public methods"
-    void Pallet :: addPack(ptrPack packToAddPtr)
+    void Pallet :: addPack(Pack packToAddPtr)
     {
         //Add Pack pointer to the end of the "pallet" vector
-        this->pallet.push_back(packToAddPtr);
+        this->pallet.push_back(&packToAddPtr);
     }
 
     void Pallet :: rmvPack(int index = -1)

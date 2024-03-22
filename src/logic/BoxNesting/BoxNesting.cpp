@@ -50,10 +50,11 @@ void BoxNesting :: nesting()
         try
         {
             /*
-            *   Using only "top" pack grants me freedom on iterating a single Pack element again, usually after a domain optimization
-            */
+             *   Using only "top" pack grants me freedom on iterating a single Pack element again, usually after a domain optimization
+             */
             nextPack = *inputStack.top();   
             packVector curRootConf = this->rootConfiguration.getPackVector();
+
             /*
              *  I calculate initial Total Domain
              */
@@ -70,14 +71,14 @@ void BoxNesting :: nesting()
             else
             {
                 /*
-                *   New pack adding to the ROOT config: perform operations
-                */
-                    if (startingPlacement())
+                 *   New pack adding to the ROOT config: perform operations
+                 */
+                    if (startingPlacement(curTotalDomain, nextPack))
                     {
                         /*
-                        *   Domain found: proceed to placement.
-                        *   Pack placed successfully and new ROOT configuration generated: now moving to nesting.
-                        */ 
+                         *   Domain found: proceed to placement.
+                         *   Pack placed successfully and new ROOT configuration generated: now moving to nesting.
+                         */ 
                         if (nestingForMin())
                         {
                             /*
@@ -130,13 +131,37 @@ bool BoxNesting :: isFinished()
 
 void BoxNesting :: placeAtCenter(Pack input)
 {
-    //TODO
+    ThreeNum_set<int> coords;
+    coords.num1 = 0;
+    coords.num2 = 0;
+    coords.num3 = 0;
+    input.setCenterCoords(coords);
+    this->rootConfiguration.addPack(input);
 }
 
-bool BoxNesting :: startingPlacement() 
+bool BoxNesting :: startingPlacement(Domain inputDomain, Pack inputPack) 
 {
-    //TODO:
-    //  make a domain check and recalculation afhter that
+    /*
+     *  TODO:
+     *      Make a domain check and recalculation afhter that
+     *  
+     *  Possible workflow:
+     *      - posso utilizzare il Dominio calcolato per recuperare il primo un primo punto 
+     *          per piazzare il pacco, in attesa del nestin
+     *      - recupero letteralmente il primo punto che trovo
+     *      - lascio spazio qui ad eventuali e future implementazioni per rendere il tutto
+     *          più specifico.
+     */
+
+    ThreeNum_set<int> tempCoords;
+    tempCoords.num1 = 0;
+    tempCoords.num2 = 0;
+    tempCoords.num3 = 0;
+    while (!inputDomain.checkSpace(&inputPack))
+    {
+        inputPack.setCenterCoords(tempCoords);
+
+    }
     return true;
 }
 
