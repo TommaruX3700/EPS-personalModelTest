@@ -141,27 +141,8 @@ void BoxNesting :: placeAtCenter(Pack input)
 
 bool BoxNesting :: startingPlacement(Domain inputDomain, Pack inputPack) 
 {
-    /*
-     *  TODO:
-     *      Make a domain check and recalculation afhter that
-     *  
-     *  Possible workflow:
-     *      - posso utilizzare il Dominio calcolato per recuperare il primo un primo punto 
-     *          per piazzare il pacco, in attesa del nestin
-     *      - recupero letteralmente il primo punto che trovo
-     *      - lascio spazio qui ad eventuali e future implementazioni per rendere il tutto
-     *          più specifico.
-     */
-
-    ThreeNum_set<int> tempCoords;
-    tempCoords.num1 = 0;
-    tempCoords.num2 = 0;
-    tempCoords.num3 = 0;
-    while (!inputDomain.checkSpace(&inputPack))
-    {
-        inputPack.setCenterCoords(tempCoords);
-
-    }
+    ThreeNum_set<int> tempCoords = inputDomain.getValidPlacingPoint(&inputPack);
+    inputPack.setCenterCoords(tempCoords);
     return true;
 }
 

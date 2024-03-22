@@ -34,7 +34,9 @@ bool Domain :: checkSpace(Pack* packToCheck)
     return true;
 }
 
-TwoNum_set<int> Domain :: getValidPlacingPoint(Pack* packToInsert)
+ThreeNum_set<int> Domain :: getValidPlacingPoint(Pack* packToInsert)
 {
-    
+    //get first available coordinate to place the pack, respecting domain condition
+    // - lascio spazio qui ad eventuali e future implementazioni per rendere il tutto
+    //  *          più specifico.
 }
