@@ -30,4 +30,5 @@ class PackDomain
         ~PackDomain();
         bool isInDomain(Pack* inputPack);
         bool checkOverlapping(ThreeNum_set<int> coordsToChecks);
+        ThreeNum_set<int> getFirstPlacingPoint(Pack* inputPack);
 };
