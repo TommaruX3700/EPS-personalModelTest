@@ -42,18 +42,18 @@ ThreeNum_set<int> Domain :: getValidPlacingPoint(Pack* packToInsert)
     // - optimization may be here 
     ThreeNum_set<int> coordsFound;
     packToInsert->setCenterCoords(coordsFound);
-    std::vector<PackDomain>::iterator iterator = domainComponents.begin();
+    std::vector<PackDomain>::iterator packDomainIterator = domainComponents.begin();
     
     //controlla se il pacco inserito, con le coordinate ricevute, rispetta le condizioni di tutti i singoli domini presenti sul pallet.
     while (!checkSpace(packToInsert))
     {
-        //get the domain at the next iterator value
-        domainComponents.;
+        // get the domain at the next iterator value
+        PackDomain curPackDomain = *packDomainIterator;
         // find current domain placing point
-        coordsFound = domain.getFirstPlacingPoint(packToInsert);
+        coordsFound = curPackDomain.getFirstPlacingPoint(packToInsert);
         // imposta al coordinata centrale sul pacco, tramite il punto appena trovato
         packToInsert->setCenterCoords(coordsFound);
-        iterator++;
+        packDomainIterator++;
     }
     return coordsFound;
 }
