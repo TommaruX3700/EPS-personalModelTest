@@ -5,7 +5,7 @@
 #include <vector>
 #include <functional>
 
-#include "BoxNesting.hpp"
+#include "deprecated_BoxNesting.hpp"
 #include "../../entities/physical/Pack.hpp"
 #include "../../entities/physical/Pallet.hpp"
 #include "../OrdinamentoPacchi/ordinamentoPacchi.hpp"

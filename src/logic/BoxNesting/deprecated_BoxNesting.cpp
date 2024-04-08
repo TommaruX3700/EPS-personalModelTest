@@ -1,4 +1,4 @@
-#include "../../../headers/logic/BoxNesting/BoxNesting.hpp"
+#include "../../../headers/logic/BoxNesting/deprecated_BoxNesting.hpp"
 
 BoxNesting :: BoxNesting(Pallet* outPallet, packVector inPacks, packVector* outNotNested)
 {
