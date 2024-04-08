@@ -107,7 +107,7 @@ int main (int argc, char* argv[])
             for (auto pack : pacchiNonPallettizzabiliByFLAG)
             {
                 Pallet newPallet(palletDims);
-                newPallet.addPack(pack);
+                newPallet.addPack(*pack);
                 palletGroup.addPallet(&newPallet);
             }
 #pragma endregion
