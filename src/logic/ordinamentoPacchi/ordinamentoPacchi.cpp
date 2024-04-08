@@ -25,6 +25,7 @@ output isPalletizable(packVector inputVector)
 */
 output sortInput(packVector inputVector, Pallet pallet)
 {
+    /*TODO mettere in modo che venga sortato anche in base al peso massimo*/
     output output;
     float area = 0;
     quickSort(inputVector, 0, inputVector.size()-1);
