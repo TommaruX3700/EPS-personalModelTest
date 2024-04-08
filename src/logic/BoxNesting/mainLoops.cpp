@@ -3,14 +3,6 @@
 void MainNestLoops(dims palletDims, palletVector* outPalletVector, packVector inPacksToNest, packVector* outUnNestablePacks)
 {
 #pragma region "Initial Preparation"
-    //STACK: (FILO logic, O(1) time complexity in all operations, refers easily to elements, not useless characterisics)
-    std::stack<std::thread> operatingThreads;
-    /*
-    *   Start time recording.
-    */
-    auto start = std::chrono::steady_clock::now();
-    auto partialTime = std::chrono::steady_clock::now();
-    std::chrono::duration<double> loopTimer;
     /*
     *   2 vettori, uno per lanciare i thread di nesting e uno per raccogliere 
     */
@@ -44,12 +36,12 @@ void MainNestLoops(dims palletDims, palletVector* outPalletVector, packVector in
         */
         packVector toNest, notNested;
         toNest = packs.first;
-        BoxNesting operations(newPallet, toNest, &notNested);
+        // BoxNesting operations(newPallet, toNest, &notNested);
         /*
         *   Launch thread nesting operations 
         */
-        std::thread newThread(std::bind(&BoxNesting::nesting, &operations));
-        operatingThreads.push(std::move(newThread));
+        // std::thread newThread(std::bind(&BoxNesting::nesting, &operations));
+        //operatingThreads.push(std::move(newThread));
         /*
         *   Move un-Nested Packs to the second part of the pair to sortInput them in the next phase.
         */
@@ -57,33 +49,33 @@ void MainNestLoops(dims palletDims, palletVector* outPalletVector, packVector in
         /*
         *   Get current time.
         */
-        partialTime = std::chrono::steady_clock::now();
-        loopTimer = partialTime - start;
-        if (loopTimer.count() >= 20)
-            throw std::invalid_argument("Threads creation loop took up to 20 seconds for execution: check code");
+        // partialTime = std::chrono::steady_clock::now();
+        // loopTimer = partialTime - start;
+        // if (loopTimer.count() >= 20)
+        //     throw std::invalid_argument("Threads creation loop took up to 20 seconds for execution: check code");
     } while (packs.second.size());
 
 #pragma endregion
 
 #pragma region "LOOP_2"
-    start = std::chrono::steady_clock::now();
-    while (!operatingThreads.empty())
-    {
-        /*
-        *   loop that waits threads to join: all the output is collected in the thread-assigned Pallet in LOOP_1
-        *   TODO: make a better "joinable" condition: this is too stoopid (method already exits in BoxNesting (isFinished()))
-        */
-        if (operatingThreads.top().joinable())
-        {
-            std::thread joinableThread = std::move(operatingThreads.top());
-            joinableThread.join();
-            operatingThreads.pop();
-        }
-        partialTime = std::chrono::steady_clock::now();
-        loopTimer = partialTime - start;
-        if (loopTimer.count() >= 20)
-            throw std::invalid_argument("Threads join loop took up to 20 seconds for execution: check code");
-    }
+    // start = std::chrono::steady_clock::now();
+    // while (!operatingThreads.empty())
+    // {
+    //     /*
+    //     *   loop that waits threads to join: all the output is collected in the thread-assigned Pallet in LOOP_1
+    //     *   TODO: make a better "joinable" condition: this is too stoopid (method already exits in BoxNesting (isFinished()))
+    //     */
+    //     if (operatingThreads.top().joinable())
+    //     {
+    //         std::thread joinableThread = std::move(operatingThreads.top());
+    //         joinableThread.join();
+    //         operatingThreads.pop();
+    //     }
+    //     partialTime = std::chrono::steady_clock::now();
+    //     loopTimer = partialTime - start;
+    //     if (loopTimer.count() >= 20)
+    //         throw std::invalid_argument("Threads join loop took up to 20 seconds for execution: check code");
+    // }
 
 #pragma endregion  
 
