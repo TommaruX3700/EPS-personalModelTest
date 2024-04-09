@@ -9,11 +9,12 @@
 output isPalletizable(packVector inputVector)
 {
     output output;
-    for(const auto& pack : inputVector){
+    for (const auto &pack : inputVector)
+    {
         if (pack->getPalletizableFlag())
             output.first.push_back(pack);
         else
-            output.second.push_back(pack);        
+            output.second.push_back(pack);
     }
     return output;
 }
@@ -32,11 +33,12 @@ output sortInput(packVector inputVector, Pallet pallet)
      */
     output output;
     float area = 0;
-    quickSort(inputVector, 0, inputVector.size()-1);
-    
-    for(const auto& pack : inputVector){
-        area+=(pack->getDims().num1*pack->getDims().num2);
-        if (area <= (pallet.getPalletDims().num1*pallet.getPalletDims().num2))
+    quickSort(inputVector, 0, inputVector.size() - 1);
+
+    for (const auto &pack : inputVector)
+    {
+        area += (pack->getDims().num1 * pack->getDims().num2);
+        if (area <= (pallet.getPalletDims().num1 * pallet.getPalletDims().num2))
             output.first.push_back(pack);
         else
             output.second.push_back(pack);
