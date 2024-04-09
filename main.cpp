@@ -122,6 +122,7 @@ int main(int argc, char *argv[])
         MainNestLoops(palletDims, &nestedPallets, packsToNest, &remainingPacks);
         for (auto pallet : nestedPallets)
         {
+            std::cout << "Pallet " << &pallet << ", containing packs: " << pallet.getPackCount() << std::endl;
             palletGroup.addPallet(&pallet);
         }
 #pragma endregion
