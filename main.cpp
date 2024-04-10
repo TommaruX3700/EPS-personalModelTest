@@ -195,6 +195,33 @@ int main(int argc, char *argv[])
          *   > palletGroup (nested and on pallets)
          *   > remainingPacks (not nested, excluded definitely)
          */
+        nlohmann::json data;
+
+        //(nestedPallets)
+        for (auto pallet : nestedPallets)
+        {
+            //put pallet id to pallet objects and identify them
+            for (auto pack : pallet.getPackVector())
+            {
+                data.push_back(pack.getPackID());
+            }
+        }
+        
+        // Specify the file name
+        std::string filename = "output.json";
+
+        // Write the JSON object to a file
+        std::ofstream ofs(filename);
+        if (!ofs.is_open()) 
+        {
+            std::cerr << "Failed to open file: " << filename << std::endl;
+            return 1;
+        }
+
+        ofs << std::setw(4) << data << std::endl; // Write formatted JSON to file
+        ofs.close();
+
+        std::cout << "JSON data written to " << filename << std::endl;
 #pragma endregion
 
 #endif
