@@ -1,6 +1,6 @@
 #include "../../../headers/entities/physical/Pallet.hpp"
 
-Pallet :: Pallet()
+Pallet ::Pallet()
 {
     this->maxDims.num1 = 0;
     this->maxDims.num2 = 0;
@@ -8,7 +8,7 @@ Pallet :: Pallet()
     this->pallet.clear();
 }
 
-Pallet :: Pallet(ThreeNum_set<int> maxDimensions)
+Pallet ::Pallet(ThreeNum_set<int> maxDimensions)
 {
     this->maxDims.num1 = maxDimensions.num1;
     this->maxDims.num2 = maxDimensions.num2;
@@ -18,68 +18,68 @@ Pallet :: Pallet(ThreeNum_set<int> maxDimensions)
 }
 
 #pragma region "Get methods"
-    int Pallet :: getPackCount() const
-    {
-        return this->pallet.size();
-    }
+int Pallet ::getPackCount() const
+{
+    return this->pallet.size();
+}
 
-    std::vector<Pack> Pallet :: getPackVector() const
-    {
-        return this->pallet;
-    }
+std::vector<Pack> Pallet ::getPackVector() const
+{
+    return this->pallet;
+}
 
-    ThreeNum_set<int> Pallet :: getPalletDims() const
-    {
-        return this->maxDims;
-    }
+ThreeNum_set<int> Pallet ::getPalletDims() const
+{
+    return this->maxDims;
+}
 
-    Pallet* Pallet :: getPalletID() const
-    {
-        return this->pallet_id;
-    }
+Pallet *Pallet ::getPalletID() const
+{
+    return this->pallet_id;
+}
 #pragma endregion
 
 #pragma region "Public methods"
-    void Pallet :: addPack(Pack packToAddPtr)
-    {
-        //Add Pack pointer to the end of the "pallet" vector
-        this->pallet.push_back(packToAddPtr);
-    }
+void Pallet ::addPack(Pack packToAddPtr)
+{
+    // Add Pack pointer to the end of the "pallet" vector
+    this->pallet.push_back(packToAddPtr);
+}
 
-    void Pallet :: rmvPack(int index = -1)
+void Pallet ::rmvPack(int index = -1)
+{
+    if (index == -1)
     {
-        if (index == -1)
-        {
-            //Index not specified: delete the last one
-            this->pallet.pop_back();
-        }
-        else
-        {
-            //Index specified: delete in the ptrPack in the specified position
-            this->pallet.erase(this->pallet.begin() + index);
-        }
+        // Index not specified: delete the last one
+        this->pallet.pop_back();
     }
-
-    void Pallet :: rmvPackByID(int packID)
+    else
     {
-        //Remove pack by his ID
-        int position = 0;
-        while (this->pallet.at(position).getPackID() != packID && position <= this->pallet.size()) 
-        { 
-            position++;
-        }
-        this->pallet.erase(this->pallet.begin() + position);
-
-        //TEST: useless recursive approach (same complexity)
-        // static int position = 0;
-        // if (this->pallet.at(position)->getPackID() != packID && position <= this->pallet.size())
-        // {
-        //     position++;
-        //     rmvPackByID(packID);
-        // }
-        // else if (position <= this->pallet.size())
-        // {
-        //     this->pallet.erase(this->pallet.begin() + position);
-        // }
+        // Index specified: delete in the ptrPack in the specified position
+        this->pallet.erase(this->pallet.begin() + index);
     }
+}
+
+void Pallet ::rmvPackByID(int packID)
+{
+    // Remove pack by his ID
+    int position = 0;
+    while (this->pallet.at(position).getPackID() != packID && position <= this->pallet.size())
+    {
+        position++;
+    }
+    this->pallet.erase(this->pallet.begin() + position);
+
+    // TEST: useless recursive approach (same complexity)
+    //  static int position = 0;
+    //  if (this->pallet.at(position)->getPackID() != packID && position <= this->pallet.size())
+    //  {
+    //      position++;
+    //      rmvPackByID(packID);
+    //  }
+    //  else if (position <= this->pallet.size())
+    //  {
+    //      this->pallet.erase(this->pallet.begin() + position);
+    //  }
+}
 #pragma endregion

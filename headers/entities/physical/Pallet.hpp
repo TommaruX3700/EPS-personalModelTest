@@ -23,7 +23,7 @@ private:
     float param_Efficency;
     Geometry ::ThreeNum_set<int> maxDims; //[m]
     std::vector<Pack> pallet;
-    Pallet* pallet_id;
+    Pallet *pallet_id;
 
 public:
     Pallet();
@@ -33,7 +33,7 @@ public:
     int getPackCount() const;
     std::vector<Pack> getPackVector() const;
     Geometry ::ThreeNum_set<int> getPalletDims() const;
-    Pallet* getPalletID() const;
+    Pallet *getPalletID() const;
 #pragma endregion
 
 #pragma region "Public methods"

@@ -1,31 +1,75 @@
 {
     "PalletGroups": [
-        { 
-            "PalletNum": 1, 
-            "Packs":[
-                {"PackCode": "001202", "Xpos": 20, "Ypos": 20, "rotation": 1},
-                {"PackCode": "002420", "Xpos": 40, "Ypos": 50, "rotation": 4},
-                {"PackCode": "002660", "Xpos": 20, "Ypos": 30, "rotation": 1}
+        {
+            "PalletNum": 1,
+            "Packs": [
+                {
+                    "PackCode": "001202",
+                    "Xpos": 20,
+                    "Ypos": 20,
+                    "rotation": 1
+                },
+                {
+                    "PackCode": "002420",
+                    "Xpos": 40,
+                    "Ypos": 50,
+                    "rotation": 4
+                },
+                {
+                    "PackCode": "002660",
+                    "Xpos": 20,
+                    "Ypos": 30,
+                    "rotation": 1
+                }
             ]
         },
-        { 
+        {
             "PalletNum": 2,
-            "Packs":[
-                {"PackCode": "006510", "Xpos": 60, "Ypos": 50, "rotation": 3},
-                {"PackCode": "007660", "Xpos": 48, "Ypos": 30, "rotation": 1}
+            "Packs": [
+                {
+                    "PackCode": "006510",
+                    "Xpos": 60,
+                    "Ypos": 50,
+                    "rotation": 3
+                },
+                {
+                    "PackCode": "007660",
+                    "Xpos": 48,
+                    "Ypos": 30,
+                    "rotation": 1
+                }
             ]
         },
-        { 
-            "PalletNum": 3, 
-            "Packs":[
-                {"PackCode": "001342", "Xpos": 15, "Ypos": 20, "rotation": 1},
-                {"PackCode": "002626", "Xpos": 70, "Ypos": 40, "rotation": 4},
-                {"PackCode": "002482", "Xpos": 40, "Ypos": 50, "rotation": 2}
+        {
+            "PalletNum": 3,
+            "Packs": [
+                {
+                    "PackCode": "001342",
+                    "Xpos": 15,
+                    "Ypos": 20,
+                    "rotation": 1
+                },
+                {
+                    "PackCode": "002626",
+                    "Xpos": 70,
+                    "Ypos": 40,
+                    "rotation": 4
+                },
+                {
+                    "PackCode": "002482",
+                    "Xpos": 40,
+                    "Ypos": 50,
+                    "rotation": 2
+                }
             ]
         }
     ],
-    "UnNestedPacks":[
-        {"PackCode": "002780"},
-        {"PackCode": "002770"}
+    "UnNestedPacks": [
+        {
+            "PackCode": "002780"
+        },
+        {
+            "PackCode": "002770"
+        }
     ]
 }

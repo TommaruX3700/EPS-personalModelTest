@@ -126,8 +126,8 @@ int main(int argc, char *argv[])
         do
         {
             /*
-            *   Add pallet vector reference to save reference.
-            */
+             *   Add pallet vector reference to save reference.
+             */
             Pallet newPallet(palletDims);
 
             /*
@@ -165,23 +165,19 @@ int main(int argc, char *argv[])
                 }
             }
             nestedPallets.push_back(newPallet);
-            /*
-            *   Move un-Nested Packs to the second part of the pair to sortInput them in the next phase.
-            */
         } while (packsToNest.size());
-
 
         for (Pallet pallet : nestedPallets)
         {
             std::cout << "Pallet " << pallet.getPalletID() << ", containing packs: " << pallet.getPackCount() << std::endl;
-                if (pallet.getPackCount())
+            if (pallet.getPackCount())
+            {
+                std::vector<Pack> culo = pallet.getPackVector();
+                for (auto pack : culo)
                 {
-                    std::vector<Pack> culo = pallet.getPackVector();
-                    for (auto pack : culo)
-                    {
-                        std::cout << "  - Pack ID -> " << pack.getPackID() << std::endl; 
-                    }
+                    std::cout << "  - Pack ID -> " << pack.getPackID() << std::endl;
                 }
+            }
             palletGroup.addPallet(&pallet);
         }
 #pragma endregion
@@ -204,14 +200,14 @@ int main(int argc, char *argv[])
             palletLabel = std::to_string(reinterpret_cast<uintptr_t>(pallet.getPalletID()));
             pallet_data["Pallet"] = palletLabel;
             pallet_data["Packs"];
-            //put pallet id to pallet objects and identify them
+            // put pallet id to pallet objects and identify them
             for (auto pack : pallet.getPackVector())
             {
                 pallet_data["Packs"].push_back(pack.getPackID());
             }
             json_pallets.push_back(pallet_data);
         }
-        
+
         json_output["Pallets"] = json_pallets;
         json_output["UnNestedPacks"] = json_unNestedPacks;
 
@@ -220,7 +216,7 @@ int main(int argc, char *argv[])
 
         // Write the JSON object to a file
         std::ofstream ofs(filename);
-        if (!ofs.is_open()) 
+        if (!ofs.is_open())
         {
             std::cerr << "Failed to open file: " << filename << std::endl;
             return 1;
