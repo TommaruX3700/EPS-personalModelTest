@@ -173,6 +173,7 @@ int main(int argc, char *argv[])
 
         for (Pallet pallet : nestedPallets)
         {
+            //pallet id is always the same because the for iterator is always the same object
             std::cout << "Pallet " << &pallet << ", containing packs: " << pallet.getPackCount() << std::endl;
                 if (pallet.getPackCount())
                 {
