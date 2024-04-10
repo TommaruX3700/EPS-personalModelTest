@@ -14,6 +14,7 @@ Pallet :: Pallet(ThreeNum_set<int> maxDimensions)
     this->maxDims.num2 = maxDimensions.num2;
     this->maxDims.num3 = maxDimensions.num3;
     this->pallet.clear();
+    this->pallet_id = this;
 }
 
 #pragma region "Get methods"
@@ -27,10 +28,14 @@ Pallet :: Pallet(ThreeNum_set<int> maxDimensions)
         return this->pallet;
     }
 
-
     ThreeNum_set<int> Pallet :: getPalletDims() const
     {
         return this->maxDims;
+    }
+
+    Pallet* Pallet :: getPalletID() const
+    {
+        return this->pallet_id;
     }
 #pragma endregion
 

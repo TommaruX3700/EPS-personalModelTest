@@ -6,42 +6,41 @@
 #include <vector>
 
 /*
-Author: 
+Author:
     Tommaso Maruzzo
 Description:
     Pallet object.
 Notes:
-    unordered_set for pallet should be a better use case for performance (insertion and deletion operations), 
+    unordered_set for pallet should be a better use case for performance (insertion and deletion operations),
     but have to consider all the methods and this problem wont involve a lot of iteration throught pallet items.
 */
 
-typedef Pack* ptrPack; //pointer to Pack object
+typedef Pack *ptrPack; // pointer to Pack object
 
 class Pallet : ThreeD_object
 {
 private:
     float param_Efficency;
-    Geometry :: ThreeNum_set<int> maxDims; //[m]
-    std::vector<Pack> pallet; 
+    Geometry ::ThreeNum_set<int> maxDims; //[m]
+    std::vector<Pack> pallet;
+    Pallet* pallet_id;
 
 public:
     Pallet();
-    Pallet(Geometry :: ThreeNum_set<int> maxDimensions);
+    Pallet(Geometry ::ThreeNum_set<int> maxDimensions);
 
-    //IDEA: add > and < operators 
+#pragma region "Get methods"
+    int getPackCount() const;
+    std::vector<Pack> getPackVector() const;
+    Geometry ::ThreeNum_set<int> getPalletDims() const;
+    Pallet* getPalletID() const;
+#pragma endregion
 
-    #pragma region "Get methods"
-        int getPackCount() const;
-        std::vector<Pack> getPackVector() const;
-        Geometry :: ThreeNum_set<int> getPalletDims() const;
-    #pragma endregion
-
-    #pragma region "Public methods"
-        void addPack(Pack packToAddPtr); 
-        void rmvPack(int index); //Delete the pack in the given position from the "pallet" vector
-        void rmvPackByID(int packID); //Delete pack by ID    
-    #pragma endregion
-
+#pragma region "Public methods"
+    void addPack(Pack packToAddPtr);
+    void rmvPack(int index);      // Delete the pack in the given position from the "pallet" vector
+    void rmvPackByID(int packID); // Delete pack by ID
+#pragma endregion
 };
 
 #endif

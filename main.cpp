@@ -173,8 +173,7 @@ int main(int argc, char *argv[])
 
         for (Pallet pallet : nestedPallets)
         {
-            //pallet id is always the same because the for iterator is always the same object
-            std::cout << "Pallet " << &pallet << ", containing packs: " << pallet.getPackCount() << std::endl;
+            std::cout << "Pallet " << pallet.getPalletID() << ", containing packs: " << pallet.getPackCount() << std::endl;
                 if (pallet.getPackCount())
                 {
                     std::vector<Pack> culo = pallet.getPackVector();
@@ -195,18 +194,27 @@ int main(int argc, char *argv[])
          *   > palletGroup (nested and on pallets)
          *   > remainingPacks (not nested, excluded definitely)
          */
-        nlohmann::json data;
 
-        //(nestedPallets)
+        nlohmann::json json_output, json_pallets, json_unNestedPacks;
+        std::string palletLabel;
+
         for (auto pallet : nestedPallets)
         {
+            nlohmann::json pallet_data;
+            palletLabel = std::to_string(reinterpret_cast<uintptr_t>(pallet.getPalletID()));
+            pallet_data["Pallet"] = palletLabel;
+            pallet_data["Packs"];
             //put pallet id to pallet objects and identify them
             for (auto pack : pallet.getPackVector())
             {
-                data.push_back(pack.getPackID());
+                pallet_data["Packs"].push_back(pack.getPackID());
             }
+            json_pallets.push_back(pallet_data);
         }
         
+        json_output["Pallets"] = json_pallets;
+        json_output["UnNestedPacks"] = json_unNestedPacks;
+
         // Specify the file name
         std::string filename = "output.json";
 
@@ -218,7 +226,7 @@ int main(int argc, char *argv[])
             return 1;
         }
 
-        ofs << std::setw(4) << data << std::endl; // Write formatted JSON to file
+        ofs << std::setw(4) << json_output << std::endl; // Write formatted JSON to file
         ofs.close();
 
         std::cout << "JSON data written to " << filename << std::endl;
