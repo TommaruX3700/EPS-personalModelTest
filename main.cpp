@@ -131,8 +131,8 @@ int main(int argc, char *argv[])
             Pallet newPallet(palletDims);
 
             /*
-            *   Execute a sortInput and reorder the packs.
-            */
+             *   Execute a sortInput and reorder the packs.
+             */
             float area = 0;
             float pack_area = 0;
             float pallet_area = newPallet.getPalletDims().num1 * newPallet.getPalletDims().num2;
@@ -176,10 +176,10 @@ int main(int argc, char *argv[])
             std::cout << "Pallet " << &pallet << ", containing packs: " << pallet.getPackCount() << std::endl;
                 if (pallet.getPackCount())
                 {
-                    packVector culo = pallet.getPackVector();
+                    std::vector<Pack> culo = pallet.getPackVector();
                     for (auto pack : culo)
                     {
-                        std::cout << "  - Pack -> " << pack->getPackID() << std::endl; 
+                        std::cout << "  - Pack -> " << pack.getPackID() << std::endl; 
                     }
                 }
             palletGroup.addPallet(&pallet);

@@ -22,7 +22,7 @@ class Pallet : ThreeD_object
 private:
     float param_Efficency;
     Geometry :: ThreeNum_set<int> maxDims; //[m]
-    std::vector<ptrPack> pallet; 
+    std::vector<Pack> pallet; 
 
 public:
     Pallet();
@@ -32,7 +32,7 @@ public:
 
     #pragma region "Get methods"
         int getPackCount() const;
-        std::vector<Pack*> getPackVector() const;
+        std::vector<Pack> getPackVector() const;
         Geometry :: ThreeNum_set<int> getPalletDims() const;
     #pragma endregion
 

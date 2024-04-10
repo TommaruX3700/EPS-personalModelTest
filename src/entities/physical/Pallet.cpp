@@ -22,7 +22,7 @@ Pallet :: Pallet(ThreeNum_set<int> maxDimensions)
         return this->pallet.size();
     }
 
-    std::vector<Pack*> Pallet :: getPackVector() const
+    std::vector<Pack> Pallet :: getPackVector() const
     {
         return this->pallet;
     }
@@ -38,7 +38,7 @@ Pallet :: Pallet(ThreeNum_set<int> maxDimensions)
     void Pallet :: addPack(Pack packToAddPtr)
     {
         //Add Pack pointer to the end of the "pallet" vector
-        this->pallet.push_back(&packToAddPtr);
+        this->pallet.push_back(packToAddPtr);
     }
 
     void Pallet :: rmvPack(int index = -1)
@@ -59,7 +59,7 @@ Pallet :: Pallet(ThreeNum_set<int> maxDimensions)
     {
         //Remove pack by his ID
         int position = 0;
-        while (this->pallet.at(position)->getPackID() != packID && position <= this->pallet.size()) 
+        while (this->pallet.at(position).getPackID() != packID && position <= this->pallet.size()) 
         { 
             position++;
         }
