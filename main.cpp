@@ -179,7 +179,7 @@ int main(int argc, char *argv[])
                     std::vector<Pack> culo = pallet.getPackVector();
                     for (auto pack : culo)
                     {
-                        std::cout << "  - Pack -> " << pack.getPackID() << std::endl; 
+                        std::cout << "  - Pack ID -> " << pack.getPackID() << std::endl; 
                     }
                 }
             palletGroup.addPallet(&pallet);
