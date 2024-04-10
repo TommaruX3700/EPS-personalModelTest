@@ -1,7 +1,7 @@
 #include "../../../headers/logic/BoxNesting/mainLoops.hpp"
 #include "../../../headers/logic/OrdinamentoPacchi/quickSort.hpp"
 
-void MainNestLoops(dims palletDims, palletVector *outPalletVector, packVector inPacksToNest, packVector *outUnNestablePacks)
+void MainNestLoops(dims palletDims, palletVector &outPalletVector, packVector inPacksToNest)
 {
     /*
      *   Questo loop ad ogni ciclo ogni pacco contenuto nel buffer dei pacchi scartati.
@@ -16,15 +16,14 @@ void MainNestLoops(dims palletDims, palletVector *outPalletVector, packVector in
         /*
          *   Add pallet vector reference to save reference.
          */
-        Pallet* newPallet = new Pallet(palletDims);
-        outPalletVector->push_back(newPallet);
+        Pallet newPallet(palletDims);
 
         /*
          *   Execute a sortInput and reorder the packs.
          */
         float area = 0;
         float pack_area = 0;
-        float pallet_area = newPallet->getPalletDims().num1 * newPallet.getPalletDims().num2;
+        float pallet_area = newPallet.getPalletDims().num1 * newPallet.getPalletDims().num2;
         quickSort(tempPairVector, 0, tempPairVector.size() - 1);
 
         if ((tempPairVector[0]->getDims().num1 * tempPairVector[0]->getDims().num2) >= pallet_area)
@@ -53,6 +52,7 @@ void MainNestLoops(dims palletDims, palletVector *outPalletVector, packVector in
                 }
             }
         }
+        outPalletVector.push_back(newPallet);
         /*
          *   Move un-Nested Packs to the second part of the pair to sortInput them in the next phase.
          */

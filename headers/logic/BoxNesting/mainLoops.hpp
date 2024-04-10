@@ -16,5 +16,5 @@ typedef Geometry::ThreeNum_set<int> dims;
 typedef std::pair<packVector, packVector> pairPackVector;
 
 //Nesting loops
-void MainNestLoops(dims palletDims, palletVector* outPalletVector, packVector inPacksToNest, packVector* outUnNestablePacks);
+void MainNestLoops(dims palletDims, palletVector &outPalletVector, std::vector<Pack> inPacksToNest);
 

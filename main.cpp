@@ -118,11 +118,70 @@ int main(int argc, char *argv[])
          */
         packVector packsToNest, remainingPacks;
         palletVector nestedPallets;
+
         packsToNest = dividedPacks.first;
-        MainNestLoops(palletDims, &nestedPallets, packsToNest, &remainingPacks);
-        for (auto pallet : nestedPallets)
+
+        // MainNestLoops(palletDims, nestedPallets, packsToNest)
+
+        do
+        {
+            /*
+            *   Add pallet vector reference to save reference.
+            */
+            Pallet newPallet(palletDims);
+
+            /*
+            *   Execute a sortInput and reorder the packs.
+            */
+            float area = 0;
+            float pack_area = 0;
+            float pallet_area = newPallet.getPalletDims().num1 * newPallet.getPalletDims().num2;
+            quickSort(packsToNest, 0, packsToNest.size() - 1);
+
+            if ((packsToNest[0]->getDims().num1 * packsToNest[0]->getDims().num2) >= pallet_area)
+            {
+                // do this or skip pack or put in another list
+                newPallet.addPack(*packsToNest[0]);
+                packsToNest.erase(packsToNest.begin());
+            }
+            else
+            {
+                int cursor = 0;
+                auto it = packsToNest.begin();
+                while (it != packsToNest.end())
+                {
+                    const auto &pack = *it;
+                    area += (pack->getDims().num1 * pack->getDims().num2);
+                    if (area <= pallet_area)
+                    {
+                        newPallet.addPack(*pack);
+                        it = packsToNest.erase(it); // Erase and update iterator
+                    }
+                    else
+                    {
+                        ++it; // Move to the next element
+                        cursor++;
+                    }
+                }
+            }
+            nestedPallets.push_back(newPallet);
+            /*
+            *   Move un-Nested Packs to the second part of the pair to sortInput them in the next phase.
+            */
+        } while (packsToNest.size());
+
+
+        for (Pallet pallet : nestedPallets)
         {
             std::cout << "Pallet " << &pallet << ", containing packs: " << pallet.getPackCount() << std::endl;
+                if (pallet.getPackCount())
+                {
+                    packVector culo = pallet.getPackVector();
+                    for (auto pack : culo)
+                    {
+                        std::cout << "  - Pack -> " << pack->getPackID() << std::endl; 
+                    }
+                }
             palletGroup.addPallet(&pallet);
         }
 #pragma endregion
