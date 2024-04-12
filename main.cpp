@@ -122,26 +122,26 @@ int main(int argc, char *argv[])
         packsToNest = dividedPacks.first;
 
         // MainNestLoops(palletDims, nestedPallets, packsToNest)
-
+        Pallet* newPallet;
         do
         {
             /*
              *   Add pallet vector reference to save reference.
              */
-            Pallet newPallet(palletDims);
+            newPallet = new Pallet(palletDims);
 
             /*
              *   Execute a sortInput and reorder the packs.
              */
             float area = 0;
             float pack_area = 0;
-            float pallet_area = newPallet.getPalletDims().num1 * newPallet.getPalletDims().num2;
+            float pallet_area = newPallet->getPalletDims().num1 * newPallet->getPalletDims().num2;
             quickSort(packsToNest, 0, packsToNest.size() - 1);
 
             if ((packsToNest[0]->getDims().num1 * packsToNest[0]->getDims().num2) >= pallet_area)
             {
                 // do this or skip pack or put in another list
-                newPallet.addPack(*packsToNest[0]);
+                newPallet->addPack(*packsToNest[0]);
                 packsToNest.erase(packsToNest.begin());
             }
             else
@@ -154,7 +154,7 @@ int main(int argc, char *argv[])
                     area += (pack->getDims().num1 * pack->getDims().num2);
                     if (area <= pallet_area)
                     {
-                        newPallet.addPack(*pack);
+                        newPallet->addPack(*pack);
                         it = packsToNest.erase(it); // Erase and update iterator
                     }
                     else
@@ -164,7 +164,7 @@ int main(int argc, char *argv[])
                     }
                 }
             }
-            nestedPallets.push_back(newPallet);
+            nestedPallets.push_back(*newPallet);
         } while (packsToNest.size());
 
         for (Pallet pallet : nestedPallets)
@@ -208,6 +208,11 @@ int main(int argc, char *argv[])
             json_pallets.push_back(pallet_data);
         }
 
+        for (auto pack : remainingPacks)
+        {
+            json_unNestedPacks.push_back(pack->getPackID());
+        }
+        
         json_output["Pallets"] = json_pallets;
         json_output["UnNestedPacks"] = json_unNestedPacks;
 
