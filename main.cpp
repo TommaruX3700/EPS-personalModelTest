@@ -141,7 +141,8 @@ int main(int argc, char *argv[])
             if ((packsToNest[0]->getDims().num1 * packsToNest[0]->getDims().num2) >= pallet_area)
             {
                 // do this or skip pack or put in another list
-                newPallet->addPack(*packsToNest[0]);
+                //newPallet->addPack(*packsToNest[0]);
+                remainingPacks.push_back(packsToNest[0]);
                 packsToNest.erase(packsToNest.begin());
             }
             else
@@ -163,8 +164,8 @@ int main(int argc, char *argv[])
                         cursor++;
                     }
                 }
+                nestedPallets.push_back(*newPallet);
             }
-            nestedPallets.push_back(*newPallet);
         } while (packsToNest.size());
 
         for (Pallet pallet : nestedPallets)
@@ -198,7 +199,7 @@ int main(int argc, char *argv[])
         {
             nlohmann::json pallet_data;
             palletLabel = std::to_string(reinterpret_cast<uintptr_t>(pallet.getPalletID()));
-            pallet_data["Pallet"] = palletLabel;
+            pallet_data["Pallet"] = palletLabel.substr(palletLabel.length() - 6);
             pallet_data["Packs"];
             // put pallet id to pallet objects and identify them
             for (auto pack : pallet.getPackVector())
