@@ -8,8 +8,6 @@
 #include <vector>
 #include <chrono>
 #include <algorithm>
-#include <regex>
-#include <thread>
 
 #include "extLibs/nlohmannJSON/json.hpp"
 #include "extLibs/rapidjson/document.h"
@@ -17,8 +15,6 @@
 #include "headers/entities/physical/Pack.hpp"
 #include "headers/entities/physical/PalletGroup.hpp"
 #include "headers/entities/geometry/Grid.hpp"
-
-#include "headers/logic/BoxNesting/mainLoops.hpp"
 
 #include "headers/logic/LetturaJson/letturaFileJson.hpp"
 #include "headers/logic/OrdinamentoPacchi/ordinamentoPacchi.hpp"
@@ -52,11 +48,11 @@ int main(int argc, char *argv[])
                 inputJsonPath = argv[1];
                 consoleStartMessage(inputJsonPath);
                 // Check if file exists
-                std ::ifstream inputFile(inputJsonPath);
+                std::ifstream inputFile(inputJsonPath);
                 if (!inputFile)
                 {
                     // File doesn't exists: throw error
-                    throw std ::invalid_argument("Invalid JSON path provided or unable to access file.");
+                    throw std::invalid_argument("Invalid JSON path provided or unable to access file.");
                 }
                 else
                 {
@@ -117,12 +113,12 @@ int main(int argc, char *argv[])
          *   Raccolgo l'output dei miei threads nel vettore "nestedPallets", mentre in "remainingPacks" i pacchi scartati.
          */
         packVector packsToNest, remainingPacks;
-        palletVector nestedPallets;
+        std::vector<Pallet> nestedPallets;
 
         packsToNest = dividedPacks.first;
 
         // MainNestLoops(palletDims, nestedPallets, packsToNest)
-        Pallet* newPallet;
+        Pallet *newPallet;
         do
         {
             /*
@@ -141,7 +137,7 @@ int main(int argc, char *argv[])
             if ((packsToNest[0]->getDims().num1 * packsToNest[0]->getDims().num2) >= pallet_area)
             {
                 // do this or skip pack or put in another list
-                //newPallet->addPack(*packsToNest[0]);
+                // newPallet->addPack(*packsToNest[0]);
                 remainingPacks.push_back(packsToNest[0]);
                 packsToNest.erase(packsToNest.begin());
             }
@@ -186,11 +182,6 @@ int main(int argc, char *argv[])
 #pragma endregion
 
 #pragma region "BlockCode 3 - End Routine"
-        /*
-         *   TODO outputToJSON(), containing these informations:
-         *   > palletGroup (nested and on pallets)
-         *   > remainingPacks (not nested, excluded definitely)
-         */
 
         nlohmann::json json_output, json_pallets, json_unNestedPacks;
         std::string palletLabel;
@@ -213,12 +204,11 @@ int main(int argc, char *argv[])
         {
             json_unNestedPacks.push_back(pack->getPackID());
         }
-        
+
         json_output["Pallets"] = json_pallets;
         json_output["UnNestedPacks"] = json_unNestedPacks;
 
-        // Specify the file name
-        std::string filename = "output.json";
+        std::string filename = ".\\output.json";
 
         // Write the JSON object to a file
         std::ofstream ofs(filename);
@@ -232,6 +222,7 @@ int main(int argc, char *argv[])
         ofs.close();
 
         std::cout << "JSON data written to " << filename << std::endl;
+
 #pragma endregion
 
 #endif
