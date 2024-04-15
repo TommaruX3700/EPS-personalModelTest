@@ -169,8 +169,8 @@ int main(int argc, char *argv[])
             std::cout << "Pallet " << pallet.getPalletID() << ", containing packs: " << pallet.getPackCount() << std::endl;
             if (pallet.getPackCount())
             {
-                std::vector<Pack> culo = pallet.getPackVector();
-                for (auto pack : culo)
+                std::vector<Pack> retrivedPallet = pallet.getPackVector();
+                for (auto pack : retrivedPallet)
                 {
                     std::cout << "  - Pack ID -> " << pack.getPackID() << std::endl;
                 }
@@ -188,14 +188,20 @@ int main(int argc, char *argv[])
 
         for (auto pallet : nestedPallets)
         {
-            nlohmann::json pallet_data;
+            nlohmann::json pallet_data, pack_data;
             palletLabel = std::to_string(reinterpret_cast<uintptr_t>(pallet.getPalletID()));
             pallet_data["Pallet"] = palletLabel.substr(palletLabel.length() - 6);
             pallet_data["Packs"];
             // put pallet id to pallet objects and identify them
             for (auto pack : pallet.getPackVector())
             {
-                pallet_data["Packs"].push_back(pack.getPackID());
+                // aggiungere su questo push back l'oggetto pacco intero con tutti i flags
+                pack_data.clear();
+                pack_data["id"] = pack.getPackID();
+                pack_data["rf"] = pack.getRotatableFlag();
+                pack_data["rs"] = pack.getSovrapponibileFlag();
+
+                pallet_data["Packs"].push_back(pack_data);
             }
             json_pallets.push_back(pallet_data);
         }

@@ -22,15 +22,13 @@ Pack::Pack()
 
 Pack::Pack(ThreeNum_set<int> dims, ThreeNum_set<int> coords, float packWeight, int packID, bool rotFlag, bool palletizableFlag) 
     {
-        //TODO: 
-        //  - controllare tramite le dimensioni che vengono fornite se la posizione del centro ha senso o meno.
-        //  - rilasciare errore di creazione se la creazione è OUT_OF_BOUND o se il pacco entra in CONFLITTO con altri elementi nel piano.
         this->packID = packID;
         this->rotatableFlag = rotFlag;
         this->setDims(dims);
         this->setCenterCoords(coords);
         this->setWeight(packWeight);
         this->palletizableFlag = palletizableFlag;
+        this->sovrapponibileFlag = true;
     }
 
 #pragma region "Operator overrides"
@@ -80,6 +78,11 @@ Pack::Pack(ThreeNum_set<int> dims, ThreeNum_set<int> coords, float packWeight, i
 #pragma endregion
 
 #pragma region "Get methods"
+    bool Pack::getSovrapponibileFlag() const
+    {
+        return this->sovrapponibileFlag;
+    }
+
     int Pack::getPackID() const
     {
         return this->packID;

@@ -17,6 +17,7 @@ private:
     int packID; //N_COLLO
     bool rotatableFlag; //if its rotatable or not
     bool palletizableFlag; //if its palletizable or not
+    bool sovrapponibileFlag;
     
 public:
     Pack();
@@ -36,6 +37,7 @@ public:
         int getPackID() const;
         bool getRotatableFlag() const;
         bool getPalletizableFlag() const;
+        bool getSovrapponibileFlag() const;
         std::string getInfo();
     #pragma endregion
 

@@ -23,8 +23,7 @@ void ReadJson::retrivePacksInfos(nlohmann::json inputJson)
     Geometry::ThreeNum_set<int> tempCoords;
     int tempCollo;
     float tempWeight;
-    bool tempRotatableFlag;
-    bool tempPalletizableFlag;
+    bool tempRotatableFlag, tempPalletizableFlag, tempSovrapponibileFlag;
     nlohmann::json tempJsonPack;
 
     for (auto line : mapPack)
@@ -65,6 +64,12 @@ void ReadJson::retrivePacksInfos(nlohmann::json inputJson)
                     {
                         tempPalletizableFlag = true;
                     }
+
+                    if (tempJsonPack["FLAG_SOVRAPPONIBILE"] == "N")
+                        tempSovrapponibileFlag = false;
+                    else
+                        tempSovrapponibileFlag = true;
+                    
 
                     newPk = new Pack(tempDims, tempCoords, tempWeight, tempCollo, tempRotatableFlag, tempPalletizableFlag);
 
