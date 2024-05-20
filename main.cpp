@@ -132,6 +132,13 @@ int main(int argc, char *argv[])
             float area = 0;
             float pack_area = 0;
             float pallet_area = newPallet->getPalletDims().num1 * newPallet->getPalletDims().num2;
+
+            /*
+             *  TODO:
+             *      - add weight controll
+             *      
+             */
+
             quickSort(packsToNest, 0, packsToNest.size() - 1);
 
             if ((packsToNest[0]->getDims().num1 * packsToNest[0]->getDims().num2) >= pallet_area)
