@@ -134,6 +134,7 @@ Description:
                 case 1:
                         //case 1 must refer always to original dims
                         setOrientation(1);
+                        this->setDims(this->originalOrientationDims);
                     break;
                 case 2:
                         setOrientation(2);
@@ -166,6 +167,8 @@ Description:
                         this->objectDims.num3 = originalDims.num2;
                     break;
                 default:
+                    setOrientation(1);
+                    this->setDims(this->originalOrientationDims);
                     break;
             }
         }

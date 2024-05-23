@@ -132,6 +132,7 @@ int main(int argc, char *argv[])
             float area = 0;
             float pack_area = 0;
             float pallet_area = newPallet->getPalletDims().num1 * newPallet->getPalletDims().num2;
+            float pallet_height = newPallet->getPalletDims().num3;
 
             /*
              *  TODO:
@@ -154,7 +155,14 @@ int main(int argc, char *argv[])
                 auto it = packsToNest.begin();
                 while (it != packsToNest.end())
                 {
+                    // Height controll: if its higher than max pallet height, rotate untill it fits
                     const auto &pack = *it;
+                    while (pack->getDims().num3 > pallet_height)  
+                    {
+                        // make a rotation until the pack can stai inside the pallet
+                        pack->changeObjectOrientation(pack->getOrientation() + 1);
+                    }
+                    
                     area += (pack->getDims().num1 * pack->getDims().num2);
                     if (area <= pallet_area)
                     {
