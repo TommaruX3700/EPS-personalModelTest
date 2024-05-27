@@ -15,6 +15,7 @@ nlohmann::json ReadJson::convertStringToJson(std::string inputString)
 
 void ReadJson::retrivePacksInfos(nlohmann::json inputJson)
 {
+    bool undefined_pack_detected = false;
     //Dichiaro unordered_map in cui copiare il json object
     std::map<std::string, nlohmann::json> mapPack;
     mapPack = inputJson;
@@ -34,9 +35,10 @@ void ReadJson::retrivePacksInfos(nlohmann::json inputJson)
             tempJsonPack = nlohmann::json::parse(mapPack[line.first].dump());
             if (checkPackInfos(tempJsonPack))
             {
+                Pack* newPk;
+
                 try //remove this once done
                 {
-                    Pack* newPk;
                     tempDims.num1 = tempJsonPack["BASE_MAGGIORE"];
                     tempDims.num2 = tempJsonPack["BASE_MINORE"];
                     tempDims.num3 = tempJsonPack["ALTEZZA"];
@@ -77,37 +79,68 @@ void ReadJson::retrivePacksInfos(nlohmann::json inputJson)
                 }
                 catch(std::exception& e)
                 {
-                    std::cout << "Faulted Pack (N_Collo): " << tempJsonPack["NUMERO_COLLO"] << std::endl;
+                    std::cout << "Faulted Pack (N_Collo): " << tempJsonPack["NUMERO_COLLO"] << "\n-------------------------------------------------\n";
+                    newPk = new Pack(tempDims, tempCoords, tempWeight, tempCollo, tempRotatableFlag, tempPalletizableFlag);
+                    this->ingoredPacks.push_back(newPk);
                 }                
-            }            
+            }
+            else
+            {
+                if (tempJsonPack["NUMERO_COLLO"] == 0 || tempJsonPack["NUMERO_COLLO"] == NULL)
+                {
+                    std::cout << "PACCO SENZA IDENTIFICATIVO COLLO RILEVATO, TERMINA APPLICATIVO \n-------------------------------------------------\n";
+                    undefined_pack_detected = true;
+                }
+            }       
         }   
         else
         {
             //get pallet info here instead
-            tempJsonPack = nlohmann::json::parse(mapPack[line.first].dump());
-            this->outputPalletMaxs.num1 = tempJsonPack["Lenght"];
-            this->outputPalletMaxs.num2 = tempJsonPack["Width"];
-            this->outputPalletMaxs.num3 = tempJsonPack["Height"];
+            try
+            {      
+                tempJsonPack = nlohmann::json::parse(mapPack[line.first].dump());
+                this->outputPalletMaxs.num1 = tempJsonPack["Lenght"];
+                this->outputPalletMaxs.num2 = tempJsonPack["Width"];
+                this->outputPalletMaxs.num3 = tempJsonPack["Height"];
+            }
+            catch(const std::exception& e)
+            {
+                this->outputPalletMaxs = {};
+            }
         }
+    }
+    if(undefined_pack_detected == true)
+    {
+        this->outputPackVector.clear();
     }
 }
 
 bool ReadJson::checkPackInfos(nlohmann::json input)
 {
     // Check data and dimensions before operations
-        if (input["BASE_MAGGIORE"] == 0 || input["BASE_MINORE"] == 0 || input["ALTEZZA"] == 0)
-        {
-            std::cout << "Missing Dims, Pack ignored (N_Collo: " << input["NUMERO_COLLO"] << ")\n-------------------------------------------------\n";
-            return false;   
-        }
+    Pack* discardedPack;
         if (input["NUMERO_COLLO"] == 0 || input["NUMERO_COLLO"] == NULL)
         {
-            std::cout << "Missing Numero di Collo, Pack ignored (N_Collo: " << input["NUMERO_COLLO"] << ")\n-------------------------------------------------\n";
+            std::cout << "PACCO SENZA IDENTIFICATIVO COLLO RILEVATO, TERMINA APPLICATIVO \n-------------------------------------------------\n";
+            ingoredPacks.push_back(discardedPack);            
             return false;  
         }
+
+        if (input["BASE_MAGGIORE"] == 0 || input["BASE_MINORE"] == 0 || input["ALTEZZA"] == 0 || input["BASE_MAGGIORE"] == NULL || input["BASE_MINORE"] == NULL || input["ALTEZZA"] == NULL)
+        {
+            std::cout << "Missing Dims, Pack ignored (N_Collo: " << input["NUMERO_COLLO"] << ")\n-------------------------------------------------\n";
+            discardedPack = new Pack();
+            discardedPack->setPackID(input["NUMERO_COLLO"]);
+            ingoredPacks.push_back(discardedPack);            
+            return false;   
+        }
+        
         if (input["PESO_NETTO"] == "" || input["PESO_NETTO"] == NULL || input["PESO_NETTO"] == "0")
         {
             std::cout << "Missing Peso Netto, Pack ignored (N_Collo: " << input["NUMERO_COLLO"] << ")\n-------------------------------------------------\n";
+            discardedPack = new Pack();
+            discardedPack->setPackID(input["NUMERO_COLLO"]);
+            ingoredPacks.push_back(discardedPack);            
             return false;
         }
     return true;
@@ -118,7 +151,13 @@ const std::vector<Pack*> ReadJson::getPackVector()
     return this->outputPackVector;
 }
 
+const std::vector<Pack*> ReadJson::getPackIgnoredPackVector()
+{
+    return this->ingoredPacks;
+}
+
 const Geometry::ThreeNum_set<int> ReadJson::getPalletInfos()
 {
     return this->outputPalletMaxs;
 }
+

@@ -8,7 +8,7 @@
             "request": "launch",
             "program": "${workspaceFolder}/build/EPS_MODEL", // Change this to your executable path
             "args": [
-                "./docs/inputPackListSample.json"
+                "./docs/input_for_model.json"
             ], // Arguments to your program if any
             //C:\Users\tmaruzzo\Documents\VSCODE_repos\EPS-personalModelTest\docs\inputPackListSample.json
             "stopAtEntry": false,
@@ -19,7 +19,7 @@
             "setupCommands": [
                 {
                     "description": "Enable pretty-printing for gdb",
-                    "text": "-enable-pretty-printing -static-libgcc -static-libstdc++",
+                    "text": "-enable-pretty-printing", //-static-libgcc -static-libstdc++
                     "ignoreFailures": true
                 }
             ],

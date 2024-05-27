@@ -2,15 +2,16 @@
 #include <string>
 #include <vector>
 
-#include "../entities/physical/Pack.hpp"
-#include "../entities/physical/Pallet.hpp"
+#include "../../entities/physical/Pack.hpp"
+#include "../../entities/physical/Pallet.hpp"
 
-#include "../../extLibs/nlohmannJSON/json.hpp"
+#include "../../../extLibs/nlohmannJSON/json.hpp"
 
 class ReadJson
 {
     private:
         std::vector<Pack*> outputPackVector;
+        std::vector<Pack*> ingoredPacks;
         Geometry::ThreeNum_set<int> outputPalletMaxs;
 
         //Converts string to Json
@@ -24,6 +25,7 @@ class ReadJson
     public:
         ReadJson(std::string stringFileContent);
         const std::vector<Pack*> getPackVector();
+        const std::vector<Pack*> getPackIgnoredPackVector();
         const Geometry::ThreeNum_set<int> getPalletInfos();
 };
 

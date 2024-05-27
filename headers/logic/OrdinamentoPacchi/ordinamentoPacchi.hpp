@@ -1,9 +1,9 @@
 #ifndef ORDINAMENTOPACCHI_HPP
 #define ORDINAMENTOPACCHI_HPP
 
-#include "../entities/physical/Pack.hpp"
+#include "../../entities/physical/Pack.hpp"
 #include "quickSort.hpp"
-#include "../entities/physical/Pallet.hpp"
+#include "../../entities/physical/Pallet.hpp"
 #include <vector>
 
 /*

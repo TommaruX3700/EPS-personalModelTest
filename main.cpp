@@ -23,13 +23,34 @@
 #include "headers/logic/MainMethods/test.hpp"
 #pragma endregion
 
+
+/*
+ * TODO:
+ *     - big sexy ENUM for retrun states
+ *     - add weight control
+ *     - add height control
+ *     - fix "faultedPacks" ID returns in output .json 
+ * 
+ * Test da fare:
+	ok test1 - senza pacchi //error code 3, nessun pacco in input // error code 3
+	ok ~ test2 - con un pacco o due  //verifica che metta entrambi i pacchi e che funzioni con uno solo
+	ok ~ test3 - con pacchi uguali //verifica che gestisca tutti i pacchi correttamente
+	ok ~ test4 - con un pallet minuscolo (che non riesce a tenere nulla) //error code 2, pallet dimensione troppo piccola
+	test5 - con controllo peso e altezza
+	~ test6 - info pacco corrotte //messo in unested packs
+	~ test7 - info pallet corrotte //RETURN 11
+	~ TEST8 - RILEVATO PACCO SENZA ID REGISTRATO A SISTEMA //RETURN 10
+	
+	!!! aggiunta sezione "faulted packs" al json di output
+ */
+
 int main(int argc, char *argv[])
 {
     try
     {
 #pragma region "Global Variables"
         std::string inputJsonPath;
-        packVector packs;
+        packVector packs, ignoredPacks;
         Pallet examplePallet;
 #pragma endregion
 
@@ -56,13 +77,23 @@ int main(int argc, char *argv[])
                 }
                 else
                 {
-                    // Open the file
                     std::ifstream file(inputJsonPath);
-                    // Read the entire file into a string --> https://www.geeksforgeeks.org/rapidjson-file-read-write-in-cpp/
                     std::string jsonStringContent((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>());
                     ReadJson jsonConverter(jsonStringContent);
                     packs = jsonConverter.getPackVector();
+                    if (!packs.size())
+                    {
+                        consoleErrorMessage("NO VALID PACKS OR PACK WITHOUT LABEL DETECTED, TERMINATING: CHECK INPUT");
+                        return 10;
+                    }
+                    ignoredPacks = jsonConverter.getPackIgnoredPackVector();
                     examplePallet = Pallet(jsonConverter.getPalletInfos());
+                    if ((examplePallet.getPalletDims().num1 * examplePallet.getPalletDims().num2 * examplePallet.getPalletDims().num3) <= 0)
+                    {
+                        consoleErrorMessage("PALLET DIMS ARE NOT VALID, TERMINATING: CHECK PALLET INPUT");
+                        return 11;
+                    }
+                    
                 }
             }
             else
@@ -70,6 +101,13 @@ int main(int argc, char *argv[])
                 consoleLog("WARNING: NO JSON FILE PROVIDED");
                 return -1;
             }
+
+            if (!packs.size())
+            {
+                consoleErrorMessage("Not a single pack was given!");  
+                return 3;
+            }
+            
         }
         catch (const std::exception &e)
         {
@@ -95,16 +133,28 @@ int main(int argc, char *argv[])
         pacchiNonPallettizzabiliByFLAG = dividedPacks.second;
 
 #pragma endregion
+        packVector packsToNest, remainingPacks;
 
 #pragma region "BlockCode 2.2 - Crea pallet da pacchi non palletizzabili dal flag"
         /*
          *   Aggiungo tutti i pacchi non palletizzabili by flag a dei Pallet dedicati.
+         *      TODO: 
+         *          - fixare: fare solo se è possibile inserirlo nell'area del pallet.
          */
+        float pallet_area = palletDims.num1 * palletDims.num2;  
+
         for (auto pack : pacchiNonPallettizzabiliByFLAG)
         {
-            Pallet newPallet(palletDims);
-            newPallet.addPack(*pack);
-            palletGroup.addPallet(&newPallet);
+            if (pack->getDims().num1*pack->getDims().num2 >= pallet_area)
+            {
+                remainingPacks.push_back(pack);
+            }
+            else
+            {
+                Pallet* newPallet = new Pallet(palletDims);
+                newPallet->addPack(*pack);
+                palletGroup.addPallet(*newPallet);
+            }
         }
 #pragma endregion
 
@@ -112,7 +162,6 @@ int main(int argc, char *argv[])
         /*
          *   Raccolgo l'output dei miei threads nel vettore "nestedPallets", mentre in "remainingPacks" i pacchi scartati.
          */
-        packVector packsToNest, remainingPacks;
         std::vector<Pallet> nestedPallets;
 
         packsToNest = dividedPacks.first;
@@ -133,12 +182,6 @@ int main(int argc, char *argv[])
             float pack_area = 0;
             float pallet_area = newPallet->getPalletDims().num1 * newPallet->getPalletDims().num2;
             float pallet_height = newPallet->getPalletDims().num3;
-
-            /*
-             *  TODO:
-             *      - add weight controll
-             *      
-             */
 
             quickSort(packsToNest, 0, packsToNest.size() - 1);
 
@@ -161,6 +204,7 @@ int main(int argc, char *argv[])
                     {
                         // make a rotation until the pack can stai inside the pallet
                         pack->changeObjectOrientation(pack->getOrientation() + 1);
+                        break;
                     }
                     
                     area += (pack->getDims().num1 * pack->getDims().num2);
@@ -190,7 +234,7 @@ int main(int argc, char *argv[])
                     std::cout << "  - Pack ID -> " << pack.getPackID() << std::endl;
                 }
             }
-            palletGroup.addPallet(&pallet);
+            palletGroup.addPallet(pallet);
         }
 #pragma endregion
 
@@ -198,13 +242,19 @@ int main(int argc, char *argv[])
 
 #pragma region "BlockCode 3 - End Routine"
 
-        nlohmann::json json_output, json_pallets, json_unNestedPacks;
+        nlohmann::json json_output, json_pallets, json_unNestedPacks, json_faultedPacks;
         std::string palletLabel;
-
-        for (auto pallet : nestedPallets)
+        
+        if (!palletGroup.palletCount())
+        {
+            consoleErrorMessage("No packs could be nested! Pallet is way to small..");
+            return 2;
+        }
+        
+        for (auto pallet : palletGroup.getPalletGroup())
         {
             nlohmann::json pallet_data, pack_data;
-            palletLabel = std::to_string(reinterpret_cast<uintptr_t>(pallet.getPalletID()));
+            palletLabel = std::to_string(reinterpret_cast<uintptr_t>(pallet.getPalletID())+1);
             pallet_data["Pallet"] = palletLabel.substr(palletLabel.length() - 6);
             pallet_data["Packs"];
             // put pallet id to pallet objects and identify them
@@ -226,8 +276,14 @@ int main(int argc, char *argv[])
             json_unNestedPacks.push_back(pack->getPackID());
         }
 
+        for (auto pack : ignoredPacks)
+        {
+            json_faultedPacks.push_back(pack->getPackID());
+        }
+        
         json_output["Pallets"] = json_pallets;
         json_output["UnNestedPacks"] = json_unNestedPacks;
+        json_output["FaultedPacks"] = json_faultedPacks;
 
         std::string filename = ".\\output.json";
 

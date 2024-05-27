@@ -1,0 +1,9 @@
+{
+    "user_settings": {
+        "Shipment_type": "Aereo",
+        "Lenght": 220,
+        "Width": 140,
+        "Height": 2,
+        "Max Weight": 40
+    }
+}

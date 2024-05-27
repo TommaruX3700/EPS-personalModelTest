@@ -18,7 +18,7 @@ PalletGroup :: PalletGroup (int max)
 #pragma endregion
 
 #pragma region "Public methods" 
-    int PalletGroup :: addPallet(ptrPallet palletPtr)
+    int PalletGroup :: addPallet(Pallet palletPtr)
     {
         this->palletGroup.push_back(palletPtr);
         return 1;
@@ -38,8 +38,14 @@ PalletGroup :: PalletGroup (int max)
         return this->palletGroup.size();
     }
 
-    void PalletGroup :: appendPalletVector(std::vector<ptrPallet> input)
+    void PalletGroup :: appendPalletVector(std::vector<Pallet> input)
     {
         this->palletGroup.insert(this->palletGroup.end(), input.begin(), input.end());
     }
+
+    std::vector<Pallet> PalletGroup :: getPalletGroup() const
+    {
+        return this->palletGroup;
+    }
+
 #pragma endregion

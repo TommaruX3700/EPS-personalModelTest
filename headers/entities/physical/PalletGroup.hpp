@@ -17,7 +17,7 @@ typedef Pallet* ptrPallet;
 class PalletGroup
 {
 private:
-    std::vector<ptrPallet> palletGroup;
+    std::vector<Pallet> palletGroup;
     int max = 0; 
     
 public:
@@ -29,10 +29,11 @@ public:
     #pragma endregion
 
     #pragma region "Public methods"
-        int addPallet(ptrPallet palletPtr);
+        int addPallet(Pallet palletPtr);
         int rmvPallet(int index);
         int palletCount() const;
-        void appendPalletVector(std::vector<ptrPallet> input);
+        void appendPalletVector(std::vector<Pallet> input);
+        std::vector<Pallet> getPalletGroup() const;
     #pragma endregion
 };
 
