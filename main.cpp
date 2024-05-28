@@ -30,18 +30,19 @@
  *     - add weight control
  *     - add height control
  *     - fix "faultedPacks" ID returns in output .json 
+ *     - list all error codes
  * 
  * Test da fare:
-	ok test1 - senza pacchi //error code 3, nessun pacco in input // error code 3
-	ok ~ test2 - con un pacco o due  //verifica che metta entrambi i pacchi e che funzioni con uno solo
-	ok ~ test3 - con pacchi uguali //verifica che gestisca tutti i pacchi correttamente
-	ok ~ test4 - con un pallet minuscolo (che non riesce a tenere nulla) //error code 2, pallet dimensione troppo piccola
-	test5 - con controllo peso e altezza
-	~ test6 - info pacco corrotte //messo in unested packs
-	~ test7 - info pallet corrotte //RETURN 11
-	~ TEST8 - RILEVATO PACCO SENZA ID REGISTRATO A SISTEMA //RETURN 10
-	
-	!!! aggiunta sezione "faulted packs" al json di output
+ *	ok test1 - senza pacchi //error code 3, nessun pacco in input // error code 3
+ *	ok ~ test2 - con un pacco o due  //verifica che metta entrambi i pacchi e che funzioni con uno solo
+ *	ok ~ test3 - con pacchi uguali //verifica che gestisca tutti i pacchi correttamente
+ *	ok ~ test4 - con un pallet minuscolo (che non riesce a tenere nulla) //error code 2, pallet dimensione troppo piccola
+ *	test5 - con controllo peso e altezza
+ *	ok ~ test6 - info pacco corrotte //messo in unested packs
+ *	ok ~ test7 - info pallet corrotte //RETURN 11
+ *	ok ~ TEST8 - RILEVATO PACCO SENZA ID REGISTRATO A SISTEMA //RETURN 10
+ *	
+ *	!!! aggiunta sezione "faulted packs" al json di output
  */
 
 int main(int argc, char *argv[])
