@@ -14,7 +14,7 @@
 
 #include "headers/entities/physical/Pack.hpp"
 #include "headers/entities/physical/PalletGroup.hpp"
-#include "headers/entities/geometry/Grid.hpp"clear
+#include "headers/entities/geometry/Grid.hpp"
 
 #include "headers/logic/LetturaJson/letturaFileJson.hpp"
 #include "headers/logic/OrdinamentoPacchi/ordinamentoPacchi.hpp"
