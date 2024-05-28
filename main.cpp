@@ -164,79 +164,83 @@ int main(int argc, char *argv[])
          *   Raccolgo l'output dei miei threads nel vettore "nestedPallets", mentre in "remainingPacks" i pacchi scartati.
          */
         std::vector<Pallet> nestedPallets;
-
-        packsToNest = dividedPacks.first;
-
-        // MainNestLoops(palletDims, nestedPallets, packsToNest)
-        Pallet *newPallet;
-        do
+        if (dividedPacks.first.size())
         {
-            /*
-             *   Add pallet vector reference to save reference.
-             */
-            newPallet = new Pallet(palletDims);
+            packsToNest = dividedPacks.first;
 
-            /*
-             *   Execute a sortInput and reorder the packs.
-             */
-            float area = 0;
-            float pack_area = 0;
-            float pallet_area = newPallet->getPalletDims().num1 * newPallet->getPalletDims().num2;
-            float pallet_height = newPallet->getPalletDims().num3;
-
-            quickSort(packsToNest, 0, packsToNest.size() - 1);
-
-            if ((packsToNest[0]->getDims().num1 * packsToNest[0]->getDims().num2) >= pallet_area)
+            // MainNestLoops(palletDims, nestedPallets, packsToNest)
+            Pallet *newPallet;
+            do
             {
-                // do this or skip pack or put in another list
-                // newPallet->addPack(*packsToNest[0]);
-                remainingPacks.push_back(packsToNest[0]);
-                packsToNest.erase(packsToNest.begin());
-            }
-            else
-            {
-                int cursor = 0;
-                auto it = packsToNest.begin();
-                while (it != packsToNest.end())
+                /*
+                *   Add pallet vector reference to save reference.
+                */
+                newPallet = new Pallet(palletDims);
+
+                /*
+                *   Execute a sortInput and reorder the packs.
+                */
+                float area = 0;
+                float pack_area = 0;
+                float pallet_area = newPallet->getPalletDims().num1 * newPallet->getPalletDims().num2;
+                float pallet_height = newPallet->getPalletDims().num3;
+
+                quickSort(packsToNest, 0, packsToNest.size() - 1);
+
+                if ((packsToNest[0]->getDims().num1 * packsToNest[0]->getDims().num2) >= pallet_area)
                 {
-                    // Height controll: if its higher than max pallet height, rotate untill it fits
-                    const auto &pack = *it;
-                    while (pack->getDims().num3 > pallet_height)  
+                    // do this or skip pack or put in another list
+                    // newPallet->addPack(*packsToNest[0]);
+                    remainingPacks.push_back(packsToNest[0]);
+                    packsToNest.erase(packsToNest.begin());
+                }
+                else
+                {
+                    int cursor = 0;
+                    auto it = packsToNest.begin();
+                    while (it != packsToNest.end())
                     {
-                        // make a rotation until the pack can stai inside the pallet
-                        pack->changeObjectOrientation(pack->getOrientation() + 1);
-                        break;
+                        // Height controll: if its higher than max pallet height, rotate untill it fits
+                        const auto &pack = *it;
+                        while (pack->getDims().num3 > pallet_height)  
+                        {
+                            // make a rotation until the pack can stai inside the pallet
+                            pack->changeObjectOrientation(pack->getOrientation() + 1);
+                            break;
+                        }
+                        
+                        area += (pack->getDims().num1 * pack->getDims().num2);
+                        if (area <= pallet_area)
+                        {
+                            newPallet->addPack(*pack);
+                            it = packsToNest.erase(it); // Erase and update iterator
+                        }
+                        else
+                        {
+                            ++it; // Move to the next element
+                            cursor++;
+                        }
                     }
-                    
-                    area += (pack->getDims().num1 * pack->getDims().num2);
-                    if (area <= pallet_area)
+                    nestedPallets.push_back(*newPallet);
+                }
+            } while (packsToNest.size());
+
+            for (Pallet pallet : nestedPallets)
+            {
+                std::cout << "Pallet " << pallet.getPalletID() << ", containing packs: " << pallet.getPackCount() << std::endl;
+                if (pallet.getPackCount())
+                {
+                    std::vector<Pack> retrivedPallet = pallet.getPackVector();
+                    for (auto pack : retrivedPallet)
                     {
-                        newPallet->addPack(*pack);
-                        it = packsToNest.erase(it); // Erase and update iterator
-                    }
-                    else
-                    {
-                        ++it; // Move to the next element
-                        cursor++;
+                        std::cout << "  - Pack ID -> " << pack.getPackID() << std::endl;
                     }
                 }
-                nestedPallets.push_back(*newPallet);
+                palletGroup.addPallet(pallet);
             }
-        } while (packsToNest.size());
-
-        for (Pallet pallet : nestedPallets)
-        {
-            std::cout << "Pallet " << pallet.getPalletID() << ", containing packs: " << pallet.getPackCount() << std::endl;
-            if (pallet.getPackCount())
-            {
-                std::vector<Pack> retrivedPallet = pallet.getPackVector();
-                for (auto pack : retrivedPallet)
-                {
-                    std::cout << "  - Pack ID -> " << pack.getPackID() << std::endl;
-                }
-            }
-            palletGroup.addPallet(pallet);
         }
+        
+
 #pragma endregion
 
 #pragma endregion

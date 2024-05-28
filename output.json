@@ -1,19 +1,15 @@
 {
-    "FaultedPacks": [
-        -970482532,
-        28,
-        -970482532
-    ],
+    "FaultedPacks": null,
     "Pallets": [
         {
             "Packs": [
                 {
-                    "id": 19,
-                    "rf": true,
+                    "id": 28,
+                    "rf": false,
                     "rs": true
                 }
             ],
-            "Pallet": "550881"
+            "Pallet": "198065"
         }
     ],
     "UnNestedPacks": null
