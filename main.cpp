@@ -29,6 +29,7 @@
  *     - big sexy ENUM for retrun states
  *     - add weight control
  *     - add height control
+ *     - test last case
  *     - fix "faultedPacks" ID returns in output .json 
  *     - list all error codes
  * 
