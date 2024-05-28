@@ -16,3 +16,10 @@ Repo for EPS model development only.
 
 - rapidjson : https://github.com/miloyip/rapidjson/
 
+---
+
+### EPS_MODEL error codes:
+- 3: senza pacchi //error code 3, nessun pacco in input // error code 3
+- 2: con un pallet minuscolo (che non riesce a tenere nulla) //error code 2, pallet dimensione troppo piccola
+- 11: info pallet corrotte 
+- 10: RILEVATO PACCO SENZA ID REGISTRATO A SISTEMA 
