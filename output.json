@@ -1,8 +1,8 @@
 {
     "FaultedPacks": [
-        1296354012,
+        -970482532,
         28,
-        1296354012
+        -970482532
     ],
     "Pallets": [
         {
@@ -13,7 +13,7 @@
                     "rs": true
                 }
             ],
-            "Pallet": "184385"
+            "Pallet": "550881"
         }
     ],
     "UnNestedPacks": null
