@@ -1,0 +1,22 @@
+{
+    "2": {
+        "NUM_SPEDIZIONE": 136,
+        "NUMERO_COLLO": 28,
+        "CODICE_CLIENTE": 1013,
+        "PESO_NETTO": "83",
+        "PESO_LORDO": "146",
+        "BASE_MAGGIORE": 83,
+        "BASE_MINORE": 14,
+        "ALTEZZA": 73,
+        "FLAG_PALETTIZZABILE": "N",
+        "FLAG_SOVRAPPONIBILE": "",
+        "FLAG_RUOTABILE": "N"
+    },
+    "user_settings": {
+        "Shipment_type": "Aereo",
+        "Lenght": 800,
+        "Width": 1200,
+        "Height": 800,
+        "Max Weight": 40
+    }
+}
