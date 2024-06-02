@@ -499,7 +499,7 @@
         "CODICE_CLIENTE": 1005,
         "PESO_NETTO": "65",
         "PESO_LORDO": "148",
-        "BASE_MAGGIORE": 65,
+        "BASE_MAGGIORE":215,
         "BASE_MINORE": 12,
         "ALTEZZA": 78,
         "FLAG_PALETTIZZABILE": "N",
