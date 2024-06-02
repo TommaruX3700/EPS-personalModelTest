@@ -96,7 +96,6 @@ int main(int argc, char *argv[])
                         consoleErrorMessage("PALLET DIMS ARE NOT VALID, TERMINATING: CHECK PALLET INPUT");
                         return 11;
                     }
-                    
                 }
             }
             else
@@ -110,7 +109,6 @@ int main(int argc, char *argv[])
                 consoleErrorMessage("Not a single pack was given!");  
                 return 3;
             }
-            
         }
         catch (const std::exception &e)
         {
@@ -158,8 +156,6 @@ int main(int argc, char *argv[])
                 newPallet->addPack(*pack);
                 palletGroup.addPallet(*newPallet);
             }
-            
-
         }
 #pragma endregion
 

@@ -11,9 +11,22 @@ int fitIntoPallet(Pack* input_pack, Pallet* input_pallet)
      * - If pack is not palletizable, just check if it fits in PALLET_X, PALLET_Y and PALLET_Z, if not rotate or signal as NOT FITTING
      * 
      * - If pack is palletizable, check if it fits in PALLET_X, PALLET_Y and PALLET_Z, if not rotate and subcract pack dims from pallet available area
-     * - if possible, consider GRID operations
+     * - if possible, consider GRID operations(write 'em on Pallet class itself) (such as, get position to insert, insert, etc..)
      */
 
-    //return 0 -> Pack fits into pallet
-    //return 1 -> Pack doents fit into pallet
+    if (input_pack->getPalletizableFlag())
+    {
+        //palletizable
+        // check xyz + rotation
+        //if fits -> add to grid correctly
+        // if not fits, find the correct position 
+    }
+    else
+    {
+        //not palletizable
+    }
+    
+
+    //return 0 -> Pack fitted into pallet (and added it)
+    //return 1 -> Pack doents fit into pallet (you should handle it outside this)
 }
