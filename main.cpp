@@ -19,6 +19,7 @@
 #include "headers/logic/LetturaJson/letturaFileJson.hpp"
 #include "headers/logic/OrdinamentoPacchi/ordinamentoPacchi.hpp"
 
+#include "headers/logic/MainMethods/fitIntoPallet.hpp"
 #include "headers/logic/MainMethods/messages.hpp"
 #include "headers/logic/MainMethods/test.hpp"
 #pragma endregion
@@ -157,6 +158,8 @@ int main(int argc, char *argv[])
                 newPallet->addPack(*pack);
                 palletGroup.addPallet(*newPallet);
             }
+            
+
         }
 #pragma endregion
 

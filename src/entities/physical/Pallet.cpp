@@ -13,6 +13,7 @@ Pallet ::Pallet(ThreeNum_set<int> maxDimensions)
     this->maxDims.num1 = maxDimensions.num1;
     this->maxDims.num2 = maxDimensions.num2;
     this->maxDims.num3 = maxDimensions.num3;
+    this->pallet_grid = new Grid(this->maxDims);
     this->pallet.clear();
     this->pallet_id = this;
 }

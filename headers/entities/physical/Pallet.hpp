@@ -2,6 +2,7 @@
 #define PALLET_H
 
 #include "../geometry/Geometry.hpp"
+#include "../geometry/Grid.hpp"
 #include "Pack.hpp"
 #include <vector>
 
@@ -24,6 +25,7 @@ private:
     Geometry ::ThreeNum_set<int> maxDims; //[m]
     std::vector<Pack> pallet;
     Pallet *pallet_id;
+    Grid *pallet_grid;
 
 public:
     Pallet();
