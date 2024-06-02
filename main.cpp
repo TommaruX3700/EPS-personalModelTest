@@ -141,7 +141,7 @@ int main(int argc, char *argv[])
         /*
          *   Aggiungo tutti i pacchi non palletizzabili by flag a dei Pallet dedicati.
          *      TODO: 
-         *          - fixare: fare solo se è possibile inserirlo nell'area del pallet.
+         *          - fix: inserire solo se è possibile inserire il pacco nell'area del pallet, per ALMENO una sua dimensione.
          */
         float pallet_area = palletDims.num1 * palletDims.num2;  
 
