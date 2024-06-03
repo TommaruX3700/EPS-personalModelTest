@@ -17,16 +17,36 @@ int fitIntoPallet(Pack* input_pack, Pallet* input_pallet)
     if (input_pack->getPalletizableFlag())
     {
         //palletizable
-        // check xyz + rotation
-        //if fits -> add to grid correctly
-        // if not fits, find the correct position 
+        if(!findFittingPlace(input_pack, input_pallet))
+        {
+            //found a valid position into pack grid: also update pack position's in pallet grid
+            input_pallet->addPack(*input_pack);
+            return 0;
+        }
+        else
+        {
+            //didn't find any valid fit into the pallet area
+            return 1;
+        }
     }
     else
     {
         //not palletizable
+        input_pallet->addPack(*input_pack);
+        return 0;
     }
-    
+}
 
-    //return 0 -> Pack fitted into pallet (and added it)
-    //return 1 -> Pack doents fit into pallet (you should handle it outside this)
+int findFittingPlace(Pack* input_pack, Pallet* input_pallet)
+{
+    // check if xyz just fits into pallet dims
+    
+        // if it fits thoretically, just try to find a valid place where to put the pack
+            // if fits -> add to grid correctly
+            // if not fits -> find the correct position 
+
+        // if not fits -> rotate and try again (abort if each rotation is invalid)
+    
+    //return 0 -> Found position to fit pack on the pallet and changed its position
+    //return 1 -> Dindt found any valid position
 }
