@@ -2,12 +2,6 @@
 
 int fitIntoPallet(Pack* input_pack, Pallet* input_pallet)
 {
-    /*
-     * TODO:
-     * - Pallet needs to have an updated list of each occupated dimension (Use the grid to occupy cells)
-     * - Update Pack's dimensions due its current rotation and Pallet current occupied dims
-     */
-
     if (input_pack->getPalletizableFlag())
     {
         //palletizable
@@ -41,7 +35,11 @@ int fitIntoPallet(Pack* input_pack, Pallet* input_pallet)
 
 int findFittingPlace(Pack* input_pack, Pallet* input_pallet)
 {
-    // check if xyz just fits into pallet dims
+    //REMEMBER:
+    // - Pallet needs to have an updated list of each occupated dimension (Use the grid to occupy cells)
+    // - Update Pack's dimensions due its current rotation and Pallet current occupied dims
+
+    // Check if xyz just fits into pallet dims
 
         // if it fits thoretically, just try to find a valid place where to put the pack
             // if fits -> add to grid correctly
