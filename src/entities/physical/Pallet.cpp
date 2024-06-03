@@ -70,17 +70,19 @@ void Pallet ::rmvPackByID(int packID)
         position++;
     }
     this->pallet.erase(this->pallet.begin() + position);
+}
 
-    // TEST: useless recursive approach (same complexity)
-    //  static int position = 0;
-    //  if (this->pallet.at(position)->getPackID() != packID && position <= this->pallet.size())
-    //  {
-    //      position++;
-    //      rmvPackByID(packID);
-    //  }
-    //  else if (position <= this->pallet.size())
-    //  {
-    //      this->pallet.erase(this->pallet.begin() + position);
-    //  }
+int doesItFit(Pack* input_pack)
+{
+    // Check if xyz just fits into pallet dims
+    // return 0 if it will theoretically fit
+    // return 1 if it wont
+}
+
+int findValidPlace(Pack* input_pack)
+{
+    // try to find a valid place where to put the pack inside pallet's grid
+    // return 0 if found
+    // return 1 if not found
 }
 #pragma endregion

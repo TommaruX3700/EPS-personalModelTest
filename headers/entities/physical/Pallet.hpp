@@ -43,7 +43,8 @@ public:
     void rmvPack(int index);      // Delete the pack in the given position from the "pallet" vector
     void rmvPackByID(int packID); // Delete pack by ID
     
-    int doesItFit(Pack input_pack);
+    int doesItFit(Pack* input_pack);
+    int findValidPlace(Pack* input_pack);
 #pragma endregion
 };
 

@@ -42,21 +42,20 @@ int findFittingPlace(Pack* input_pack, Pallet* input_pallet)
     int rotation = 0;
     do
     {
-        // Check if xyz just fits into pallet dims
-        if(/*input_pallet.doesItFit(input_pack)*/)
+        // will it ever fit?
+        if(!input_pallet->doesItFit(input_pack))
         {
-            // if it fits thoretically, just try to find a valid place where to put the pack
-            if (/*input_pallet.findAValidPlace(input_pack), find a valid place in the GRID*/)
+            // it will fit: now find a valid place where to place the pack on the GRID
+            if (!input_pallet->findValidPlace(input_pack))
             {
-                // if found -> add to grid correctly and update pack coords
-                return 0; // Found position to fit pack on the pallet and changed its position
+                // found -> add to grid correctly and update pack coords
+                return 0; 
             }
-
-            // if not found -> rotate and try again
+            // if not found -> rotate and try again (maybe rotate from 0, dont know for know dont do anything)
         }
         else
         {
-            // if not fits -> rotate and try again (abort if each rotation is invalid)
+            // if it not fits -> rotate and try again (abort if each rotation is invalid)
             input_pack->changeObjectOrientation(rotation);
             rotation++;        
         }
