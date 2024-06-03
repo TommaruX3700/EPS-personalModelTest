@@ -39,14 +39,28 @@ int findFittingPlace(Pack* input_pack, Pallet* input_pallet)
     // - Pallet needs to have an updated list of each occupated dimension (Use the grid to occupy cells)
     // - Update Pack's dimensions due its current rotation and Pallet current occupied dims
 
-    // Check if xyz just fits into pallet dims
+    int rotation = 0;
+    do
+    {
+        // Check if xyz just fits into pallet dims
+        if(/*input_pallet.doesItFit(input_pack)*/)
+        {
+            // if it fits thoretically, just try to find a valid place where to put the pack
+            if (/*input_pallet.findAValidPlace(input_pack), find a valid place in the GRID*/)
+            {
+                // if found -> add to grid correctly and update pack coords
+                return 0; // Found position to fit pack on the pallet and changed its position
+            }
 
-        // if it fits thoretically, just try to find a valid place where to put the pack
-            // if fits -> add to grid correctly
-            // if not fits -> find the correct position 
+            // if not found -> rotate and try again
+        }
+        else
+        {
+            // if not fits -> rotate and try again (abort if each rotation is invalid)
+            input_pack->changeObjectOrientation(rotation);
+            rotation++;        
+        }
+    } while (rotation != 6);
 
-        // if not fits -> rotate and try again (abort if each rotation is invalid)
-    
-    //return 0 -> Found position to fit pack on the pallet and changed its position
-    //return 1 -> Dindt found any valid position
+    return 1; // Dind't found any valid position
 }
