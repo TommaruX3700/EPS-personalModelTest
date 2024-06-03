@@ -72,14 +72,16 @@ void Pallet ::rmvPackByID(int packID)
     this->pallet.erase(this->pallet.begin() + position);
 }
 
-int doesItFit(Pack* input_pack)
+int Pallet :: doesItFit(Pack* input_pack)
 {
-    // Check if xyz just fits into pallet dims
-    // return 0 if it will theoretically fit
-    // return 1 if it wont
+    // Check if CURRENT xyz just fits into pallet dims
+    if (input_pack->getDims().num1 <= this->maxDims.num1 && input_pack->getDims().num2 <= this->maxDims.num2 &&input_pack->getDims().num3 <= this->maxDims.num3)
+        return 0; // it will theoretically fit
+    else
+        return 1; // it wont
 }
 
-int findValidPlace(Pack* input_pack)
+int Pallet :: findValidPlace(Pack* input_pack)
 {
     // try to find a valid place where to put the pack inside pallet's grid
     // return 0 if found
