@@ -58,6 +58,7 @@ Plane :: ~Plane ()
 #pragma region "Cells occupation methods"
     TwoNum_set<int> findDimsRoutine (int center, int dimension)
     {
+        // Get a range from -x to +x, usually to rapresent a poligon edge or similar.
         TwoNum_set<int> output;
         output.num1 = abs(center - (dimension/2));
         output.num2 = abs(center + (dimension/2));
@@ -67,9 +68,6 @@ Plane :: ~Plane ()
     void Plane :: fillArea (TwoNum_set<int> set1, TwoNum_set<int> set2, Pack* inputPack)
     {
         //Private method: used to fill an area with Pack pointers
-        
-        //TODO: CHECK IF OVERLAPS OTHER PACKS POSITIOIN: THROW AN ERROR IF OVELAPS
-
         for (int i = set1.num1; i < set1.num2; i++)
         {
             for (int j = set2.num1; j < set2.num2; j++)

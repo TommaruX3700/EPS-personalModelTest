@@ -5,7 +5,7 @@
 
 /*
 *   Author:
-*       Federico Casarotto
+*       Tommaso Maruzzo
 *   Description:
 *       Grid based upon 3 plane objects. 
 *       Grid is built upon a ThreeNum_set<int> object ("dimensions"),
@@ -27,6 +27,7 @@ public:
     void setOccupiedCells(Pack* inputPack); 
     void freeOccupiedCells(Pack* inputPack);
 
+    int FindAndPlace(Pack* input_pack);
     void printGrid(int plane);
 };
 

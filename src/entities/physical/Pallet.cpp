@@ -84,8 +84,15 @@ int Pallet :: doesItFit(Pack* input_pack)
 int Pallet :: findValidPlace(Pack* input_pack)
 {
     // try to find a valid place where to put the pack inside pallet's grid
-    
-    // return 0 if found
-    // return 1 if not found
+    if (!this->pallet_grid->FindAndPlace(input_pack))
+    {
+        // found and setted
+        return 0;
+    }
+    else
+    {
+        // not found
+        return 1;
+    }
 }
 #pragma endregion

@@ -37,6 +37,14 @@ void Grid :: freeOccupiedCells(Pack* inputPack)
     this->YZ->freeOccupiedCellsOnPlaneType(inputPack, 3);
 }
 
+int Grid :: FindAndPlace(Pack* input_pack)
+{
+    // Find a valid place where to fit the Pack, for each 3 planes.
+    
+    // Once the correct position is found, update pack coordinates and return 0
+    // If no correct position is ever found, return 1
+}
+
 void Grid :: printGrid(int plane)
 {
     switch (plane)
