@@ -11,7 +11,7 @@ bool CheckIfPackFits(Pack i_pack, ThreeNum_set<int> pallet_dims, int pallet_max_
     for (size_t i = 0; i < 6; i++)
     {
         i_pack.changeObjectOrientation(i+1);
-        
+
         // fare tutti i controlli e se passano ok, altrimenti ruota
         if (i_pack.getDims().num3 > pallet_dims.num3)
             break;
@@ -27,6 +27,7 @@ bool CheckIfPackFits(Pack i_pack, ThreeNum_set<int> pallet_dims, int pallet_max_
 
         *actual_pallet_volume += i_pack.getDims().num1 * i_pack.getDims().num2 + i_pack.getDims().num3;
         *actual_pallet_weight += i_pack.getWeight();
+        return true;
     }
     
     return false;
