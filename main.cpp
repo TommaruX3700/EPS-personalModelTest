@@ -195,7 +195,14 @@ int main(int argc, char *argv[])
                 float pallet_area = newPallet->getPalletDims().num1 * newPallet->getPalletDims().num2;
                 float pallet_height = newPallet->getPalletDims().num3;
 
+                float pallet_area = palletDims.num1 * palletDims.num2;  
+                float remaining_pallet_area = pallet_area;
+                float actual_pallet_weight = 0;
+                int actual_pallet_volume = 0;
+
                 quickSort(packsToNest, 0, packsToNest.size() - 1);
+
+                // IMPLEMENT CheckIfPackFits() HERE
 
                 if ((packsToNest[0]->getDims().num1 * packsToNest[0]->getDims().num2) >= pallet_area)
                 {
