@@ -39,6 +39,7 @@ public:
         bool getPalletizableFlag() const;
         bool getSovrapponibileFlag() const;
         std::string getInfo();
+        int getWeight() const;
     #pragma endregion
 
 };

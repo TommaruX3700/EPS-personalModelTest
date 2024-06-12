@@ -130,39 +130,46 @@ int main(int argc, char *argv[])
 #pragma region "BlockCode 2.2 - Gestione pacchi non palletizzabili dal flag"
         /*
          *   Aggiungo tutti i pacchi non palletizzabili by flag a dei Pallet dedicati.
-         *      TODO: fix, inserire solo se è possibile inserire il pacco nell'area del pallet, per ALMENO una sua dimensione.
          */
         float pallet_area = palletDims.num1 * palletDims.num2;  
         float remaining_pallet_area = pallet_area;
+        float actual_pallet_weight = 0;
+        int actual_pallet_volume = 0;
 
         for (auto pack : pacchiNonPallettizzabiliByFLAG)
         {
             if (pack->getDims().num1*pack->getDims().num2 >= pallet_area)
             {
                 // Pacchi non sono palletizzabili e la cui area supera quella presente del pallet.
-                // TODO: ruotare il pacco e controllare se esiste una posizione che rispetta:
-                //      - altezza;
-                //      - peso massimo;
-                //      - dimensioni massime del pallet.
-                
-                if (CheckIfPackFits(*pack, palletDims.num3, examplePallet.getMaxPalletWeight(), &remaining_pallet_area, pallet_area))
+                if (CheckIfPackFits(*pack, examplePallet.getPalletDims(), examplePallet.getMaxPalletWeight(), &remaining_pallet_area, pallet_area, &actual_pallet_weight, &actual_pallet_volume))
                 {
-                    /* code */
+                    Pallet* newPallet = new Pallet(palletDims, examplePallet.getMaxPalletWeight());
+                    newPallet->addPack(*pack);
+                    palletGroup.addPallet(*newPallet);
                 }
-                
-                remainingPacks.push_back(pack);
+                else
+                {
+                    // Pack doesnt fit in any possible way, discard it
+                    remainingPacks.push_back(pack);
+                }
             }
             else
             {
                 // Pacchi non palletizzabili e che rientrano nell' area del pallet.
-                // TODO: ruotare il pacco e controllare se esiste una posizione che rispetta:
-                //      - altezza;
-                //      - peso massimo;
-                //      - dimensioni massime del pallet.
-                Pallet* newPallet = new Pallet(palletDims, examplePallet.getMaxPalletWeight());
-                newPallet->addPack(*pack);
-                palletGroup.addPallet(*newPallet);
+                if (CheckIfPackFits(*pack, examplePallet.getPalletDims(), examplePallet.getMaxPalletWeight(), &remaining_pallet_area, pallet_area, &actual_pallet_weight, &actual_pallet_volume))
+                {
+                    // Pack fully fits and area have been occupied
+                    Pallet* newPallet = new Pallet(palletDims, examplePallet.getMaxPalletWeight());
+                    newPallet->addPack(*pack);
+                    palletGroup.addPallet(*newPallet);
+                }
+                else
+                {
+                    // Pack doesnt fit in any possible way, discard it
+                    remainingPacks.push_back(pack);
+                }
             }
+            remaining_pallet_area = pallet_area;
         }
 #pragma endregion
 

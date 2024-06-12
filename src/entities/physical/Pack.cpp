@@ -83,6 +83,11 @@ Pack::Pack(ThreeNum_set<int> dims, ThreeNum_set<int> coords, float packWeight, i
         return this->sovrapponibileFlag;
     }
 
+    int Pack::getWeight() const
+    {
+        return this->getWeight();
+    }
+
     int Pack::getPackID() const
     {
         return this->packID;

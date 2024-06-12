@@ -1,14 +1,37 @@
 #include "../../../headers/logic/MainMethods/test.hpp"
 
-bool CheckIfPackFits(Pack i_pack, int pallet_height, int pallet_weight, float* remaining_pallet_area, float full_pallet_area)
+bool CheckIfPackFits(Pack i_pack, ThreeNum_set<int> pallet_dims, int pallet_max_weight, float* remaining_pallet_area, float full_pallet_area, float* actual_pallet_weight, int* actual_pallet_volume)
 {
     // CHECKS se il pacco rispetta le seguenti caratteristiche, per tutte le sue eventuali rotazioni:
-    //      - altezza;
-    //      - peso massimo;
     //      - dimensioni massime del pallet.
 
     // AGGIORNA il valore puntato da "remaining_pallet_area"
-    return true;
+
+    // Height controll: if its higher than max pallet height, rotate untill it fits
+    int total_pallet_volume = pallet_dims.num1 * pallet_dims.num2 * pallet_dims.num3;
+
+    for (size_t i = 0; i < 6; i++)
+    {
+        i_pack.changeObjectOrientation(i+1);
+        // fare tutti i controlli e se passano ok, altrimenti ruota
+        if (i_pack.getDims().num3 > pallet_dims.num3)
+            break;
+
+        if (i_pack.getDims().num1 > pallet_dims.num1 && i_pack.getDims().num2 > pallet_dims.num2)
+            break;
+        
+        if (*actual_pallet_volume > total_pallet_volume) 
+            break;
+
+        if ((i_pack.getWeight() + *actual_pallet_weight) > pallet_max_weight)
+            break;
+
+        *actual_pallet_volume += i_pack.getDims().num1 * i_pack.getDims().num2 + i_pack.getDims().num3;
+        *actual_pallet_weight += i_pack.getWeight();
+        // se passano tutti, modfiicare la remaining_pallet_area
+    }
+    
+    return false;
 }
 
 void testFunction()
