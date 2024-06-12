@@ -102,6 +102,7 @@ void ReadJson::retrivePacksInfos(nlohmann::json inputJson)
                 this->outputPalletMaxs.num1 = tempJsonPack["Lenght"];
                 this->outputPalletMaxs.num2 = tempJsonPack["Width"];
                 this->outputPalletMaxs.num3 = tempJsonPack["Height"];
+                this->maxPalletWeight = tempJsonPack["Max Weight"];
             }
             catch(const std::exception& e)
             {
@@ -159,5 +160,10 @@ const std::vector<Pack*> ReadJson::getPackIgnoredPackVector()
 const Geometry::ThreeNum_set<int> ReadJson::getPalletInfos()
 {
     return this->outputPalletMaxs;
+}
+
+const int ReadJson::getPalletMaxWeight()
+{
+    return this->maxPalletWeight;
 }
 

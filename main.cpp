@@ -35,14 +35,7 @@
  *     - list all error codes
  * 
  * Test da fare:
- *	ok test1 - senza pacchi //error code 3, nessun pacco in input // error code 3
- *	ok ~ test2 - con un pacco o due  //verifica che metta entrambi i pacchi e che funzioni con uno solo
- *	ok ~ test3 - con pacchi uguali //verifica che gestisca tutti i pacchi correttamente
- *	ok ~ test4 - con un pallet minuscolo (che non riesce a tenere nulla) //error code 2, pallet dimensione troppo piccola
  *	test5 - con controllo peso e altezza
- *	ok ~ test6 - info pacco corrotte //messo in unested packs
- *	ok ~ test7 - info pallet corrotte //RETURN 11
- *	ok ~ TEST8 - RILEVATO PACCO SENZA ID REGISTRATO A SISTEMA //RETURN 10
  *	
  *	!!! aggiunta sezione "faulted packs" al json di output
  */
@@ -90,7 +83,7 @@ int main(int argc, char *argv[])
                         return 10;
                     }
                     ignoredPacks = jsonConverter.getPackIgnoredPackVector();
-                    examplePallet = Pallet(jsonConverter.getPalletInfos());
+                    examplePallet = Pallet(jsonConverter.getPalletInfos(), examplePallet.getMaxPalletWeight());
                     if ((examplePallet.getPalletDims().num1 * examplePallet.getPalletDims().num2 * examplePallet.getPalletDims().num3) <= 0)
                     {
                         consoleErrorMessage("PALLET DIMS ARE NOT VALID, TERMINATING: CHECK PALLET INPUT");
@@ -126,40 +119,54 @@ int main(int argc, char *argv[])
          */
         PalletGroup palletGroup;
         Geometry::ThreeNum_set<int> palletDims = examplePallet.getPalletDims();
-
         packVector pacchiNonPallettizzabiliByFLAG;
         std::pair<packVector, packVector> dividedPacks;
-
         dividedPacks = isPalletizable(packs);
         pacchiNonPallettizzabiliByFLAG = dividedPacks.second;
-
 #pragma endregion
+
         packVector packsToNest, remainingPacks;
 
-#pragma region "BlockCode 2.2 - Crea pallet da pacchi non palletizzabili dal flag"
+#pragma region "BlockCode 2.2 - Gestione pacchi non palletizzabili dal flag"
         /*
          *   Aggiungo tutti i pacchi non palletizzabili by flag a dei Pallet dedicati.
-         *      TODO: 
-         *          - fix: inserire solo se è possibile inserire il pacco nell'area del pallet, per ALMENO una sua dimensione.
+         *      TODO: fix, inserire solo se è possibile inserire il pacco nell'area del pallet, per ALMENO una sua dimensione.
          */
         float pallet_area = palletDims.num1 * palletDims.num2;  
+        float remaining_pallet_area = pallet_area;
 
         for (auto pack : pacchiNonPallettizzabiliByFLAG)
         {
             if (pack->getDims().num1*pack->getDims().num2 >= pallet_area)
             {
+                // Pacchi non sono palletizzabili e la cui area supera quella presente del pallet.
+                // TODO: ruotare il pacco e controllare se esiste una posizione che rispetta:
+                //      - altezza;
+                //      - peso massimo;
+                //      - dimensioni massime del pallet.
+                
+                if (CheckIfPackFits(*pack, palletDims.num3, examplePallet.getMaxPalletWeight(), &remaining_pallet_area, pallet_area))
+                {
+                    /* code */
+                }
+                
                 remainingPacks.push_back(pack);
             }
             else
             {
-                Pallet* newPallet = new Pallet(palletDims);
+                // Pacchi non palletizzabili e che rientrano nell' area del pallet.
+                // TODO: ruotare il pacco e controllare se esiste una posizione che rispetta:
+                //      - altezza;
+                //      - peso massimo;
+                //      - dimensioni massime del pallet.
+                Pallet* newPallet = new Pallet(palletDims, examplePallet.getMaxPalletWeight());
                 newPallet->addPack(*pack);
                 palletGroup.addPallet(*newPallet);
             }
         }
 #pragma endregion
 
-#pragma region "BlockCode 2.3 - Nesting loop"
+#pragma region "BlockCode 2.3 - Gestione pacchi palletizzabili dal flag"
         /*
          *   Raccolgo l'output dei miei threads nel vettore "nestedPallets", mentre in "remainingPacks" i pacchi scartati.
          */
@@ -172,14 +179,10 @@ int main(int argc, char *argv[])
             Pallet *newPallet;
             do
             {
-                /*
-                *   Add pallet vector reference to save reference.
-                */
-                newPallet = new Pallet(palletDims);
+                //   Add pallet vector reference to save reference.
+                newPallet = new Pallet(palletDims, examplePallet.getMaxPalletWeight());
 
-                /*
-                *   Execute a sortInput and reorder the packs.
-                */
+                //   Execute a sortInput and reorder the packs.
                 float area = 0;
                 float pack_area = 0;
                 float pallet_area = newPallet->getPalletDims().num1 * newPallet->getPalletDims().num2;
@@ -189,6 +192,11 @@ int main(int argc, char *argv[])
 
                 if ((packsToNest[0]->getDims().num1 * packsToNest[0]->getDims().num2) >= pallet_area)
                 {
+                    // TODO: ruotare il pacco e controllare se esiste una posizione che rispetta:
+                    //      - altezza;
+                    //      - peso massimo;
+                    //      - dimensioni massime del pallet.
+
                     // do this or skip pack or put in another list
                     // newPallet->addPack(*packsToNest[0]);
                     remainingPacks.push_back(packsToNest[0]);
@@ -196,6 +204,11 @@ int main(int argc, char *argv[])
                 }
                 else
                 {
+                    // TODO: ruotare il pacco e controllare se esiste una posizione che rispetta:
+                    //      - altezza;
+                    //      - peso massimo;
+                    //      - dimensioni massime del pallet.
+                 
                     int cursor = 0;
                     auto it = packsToNest.begin();
                     while (it != packsToNest.end())
@@ -232,14 +245,11 @@ int main(int argc, char *argv[])
                 {
                     std::vector<Pack> retrivedPallet = pallet.getPackVector();
                     for (auto pack : retrivedPallet)
-                    {
                         std::cout << "  - Pack ID -> " << pack.getPackID() << std::endl;
-                    }
                 }
                 palletGroup.addPallet(pallet);
             }
         }
-        
 
 #pragma endregion
 

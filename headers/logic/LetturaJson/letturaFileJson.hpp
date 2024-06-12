@@ -13,6 +13,7 @@ class ReadJson
         std::vector<Pack*> outputPackVector;
         std::vector<Pack*> ingoredPacks;
         Geometry::ThreeNum_set<int> outputPalletMaxs;
+        int maxPalletWeight;
 
         //Converts string to Json
         nlohmann::json convertStringToJson(std::string inputPath);
@@ -27,6 +28,7 @@ class ReadJson
         const std::vector<Pack*> getPackVector();
         const std::vector<Pack*> getPackIgnoredPackVector();
         const Geometry::ThreeNum_set<int> getPalletInfos();
+        const int getPalletMaxWeight();
 };
 
 

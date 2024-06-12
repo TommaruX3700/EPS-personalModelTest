@@ -8,7 +8,7 @@ Pallet ::Pallet()
     this->pallet.clear();
 }
 
-Pallet ::Pallet(ThreeNum_set<int> maxDimensions)
+Pallet ::Pallet(ThreeNum_set<int> maxDimensions, int max_weight)
 {
     this->maxDims.num1 = maxDimensions.num1;
     this->maxDims.num2 = maxDimensions.num2;
@@ -16,6 +16,8 @@ Pallet ::Pallet(ThreeNum_set<int> maxDimensions)
     this->pallet_grid = new Grid(this->maxDims);
     this->pallet.clear();
     this->pallet_id = this;
+    this->current_pallet_weight = 0;
+    this->max_pallet_weight = max_weight;
 }
 
 #pragma region "Get methods"
@@ -94,5 +96,15 @@ int Pallet :: findValidPlace(Pack* input_pack)
         // not found
         return 1;
     }
+}
+
+int Pallet :: getPalletWeight() const
+{
+
+}
+
+int Pallet :: getMaxPalletWeight() const
+{
+
 }
 #pragma endregion

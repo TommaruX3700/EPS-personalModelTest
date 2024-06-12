@@ -26,16 +26,21 @@ private:
     std::vector<Pack> pallet;
     Pallet *pallet_id;
     Grid *pallet_grid;
+    
+    int current_pallet_weight;
+    int max_pallet_weight;
 
 public:
     Pallet();
-    Pallet(Geometry ::ThreeNum_set<int> maxDimensions);
+    Pallet(Geometry ::ThreeNum_set<int> maxDimensions, int max_weight);
 
 #pragma region "Get methods"
     int getPackCount() const;
     std::vector<Pack> getPackVector() const;
     Geometry ::ThreeNum_set<int> getPalletDims() const;
     Pallet *getPalletID() const;
+    int getPalletWeight() const;
+    int getMaxPalletWeight() const;
 #pragma endregion
 
 #pragma region "Public methods"

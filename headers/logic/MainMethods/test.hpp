@@ -14,5 +14,6 @@
 #pragma endregion
 
 #pragma region  "Test functions"
+bool CheckIfPackFits(Pack i_pack, int pallet_height, int pallet_weight, float* remaining_pallet_area, float full_pallet_area);
 void testFunction();
 #pragma endregion

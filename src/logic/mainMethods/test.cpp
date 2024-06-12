@@ -1,5 +1,16 @@
 #include "../../../headers/logic/MainMethods/test.hpp"
 
+bool CheckIfPackFits(Pack i_pack, int pallet_height, int pallet_weight, float* remaining_pallet_area, float full_pallet_area)
+{
+    // CHECKS se il pacco rispetta le seguenti caratteristiche, per tutte le sue eventuali rotazioni:
+    //      - altezza;
+    //      - peso massimo;
+    //      - dimensioni massime del pallet.
+
+    // AGGIORNA il valore puntato da "remaining_pallet_area"
+    return true;
+}
+
 void testFunction()
     {
         std::string outputTestString = "";
