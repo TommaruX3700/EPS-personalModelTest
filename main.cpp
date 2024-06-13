@@ -124,13 +124,14 @@ int main(int argc, char *argv[])
         dividedPacks = isPalletizable(packs);
         pacchiNonPallettizzabiliByFLAG = dividedPacks.second;
 #pragma endregion
+        // Pacchi che verranno segnalati come "non nestabili"
+        packVector remainingPacks;
 
-        packVector packsToNest, remainingPacks;
+        // Pacchi che verranno usati per nestare
+        packVector packsToNest;
 
 #pragma region "BlockCode 2.2 - Gestione pacchi non palletizzabili dal flag"
-        /*
-         *   Aggiungo tutti i pacchi non palletizzabili by flag a dei Pallet dedicati.
-         */
+        // Gestisco singolarmente tutti i pacchi non palletizzabili by flag e li assegno a dei Pallet dedicati.
         float pallet_area = palletDims.num1 * palletDims.num2;  
         float remaining_pallet_area = pallet_area;
         float actual_pallet_weight = 0;
@@ -174,24 +175,20 @@ int main(int argc, char *argv[])
 #pragma endregion
 
 #pragma region "BlockCode 2.3 - Gestione pacchi palletizzabili dal flag"
-        /*
-         *   Raccolgo l'output dei miei threads nel vettore "nestedPallets", mentre in "remainingPacks" i pacchi scartati.
-         */
+        
+        // Pallet che sono stati nestati correttamente
         std::vector<Pallet> nestedPallets;
+
+        // Controllo se ho pacchi effettivamente da nestare
         if (dividedPacks.first.size())
         {
             packsToNest = dividedPacks.first;
-
-            // MainNestLoops(palletDims, nestedPallets, packsToNest)
             Pallet *newPallet;
             do
             {
-                //   Add pallet vector reference to save reference.
+                // Add pallet vector reference to save reference.
                 newPallet = new Pallet(palletDims, examplePallet.getMaxPalletWeight());
 
-                //   Execute a sortInput and reorder the packs.
-                float area = 0;
-                float pack_area = 0;
                 float pallet_area = newPallet->getPalletDims().num1 * newPallet->getPalletDims().num2;
                 float pallet_height = newPallet->getPalletDims().num3;
 
@@ -202,55 +199,50 @@ int main(int argc, char *argv[])
 
                 quickSort(packsToNest, 0, packsToNest.size() - 1);
 
-                // IMPLEMENT CheckIfPackFits() HERE
-
-                if ((packsToNest[0]->getDims().num1 * packsToNest[0]->getDims().num2) >= pallet_area)
+                auto it = packsToNest.begin();
+                while (it != packsToNest.end())
                 {
-                    // TODO: ruotare il pacco e controllare se esiste una posizione che rispetta:
-                    //      - altezza;
-                    //      - peso massimo;
-                    //      - dimensioni massime del pallet.
-
-                    // do this or skip pack or put in another list
-                    // newPallet->addPack(*packsToNest[0]);
-                    remainingPacks.push_back(packsToNest[0]);
-                    packsToNest.erase(packsToNest.begin());
-                }
-                else
-                {
-                    // TODO: ruotare il pacco e controllare se esiste una posizione che rispetta:
-                    //      - altezza;
-                    //      - peso massimo;
-                    //      - dimensioni massime del pallet.
-                 
-                    int cursor = 0;
-                    auto it = packsToNest.begin();
-                    while (it != packsToNest.end())
+                    if ((packsToNest[0]->getDims().num1 * packsToNest[0]->getDims().num2) >= pallet_area)
                     {
-                        // Height controll: if its higher than max pallet height, rotate untill it fits
-                        const auto &pack = *it;
-                        while (pack->getDims().num3 > pallet_height)  
+                        // do this or skip pack or put in another list
+                        if (CheckIfPackFits(*packsToNest[0], packsToNest[0]->getDims(), newPallet->getMaxPalletWeight(), &remaining_pallet_area, pallet_area, &actual_pallet_weight, &actual_pallet_volume))
                         {
-                            // make a rotation until the pack can stai inside the pallet
-                            pack->changeObjectOrientation(pack->getOrientation() + 1);
-                            break;
-                        }
-                        
-                        area += (pack->getDims().num1 * pack->getDims().num2);
-                        if (area <= pallet_area)
-                        {
-                            newPallet->addPack(*pack);
+                            // Fits in the pallet somehow (maybe with another)
+                            newPallet->addPack(*packsToNest[0]);
                             it = packsToNest.erase(it); // Erase and update iterator
                         }
                         else
                         {
-                            ++it; // Move to the next element
-                            cursor++;
-                        }
+                            // Pack doesnt fit in any way
+                            remainingPacks.push_back(packsToNest[0]);
+                            packsToNest.erase(packsToNest.begin());
+                        }                    
                     }
-                    nestedPallets.push_back(*newPallet);
+                    else
+                    {
+                        if (CheckIfPackFits(*packsToNest[0], packsToNest[0]->getDims(), newPallet->getMaxPalletWeight(), &remaining_pallet_area, pallet_area, &actual_pallet_weight, &actual_pallet_volume))
+                        {
+                            // Fits in the pallet
+                            newPallet->addPack(*packsToNest[0]);
+                            it = packsToNest.erase(it); // Erase and update iterator
+                        }
+                        else
+                        {
+                            // Pack doesnt fit in any way
+                            remainingPacks.push_back(packsToNest[0]);
+                            packsToNest.erase(packsToNest.begin());
+                        }     
+                    }
+                    // Avanza al prossimo pacco  
+                    ++it; 
                 }
-            } while (packsToNest.size());
+                // aggiungo il nuovo pallet alla lista dei pallet completi
+                nestedPallets.push_back(*newPallet);
+                
+                // spostare tutte i check su "sortInput()"
+                dividedPacks = sortInput(packsToNest, *newPallet);
+
+            } while (dividedPacks.first.size());
 
             for (Pallet pallet : nestedPallets)
             {
