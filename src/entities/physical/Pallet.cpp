@@ -47,6 +47,7 @@ void Pallet ::addPack(Pack packToAddPtr)
 {
     // Add Pack pointer to the end of the "pallet" vector
     this->pallet.push_back(packToAddPtr);
+    this->current_pallet_weight+=packToAddPtr.getWeight();
 }
 
 void Pallet ::rmvPack(int index = -1)
@@ -87,24 +88,20 @@ int Pallet :: findValidPlace(Pack* input_pack)
 {
     // try to find a valid place where to put the pack inside pallet's grid
     if (!this->pallet_grid->FindAndPlace(input_pack))
-    {
         // found and setted
         return 0;
-    }
     else
-    {
         // not found
         return 1;
-    }
 }
 
 int Pallet :: getPalletWeight() const
 {
-
+    return this->current_pallet_weight;
 }
 
 int Pallet :: getMaxPalletWeight() const
 {
-
+    return this->max_pallet_weight;
 }
 #pragma endregion

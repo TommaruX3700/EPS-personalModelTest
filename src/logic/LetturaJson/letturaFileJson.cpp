@@ -36,7 +36,6 @@ void ReadJson::retrivePacksInfos(nlohmann::json inputJson)
             if (checkPackInfos(tempJsonPack))
             {
                 Pack* newPk;
-
                 try //remove this once done
                 {
                     tempDims.num1 = tempJsonPack["BASE_MAGGIORE"];

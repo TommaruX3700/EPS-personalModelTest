@@ -24,20 +24,11 @@
 #include "headers/logic/MainMethods/test.hpp"
 #pragma endregion
 
-
 /*
  * TODO:
  *     - big sexy ENUM for retrun states
- *     - add weight control
- *     - add height control
- *     - test last case
- *     - fix "faultedPacks" ID returns in output .json 
  *     - list all error codes
- * 
- * Test da fare:
- *	test5 - con controllo peso e altezza
- *	
- *	!!! aggiunta sezione "faulted packs" al json di output
+ *     - re-made "CheckIfPackFits" using Pallet's inner methods and dont rely to rogue variables
  */
 
 int main(int argc, char *argv[])
@@ -204,7 +195,7 @@ int main(int argc, char *argv[])
                 {
                     if ((packsToNest[0]->getDims().num1 * packsToNest[0]->getDims().num2) >= pallet_area)
                     {
-                        // do this or skip pack or put in another list
+                        // do this or skip pack or put in another list                        
                         if (CheckIfPackFits(*packsToNest[0], packsToNest[0]->getDims(), newPallet->getMaxPalletWeight(), &remaining_pallet_area, pallet_area, &actual_pallet_weight, &actual_pallet_volume))
                         {
                             // Fits in the pallet somehow (maybe with another)
